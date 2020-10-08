@@ -1,0 +1,10 @@
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\bin\Debug\food.exe.config
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\bin\Debug\food.exe
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\bin\Debug\food.pdb
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.csprojAssemblyReference.cache
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.Form1.resources
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.Properties.Resources.resources
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.csproj.GenerateResource.cache
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.csproj.CoreCompileInputs.cache
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.exe
+C:\Users\rafae\OneDrive\Desktop\CSCI Assignments\CSCI 150\project\food\obj\Debug\food.pdb
