@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NutritionLog", "FoodLogger\NutritionLog.csproj", "{C13C8806-90FC-4DF0-A51B-25CC9B42D056}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C13C8806-90FC-4DF0-A51B-25CC9B42D056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C13C8806-90FC-4DF0-A51B-25CC9B42D056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C13C8806-90FC-4DF0-A51B-25CC9B42D056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C13C8806-90FC-4DF0-A51B-25CC9B42D056}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B8BAA98-5C13-4DCE-98CF-BF59A4FFCF35}
+	EndGlobalSection
+EndGlobal
