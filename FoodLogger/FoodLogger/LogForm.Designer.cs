@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.foodBox = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -251,14 +250,14 @@
             // 
             // saveButton
             // 
-            this.saveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveButton.BackgroundImage")));
+            this.saveButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.saveButton.Location = new System.Drawing.Point(311, 369);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(87, 36);
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // groupBox5
@@ -285,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(408, 417);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.saveButton);
