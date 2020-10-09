@@ -225,6 +225,16 @@ namespace Nutrition
             }
         }
 
+        // TODO:
+        //Maker query for reccomended BMR
+        //Make query to compare progress against BMR
+
+        //Reccomend calorie intake for losing/gaining/maintenance weight
+        //Projectings losses/gains for weight
+            //based on BMR
+            //400 calories 1 lbs /week
+
+
         public int sumUserCalories(string username)
         {//https://stackoverflow.com/questions/52071646/sql-sum-on-multiple-inner-join
             /*

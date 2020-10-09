@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WTEJCYMq4wLJEiAu+xlnaO2BKDSwMvXHSgOPaIxlTHO93mhvw5UG51Pnmk+nFDaOu0O4hcKClTbUwwUcwreC8Q==",
+  "dgSpecHash": "k+S170mFHLBrqnMpXtiEpn4xxWtdja3GMUJsih9z9uvHuWn/er3Y1WGTUmpwbZetfMYZVmJBthiwY5ODLt5gDg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kyle\\source\\repos\\FoodLogger\\FoodLogger\\NutritionLog.csproj",
+  "projectFilePath": "C:\\Users\\Kyle\\Documents\\GitHub\\Team9Repo\\FoodLogger\\FoodLogger\\NutritionLog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kyle\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Kyle\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

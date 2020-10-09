@@ -459,11 +459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kyle\\source\\repos\\FoodLogger\\FoodLogger\\NutritionLog.csproj",
+      "projectUniqueName": "C:\\Users\\Kyle\\Documents\\GitHub\\Team9Repo\\FoodLogger\\FoodLogger\\NutritionLog.csproj",
       "projectName": "NutritionLog",
-      "projectPath": "C:\\Users\\Kyle\\source\\repos\\FoodLogger\\FoodLogger\\NutritionLog.csproj",
+      "projectPath": "C:\\Users\\Kyle\\Documents\\GitHub\\Team9Repo\\FoodLogger\\FoodLogger\\NutritionLog.csproj",
       "packagesPath": "C:\\Users\\Kyle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kyle\\source\\repos\\FoodLogger\\FoodLogger\\obj\\",
+      "outputPath": "C:\\Users\\Kyle\\Documents\\GitHub\\Team9Repo\\FoodLogger\\FoodLogger\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kyle\\AppData\\Roaming\\NuGet\\NuGet.Config",

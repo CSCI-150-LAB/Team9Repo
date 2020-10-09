@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.foodBox = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -250,7 +251,9 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(313, 372);
+            this.saveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveButton.BackgroundImage")));
+            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.saveButton.Location = new System.Drawing.Point(311, 369);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(87, 36);
             this.saveButton.TabIndex = 4;
@@ -278,18 +281,19 @@
             this.bmrLabel.TabIndex = 0;
             this.bmrLabel.Text = "N/A";
             // 
-            // Log
+            // LogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 420);
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ClientSize = new System.Drawing.Size(408, 417);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Log";
+            this.Name = "LogForm";
             this.Text = "Nutrition Log";
             this.Load += new System.EventHandler(this.Log_Load);
             this.groupBox1.ResumeLayout(false);
