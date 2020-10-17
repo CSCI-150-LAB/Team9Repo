@@ -21,7 +21,7 @@ namespace Nutrition
         private void button1_Click(object sender, EventArgs e)
         {
             Login x = new Login();
-            x.Show();
+            x.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace Nutrition
         private void button2_Click(object sender, EventArgs e)
         {
             Register y = new Register();
-            y.Show();
+            y.ShowDialog();
         }
     }
 }
