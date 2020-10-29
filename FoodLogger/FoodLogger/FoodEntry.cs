@@ -18,7 +18,7 @@ namespace NutritionLog
         {
             if (!items.ContainsKey(f.name))
             {
-                List<Food> item;
+                List<Food> item = new List<Food>();
                 item.Add(f);
                 items.Add(f.name, item);
             }
@@ -37,11 +37,7 @@ namespace NutritionLog
 
         void removeAllFood(string f)//remove entire list with specific food name
         {
-            foreach (Dictionary<string, Food> item in items)
-            {
-                items.
-            }
-            items.Remove(f.);
+            items.Remove(f);
         }
         void removeSingleFood(Food f)//removes single specific instance of item from list with that name
         {
@@ -77,22 +73,22 @@ namespace NutritionLog
                 return null;
             }
         }
-
+        /*
         void updateItem(Food r, Food f) //replace at name 'r' with object 'f' if they share a name
         {
             if (r.name == f.name)
             {
                 items[r.name] = f;
             }
-        }
+        }*/
 
         List<string> printAll()  //put all names of food into a list and return the list
         {
-            List<Food> allItems;
-            List<string> result;
+            List<Food> allItems = new List<Food>();
+            List<string> result = new List<string>();
             foreach (var entry in items)
             {
-                allItems.AddRange(entry);
+                allItems.AddRange(entry.Value);
             }
             for (int i = 0; i < allItems.Count(); i++)
             {
