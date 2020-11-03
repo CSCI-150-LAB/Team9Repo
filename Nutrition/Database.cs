@@ -202,33 +202,6 @@ namespace Nutrition
             }
         }
 
-        public void FINISH_HIM(string user, int age, string gender, int height_inches, int weight, int bmr, int bmi)
-        {
-            string sql = "UPDATE [dbo].[Users] SET [age] = @age," +
-                "[gender] = @gender," +
-                "[height_inches] = @inches," +
-                "[weight] = @weight," +
-                "[bmr] = @bmr," +
-                "[bmi] = @bmi WHERE [username] = @user";
-            using (SqlConnection con = new SqlConnection(GetConnectionString()))
-            {
-                con.Open();
-                using (SqlCommand command = new SqlCommand(sql, con))
-                {
-                    command.Parameters.AddWithValue("@age", age);
-                    command.Parameters.AddWithValue("@gender", gender);
-                    command.Parameters.AddWithValue("@inches", height_inches);
-                    command.Parameters.AddWithValue("@weight", weight);
-                    command.Parameters.AddWithValue("@bmr", bmr);
-                    command.Parameters.AddWithValue("@bmi", bmi);
-                    command.Parameters.AddWithValue("@user", user);
-                    var result = command.ExecuteNonQuery();
-                    if (result == 0)
-                        MessageBox.Show("Failed to update " + user);
-                }
-            }
-        }
-
         private string GetConnectionString()
         {
             return @"Server=" + Server + ";Initial Catalog=" + DB + ";Persist Security Info=False;User ID=" + Username + ";Password=" + Password + ";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
