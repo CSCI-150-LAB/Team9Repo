@@ -266,7 +266,90 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
              */
         }
 
+        public int GetBMR(string username) {
+            int bmr = -1;
+            string sql = "SELECT * from [dbo].[Users] where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            bmr = Int32.Parse(result["bmr"].ToString());
+                        }
+                    }
+                }
+            }
+            return bmr > 0 ? bmr : 0;
+        }
 
+public int GetBMI(string username)
+        {
+            int bmi = -1;
+            string sql = "SELECT * from [dbo].[Users] where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            bmi = Int32.Parse(result["bmi"].ToString());
+                        }
+                    }
+                }
+            }
+            return bmi > 0 ? bmi : 0;
+        }
+
+        public int GetGoal(string username)
+        {
+            int goal = -1;
+            string sql = "SELECT * from [dbo].[Users] where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            goal = Int32.Parse(result["goal"].ToString());
+                        }
+                    }
+                }
+            }
+            return goal > 0 ? goal : 0;
+        }
+
+        public void SetGoal(string username, int goal)
+        {
+            string sql = "UPDATE [dbo].[Users] SET [goal] = @goal where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@goal", goal);
+                    command.Parameters.AddWithValue("@user", username);
+                    var result = command.ExecuteNonQuery();
+                    if (result < 0)
+                        MessageBox.Show("Failed set goal for " + username);//Debug
+                }
+            }
+        }
 
         public void DeleteFood(string item)
         {
