@@ -1,11 +1,10 @@
-﻿using NutritionLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Nutrition.Recipes
+namespace Nutrition
 {
     class Recipe
     {

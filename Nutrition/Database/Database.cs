@@ -142,7 +142,7 @@ namespace Nutrition
             }
         }
 
-        public void FINISH_HIM(string user, int age, string gender, int height_inches, int weight, int bmr, int bmi)
+        public void FINISH_HIM(string user, int age, string gender, double height_inches, double weight, double bmr, double bmi)
         {
             string sql = "UPDATE [dbo].[Users] SET [age] = @age," +
                 "[gender] = @gender," +

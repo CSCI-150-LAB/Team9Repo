@@ -109,9 +109,8 @@ namespace Nutrition
 
             //when "Complete Registration" button is clicked, data saved to database
             //FIXME needs to get username from the registration form
-            database.FINISH_HIM(user, bmrCalculator.GetAge(), bmrCalculator.GetGender(), bmrCalculator.GetHeight(),
+            database.FINISH_HIM(username, bmrCalculator.GetAge(), bmrCalculator.GetGender(), bmrCalculator.GetHeight(),
                 bmrCalculator.GetWeight(), bmrCalculator.GetBMR(), bmrCalculator.GetBMI());
-
         }
     }
 }

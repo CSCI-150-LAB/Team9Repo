@@ -1,4 +1,4 @@
-﻿namespace FoodLogger
+﻿namespace Nutrition
 {
     partial class LogForm
     {

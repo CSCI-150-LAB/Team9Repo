@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NutritionLog
+namespace Nutrition
 {
     class Food
     {

@@ -10,7 +10,7 @@
     <Compile Update="FoodEntry\LogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Launcher.cs">
+    <Compile Update="Launcher\Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Registration\Login.cs">

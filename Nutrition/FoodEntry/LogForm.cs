@@ -16,7 +16,7 @@ using System.Windows.Forms;
 //https://docs.microsoft.com/en-us/previous-versions/dd489237(v=vs.140)?redirectedfrom=MSDN
 //https://docs.microsoft.com/en-us/previous-versions/dd489233(v=vs.140)?redirectedfrom=MSDN
 //https://stackoverflow.com/questions/38713649/how-could-i-display-a-graph-on-windowsforms
-namespace FoodLogger
+namespace Nutrition
 {
     public partial class LogForm : Form
     {
