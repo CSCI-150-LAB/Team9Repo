@@ -111,6 +111,19 @@ namespace Nutrition
             //FIXME needs to get username from the registration form
             database.FINISH_HIM(username, bmrCalculator.GetAge(), bmrCalculator.GetGender(), bmrCalculator.GetHeight(),
                 bmrCalculator.GetWeight(), bmrCalculator.GetBMR(), bmrCalculator.GetBMI());
+
+
+            IDictionary<string, string> userData = database.GetUserData(username);
+
+            //Show the secret area we logged in and pass the user data to it
+            Dashboard logged_in = new Dashboard(userData);
+            logged_in.Show();
+
+            //Update the last login to right now.
+            database.UpdateLastLogin(username);
+
+            //Close this login window
+            this.Close();
         }
     }
 }

@@ -16,11 +16,6 @@ namespace Nutrition
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Debug information: " + "\n" + "Username: " + usernameBox.Text + "\n" + "Allergies Selected: " + allergiesToString());
@@ -106,21 +101,6 @@ namespace Nutrition
                         items += ",";
                 }
             return items;
-        }
-
-        private void Register_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox6_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void usernameBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

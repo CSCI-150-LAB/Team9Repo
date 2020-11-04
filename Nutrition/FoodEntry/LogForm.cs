@@ -20,7 +20,7 @@ namespace Nutrition
 {
     public partial class LogForm : Form
     {
-        Nutrition.Database d = new Nutrition.Database();
+        Database d = new Database();
         public LogForm()
         {
             InitializeComponent();
