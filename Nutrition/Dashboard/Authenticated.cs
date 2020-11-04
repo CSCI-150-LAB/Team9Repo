@@ -15,7 +15,7 @@ namespace Nutrition
         {
             username = user["username"];
             Database p = new Database();
-            userData = p.GetUserData(username);
+            userData = p.getUserData(username);
             DateTime.TryParse(userData["last_login"], out last_login);//parse string to DateTime type
 
             /*   data["username"]

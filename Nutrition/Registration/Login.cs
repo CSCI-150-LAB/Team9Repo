@@ -29,10 +29,10 @@ namespace Nutrition
             //Change pass if you forget it :D
             //p.changePassword("Kyle", q.getHash());
 
-            if (p.CheckUserExists(usernameBox.Text))
+            if (p.checkUserExists(usernameBox.Text))
             {
                 //get the password hash from the database
-                string db_hash = p.GetPasswordHash(usernameBox.Text);
+                string db_hash = p.getPasswordHash(usernameBox.Text);
 
                 //check if the hash matches
                 if (q.verifyPassword(db_hash, passwordBox.Text))
@@ -40,10 +40,10 @@ namespace Nutrition
                     MessageBox.Show("Passwords match!");
 
                     //Prepare an associative data (key,pair)
-                    IDictionary<string, string> userData = p.GetUserData(usernameBox.Text);
+                    IDictionary<string, string> userData = p.getUserData(usernameBox.Text + "1");
 
                     //Update the last login to right now.
-                    p.UpdateLastLogin(usernameBox.Text);
+                    p.updateLastLogin(usernameBox.Text);
 
                     //Show the secret area we logged in and pass the user data to it
                     Authenticated logged_in = new Authenticated(userData);
