@@ -34,12 +34,12 @@ namespace Nutrition
                     //Prepare an associative data (key,pair)
                     IDictionary<string, string> userData = p.GetUserData(usernameBox.Text);
 
-                    //Update the last login to right now.
-                    p.UpdateLastLogin(usernameBox.Text);
-
                     //Show the secret area we logged in and pass the user data to it
                     Dashboard logged_in = new Dashboard(userData);
                     logged_in.Show();
+
+                    //Update the last login to right now.
+                    p.UpdateLastLogin(usernameBox.Text);
 
                     //Close this login window
                     this.Close();

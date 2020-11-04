@@ -432,9 +432,7 @@ public int GetBMI(string username)
                     command.Parameters.AddWithValue("@last", DateTime.Now);
                     command.Parameters.AddWithValue("@user", user);
                     var result = command.ExecuteNonQuery();
-                    if (result > 0)
-                        MessageBox.Show("Updated " + user + " last login");//Debug
-                    else
+                    if (result < 0)
                         MessageBox.Show("Failed to update " + user + " last login");//Debug
                 }
             }
