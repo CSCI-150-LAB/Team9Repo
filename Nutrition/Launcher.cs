@@ -18,20 +18,18 @@ namespace Nutrition
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
             Login x = new Login();
-            x.ShowDialog();
+            x.Show();
+            this.Close();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void registerButton_Click(object sender, EventArgs e)
         {
             Register y = new Register();
-            y.ShowDialog();
+            y.Show();
+            this.Close();
         }
     }
 }

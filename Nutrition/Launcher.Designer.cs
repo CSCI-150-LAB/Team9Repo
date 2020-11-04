@@ -35,40 +35,36 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(47, 408);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(6);
+            this.LoginButton.Location = new System.Drawing.Point(25, 191);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(595, 75);
+            this.LoginButton.Size = new System.Drawing.Size(320, 35);
             this.LoginButton.TabIndex = 0;
             this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = true;
-            this.LoginButton.Click += new System.EventHandler(this.button1_Click);
+            this.LoginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(47, 546);
-            this.RegisterButton.Margin = new System.Windows.Forms.Padding(6);
+            this.RegisterButton.Location = new System.Drawing.Point(25, 256);
             this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new System.Drawing.Size(595, 75);
+            this.RegisterButton.Size = new System.Drawing.Size(320, 35);
             this.RegisterButton.TabIndex = 1;
             this.RegisterButton.Text = "Register";
             this.RegisterButton.UseVisualStyleBackColor = true;
-            this.RegisterButton.Click += new System.EventHandler(this.button2_Click);
+            this.RegisterButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // Nutrition
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1438, 899);
+            this.ClientSize = new System.Drawing.Size(646, 403);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.RegisterButton);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "Nutrition";
             this.Text = "Nutrition Launcher";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
