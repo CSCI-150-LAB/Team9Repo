@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Archaeon\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Archaeon\\.nuget\\packages"
+      "C:\\Users\\Kyle\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Kyle\\.nuget\\packages"
     ]
   }
 }
