@@ -4,13 +4,15 @@ using System.Text;
 
 namespace Nutrition
 {
-    class BMR_Calculator
+    class BMR_Calculator //also does BMI
     {
         private int heightIn = 0;
         private double weight = 0;
         private ActivityLevel levels;
         private string gender;
         private int age;
+        private double BMI;
+        private double BMR;
 
         public void SetGender(string gender)
         {
@@ -20,9 +22,19 @@ namespace Nutrition
             }
         }
 
+        public string GetGender()
+        {
+            return gender;
+        }
+
         public void SetAge(int age)
         {
             this.age = age;
+        }
+
+        public int GetAge()
+        {
+            return age;
         }
 
         public void SetActivityLevel(ActivityLevel levels)
@@ -55,26 +67,23 @@ namespace Nutrition
             return weight;
         }
 
-        public double CalculateBMR() //takes from database and assessment form
+        public void CalculateBMR() //takes from database and assessment form
         {
             double bmr = 0.0;
-            bmr = (4.536 * weight) + (15.88 * heightIn) - (5 * age) + 5; //calculate user BMR
 
-            //  string sql = "SELECT * from [dbo].[Users] where [Gender] = @gender";
+            //calculate user BMR without activity level
+            bmr = (4.536 * weight) + (15.88 * heightIn) - (5 * age) + 5; 
 
-            //these are incomplete BMR's, no activity level
             if (gender == "Female")
             {
-                return bmr - 161;
+                bmr = bmr - 161;
             }
             else
             {
-                return bmr - 5;
+                bmr = bmr - 5;
             }
 
-        }
-        public double BMR_ActivityLevel() //takes the BMR and multiplies it by user activity level
-        {
+            //multiply by activity level
             double activeLevel = 0.0;
 
             if (levels == ActivityLevel.Zero)
@@ -99,9 +108,24 @@ namespace Nutrition
             }
 
             //this is complete BMR
-            return CalculateBMR() * activeLevel;
+            BMR = bmr * activeLevel;
         }
         
+        public double GetBMR()
+        {
+            return BMR;
+        }
+
+        //calcuate user BMI
+        public void CalculateBMI()
+        {
+            BMI = (weight * 703) / (heightIn * heightIn);
+        }
+
+        public double GetBMI()
+        {
+            return BMI;
+        }
     /*    public void UpdateUser(string user, string height_feet, string height_inches, string weight, string bmr, string bmi)
         {
             string sql = "UPDATE [dbo].[Users] SET [height_feet] = @feet, " +

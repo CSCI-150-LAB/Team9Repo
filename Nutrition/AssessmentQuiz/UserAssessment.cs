@@ -98,12 +98,20 @@ namespace Nutrition
             InputWeight();
             InputGender();
             ActivityLevelCheck();
+            bmrCalculator.CalculateBMI();
+            bmrCalculator.CalculateBMR();
 
             //debug
             MessageBox.Show("Username: " + username + "\nHeight: " + bmrCalculator.GetHeight() + "\n" +
                 "Age: " + numericUpDownAge.Value + "\n" +
                 "Weight: " + bmrCalculator.GetWeight() + "\n" +
-                "Activity level val: " + bmrCalculator.BMR_ActivityLevel());
+                "Activity level val: " + bmrCalculator.GetBMR());
+
+            //when "Complete Registration" button is clicked, data saved to database
+            //FIXME needs to get username from the registration form
+            database.FINISH_HIM(user, bmrCalculator.GetAge(), bmrCalculator.GetGender(), bmrCalculator.GetHeight(),
+                bmrCalculator.GetWeight(), bmrCalculator.GetBMR(), bmrCalculator.GetBMI());
+
         }
     }
 }
