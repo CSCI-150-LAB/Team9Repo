@@ -25,7 +25,7 @@ namespace NutritionLog
         public void setGoal(int calories)
         {
             Database d = new Database();
-            d.SetGoal(username,calories);
+            d.SetGoal(username, calories);
         }
 
         //Return a percentage value without the % sign
@@ -35,7 +35,7 @@ namespace NutritionLog
             Database d = new Database();
             int total = d.GetGoal(username);
             int current = d.sumUserCalories(username);
-            if(total == 0)
+            if (total == 0)
             {
                 return -1;
             }
