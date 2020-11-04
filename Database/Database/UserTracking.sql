@@ -3,7 +3,7 @@
 	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [username] VARCHAR(50) NOT NULL, 
     [item_name] VARCHAR(50) NOT NULL, 
-    [weight] INT NULL, 
+    [weight] DECIMAL(9, 3) NULL, 
     [calories] INT NOT NULL, 
     [fat] DECIMAL(9, 2) NOT NULL,
     [carbohydrate] DECIMAL(9, 2) NOT NULL,
