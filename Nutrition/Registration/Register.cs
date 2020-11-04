@@ -81,6 +81,9 @@ namespace Nutrition
             {
                 //pass the associative array to the register function
                 p.RegisterUser(register);
+                UserAssessment begin = new UserAssessment(usernameBox.Text);
+                begin.Show();
+                this.Close();
             }
             else
             {

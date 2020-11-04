@@ -1,4 +1,4 @@
-﻿namespace UserAssessment
+﻿namespace Nutrition
 {
     partial class UserAssessment
     {
@@ -79,7 +79,6 @@
             this.groupBoxBMRI.TabIndex = 0;
             this.groupBoxBMRI.TabStop = false;
             this.groupBoxBMRI.Text = "BMR/BMI";
-            this.groupBoxBMRI.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox1
             // 
@@ -91,7 +90,6 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gender";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
             // radioButtonFemale
             // 
@@ -103,7 +101,6 @@
             this.radioButtonFemale.TabStop = true;
             this.radioButtonFemale.Text = "Female";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
-            this.radioButtonFemale.CheckedChanged += new System.EventHandler(this.radioButtonFemale_CheckedChanged);
             // 
             // radioButtonMale
             // 
@@ -115,7 +112,6 @@
             this.radioButtonMale.TabStop = true;
             this.radioButtonMale.Text = "Male";
             this.radioButtonMale.UseVisualStyleBackColor = true;
-            this.radioButtonMale.CheckedChanged += new System.EventHandler(this.radioButtonMale_CheckedChanged);
             // 
             // labelAge
             // 
@@ -125,7 +121,6 @@
             this.labelAge.Size = new System.Drawing.Size(31, 15);
             this.labelAge.TabIndex = 6;
             this.labelAge.Text = "Age:";
-            this.labelAge.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // numericUpDownAge
             // 
@@ -133,7 +128,6 @@
             this.numericUpDownAge.Name = "numericUpDownAge";
             this.numericUpDownAge.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownAge.TabIndex = 5;
-            this.numericUpDownAge.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numericUpDownFeet
             // 
@@ -146,7 +140,6 @@
             this.numericUpDownFeet.Name = "numericUpDownFeet";
             this.numericUpDownFeet.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownFeet.TabIndex = 5;
-            this.numericUpDownFeet.ValueChanged += new System.EventHandler(this.numericUpDownFeet_ValueChanged);
             // 
             // numericUpDownPounds
             // 
@@ -159,7 +152,6 @@
             this.numericUpDownPounds.Name = "numericUpDownPounds";
             this.numericUpDownPounds.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownPounds.TabIndex = 5;
-            this.numericUpDownPounds.ValueChanged += new System.EventHandler(this.numericUpDownPounds_ValueChanged);
             // 
             // numericUpDownInch
             // 
@@ -196,7 +188,6 @@
             this.groupBoxActivity.TabIndex = 0;
             this.groupBoxActivity.TabStop = false;
             this.groupBoxActivity.Text = "Weekly Activity Level";
-            this.groupBoxActivity.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // radioButtonAct5
             // 
@@ -208,7 +199,6 @@
             this.radioButtonAct5.TabStop = true;
             this.radioButtonAct5.Text = "Extra Active (athlete, physical job or 2x training)";
             this.radioButtonAct5.UseVisualStyleBackColor = true;
-            this.radioButtonAct5.CheckedChanged += new System.EventHandler(this.radioButtonAct5_CheckedChanged);
             // 
             // radioButtonAct4
             // 
@@ -253,7 +243,6 @@
             this.radioButtonAct1.TabStop = true;
             this.radioButtonAct1.Text = "Sedentary (little or no exercise)";
             this.radioButtonAct1.UseVisualStyleBackColor = true;
-            this.radioButtonAct1.CheckedChanged += new System.EventHandler(this.radioButtonAct1_CheckedChanged);
             // 
             // labelPounds
             // 
@@ -281,7 +270,6 @@
             this.labelInches.Size = new System.Drawing.Size(17, 15);
             this.labelInches.TabIndex = 0;
             this.labelInches.Text = "in";
-            this.labelInches.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelFeet
             // 
@@ -291,7 +279,6 @@
             this.labelFeet.Size = new System.Drawing.Size(15, 15);
             this.labelFeet.TabIndex = 0;
             this.labelFeet.Text = "ft";
-            this.labelFeet.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelHeight
             // 
@@ -301,7 +288,6 @@
             this.labelHeight.Size = new System.Drawing.Size(46, 15);
             this.labelHeight.TabIndex = 0;
             this.labelHeight.Text = "Height:";
-            this.labelHeight.Click += new System.EventHandler(this.label1_Click);
             // 
             // UserAssessment
             // 

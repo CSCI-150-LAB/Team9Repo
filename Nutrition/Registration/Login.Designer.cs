@@ -43,44 +43,38 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.usernameBox);
-            this.groupBox1.Location = new System.Drawing.Point(11, 47);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(6, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox1.Size = new System.Drawing.Size(266, 126);
+            this.groupBox1.Size = new System.Drawing.Size(143, 59);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Username";
             // 
             // usernameBox
             // 
-            this.usernameBox.Location = new System.Drawing.Point(11, 47);
-            this.usernameBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.usernameBox.Location = new System.Drawing.Point(6, 22);
             this.usernameBox.MaxLength = 50;
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(240, 39);
+            this.usernameBox.Size = new System.Drawing.Size(131, 23);
             this.usernameBox.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.passwordBox);
-            this.groupBox2.Location = new System.Drawing.Point(288, 47);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Location = new System.Drawing.Point(155, 22);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox2.Size = new System.Drawing.Size(254, 126);
+            this.groupBox2.Size = new System.Drawing.Size(137, 59);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Password";
             // 
             // passwordBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(11, 47);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.passwordBox.Location = new System.Drawing.Point(6, 22);
             this.passwordBox.MaxLength = 100;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = 'x';
-            this.passwordBox.Size = new System.Drawing.Size(229, 39);
+            this.passwordBox.Size = new System.Drawing.Size(125, 23);
             this.passwordBox.TabIndex = 0;
             // 
             // groupBox3
@@ -88,22 +82,18 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Controls.Add(this.groupBox1);
-            this.groupBox3.Location = new System.Drawing.Point(17, 13);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Location = new System.Drawing.Point(9, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox3.Size = new System.Drawing.Size(563, 284);
+            this.groupBox3.Size = new System.Drawing.Size(303, 133);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Login";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 186);
-            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button1.Location = new System.Drawing.Point(6, 87);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(531, 90);
+            this.button1.Size = new System.Drawing.Size(286, 42);
             this.button1.TabIndex = 2;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
@@ -113,19 +103,20 @@
             // 
             this.invalidLogin.AutoSize = true;
             this.invalidLogin.ForeColor = System.Drawing.Color.Crimson;
-            this.invalidLogin.Location = new System.Drawing.Point(122, 306);
+            this.invalidLogin.Location = new System.Drawing.Point(66, 143);
+            this.invalidLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.invalidLogin.Name = "invalidLogin";
-            this.invalidLogin.Size = new System.Drawing.Size(0, 32);
+            this.invalidLogin.Size = new System.Drawing.Size(0, 15);
             this.invalidLogin.TabIndex = 3;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AcceptButton = this.button1;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 347);
+            this.ClientSize = new System.Drawing.Size(320, 163);
             this.Controls.Add(this.invalidLogin);
             this.Controls.Add(this.groupBox3);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Login";
             this.Text = "Login";
             this.groupBox1.ResumeLayout(false);

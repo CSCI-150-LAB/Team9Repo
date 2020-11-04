@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserAssessment
+namespace Nutrition
 {
     class BMR_Calculator
     {

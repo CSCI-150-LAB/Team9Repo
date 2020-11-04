@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserAssessment
+namespace Nutrition
 {
     enum ActivityLevel
     {
@@ -11,6 +11,5 @@ namespace UserAssessment
         Moderate,
         Very,
         Extra
-
     }
 }

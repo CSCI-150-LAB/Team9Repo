@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Nutrition
 {
-    public partial class Authenticated : Form
+    public partial class Dashboard : Form
     {
         private string username;
         private IDictionary<string, string> userData;
         private DateTime join_date;
         private DateTime last_login;
 
-        public Authenticated(IDictionary<string, string> user)
+        public Dashboard(IDictionary<string, string> user)
         {
             username = user["username"];
             Database p = new Database();
@@ -29,7 +31,9 @@ namespace Nutrition
                 data["last_login"]
             */
             InitializeComponent();
-            statusBar1.Text = "Welcome " + getUser() + "! You last logged in " + getLastLogin();
+            dashboardUser.Text = "Welcome " + getUser();
+            lastLoginLabel.Text = "You last logged in " + getLastLogin();
+            dateLabel.Text = DateTime.Now.ToString();
         }
 
         public string getUser()
@@ -42,9 +46,10 @@ namespace Nutrition
             return last_login;
         }
 
-        private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void logout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            //  MessageBox.Show(e.ClickedItem.Text);
+            Environment.Exit(0);
         }
     }
 }

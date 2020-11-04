@@ -15,14 +15,16 @@ using System.Windows.Forms;
 //set gender x
 //set activity level x
 
-namespace UserAssessment
+namespace Nutrition
 {
     public partial class UserAssessment : Form
     {
         private BMR_Calculator bmrCalculator = new BMR_Calculator();
         private Database database = new Database();
-        public UserAssessment()
+        private string username;
+        public UserAssessment(string username)
         {
+            this.username = username;
             InitializeComponent();
             InitializeGUI();
         }
@@ -88,29 +90,6 @@ namespace UserAssessment
             else if (radioButtonAct5.Checked)
                 bmrCalculator.SetActivityLevel(ActivityLevel.Extra);
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButtonAct1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxFeet_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        //FIXME
         private void buttonRegister2_Click(object sender, EventArgs e)
         {
             //Call functions to grab form data
@@ -121,50 +100,10 @@ namespace UserAssessment
             ActivityLevelCheck();
 
             //debug
-            MessageBox.Show("Height: " + bmrCalculator.GetHeight() + "\n" +
+            MessageBox.Show("Username: " + username + "\nHeight: " + bmrCalculator.GetHeight() + "\n" +
                 "Age: " + numericUpDownAge.Value + "\n" +
                 "Weight: " + bmrCalculator.GetWeight() + "\n" +
                 "Activity level val: " + bmrCalculator.BMR_ActivityLevel());
-        }
-
-        private void radioButtonAct5_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDownFeet_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDownPounds_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButtonMale_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
