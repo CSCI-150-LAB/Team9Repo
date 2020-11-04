@@ -22,6 +22,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -58,12 +59,9 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Users.sql" />
-    <Build Include="Nutrition.sql" />
-    <Build Include="UserTracking.sql" />
     <PostDeploy Include="FoodData.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="Database1.refactorlog" />
+    <Build Include="Nutrition.sql" />
+    <Build Include="Users.sql" />
+    <Build Include="UserTracking.sql" />
   </ItemGroup>
 </Project>

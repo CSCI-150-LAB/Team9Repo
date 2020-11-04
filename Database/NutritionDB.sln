@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Nutrition", "Database1\Nutrition.sqlproj", "{6B0976D1-8D29-4A94-B768-948FE9C2671A}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Nutrition", "Database\Nutrition.sqlproj", "{6B0976D1-8D29-4A94-B768-948FE9C2671A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
