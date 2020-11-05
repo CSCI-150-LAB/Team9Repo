@@ -242,8 +242,8 @@ FROM UserTracking
 INNER JOIN Users ON UserTracking.username=Users.username
 where Users.username = '<username>'*/
 
-            double sum = 0;
-            string sql = "SELECT sum(UserTracking.@table) as 'data'" +
+            decimal sum = 0;
+            string sql = "SELECT sum(UserTracking." + macro + ") as 'data'" +
                 "FROM UserTracking " +
                 "INNER JOIN Users ON UserTracking.username = Users.username " +
                 "where Users.username = @user";
@@ -253,18 +253,17 @@ where Users.username = '<username>'*/
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
                     command.Parameters.AddWithValue("@user", username);
-                    command.Parameters.AddWithValue("@table", macro);
                     using (SqlDataReader result = command.ExecuteReader())
                     {
                         if (result.HasRows)//Check if there is a result
                         {
                             result.Read();//Read the row
-                            sum = (double)result["data"];
+                            sum = (decimal)result["data"];
                         }
                     }
                 }
             }
-            return sum;
+            return (double)sum;
         }		
 
         public void selectWeeklyData()

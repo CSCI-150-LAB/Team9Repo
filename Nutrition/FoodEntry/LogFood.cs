@@ -18,11 +18,14 @@ using System.Windows.Forms;
 //https://stackoverflow.com/questions/38713649/how-could-i-display-a-graph-on-windowsforms
 namespace Nutrition
 {
-    public partial class LogForm : Form
+    public partial class LogFood : Form
     {
         Database d = new Database();
-        public LogForm()
+
+        private string username;
+        public LogFood(string username)
         {
+            this.username = username;
             InitializeComponent();
         }
 
@@ -82,7 +85,7 @@ namespace Nutrition
                 List<string> facts = d.GetFoodData(name);
                 IDictionary<string, string> nutrition = new Dictionary<string, string>
                 {
-                    ["username"] = "Kyle2",
+                    ["username"] = username,
                     ["item_name"] = facts[0],
                     ["cals"] = facts[1],
                     ["fat"] = facts[2],
