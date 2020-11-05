@@ -235,36 +235,55 @@ namespace Nutrition
             //400 calories 1 lbs /week
 
 
-        public int sumUserCalories(string username)
-        {//https://stackoverflow.com/questions/52071646/sql-sum-on-multiple-inner-join
-            /*
-             SELECT sum(calories)
-FROM(
-SELECT Users.username, UserTracking.id, UserTracking.item_name, UserTracking.calories as 'calories', UserTracking.date_logged
+        public double sumMacroData(string username, string macro)
+        {
+            /*SELECT sum(UserTracking.calories)
 FROM UserTracking
-INNER JOIN Users ON UserTracking.username=Users.username) tmp;
-             */
+INNER JOIN Users ON UserTracking.username=Users.username
+where Users.username = '<username>'*/
 
-            //method 2
-
-            /*
-             SELECT sum(UserTracking.calories) as 'calories'
-FROM UserTracking
-INNER JOIN Users ON UserTracking.username=Users.username; 
-             */
-            return 0;
-        }
+            double sum = 0;
+            string sql = "SELECT sum(UserTracking.@table) as 'data'" +
+                "FROM UserTracking " +
+                "INNER JOIN Users ON UserTracking.username = Users.username " +
+                "where Users.username = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    command.Parameters.AddWithValue("@table", macro);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            sum = (double)result["data"];
+                        }
+                    }
+                }
+            }
+            return sum;
+        }		
 
         public void selectWeeklyData()
         {
-
             /* Using dateDiff for "last 7 days"
              SELECT Users.username, UserTracking.id, UserTracking.item_name, UserTracking.calories, UserTracking.meal_type, UserTracking.date_logged
 FROM UserTracking
 INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserTracking.date_logged, Users.last_login) < 7; --Bigger date on the right
-      
              */
         }
+		
+		public void getLastTenMeals(string username) {
+		/*SELECT Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.protein as 'summed', UserTracking.date_logged
+FROM UserTracking
+INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(hour, UserTracking.date_logged, DateTime.Now) <= 24
+where Users.username = '<username>'
+ORDER BY UserTracking.date_logged DESC
+OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
+		}
 
         public int GetBMR(string username) {
             int bmr = -1;
