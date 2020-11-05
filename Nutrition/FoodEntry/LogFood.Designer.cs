@@ -111,6 +111,7 @@
             this.nameBox.PlaceholderText = "Name";
             this.nameBox.Size = new System.Drawing.Size(86, 23);
             this.nameBox.TabIndex = 0;
+            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
             // calorieBox
             // 
@@ -120,6 +121,7 @@
             this.calorieBox.PlaceholderText = "Calories";
             this.calorieBox.Size = new System.Drawing.Size(86, 23);
             this.calorieBox.TabIndex = 1;
+            this.calorieBox.TextChanged += new System.EventHandler(this.calorieBox_TextChanged);
             // 
             // label2
             // 
@@ -138,6 +140,7 @@
             this.fatBox.PlaceholderText = "Fat";
             this.fatBox.Size = new System.Drawing.Size(88, 23);
             this.fatBox.TabIndex = 6;
+            this.fatBox.TextChanged += new System.EventHandler(this.fatBox_TextChanged);
             // 
             // label3
             // 
@@ -156,6 +159,7 @@
             this.carbBox.PlaceholderText = "Carbs";
             this.carbBox.Size = new System.Drawing.Size(88, 23);
             this.carbBox.TabIndex = 7;
+            this.carbBox.TextChanged += new System.EventHandler(this.carbBox_TextChanged);
             // 
             // label4
             // 
@@ -174,6 +178,7 @@
             this.proteinBox.PlaceholderText = "Protein";
             this.proteinBox.Size = new System.Drawing.Size(88, 23);
             this.proteinBox.TabIndex = 8;
+            this.proteinBox.TextChanged += new System.EventHandler(this.proteinBox_TextChanged);
             // 
             // label5
             // 
@@ -280,7 +285,7 @@
             this.bmrLabel.TabIndex = 0;
             this.bmrLabel.Text = "N/A";
             // 
-            // LogForm
+            // LogFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -292,7 +297,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "LogForm";
+            this.Name = "LogFood";
             this.Text = "Nutrition Log";
             this.Load += new System.EventHandler(this.Log_Load);
             this.groupBox1.ResumeLayout(false);

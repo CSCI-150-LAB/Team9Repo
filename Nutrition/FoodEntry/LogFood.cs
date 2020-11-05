@@ -10,17 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-//TODO:
-//GRAPH API: https://stackoverflow.com/questions/10622674/chart-creating-dynamically-in-net-c-sharp
-//https://docs.microsoft.com/en-us/previous-versions/dd489237(v=vs.140)?redirectedfrom=MSDN
-//https://docs.microsoft.com/en-us/previous-versions/dd489233(v=vs.140)?redirectedfrom=MSDN
-//https://stackoverflow.com/questions/38713649/how-could-i-display-a-graph-on-windowsforms
 namespace Nutrition
 {
     public partial class LogFood : Form
     {
+        //Create database and food entry instance
         Database d = new Database();
+        FoodEntry foodList = new FoodEntry();
+        Food currentFood = null;
 
         private string username;
         public LogFood(string username)
@@ -32,6 +29,7 @@ namespace Nutrition
         private void foodBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string food = foodBox.SelectedItem.ToString();
+            currentFood = null;
             foodItems.Items.Add(food);
 
             List<string> facts = d.GetFoodData(food);
@@ -41,11 +39,18 @@ namespace Nutrition
             carbBox.Text = facts[3];
             proteinBox.Text = facts[4];
 
+            int calories = int.Parse(facts[1]);
+            double fat = double.Parse(facts[2]);
+            double carb = double.Parse(facts[3]);
+            double pro = double.Parse(facts[4]);
+            foodList.addNewFood(new Food(nameBox.Text, calories,fat, pro, carb, Food.MealType.Dinner));
+
+            //currentFood = new Food(nameBox.Text, calories, fat, pro, carb, Food.MealType.Dinner);
             if (targetLabel.Text == "N/A")
                 targetLabel.Text = facts[1];
             else
             {
-                int sum = Int32.Parse(targetLabel.Text) + Int32.Parse(facts[1]);
+                int sum = int.Parse(targetLabel.Text) + calories;
                 targetLabel.Text = sum.ToString();
             }
         }
@@ -53,32 +58,8 @@ namespace Nutrition
         private void saveButton_Click(object sender, EventArgs e)
         {
             //TODO: Use structs for list data: https://stackoverflow.com/questions/41171511/arrays-inside-a-list/41171582
-            /* Database test = new Database();
-             IDictionary<string, string> register = new Dictionary<string, string>
-             {
-                 ["username"] = "Kyle",
-                 ["password"] = "asdasdasda",
-                 ["admin"] = "0",
-                 ["gluten"] = "1",
-                 ["peanut"] = "0",
-                 ["fish"] = "0",
-                 ["soy"] = "0",
-                 ["dairy"] = "0"
-             };
-             if (!test.CheckUserExists("Kyle"))
-             {
-                 test.RegisterUser(register);
-             }
-             test.FINISH_HIM("Kyle", 20, "Male", 69, 150, 20, 30);
-             IDictionary<string, string> user = test.GetUserData("Kyle");
-             if (user.Count() > 0)
-             {
-                 MessageBox.Show("Gender: [" + user["gender"] + "]");
-                 if (user["age"].Length != 0)
-                 {
-                     MessageBox.Show(int.Parse(user["age"]).ToString());
-                 }
-             }*/
+        
+
             int i = 0;
             foreach (string name in foodItems.Items)
             {
@@ -124,15 +105,22 @@ namespace Nutrition
                 return;
 
             List<string> facts = d.GetFoodData(foodItems.SelectedItem.ToString());
-            nameBox.Text = facts[0];
-            calorieBox.Text = facts[1];
-            fatBox.Text = facts[2];
-            carbBox.Text = facts[3];
-            proteinBox.Text = facts[4];
+            Food fact2 = foodList.searchByName(foodItems.SelectedItem.ToString());
+
+            //Take note of current food
+            currentFood = fact2;
+
+            nameBox.Text = fact2.name;
+          //  nameBox.Text = facts[0,1,2,3,4];
+            calorieBox.Text = fact2.calories.ToString();
+            fatBox.Text = fact2.fat.ToString();
+            carbBox.Text = fact2.carbs.ToString();
+            proteinBox.Text = fact2.protein.ToString(); ;
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            currentFood = null;
             foodItems.Items.Clear();
             targetLabel.Text = "N/A";
             nameBox.Text ="";
@@ -157,6 +145,56 @@ namespace Nutrition
                     targetLabel.Text = sum.ToString();
                 else
                     targetLabel.Text = "N/A";
+            }
+        }
+
+        private void nameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.name = nameBox.Text;
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void calorieBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.calories = int.Parse(calorieBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void fatBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.fat = double.Parse(fatBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void carbBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.carbs = double.Parse(carbBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void proteinBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.protein = double.Parse(proteinBox.Text);
+                foodList.updateItem(currentFood, changed);
             }
         }
     }

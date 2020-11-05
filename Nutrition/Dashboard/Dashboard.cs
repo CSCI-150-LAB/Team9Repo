@@ -63,9 +63,9 @@ namespace Nutrition
             else if(e.ClickedItem.Text == "Health Summary")
             {
                 Database bb = new Database();
-                double data = bb.sumMacroData(this.username, "protein");
-                double data2 = bb.sumMacroData(this.username, "fat");
-                MessageBox.Show("Protein Sum: " + data +"\nFat Sum: " + data2);
+                double protein = bb.sumMacroData(this.username, "protein");
+                double fat = bb.sumMacroData(this.username, "fat");
+                MessageBox.Show("Protein Sum: " + protein +"\nFat Sum: " + fat);
             }
         }
     }

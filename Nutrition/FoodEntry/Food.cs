@@ -7,11 +7,12 @@ namespace Nutrition
     class Food
     {
         public string name;
-        public int calories, fat, protein, carbs;
+        public int calories;
+        public double fat, protein, carbs;
         public MealType type;
 
         public enum MealType { Breakfast = 0, Lunch = 1, Dinner = 2 };
-        public Food(string name, int calories, int fat, int protein, int carbs, MealType type)
+        public Food(string name, int calories, double fat, double protein, double carbs, MealType type)
         {
             this.name = name;
             this.calories = calories;
