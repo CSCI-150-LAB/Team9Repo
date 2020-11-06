@@ -48,8 +48,25 @@ namespace Nutrition
 
         private void logout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //  MessageBox.Show(e.ClickedItem.Text);
+            //MessageBox.Show(e.ClickedItem.Text);
             Environment.Exit(0);
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+          //  MessageBox.Show(e.ClickedItem.Text);
+            if(e.ClickedItem.Text == "Add Foods")
+            {
+                LogFood f = new LogFood(this.username);
+                f.Show();
+            }
+            else if(e.ClickedItem.Text == "Health Summary")
+            {
+                Database bb = new Database();
+                double protein = bb.sumMacroData(this.username, "protein");
+                double fat = bb.sumMacroData(this.username, "fat");
+                MessageBox.Show("Protein Sum: " + protein +"\nFat Sum: " + fat);
+            }
         }
     }
 }
