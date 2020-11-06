@@ -220,7 +220,7 @@ namespace Nutrition
                     if (result < 0)
                         MessageBox.Show("Error inserting data into Database!");
                     //else
-                      //  MessageBox.Show("Inserted " + item["item_name"] + " successfully");
+                    //  MessageBox.Show("Inserted " + item["item_name"] + " successfully");
                 }
             }
         }
@@ -231,17 +231,12 @@ namespace Nutrition
 
         //Reccomend calorie intake for losing/gaining/maintenance weight
         //Projectings losses/gains for weight
-            //based on BMR
-            //400 calories 1 lbs /week
+        //based on BMR
+        //400 calories 1 lbs /week
 
 
         public double sumMacroData(string username, string macro)
         {
-            /*SELECT sum(UserTracking.calories)
-FROM UserTracking
-INNER JOIN Users ON UserTracking.username=Users.username
-where Users.username = '<username>'*/
-
             decimal sum = 0;
             string sql = "SELECT sum(UserTracking." + macro + ") as 'data'" +
                 "FROM UserTracking " +
@@ -258,13 +253,14 @@ where Users.username = '<username>'*/
                         if (result.HasRows)//Check if there is a result
                         {
                             result.Read();//Read the row
-                            sum = (decimal)result["data"];
+                            if (result["data"] != System.DBNull.Value)//Check for a null database value
+                                sum = (decimal)result["data"];
                         }
                     }
                 }
             }
             return (double)sum;
-        }		
+        }
 
         public void selectWeeklyData()
         {
@@ -274,17 +270,19 @@ FROM UserTracking
 INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserTracking.date_logged, Users.last_login) < 7; --Bigger date on the right
              */
         }
-		
-		public void getLastTenMeals(string username) {
-		/*SELECT Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.protein as 'summed', UserTracking.date_logged
-FROM UserTracking
-INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(hour, UserTracking.date_logged, DateTime.Now) <= 24
-where Users.username = '<username>'
-ORDER BY UserTracking.date_logged DESC
-OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
-		}
 
-        public int GetBMR(string username) {
+        public void getLastTenMeals(string username)
+        {
+            /*SELECT Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.protein as 'summed', UserTracking.date_logged
+    FROM UserTracking
+    INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(hour, UserTracking.date_logged, DateTime.Now) <= 24
+    where Users.username = '<username>'
+    ORDER BY UserTracking.date_logged DESC
+    OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
+        }
+
+        public int GetBMR(string username)
+        {
             int bmr = -1;
             string sql = "SELECT * from [dbo].[Users] where [username] = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
@@ -306,7 +304,7 @@ OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
             return bmr > 0 ? bmr : 0;
         }
 
-public int GetBMI(string username)
+        public int GetBMI(string username)
         {
             int bmi = -1;
             string sql = "SELECT * from [dbo].[Users] where [username] = @user";
