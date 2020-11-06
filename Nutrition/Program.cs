@@ -1,5 +1,4 @@
-﻿using Nutrition.Graphs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,11 +20,9 @@ namespace Nutrition
 
             //Start the launcher this way so we can use .close() when we don't need the launcher anymore
             //Doing it this way preserves the application instead of closing the main thread
-            //var launch = new Nutrition();
-            //launch.Show();
-
-            //Launch the graph instead of the whole project
-            Application.Run(new Graph());
+            var launch = new Nutrition();
+            launch.Show();
+            Application.Run();
         }
     }
 }

@@ -10,9 +10,6 @@
     <Compile Update="FoodEntry\LogFood.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Graphs\Graph.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Launcher\Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
