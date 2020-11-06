@@ -34,14 +34,14 @@ namespace Nutrition
         {
             Database d = new Database();
             int total = d.GetGoal(username);
-            int current = d.sumUserCalories(username);
+            double current = d.sumMacroData(username, "calories");
             if (total == 0)
             {
                 return -1;
             }
             else
             {
-                return (current / total) * 100;
+                return (int)((current / total) * 100);
             }
         }
 

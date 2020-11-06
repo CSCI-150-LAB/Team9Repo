@@ -8,30 +8,24 @@ namespace Nutrition
 {
     class FoodEntry
     {
-        Dictionary<string, List<Food>> items; //<food name, food object>
-        FoodEntry()
+        IDictionary<string, Food> items; //<food name, food object>
+        public FoodEntry()
         {
-            items.Clear();
+            items = new Dictionary<string, Food>();
         }
 
-        void addNewFood(Food f)//adds new food list with item if list does not already exist
+        public void addNewFood(Food f)//adds new food list with item if list does not already exist
         {
             if (!items.ContainsKey(f.name))
             {
-                List<Food> item = new List<Food>();
-                item.Add(f);
-                items.Add(f.name, item);
+                items.Add(f.name, f);
             }
         }
         void addDuplicateFood(Food f)//adds duplicate item to the list of the food if already exists
         {
             if (items.ContainsKey(f.name))
             {
-                List<Food> item = items[f.name];
-                if (!item.Contains(f))
-                {
-                    item.Add(f);
-                }
+                items.Add(f.name, f);
             }
         }
 
@@ -43,58 +37,39 @@ namespace Nutrition
         {
             if (items.ContainsKey(f.name))
             {
-                if (items[f.name].Contains(f))
-                {
-                    items[f.name].Remove(f);
-                }
+                items.Remove(f.name);
             }
         }
 
-        List<Food> searchByName(string s) //searches by name of the food (key)
+        public Food searchByName(string s) //searches by name of the food (key)
         {
             if (!items.ContainsKey(s))
             {
-                return new List<Food>();
+                return null;
             }
             else
             {
                 return items[s];
             }
         }
-
-        Food searchByValue(Food f)  //search by food object (value)
+        public bool updateItem(Food r, Food f) //replace at name 'r' with object 'f' if they share a name
         {
-            if (items.ContainsKey(f.name) && items[f.name].Contains(f))
-            {
-                    return f;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        /*
-        void updateItem(Food r, Food f) //replace at name 'r' with object 'f' if they share a name
-        {
-            if (r.name == f.name)
+            if(items.ContainsKey(r.name))
             {
                 items[r.name] = f;
+                return true;
             }
-        }*/
+            return false;
+        }
 
-        List<string> printAll()  //put all names of food into a list and return the list
+        public List<Food> printAll()  //put all names of food into a list and return the list
         {
             List<Food> allItems = new List<Food>();
-            List<string> result = new List<string>();
             foreach (var entry in items)
             {
-                allItems.AddRange(entry.Value);
+                allItems.Add(entry.Value);
             }
-            for (int i = 0; i < allItems.Count(); i++)
-            {
-                result[i] = allItems[i].name;
-            }
-            return result;
+            return allItems;
         }
     }
 }
