@@ -34,7 +34,8 @@ namespace Nutrition
         {
             Database d = new Database();
             int total = d.GetGoal(username);
-            double current = d.sumMacroData(username, "calories");
+
+            double current = 0;//d.sumMacroData(username, "calories");
             if (total == 0)
             {
                 return -1;
