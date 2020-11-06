@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Nutrition/1.0.0": {
         "dependencies": {
+          "ScottPlot.WinForms": "4.0.42",
           "System.Data.SqlClient": "4.8.2"
         },
         "runtime": {
@@ -19,6 +20,11 @@
         "dependencies": {
           "System.Security.AccessControl": "4.7.0",
           "System.Security.Principal.Windows": "4.7.0"
+        }
+      },
+      "Microsoft.Win32.SystemEvents/4.7.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
@@ -55,6 +61,29 @@
           }
         }
       },
+      "ScottPlot/4.0.42": {
+        "dependencies": {
+          "System.Drawing.Common": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/ScottPlot.dll": {
+            "assemblyVersion": "4.0.42.0",
+            "fileVersion": "4.0.42.0"
+          }
+        }
+      },
+      "ScottPlot.WinForms/4.0.42": {
+        "dependencies": {
+          "ScottPlot": "4.0.42",
+          "System.Drawing.Common": "4.7.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/ScottPlot.WinForms.dll": {
+            "assemblyVersion": "4.0.42.0",
+            "fileVersion": "4.0.42.0"
+          }
+        }
+      },
       "System.Data.SqlClient/4.8.2": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
@@ -80,6 +109,12 @@
             "assemblyVersion": "4.6.1.2",
             "fileVersion": "4.700.20.37001"
           }
+        }
+      },
+      "System.Drawing.Common/4.7.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.Win32.SystemEvents": "4.7.0"
         }
       },
       "System.Security.AccessControl/4.7.0": {
@@ -111,6 +146,13 @@
       "path": "microsoft.win32.registry/4.7.0",
       "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
     },
+    "Microsoft.Win32.SystemEvents/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
+      "path": "microsoft.win32.systemevents/4.7.0",
+      "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -139,12 +181,33 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "ScottPlot/4.0.42": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4uM1+7AYlCTDfJON7Xohx4QO9WU00xiY4QbE8M9V69znDV8KjMo40b7aq7GyJ3KtAeuinchqZV5rZZuceSHsug==",
+      "path": "scottplot/4.0.42",
+      "hashPath": "scottplot.4.0.42.nupkg.sha512"
+    },
+    "ScottPlot.WinForms/4.0.42": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y5lHnshMqZ6IvDJG03lBf4l2cbU7Y+UpTuIa6l5gZ9sfQottVVmlnVAjbo40tSvKGxn7pZJ4kjRjyRY2kAh0Gw==",
+      "path": "scottplot.winforms/4.0.42",
+      "hashPath": "scottplot.winforms.4.0.42.nupkg.sha512"
+    },
     "System.Data.SqlClient/4.8.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-80vGtW6uLB4AkyrdVuKTXYUyuXDPAsSKbTVfvjndZaRAYxzFzWhJbvUfeAKrN+128ycWZjLIAl61dFUwWHOOTw==",
       "path": "system.data.sqlclient/4.8.2",
       "hashPath": "system.data.sqlclient.4.8.2.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
+      "path": "system.drawing.common/4.7.0",
+      "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
     },
     "System.Security.AccessControl/4.7.0": {
       "type": "package",
