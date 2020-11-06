@@ -240,7 +240,7 @@ namespace Nutrition
             decimal sum = 0;
             string sql = "SELECT sum(UserTracking." + macro + ") as 'data'" +
                 "FROM UserTracking " +
-                "INNER JOIN Users ON UserTracking.username = Users.username " +
+                "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
                 "where Users.username = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
