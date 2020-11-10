@@ -94,7 +94,7 @@ namespace Nutrition
             }
 
             //TODO: Implement real users username
-            IDictionary<string, string> user = d.GetUserData("Kyle");
+            IDictionary<string, string> user = d.GetUserData(username);
             bmrLabel.Text = user["bmr"];
         }
 
@@ -115,7 +115,7 @@ namespace Nutrition
             calorieBox.Text = fact2.calories.ToString();
             fatBox.Text = fact2.fat.ToString();
             carbBox.Text = fact2.carbs.ToString();
-            proteinBox.Text = fact2.protein.ToString(); ;
+            proteinBox.Text = fact2.protein.ToString();
         }
 
         private void clearButton_Click(object sender, EventArgs e)

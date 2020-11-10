@@ -14,11 +14,14 @@ namespace Nutrition
         private DateTime join_date; //FIXME: what is this needed for?
         private DateTime last_login;
 
+        Database d = new Database();
+        FoodEntry foodList = new FoodEntry();
+        Food currentFood = null;
+
         public Dashboard(IDictionary<string, string> user)
         {
             username = user["username"];
-            Database p = new Database();
-            userData = p.GetUserData(username);
+            userData = d.GetUserData(username);
             DateTime.TryParse(userData["last_login"], out last_login);//parse string to DateTime type
 
             /*   data["username"]
@@ -56,18 +59,16 @@ namespace Nutrition
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-          //  MessageBox.Show(e.ClickedItem.Text);
-            if(e.ClickedItem.Text == "Add Foods")
+            //  MessageBox.Show(e.ClickedItem.Text);
+            if (e.ClickedItem.Text == "Add Foods")
             {
                 LogFood f = new LogFood(this.username);
                 f.Show();
             }
-            else if(e.ClickedItem.Text == "Health Summary")
+            else if (e.ClickedItem.Text == "Health Summary")
             {
-                Database bb = new Database();
-
-                IDictionary<string,double> data = bb.sumMacroData(this.username);
-                MessageBox.Show("Protein Sum: " + data["protein"] +"\nFat Sum: " + data["fat"]+"\nCarbs: "+data["carbs"]+"\nCalories: "+data["calories"]);
+                IDictionary<string, double> data = d.sumMacroData(this.username);
+                MessageBox.Show("Protein Sum: " + data["protein"] + "\nFat Sum: " + data["fat"] + "\nCarbs: " + data["carbs"] + "\nCalories: " + data["calories"]);
             }
         }
 
@@ -131,6 +132,186 @@ namespace Nutrition
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveFoodButton_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            foreach (string name in foodItems.Items)
+            {
+                List<string> facts = d.GetFoodData(name);
+                Food raw_facts = foodList.searchByName(name);
+                IDictionary<string, string> nutrition = new Dictionary<string, string>
+                {
+                    ["username"] = username,
+                    ["item_name"] = raw_facts.name,
+                    ["cals"] = raw_facts.calories.ToString(),
+                    ["fat"] = raw_facts.fat.ToString(),
+                    ["carbs"] = raw_facts.carbs.ToString(),
+                    ["protein"] = raw_facts.protein.ToString(),
+                    ["meal_type"] = ((int)raw_facts.type).ToString() //Cast with (int) to get the Enum value instead of the enum string value
+                };
+                d.insertUserTracking(nutrition);
+                i++;
+            }
+            //Clear after submission
+            if (i > 0)
+            {
+                clearAllButton_Click(sender, e);
+                MessageBox.Show("Saved " + i + " list items!");
+            }
+        }
+
+        private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string food = foodBox1.SelectedItem.ToString();
+            currentFood = null;
+            foodItems.Items.Add(food);
+
+            List<string> facts = d.GetFoodData(food);//pre-fill the form with database values
+            nameBox.Text = facts[0];
+            calorieBox.Text = facts[1];
+            fatBox.Text = facts[2];
+            carbBox.Text = facts[3];
+            proteinBox.Text = facts[4];
+
+            int calories = int.Parse(facts[1]);
+            double fat = double.Parse(facts[2]);
+            double carb = double.Parse(facts[3]);
+            double pro = double.Parse(facts[4]);
+            foodList.addNewFood(new Food(nameBox.Text, calories, fat, pro, carb, Food.MealType.Dinner));//TODO Add mealType in form
+
+            if (targetLabel.Text == "N/A")
+                targetLabel.Text = facts[1];
+            else
+            {
+                int sum = int.Parse(targetLabel.Text) + calories;
+                targetLabel.Text = sum.ToString();
+            }
+        }
+
+        private void foodItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = foodItems.SelectedIndex;
+            if (index == -1)
+                return;
+
+            Food fact = foodList.searchByName(foodItems.SelectedItem.ToString());
+
+            //Take note of current food
+            currentFood = fact;
+
+            nameBox.Text = fact.name;
+            //  nameBox.Text = facts[0,1,2,3,4];
+            calorieBox.Text = fact.calories.ToString();
+            fatBox.Text = fact.fat.ToString();
+            carbBox.Text = fact.carbs.ToString();
+            proteinBox.Text = fact.protein.ToString();
+        }
+
+        private void clearAllButton_Click(object sender, EventArgs e)
+        {
+            currentFood = null;
+            foodItems.Items.Clear();
+            targetLabel.Text = "N/A";
+            nameBox.Text = "";
+            calorieBox.Text = "";
+            fatBox.Text = "";
+            carbBox.Text = "";
+            proteinBox.Text = "";
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            int index = foodItems.SelectedIndex;
+            if (index > -1)
+            {
+                List<string> facts = d.GetFoodData(foodItems.SelectedItem.ToString());
+
+                foodItems.Items.RemoveAt(index);
+                foodItems.SelectedIndex = index - 1;
+
+                int sum = int.Parse(targetLabel.Text) - int.Parse(facts[1]);
+                if (sum > 0)
+                    targetLabel.Text = sum.ToString();
+                else
+                    targetLabel.Text = "N/A";
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            //Set the dashboard tab to be displayed first
+            tabControl1.SelectedIndex = 0;
+
+            List<string> foods = d.GetFoodItems();
+            foreach (string name in foods)
+            {
+                foodBox1.Items.Add(name);
+            }
+
+            //TODO: Implement real users username
+            IDictionary<string, string> user = d.GetUserData("Kyle");
+            bmrLabel.Text = user["bmr"];
+        }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void nameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.name = nameBox.Text;
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void calorieBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.calories = int.Parse(calorieBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void fatBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.fat = double.Parse(fatBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void carbBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.carbs = double.Parse(carbBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        private void proteinBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentFood != null)
+            {
+                Food changed = currentFood;
+                changed.protein = double.Parse(proteinBox.Text);
+                foodList.updateItem(currentFood, changed);
+            }
         }
     }
 }
