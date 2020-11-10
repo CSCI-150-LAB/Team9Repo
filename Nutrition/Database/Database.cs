@@ -292,7 +292,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
              */
         }
 
-        public void getLastTenMeals(string username)
+        public List<string> getLastTenMeals(string username)
         {
             /*SELECT Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.protein as 'summed', UserTracking.date_logged
     FROM UserTracking
@@ -300,6 +300,28 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
     where Users.username = '<username>'
     ORDER BY UserTracking.date_logged DESC
     OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
+            List<string> lastTen = new List<string>();//empty list
+            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.item_name, UserTracking.date_logged " +
+    "FROM UserTracking " +
+    "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
+    "where Users.username = @user " +
+    "ORDER BY UserTracking.date_logged DESC";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lastTen.Add(reader["item_name"].ToString());
+                        }
+                    }
+                }
+            }
+            return lastTen;
         }
 
         public int GetBMR(string username)
