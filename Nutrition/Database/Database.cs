@@ -142,6 +142,7 @@ namespace Nutrition
             }
         }
 
+        //takes all info from user, completing registration
         public void FINISH_HIM(string user, int age, string gender, double height_inches, double weight, double bmr, double bmi)
         {
             string sql = "UPDATE [dbo].[Users] SET [age] = @age," +
