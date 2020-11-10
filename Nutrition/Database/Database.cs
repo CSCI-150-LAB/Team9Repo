@@ -226,7 +226,7 @@ namespace Nutrition
             }
         }
 
-        // TODO:
+        //TODO:
         //Maker query for reccomended BMR
         //Make query to compare progress against BMR
 
@@ -235,32 +235,52 @@ namespace Nutrition
         //based on BMR
         //400 calories 1 lbs /week
 
-
-        public double sumMacroData(string username, string macro)
+        //Get the past 24 hours of macro data (protein, carbohydrates, and fats
+        public IDictionary<string, double> sumMacroData(string user)
         {
-            decimal sum = 0;
-            string sql = "SELECT sum(UserTracking." + macro + ") as 'data'" +
-                "FROM UserTracking " +
-                "INNER JOIN Users ON UserTracking.username = Users.username " +
-                "where Users.username = @user";
+            //Prepare an associative data (key,pair)
+            IDictionary<string, double> data = new Dictionary<string, double>();
+
+            //Setup some default values if no values exist in the database
+            data["calories"] = 0;
+            data["fat"] = 0;
+            data["carbs"] = 0;
+            data["protein"] = 0;
+
+            //Query DB for data
+            string sql = "SELECT sum(UserTracking.calories) as 'calories', sum(UserTracking.fat) as 'fat', sum(UserTracking.carbohydrate) as 'carbs', sum(UserTracking.protein) as 'protein' " +
+               "FROM UserTracking " +
+               "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
+               "where Users.username = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
-                    command.Parameters.AddWithValue("@user", username);
-                    using (SqlDataReader result = command.ExecuteReader())
+                    command.Parameters.AddWithValue("@user", user);
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        if (result.HasRows)//Check if there is a result
+                        if (reader.HasRows)//Check if there is a result
                         {
-                            result.Read();//Read the row
-                            if (result["data"] != System.DBNull.Value)//Check for a null database value
-                                sum = (decimal)result["data"];
+                            reader.Read();//Read the row
+
+                            if (reader["calories"] != System.DBNull.Value) //Check for a null database value
+                                data["calories"] = (int)reader["calories"];
+
+                            if (reader["fat"] != System.DBNull.Value) //Check for a null database value
+                                data["fat"] = (double)(decimal)reader["fat"];
+
+                            if (reader["carbs"] != System.DBNull.Value) //Check for a null database value
+                                data["carbs"] = (double)(decimal)reader["carbs"];
+
+                            if (reader["protein"] != System.DBNull.Value) //Check for a null database value
+                                data["protein"] = (double)(decimal)reader["protein"];
+
                         }
+                        return data;
                     }
                 }
             }
-            return (double)sum;
         }
 
         public void selectWeeklyData()
