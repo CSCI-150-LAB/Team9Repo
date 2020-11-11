@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.dashboardUser = new System.Windows.Forms.ToolStripDropDownButton();
+            this.userLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentDate = new System.Windows.Forms.ToolStripDropDownButton();
             this.logoutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.lastLoginLabel = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -101,42 +103,48 @@
             this.statusBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardUser,
-            this.dateLabel});
+            this.userLabel,
+            this.currentDate});
             this.statusBar.Location = new System.Drawing.Point(3, 3);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(952, 36);
+            this.statusBar.Size = new System.Drawing.Size(952, 35);
             this.statusBar.TabIndex = 2;
-            this.statusBar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusBar_ItemClicked);
             // 
-            // dashboardUser
+            // userLabel
             // 
-            this.dashboardUser.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.dashboardUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutMenuItem});
-            this.dashboardUser.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dashboardUser.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.dashboardUser.Name = "dashboardUser";
-            this.dashboardUser.Size = new System.Drawing.Size(41, 34);
-            this.dashboardUser.Text = "...";
-            this.dashboardUser.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.logout_ItemClicked);
+            this.userLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(28, 30);
+            this.userLabel.Text = "...";
+            // 
+            // currentDate
+            // 
+            this.currentDate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.currentDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.currentDate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutMenuItem,
+            this.helpMenuItem});
+            this.currentDate.Image = ((System.Drawing.Image)(resources.GetObject("currentDate.Image")));
+            this.currentDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.currentDate.Margin = new System.Windows.Forms.Padding(650, 2, 0, 0);
+            this.currentDate.Name = "currentDate";
+            this.currentDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.currentDate.Size = new System.Drawing.Size(44, 33);
+            this.currentDate.Text = "Date";
+            this.currentDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.currentDate.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dropDownItem_Click);
             // 
             // logoutMenuItem
             // 
-            this.logoutMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.logoutMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.logoutMenuItem.Name = "logoutMenuItem";
-            this.logoutMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.logoutMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutMenuItem.Text = "Logout";
             // 
-            // dateLabel
+            // helpMenuItem
             // 
-            this.dateLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(896, 31);
-            this.dateLabel.Spring = true;
-            this.dateLabel.Text = "CurrentDate";
-            this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.helpMenuItem.Name = "helpMenuItem";
+            this.helpMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.helpMenuItem.Text = "Help";
             // 
             // toolStrip1
             // 
@@ -673,9 +681,6 @@
 
         #endregion
         private System.Windows.Forms.StatusStrip statusBar;
-        private System.Windows.Forms.ToolStripDropDownButton dashboardUser;
-        private System.Windows.Forms.ToolStripMenuItem logoutMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel dateLabel;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel lastLoginLabel;
         private System.Windows.Forms.TabControl tabControl1;
@@ -725,5 +730,11 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripStatusLabel userLabel;
+        private System.Windows.Forms.ToolStripDropDownButton currentDate;
+        private System.Windows.Forms.ToolStripMenuItem logoutButton;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem logoutMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
     }
 }

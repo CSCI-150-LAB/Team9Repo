@@ -18,6 +18,7 @@ namespace Nutrition
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
         Food currentFood = null;
+        private Timer t;
 
         public Dashboard(IDictionary<string, string> user)
         {
@@ -36,9 +37,22 @@ namespace Nutrition
                 data["last_login"]
             */
             InitializeComponent();
-            dashboardUser.Text = "Welcome, " + getUser();
+            userLabel.Text = "Welcome, " + getUser();
             lastLoginLabel.Text = "You last logged in " + getLastLogin();
-            dateLabel.Text = DateTime.Now.ToString();
+            StartTimer();
+        }
+
+        private void StartTimer()
+        {
+            t = new Timer();
+            t.Interval = 500;
+            t.Tick += new EventHandler(t_Tick);
+            t.Enabled = true;
+        }
+
+        void t_Tick(object sender, EventArgs e)
+        {
+            currentDate.Text = DateTime.Now.ToString();
         }
 
 
@@ -52,10 +66,17 @@ namespace Nutrition
             return last_login;
         }
 
-        private void logout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void dropDownItem_Click(object sender, ToolStripItemClickedEventArgs e)
         {
             //MessageBox.Show(e.ClickedItem.Text);
-            Environment.Exit(0);
+            if (e.ClickedItem.Text == "Help")
+            {
+                MessageBox.Show("Ask again later");
+            }
+            else if (e.ClickedItem.Text == "Logout")
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -71,11 +92,6 @@ namespace Nutrition
                 IDictionary<string, double> data = d.sumMacroData(this.username);
                 MessageBox.Show("Protein Sum: " + data["protein"] + "\nFat Sum: " + data["fat"] + "\nCarbs: " + data["carbs"] + "\nCalories: " + data["calories"]);
             }
-        }
-
-        private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
         private void barsFormsPlot_Load_1(object sender, EventArgs e)
