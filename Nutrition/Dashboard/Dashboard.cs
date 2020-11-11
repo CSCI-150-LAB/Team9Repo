@@ -13,6 +13,7 @@ namespace Nutrition
         private IDictionary<string, string> userData;
         private DateTime join_date; //FIXME: what is this needed for?
         private DateTime last_login;
+        private double userBMR;
 
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
@@ -87,22 +88,30 @@ namespace Nutrition
             double fat = d.sumMacroData(username)["fat"];
             double pro = d.sumMacroData(username)["protein"];
 
-
+            userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
             //needs to get from database - either calories from each or grams
 
-            //the 2 color bar graphs
-            double[] y1Recomended = { 60, 35, 35 };
-            double[] y1Below = { 44, 9, 19 };
+            //upper part of range
+            double recHighCarb = Math.Round(userBMR * 0.6, 2);
+            double recHighPro = Math.Round(userBMR * 0.35, 2);
+            double recHighFat = Math.Round(userBMR * 0.35, 2);
+            //lower part of range
+            double recLowCarb = Math.Round(userBMR * 0.44, 2);
+            double recLowPro = Math.Round(userBMR * 0.09, 2);
+            double recLowFat = Math.Round(userBMR * 0.19, 2);
 
-            //user's actual
-            double[] y2Actual = { carb, pro, fat };
+            //generate the 2 color bar graph
+            double[] y1Recomended = { recHighCarb, recHighPro, recHighFat };
+            double[] y1Below = { recLowCarb, recLowPro, recLowFat };
+
+            //user's actual bar graph
+            double[] y2Actual = { carb * 4, pro * 4, fat * 9 };
             double[] xMacros = { 1, 2, 3 };
 
             // plot the data
             barsFormsPlot.Reset();
 
             // generates "recomended range" based on user BMR
-            //FIXME: make colors nicer
             barsFormsPlot.plt.PlotBar(xMacros, y1Recomended, null, "Recomended Range", barWidth: .3, xOffset: -.2);
             //below range
             barsFormsPlot.plt.PlotBar(xMacros, y1Below, null, null, barWidth: .3, xOffset: -.2);
@@ -110,12 +119,19 @@ namespace Nutrition
             //User's entered macros
             barsFormsPlot.plt.PlotBar(xMacros, y2Actual, null, "Actual", barWidth: 0.3, xOffset: .2);
 
+            //labels the x axis 
             string[] labels = { "Carbs", "Protein", "Fats" };
             barsFormsPlot.plt.Axis(y1: 0);
+
             barsFormsPlot.plt.Grid(enableVertical: false, lineStyle: LineStyle.Dot);
             barsFormsPlot.plt.Axis(y1: 0);
+
+            //creates legend
             barsFormsPlot.plt.Legend(location: legendLocation.upperRight);
             barsFormsPlot.plt.XTicks(xMacros, labels); //labels the 3 bars
+
+            //lables y axis 
+            barsFormsPlot.plt.YLabel("Calories");
 
             barsFormsPlot.Render();
         }
@@ -258,7 +274,7 @@ namespace Nutrition
         private void Dashboard_Load(object sender, EventArgs e)
         {
             //Set the dashboard tab to be displayed first
-           tabControl1.SelectedIndex = 0;
+             tabControl1.SelectedIndex = 0;
 
             //Prefetch food box items from the database into the form
             //Is there a better way?
