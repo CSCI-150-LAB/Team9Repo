@@ -215,7 +215,6 @@ namespace Nutrition
             currentFood = fact;
 
             nameBox.Text = fact.name;
-            //  nameBox.Text = facts[0,1,2,3,4];
             calorieBox.Text = fact.calories.ToString();
             fatBox.Text = fact.fat.ToString();
             carbBox.Text = fact.carbs.ToString();
@@ -261,15 +260,16 @@ namespace Nutrition
             //Set the dashboard tab to be displayed first
            tabControl1.SelectedIndex = 0;
 
+            //Prefetch food box items from the database into the form
+            //Is there a better way?
             List<string> foods = d.GetFoodItems();
             foreach (string name in foods)
             {
                 foodBox1.Items.Add(name);
             }
 
-            //TODO: Implement real users username
-            IDictionary<string, string> user = d.GetUserData("Kyle");
-            bmrLabel.Text = user["bmr"];
+            //Prefetch Data
+            prefetch();
         }
 
         private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
@@ -324,6 +324,31 @@ namespace Nutrition
                 Food changed = currentFood;
                 changed.protein = double.Parse(proteinBox.Text);
                 foodList.updateItem(currentFood, changed);
+            }
+        }
+
+        /**
+         * Prefetch last 10 meals, user BMR data, and the sum of the past 24 hours of food macros
+         */
+        private void prefetch()
+        {
+            List<string> lastTen = d.getLastTenMeals(username);
+            foreach (string food in lastTen)
+            {
+                consumedBox.Items.Add(food);
+            }
+
+            //Prefetch user BMR and the sum of the past 24 hours of macro data
+            IDictionary<string, string> user = d.GetUserData(username);
+            IDictionary<string, double> user_macro_sum = d.sumMacroData(username);
+            bmrLabel.Text = user["bmr"];
+        }
+
+        private void deleteMeal_Click(object sender, EventArgs e)
+        {
+            foreach(string item in consumedBox.CheckedItems)
+            {
+                //d.DeleteFoodEntry(item, username);
             }
         }
     }

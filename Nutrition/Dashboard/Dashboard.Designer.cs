@@ -39,6 +39,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.consumedBox = new System.Windows.Forms.CheckedListBox();
             this.weightFormsPlot = new ScottPlot.FormsPlot();
             this.barsFormsPlot = new ScottPlot.FormsPlot();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -80,6 +86,7 @@
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -192,6 +199,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.consumedBox);
             this.groupBox1.Location = new System.Drawing.Point(484, 288);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(468, 288);
@@ -199,6 +212,60 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Food Quickview";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(272, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Last 10 Meals";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(67, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(40, 15);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Lunch";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(113, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 15);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Dinner";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 15);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Breakfast";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(272, 259);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(190, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Delete Selected";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.deleteMeal_Click);
+            // 
+            // consumedBox
+            // 
+            this.consumedBox.FormattingEnabled = true;
+            this.consumedBox.Location = new System.Drawing.Point(272, 40);
+            this.consumedBox.Name = "consumedBox";
+            this.consumedBox.Size = new System.Drawing.Size(190, 202);
+            this.consumedBox.TabIndex = 1;
             // 
             // weightFormsPlot
             // 
@@ -588,6 +655,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -650,5 +719,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox proteinBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckedListBox consumedBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label1;
     }
 }

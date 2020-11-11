@@ -428,6 +428,27 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             }
         }
 
+        public void DeleteFoodEntry(string item, string username)
+        {
+            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [item_name] = @food," +
+                "[username] = @user " +
+                "AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@food", item);
+                    command.Parameters.AddWithValue("@user", username);
+                    var result = command.ExecuteNonQuery();
+                    if (result > 0)
+                        MessageBox.Show("Deleted " + result + " " + item + " from the DB");//Debug
+                    else
+                        MessageBox.Show(item + " not found");//Debug
+                }
+            }
+        }
+
         public List<string> GetFoodItems()
         {
             List<string> foodItems = new List<string>();
