@@ -79,16 +79,29 @@ namespace Nutrition
 
         private void barsFormsPlot_Load_1(object sender, EventArgs e)
         {
+            // IDictionary<string, double> macros = new Dictionary<string, double>();
+
+            IDictionary<string, double> macros = new Dictionary<string, double>();
+            double cal = d.sumMacroData(username)["calories"];
+            double carb = d.sumMacroData(username)["carbs"];
+            double fat = d.sumMacroData(username)["fat"];
+            double pro = d.sumMacroData(username)["protein"];
+
+
             //needs to get from database - either calories from each or grams
+
+            //the 2 color bar graphs
             double[] y1Recomended = { 60, 35, 35 };
             double[] y1Below = { 44, 9, 19 };
-            double[] y2Actual = { 60, 15, 40 };
+
+            //user's actual
+            double[] y2Actual = { carb, pro, fat };
             double[] xMacros = { 1, 2, 3 };
 
             // plot the data
             barsFormsPlot.Reset();
 
-            //should generate "recomended range" based on user BMR
+            // generates "recomended range" based on user BMR
             //FIXME: make colors nicer
             barsFormsPlot.plt.PlotBar(xMacros, y1Recomended, null, "Recomended Range", barWidth: .3, xOffset: -.2);
             //below range
@@ -246,7 +259,7 @@ namespace Nutrition
         private void Dashboard_Load(object sender, EventArgs e)
         {
             //Set the dashboard tab to be displayed first
-            tabControl1.SelectedIndex = 0;
+           tabControl1.SelectedIndex = 0;
 
             List<string> foods = d.GetFoodItems();
             foreach (string name in foods)
