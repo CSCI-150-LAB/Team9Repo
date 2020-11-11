@@ -94,18 +94,16 @@ namespace Nutrition
             }
         }
 
-        private void barsFormsPlot_Load_1(object sender, EventArgs e)
+        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
         {
-            // IDictionary<string, double> macros = new Dictionary<string, double>();
-
-            IDictionary<string, double> macros = new Dictionary<string, double>();
-            double cal = d.sumMacroData(username)["calories"];
+            //double cal = d.sumMacroData(username)["calories"];
             double carb = d.sumMacroData(username)["carbs"];
             double fat = d.sumMacroData(username)["fat"];
             double pro = d.sumMacroData(username)["protein"];
 
+            //macro range calculated from user's BMR
+            //ploted as calories recomended for each item
             userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
-            //needs to get from database - either calories from each or grams
 
             //upper part of range
             double recHighCarb = Math.Round(userBMR * 0.6, 2);
@@ -121,7 +119,7 @@ namespace Nutrition
             double[] y1Below = { recLowCarb, recLowPro, recLowFat };
 
             //user's actual bar graph
-            double[] y2Actual = { carb * 4, pro * 4, fat * 9 };
+            double[] y2Actual = { carb * 4, pro * 4, fat * 9 }; //database stores as grams, converted to calories then plotted
             double[] xMacros = { 1, 2, 3 };
 
             // plot the data
