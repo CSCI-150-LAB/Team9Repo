@@ -39,7 +39,13 @@ namespace Nutrition
             InitializeComponent();
             userLabel.Text = "Welcome, " + getUser();
             lastLoginLabel.Text = "You last logged in " + getLastLogin();
+            healthUserWelcome.Text = username + "'s Personal Health Summary";
             StartTimer();
+
+            string[] weightGoals = new string[] { "Maintain", "Loose", "Gain" };
+            goalChangeBox.DataSource = weightGoals;
+
+            //label1.Text = "Current Goal: " + d.GetGoal(username);
         }
 
         private void StartTimer()
@@ -380,6 +386,31 @@ namespace Nutrition
             {
                 //d.DeleteFoodEntry(item, username);
             }
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void formsPlot1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
