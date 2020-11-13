@@ -126,29 +126,5 @@ namespace Nutrition
         {
             return BMI;
         }
-    /*    public void UpdateUser(string user, string height_feet, string height_inches, string weight, string bmr, string bmi)
-        {
-            string sql = "UPDATE [dbo].[Users] SET [height_feet] = @feet, " +
-                "[height_inches] = @inches," +
-                "[weight] = @weight," +
-                "[bmr] = @bmr," +
-                "[bmi] = @bmi WHERE [username] = @user";
-            using (SqlConnection con = new SqlConnection(GetConnectionString()))
-            {
-                con.Open();
-                using (SqlCommand command = new SqlCommand(sql, con))
-                {
-                    command.Parameters.AddWithValue("@feet", height_feet);
-                    command.Parameters.AddWithValue("@inches", height_inches);
-                    command.Parameters.AddWithValue("@weight", weight);
-                    command.Parameters.AddWithValue("@bmr", bmr);
-                    command.Parameters.AddWithValue("@bmi", bmi);
-                    command.Parameters.AddWithValue("@user", user);
-                    var result = command.ExecuteNonQuery();
-                    if (result == 0)
-                        MessageBox.Show("Failed to update " + user);
-                }
-            }
-        }*/
     }
 }
