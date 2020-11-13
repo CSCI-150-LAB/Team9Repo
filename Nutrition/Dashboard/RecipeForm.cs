@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace recipe
 {
-    public partial class Form1 : Form
+    public partial class RecipeForm : Form
     {
-        public Form1()
+        public RecipeForm()
         {
             InitializeComponent();
         }
@@ -108,6 +108,16 @@ namespace recipe
         }
 
         private void saltTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
