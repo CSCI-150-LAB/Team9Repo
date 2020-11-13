@@ -399,6 +399,9 @@ namespace Nutrition
 
         private void deleteMeal_Click(object sender, EventArgs e)
         {
+            double weight = 145.12;
+            d.InsertUserWeight(username,weight);
+            d.UpdateUserWeight(username, weight);
             foreach(string item in consumedBox.CheckedItems)
             {
                 //d.DeleteFoodEntry(item, username);

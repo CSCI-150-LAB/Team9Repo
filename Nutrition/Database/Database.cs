@@ -225,6 +225,63 @@ namespace Nutrition
                 }
             }
         }
+        public void InsertUserWeight(String username, double weight)
+        {
+            String sql = "INSERT INTO [dbo].[UserWeightTracking] (username,weight,date) VALUES (@user,@weight,GETDATE())";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    command.Parameters.AddWithValue("@weight", weight);
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error inserting user weight");
+                }
+            }
+        }
+
+        public void UpdateUserWeight(string username, double weight)
+        {
+            string sql = "UPDATE [dbo].[Users] SET [weight] = @weight where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@weight", weight);
+                    command.Parameters.AddWithValue("@user", username);
+                    var result = command.ExecuteNonQuery();
+                    if (result < 0)
+                        MessageBox.Show("Failed to update weight for " + username);//Debug
+                }
+            }
+        }
+        //TODO 
+        public List<Weight> GetWeightLog(string username)
+        {
+            List<Weight> log = new List<Weight>();//empty list
+            string sql = "";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            log.Add(new Weight((double)reader["weight"], (DateTime)reader["date"]));
+                        }
+                    }
+                }
+            }
+            return log;
+        }
 
         //TODO:
         //Maker query for reccomended BMR
