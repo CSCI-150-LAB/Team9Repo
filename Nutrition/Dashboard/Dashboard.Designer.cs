@@ -78,6 +78,12 @@
             this.goalChangeBox = new System.Windows.Forms.ComboBox();
             this.goalChangeLabel = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.BMItextBox = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.healthWelcome = new System.Windows.Forms.StatusStrip();
             this.healthUserWelcome = new System.Windows.Forms.ToolStripStatusLabel();
@@ -91,9 +97,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -605,21 +608,75 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.BMItextBox);
+            this.groupBox8.Controls.Add(this.textBox6);
+            this.groupBox8.Controls.Add(this.label17);
             this.groupBox8.Controls.Add(this.label16);
             this.groupBox8.Controls.Add(this.label15);
             this.groupBox8.Controls.Add(this.label11);
             this.groupBox8.Controls.Add(this.label2);
-            this.groupBox8.Location = new System.Drawing.Point(26, 74);
+            this.groupBox8.Location = new System.Drawing.Point(41, 76);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(319, 487);
+            this.groupBox8.Size = new System.Drawing.Size(319, 256);
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Your Info";
             // 
+            // BMItextBox
+            // 
+            this.BMItextBox.Location = new System.Drawing.Point(114, 68);
+            this.BMItextBox.Name = "BMItextBox";
+            this.BMItextBox.Size = new System.Drawing.Size(100, 23);
+            this.BMItextBox.TabIndex = 6;
+            this.BMItextBox.TextChanged += new System.EventHandler(this.BMItextBox_TextChanged);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(114, 38);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 23);
+            this.textBox6.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(16, 180);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(51, 15);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Weight: ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(16, 144);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 15);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Height: ";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 111);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 15);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "BMR: ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(16, 77);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(31, 15);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "BMI:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 39);
+            this.label2.Location = new System.Drawing.Point(16, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 0;
@@ -727,33 +784,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 76);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 15);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "BMI:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 109);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 15);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "BMR: ";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 148);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 15);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Height: ";
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -860,5 +890,8 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox BMItextBox;
     }
 }

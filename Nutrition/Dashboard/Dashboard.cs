@@ -42,6 +42,8 @@ namespace Nutrition
             healthUserWelcome.Text = username + "'s Personal Health Summary";
             StartTimer();
 
+            plotBars();
+
             string[] weightGoals = new string[] { "Maintain", "Loose", "Gain" };
             goalChangeBox.DataSource = weightGoals;
 
@@ -100,7 +102,7 @@ namespace Nutrition
             }
         }
 
-        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
+        private void plotBars()
         {
             //double cal = d.sumMacroData(username)["calories"];
             double carb = d.sumMacroData(username)["carbs"];
@@ -134,7 +136,7 @@ namespace Nutrition
             // generates "recomended range" based on user BMR
             barsFormsPlot.plt.PlotBar(xMacros, y1Recomended, null, "Recomended Range", barWidth: .3, xOffset: -.2);
             //below range
-            barsFormsPlot.plt.PlotBar(xMacros, y1Below, null, null, barWidth: .3, xOffset: -.2);
+            barsFormsPlot.plt.PlotBar(xMacros, y1Below, null, "Below Recomended", barWidth: .3, xOffset: -.2);
 
             //User's entered macros
             barsFormsPlot.plt.PlotBar(xMacros, y2Actual, null, "Actual", barWidth: 0.3, xOffset: .2);
@@ -154,6 +156,11 @@ namespace Nutrition
             barsFormsPlot.plt.YLabel("Calories");
 
             barsFormsPlot.Render();
+        }
+
+        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
+        {
+           
         }
 
         private void formsPlot1_Load(object sender, EventArgs e)
@@ -209,6 +216,8 @@ namespace Nutrition
                 clearAllButton_Click(sender, e);
                 MessageBox.Show("Saved " + i + " list items!");
             }
+
+            plotBars();
         }
 
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -409,6 +418,11 @@ namespace Nutrition
         }
 
         private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BMItextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
