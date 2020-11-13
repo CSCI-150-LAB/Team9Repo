@@ -16,11 +16,25 @@ namespace Nutrition
             InitializeComponent();
         }
 
+        //used to determine if username entered is valid before continuing or displaying anything?
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Debug information: " + "\n" + "Username: " + usernameBox.Text + "\n" + "Allergies Selected: " + allergiesToString());
+            if (usernameBox.Text.Length <= 0 || (usernameBox.Text.Contains(" ")))
+            {
+                invalidLbl.Text = "Invalid username, please try again!";
+                return;
+            }
+
 
             Hash pass = new Hash(passwordBox.Text);
+            Hash confirmP = new Hash(confirmPass.Text);
+
+            if (!pass.verifyPassword(confirmP.getHash(), passwordBox.Text))
+            {
+                invalidLbl.Text = "Passwords must match!";
+                return;
+            }
 
             //Create an associative array to easily keep track of form items
             IDictionary<string, string> register = new Dictionary<string, string>();
@@ -30,9 +44,6 @@ namespace Nutrition
             //default 0 to no admin privilege
             register["admin"] = "0";
 
-            //Convert selected food allergies into a list
-            List<string> allergies = allergiesToString().Split(',').ToList();
-
             //Initially set all food allergies to 0 for false
             register["gluten"] = "0";
             register["peanut"] = "0";
@@ -40,32 +51,25 @@ namespace Nutrition
             register["soy"] = "0";
             register["dairy"] = "0";
 
-
-            for (int i = 0; i < allergies.Count; i++)
+            //then check if any boxes were checked and mark those true
+            if (dairyBox.Checked) {
+                register["dairy"] = "1";
+            }
+            if (glutenBox.Checked)
             {
-                //No allergies break loop
-                if (allergies[i] == "(None)")
-                    break;
-
-                //Some allergies set them to 1 for true
-                switch (allergies[i])
-                {
-                    case "Gluten":
-                        register["gluten"] = "1";
-                        break;
-                    case "Peanut":
-                        register["peanut"] = "1";
-                        break;
-                    case "Fish":
-                        register["fish"] = "1";
-                        break;
-                    case "Soy":
-                        register["soy"] = "1";
-                        break;
-                    case "Dairy":
-                        register["dairy"] = "1";
-                        break;
-                }
+                register["gluten"] = "1";
+            }
+            if (peanutBox.Checked)
+            {
+                register["peanut"] = "1";
+            }
+            if (fishBox.Checked)
+            {
+                register["fish"] = "1";
+            }
+            if (soyBox.Checked)
+            {
+                register["soy"] = "1";
             }
 
             //Connect to database and register the user
@@ -82,25 +86,8 @@ namespace Nutrition
             }
             else
             {
-                MessageBox.Show("User already exists try a different name");
+                invalidLbl.Text = "User already exists try a different name";
             }
-        }
-
-        //Convert selected allergy items (from the combo box) to a string
-        private String allergiesToString()
-        {
-            var arr = allergyBox.SelectedItems.Cast<Object>().Select(item => item.ToString()).ToArray();
-            String items = "";
-            if (arr.Length == 0)
-                return "(None)";
-            else
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    items += arr[i];
-                    if (i + 1 < arr.Length)
-                        items += ",";
-                }
-            return items;
         }
     }
 }
