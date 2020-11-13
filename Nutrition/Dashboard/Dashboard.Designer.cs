@@ -292,6 +292,7 @@
             this.consumedBox.Name = "consumedBox";
             this.consumedBox.Size = new System.Drawing.Size(190, 202);
             this.consumedBox.TabIndex = 1;
+            this.consumedBox.SelectedIndexChanged += new System.EventHandler(this.consumedBox_SelectedIndexChanged);
             // 
             // weightFormsPlot
             // 

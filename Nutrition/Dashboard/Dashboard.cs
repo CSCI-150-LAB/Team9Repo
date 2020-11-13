@@ -43,6 +43,7 @@ namespace Nutrition
             StartTimer();
 
             plotBars();
+            plotForms();
 
             string[] weightGoals = new string[] { "Maintain", "Loose", "Gain" };
             goalChangeBox.DataSource = weightGoals;
@@ -102,6 +103,7 @@ namespace Nutrition
             }
         }
 
+        //call these functions whenever the graphs need to update
         private void plotBars()
         {
             //double cal = d.sumMacroData(username)["calories"];
@@ -158,12 +160,7 @@ namespace Nutrition
             barsFormsPlot.Render();
         }
 
-        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
-        {
-           
-        }
-
-        private void formsPlot1_Load(object sender, EventArgs e)
+        private void plotForms()
         {
             //clear previous data
             weightFormsPlot.Reset();
@@ -182,6 +179,16 @@ namespace Nutrition
             weightFormsPlot.plt.YLabel("Pounds");
 
             weightFormsPlot.Render();
+        }
+
+
+        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
+        {
+           
+        }
+
+        private void formsPlot1_Load(object sender, EventArgs e)
+        {
 
         }
 
@@ -216,8 +223,9 @@ namespace Nutrition
                 clearAllButton_Click(sender, e);
                 MessageBox.Show("Saved " + i + " list items!");
             }
-
+            //refresh the graph visuals
             plotBars();
+            plotForms();
         }
 
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -423,6 +431,11 @@ namespace Nutrition
         }
 
         private void BMItextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consumedBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
