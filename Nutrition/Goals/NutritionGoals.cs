@@ -22,10 +22,10 @@ namespace Nutrition
         }
 
         //Set a goal and save it to the database
-        public void setGoal(int calories)
+        public void setGoal(int calories, Status goal)
         {
             Database d = new Database();
-            d.SetGoal(username, calories);
+            d.SetGoal(username, goal.ToString());
         }
 
         //Return a percentage value without the % sign
@@ -33,9 +33,13 @@ namespace Nutrition
         public int getGoalProgress()
         {
             Database d = new Database();
-            int total = d.GetGoal(username);
+            //string total = d.GetGoal(username);//returns enum values public enum Status { Maintenance, Lose_it, Gain };
+            //TODO:
+            double total = 1.0;
+            IDictionary<string, double> calories = d.sumMacroData(username);
 
-            double current = 0;//d.sumMacroData(username, "calories");
+            double current = calories["calories"];
+            
             if (total == 0)
             {
                 return -1;

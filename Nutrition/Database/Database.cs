@@ -324,6 +324,30 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             return lastTen;
         }
 
+        public bool FinishedAssessment(string username)
+        {
+            bool finishedAssessment = true;
+            string sql = "SELECT * from [dbo].[Users] where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            if (result["weight"] == DBNull.Value || result["gender"] == DBNull.Value)
+                                return false;
+                        }
+                    }
+                }
+            }
+            return finishedAssessment;
+        }
+
         public int GetBMR(string username)
         {
             int bmr = -1;
@@ -370,9 +394,9 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             return bmi > 0 ? bmi : 0;
         }
 
-        public int GetGoal(string username)
+        public string GetGoal(string username)
         {
-            int goal = -1;
+            string goal = "";
             string sql = "SELECT * from [dbo].[Users] where [username] = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
@@ -385,17 +409,17 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                         if (result.HasRows)//Check if there is a result
                         {
                             result.Read();//Read the row
-                            goal = Int32.Parse(result["goal"].ToString());
+                            goal = result["activity_level_goal"].ToString();
                         }
                     }
                 }
             }
-            return goal > 0 ? goal : 0;
+            return goal;
         }
 
-        public void SetGoal(string username, int goal)
+        public void SetGoal(string username, string goal)
         {
-            string sql = "UPDATE [dbo].[Users] SET [goal] = @goal where [username] = @user";
+            string sql = "UPDATE [dbo].[Users] SET [activity_level_goal] = @goal where [username] = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
