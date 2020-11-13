@@ -18,6 +18,7 @@ namespace Nutrition
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
         Food currentFood = null;
+        private Timer t;
 
         public Dashboard(IDictionary<string, string> user)
         {
@@ -36,9 +37,31 @@ namespace Nutrition
                 data["last_login"]
             */
             InitializeComponent();
-            dashboardUser.Text = "Welcome, " + getUser();
+            userLabel.Text = "Welcome, " + getUser();
             lastLoginLabel.Text = "You last logged in " + getLastLogin();
-            dateLabel.Text = DateTime.Now.ToString();
+            healthUserWelcome.Text = username + "'s Personal Health Summary";
+            StartTimer();
+
+            plotBars();
+            plotForms();
+
+            string[] weightGoals = new string[] { "Maintain", "Loose", "Gain" };
+            goalChangeBox.DataSource = weightGoals;
+
+            //label1.Text = "Current Goal: " + d.GetGoal(username);
+        }
+
+        private void StartTimer()
+        {
+            t = new Timer();
+            t.Interval = 500;
+            t.Tick += new EventHandler(t_Tick);
+            t.Enabled = true;
+        }
+
+        void t_Tick(object sender, EventArgs e)
+        {
+            currentDate.Text = DateTime.Now.ToString();
         }
 
 
@@ -52,10 +75,17 @@ namespace Nutrition
             return last_login;
         }
 
-        private void logout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void dropDownItem_Click(object sender, ToolStripItemClickedEventArgs e)
         {
             //MessageBox.Show(e.ClickedItem.Text);
-            Environment.Exit(0);
+            if (e.ClickedItem.Text == "Help")
+            {
+                MessageBox.Show("Ask again later");
+            }
+            else if (e.ClickedItem.Text == "Logout")
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -73,23 +103,17 @@ namespace Nutrition
             }
         }
 
-        private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        //call these functions whenever the graphs need to update
+        private void plotBars()
         {
-
-        }
-
-        private void barsFormsPlot_Load_1(object sender, EventArgs e)
-        {
-            // IDictionary<string, double> macros = new Dictionary<string, double>();
-
-            IDictionary<string, double> macros = new Dictionary<string, double>();
-            double cal = d.sumMacroData(username)["calories"];
+            //double cal = d.sumMacroData(username)["calories"];
             double carb = d.sumMacroData(username)["carbs"];
             double fat = d.sumMacroData(username)["fat"];
             double pro = d.sumMacroData(username)["protein"];
 
+            //macro range calculated from user's BMR
+            //ploted as calories recomended for each item
             userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
-            //needs to get from database - either calories from each or grams
 
             //upper part of range
             double recHighCarb = Math.Round(userBMR * 0.6, 2);
@@ -105,7 +129,7 @@ namespace Nutrition
             double[] y1Below = { recLowCarb, recLowPro, recLowFat };
 
             //user's actual bar graph
-            double[] y2Actual = { carb * 4, pro * 4, fat * 9 };
+            double[] y2Actual = { carb * 4, pro * 4, fat * 9 }; //database stores as grams, converted to calories then plotted
             double[] xMacros = { 1, 2, 3 };
 
             // plot the data
@@ -114,7 +138,7 @@ namespace Nutrition
             // generates "recomended range" based on user BMR
             barsFormsPlot.plt.PlotBar(xMacros, y1Recomended, null, "Recomended Range", barWidth: .3, xOffset: -.2);
             //below range
-            barsFormsPlot.plt.PlotBar(xMacros, y1Below, null, null, barWidth: .3, xOffset: -.2);
+            barsFormsPlot.plt.PlotBar(xMacros, y1Below, null, "Below Recomended", barWidth: .3, xOffset: -.2);
 
             //User's entered macros
             barsFormsPlot.plt.PlotBar(xMacros, y2Actual, null, "Actual", barWidth: 0.3, xOffset: .2);
@@ -136,7 +160,7 @@ namespace Nutrition
             barsFormsPlot.Render();
         }
 
-        private void formsPlot1_Load(object sender, EventArgs e)
+        private void plotForms()
         {
             //clear previous data
             weightFormsPlot.Reset();
@@ -155,6 +179,16 @@ namespace Nutrition
             weightFormsPlot.plt.YLabel("Pounds");
 
             weightFormsPlot.Render();
+        }
+
+
+        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
+        {
+           
+        }
+
+        private void formsPlot1_Load(object sender, EventArgs e)
+        {
 
         }
 
@@ -189,6 +223,9 @@ namespace Nutrition
                 clearAllButton_Click(sender, e);
                 MessageBox.Show("Saved " + i + " list items!");
             }
+            //refresh the graph visuals
+            plotBars();
+            plotForms();
         }
 
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -366,6 +403,41 @@ namespace Nutrition
             {
                 //d.DeleteFoodEntry(item, username);
             }
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void formsPlot1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BMItextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consumedBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

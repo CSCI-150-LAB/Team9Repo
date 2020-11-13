@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.dashboardUser = new System.Windows.Forms.ToolStripDropDownButton();
+            this.userLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentDate = new System.Windows.Forms.ToolStripDropDownButton();
             this.logoutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.lastLoginLabel = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -73,6 +75,18 @@
             this.saveFoodButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.goalChangeBox = new System.Windows.Forms.ComboBox();
+            this.goalChangeLabel = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.BMItextBox = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.healthWelcome = new System.Windows.Forms.StatusStrip();
+            this.healthUserWelcome = new System.Windows.Forms.ToolStripStatusLabel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,6 +96,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -94,6 +109,10 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.healthWelcome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusBar
@@ -101,42 +120,49 @@
             this.statusBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardUser,
-            this.dateLabel});
+            this.userLabel,
+            this.currentDate});
             this.statusBar.Location = new System.Drawing.Point(3, 3);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(952, 36);
+            this.statusBar.Size = new System.Drawing.Size(952, 35);
             this.statusBar.TabIndex = 2;
             this.statusBar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusBar_ItemClicked);
             // 
-            // dashboardUser
+            // userLabel
             // 
-            this.dashboardUser.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.dashboardUser.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutMenuItem});
-            this.dashboardUser.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dashboardUser.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.dashboardUser.Name = "dashboardUser";
-            this.dashboardUser.Size = new System.Drawing.Size(41, 34);
-            this.dashboardUser.Text = "...";
-            this.dashboardUser.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.logout_ItemClicked);
+            this.userLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(28, 30);
+            this.userLabel.Text = "...";
+            // 
+            // currentDate
+            // 
+            this.currentDate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.currentDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.currentDate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutMenuItem,
+            this.helpMenuItem});
+            this.currentDate.Image = ((System.Drawing.Image)(resources.GetObject("currentDate.Image")));
+            this.currentDate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.currentDate.Margin = new System.Windows.Forms.Padding(650, 2, 0, 0);
+            this.currentDate.Name = "currentDate";
+            this.currentDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.currentDate.Size = new System.Drawing.Size(44, 33);
+            this.currentDate.Text = "Date";
+            this.currentDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.currentDate.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dropDownItem_Click);
             // 
             // logoutMenuItem
             // 
-            this.logoutMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.logoutMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.logoutMenuItem.Name = "logoutMenuItem";
-            this.logoutMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.logoutMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutMenuItem.Text = "Logout";
             // 
-            // dateLabel
+            // helpMenuItem
             // 
-            this.dateLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(896, 31);
-            this.dateLabel.Spring = true;
-            this.dateLabel.Text = "CurrentDate";
-            this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.helpMenuItem.Name = "helpMenuItem";
+            this.helpMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.helpMenuItem.Text = "Help";
             // 
             // toolStrip1
             // 
@@ -266,6 +292,7 @@
             this.consumedBox.Name = "consumedBox";
             this.consumedBox.Size = new System.Drawing.Size(190, 202);
             this.consumedBox.TabIndex = 1;
+            this.consumedBox.SelectedIndexChanged += new System.EventHandler(this.consumedBox_SelectedIndexChanged);
             // 
             // weightFormsPlot
             // 
@@ -549,6 +576,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.goalChangeBox);
+            this.tabPage4.Controls.Add(this.goalChangeLabel);
+            this.tabPage4.Controls.Add(this.groupBox8);
+            this.tabPage4.Controls.Add(this.healthWelcome);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -556,6 +587,121 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Health Summary";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // goalChangeBox
+            // 
+            this.goalChangeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.goalChangeBox.FormattingEnabled = true;
+            this.goalChangeBox.Location = new System.Drawing.Point(547, 95);
+            this.goalChangeBox.Name = "goalChangeBox";
+            this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
+            this.goalChangeBox.TabIndex = 3;
+            this.goalChangeBox.SelectedIndexChanged += new System.EventHandler(this.goalChangeBox_SelectedIndexChanged);
+            // 
+            // goalChangeLabel
+            // 
+            this.goalChangeLabel.AutoSize = true;
+            this.goalChangeLabel.Location = new System.Drawing.Point(447, 95);
+            this.goalChangeLabel.Name = "goalChangeLabel";
+            this.goalChangeLabel.Size = new System.Drawing.Size(78, 15);
+            this.goalChangeLabel.TabIndex = 2;
+            this.goalChangeLabel.Text = "Change Goal:";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.BMItextBox);
+            this.groupBox8.Controls.Add(this.textBox6);
+            this.groupBox8.Controls.Add(this.label17);
+            this.groupBox8.Controls.Add(this.label16);
+            this.groupBox8.Controls.Add(this.label15);
+            this.groupBox8.Controls.Add(this.label11);
+            this.groupBox8.Controls.Add(this.label2);
+            this.groupBox8.Location = new System.Drawing.Point(41, 76);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(319, 256);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Your Info";
+            // 
+            // BMItextBox
+            // 
+            this.BMItextBox.Location = new System.Drawing.Point(114, 68);
+            this.BMItextBox.Name = "BMItextBox";
+            this.BMItextBox.Size = new System.Drawing.Size(100, 23);
+            this.BMItextBox.TabIndex = 6;
+            this.BMItextBox.TextChanged += new System.EventHandler(this.BMItextBox_TextChanged);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(114, 38);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 23);
+            this.textBox6.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(16, 180);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(51, 15);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Weight: ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(16, 144);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 15);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Height: ";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 111);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 15);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "BMR: ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(16, 77);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(31, 15);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "BMI:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Current Goal:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // healthWelcome
+            // 
+            this.healthWelcome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.healthWelcome.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.healthUserWelcome});
+            this.healthWelcome.Location = new System.Drawing.Point(3, 3);
+            this.healthWelcome.Name = "healthWelcome";
+            this.healthWelcome.Size = new System.Drawing.Size(952, 35);
+            this.healthWelcome.TabIndex = 0;
+            this.healthWelcome.Text = "statusStrip1";
+            this.healthWelcome.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            // 
+            // healthUserWelcome
+            // 
+            this.healthUserWelcome.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.healthUserWelcome.Name = "healthUserWelcome";
+            this.healthUserWelcome.Size = new System.Drawing.Size(328, 30);
+            this.healthUserWelcome.Text = "\"User\"\'s Personal Health Summary";
             // 
             // textBox1
             // 
@@ -667,15 +813,19 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.healthWelcome.ResumeLayout(false);
+            this.healthWelcome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.StatusStrip statusBar;
-        private System.Windows.Forms.ToolStripDropDownButton dashboardUser;
-        private System.Windows.Forms.ToolStripMenuItem logoutMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel dateLabel;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel lastLoginLabel;
         private System.Windows.Forms.TabControl tabControl1;
@@ -725,5 +875,24 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripStatusLabel userLabel;
+        private System.Windows.Forms.ToolStripDropDownButton currentDate;
+        private System.Windows.Forms.ToolStripMenuItem logoutButton;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem logoutMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
+        private System.Windows.Forms.StatusStrip healthWelcome;
+        private System.Windows.Forms.ToolStripStatusLabel healthUserWelcome;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox goalChangeBox;
+        private System.Windows.Forms.Label goalChangeLabel;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox BMItextBox;
     }
 }
