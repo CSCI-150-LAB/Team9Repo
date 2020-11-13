@@ -81,7 +81,7 @@ namespace Nutrition
             Database p = new Database();
 
             //Check if the user exists before registering
-            if (!p.checkUserExists(usernameBox.Text))
+            if (!p.CheckUserExists(usernameBox.Text))
             {
                 //pass the associative array to the register function
                 p.RegisterUser(register);
