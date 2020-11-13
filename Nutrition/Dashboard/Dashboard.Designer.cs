@@ -542,7 +542,7 @@
             // 
             this.bmrLabel.AutoSize = true;
             this.bmrLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bmrLabel.Location = new System.Drawing.Point(6, 19);
+            this.bmrLabel.Location = new System.Drawing.Point(16, 19);
             this.bmrLabel.Name = "bmrLabel";
             this.bmrLabel.Size = new System.Drawing.Size(48, 28);
             this.bmrLabel.TabIndex = 0;

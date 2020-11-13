@@ -202,7 +202,6 @@ namespace Nutrition
             int i = 0;
             foreach (string name in foodItems.Items)
             {
-                List<string> facts = d.GetFoodData(name);
                 Food raw_facts = foodList.searchByName(name);
                 IDictionary<string, string> nutrition = new Dictionary<string, string>
                 {
@@ -217,15 +216,19 @@ namespace Nutrition
                 d.insertUserTracking(nutrition);
                 i++;
             }
-            //Clear after submission
+            //Check if any items were added to the form
             if (i > 0)
             {
-                clearAllButton_Click(sender, e);
+                clearAllButton_Click(sender, e); //clear the food entry form
+                prefetch(); //Update the last 10 meal data and user data to reflect the new consumed items
+                
+                //refresh the graph visuals
+                plotBars();
+                plotForms();
+
+                //Optional show how many items were saved
                 MessageBox.Show("Saved " + i + " list items!");
             }
-            //refresh the graph visuals
-            plotBars();
-            plotForms();
         }
 
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -386,6 +389,7 @@ namespace Nutrition
         private void prefetch()
         {
             List<string> lastTen = d.getLastTenMeals(username);
+            consumedBox.Items.Clear(); //Empty any existing items
             foreach (string food in lastTen)
             {
                 consumedBox.Items.Add(food);
@@ -394,7 +398,8 @@ namespace Nutrition
             //Prefetch user BMR and the sum of the past 24 hours of macro data
             IDictionary<string, string> user = d.GetUserData(username);
             IDictionary<string, double> user_macro_sum = d.sumMacroData(username);
-            bmrLabel.Text = user["bmr"];
+            double bmr = double.Parse(user["bmr"]);
+            bmrLabel.Text = Convert.ToInt32(bmr).ToString();
         }
 
         private void deleteMeal_Click(object sender, EventArgs e)
