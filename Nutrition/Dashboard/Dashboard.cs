@@ -37,7 +37,7 @@ namespace Nutrition
                 data["last_login"]
             */
             InitializeComponent();
-            userLabel.Text = "Welcome, " + getUser();
+            userDropDown.Text = "Welcome, " + getUser();
             lastLoginLabel.Text = "You last logged in " + getLastLogin();
             healthUserWelcome.Text = username + "'s Personal Health Summary";
             StartTimer();
@@ -61,7 +61,7 @@ namespace Nutrition
 
         void t_Tick(object sender, EventArgs e)
         {
-            currentDate.Text = DateTime.Now.ToString();
+            dateLabel.Text = DateTime.Now.ToString();
         }
 
 
@@ -403,41 +403,6 @@ namespace Nutrition
             {
                 //d.DeleteFoodEntry(item, username);
             }
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void statusBar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void formsPlot1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BMItextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void consumedBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
