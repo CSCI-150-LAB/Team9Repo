@@ -34,6 +34,7 @@ namespace Nutrition
         {
             this.Text = "Registration";
             radioButtonAct1.Checked = true; //defaulted to the lowest activity level
+            radioButtonMale.Checked = true; //default
         }
 
         private void InputAge()
@@ -108,7 +109,6 @@ namespace Nutrition
                 "Activity level val: " + bmrCalculator.GetBMR());
 
             //when "Complete Registration" button is clicked, data saved to database
-            //FIXME needs to get username from the registration form
             database.FINISH_HIM(username, bmrCalculator.GetAge(), bmrCalculator.GetGender(), bmrCalculator.GetHeight(),
                 bmrCalculator.GetWeight(), bmrCalculator.GetBMR(), bmrCalculator.GetBMI());
 
@@ -124,6 +124,11 @@ namespace Nutrition
 
             //Close this login window
             this.Close();
+        }
+
+        private void radioButtonAct1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
