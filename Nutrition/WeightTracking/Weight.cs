@@ -7,11 +7,11 @@ namespace Nutrition
     class Weight
     {
         public double weight;
-        public DateTime t;
-        public Weight(double weight, DateTime t)
+        public DateTime date;
+        public Weight(double weight, DateTime date)
         {
             this.weight = weight;
-            this.t = t;
+            this.date = date;
         }
     }
 }

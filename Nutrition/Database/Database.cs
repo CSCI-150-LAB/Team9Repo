@@ -260,11 +260,17 @@ namespace Nutrition
                 }
             }
         }
-        //TODO 
+
+        /**
+         * Retrieves the weights the user has logged into the database.
+         * 
+         * This function retrieves all of the values
+         * The first element is the lastest value and the remaining are in Descending order.
+         */
         public List<Weight> GetWeightLog(string username)
         {
             List<Weight> log = new List<Weight>();//empty list
-            string sql = "";
+            string sql = "SELECT * from dbo.UserWeightTracking where username = @user ORDER BY date DESC";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -275,7 +281,7 @@ namespace Nutrition
                     {
                         while (reader.Read())
                         {
-                            log.Add(new Weight((double)reader["weight"], (DateTime)reader["date"]));
+                            log.Add(new Weight((double)(decimal)reader["weight"], (DateTime)reader["date"]));
                         }
                     }
                 }
@@ -511,8 +517,8 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
 
         public void DeleteFoodEntry(string item, string username)
         {
-            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [item_name] = @food," +
-                "[username] = @user " +
+            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [item_name] = @food" +
+                "AND [username] = @user " +
                 "AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
