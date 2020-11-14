@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.userLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.currentDate = new System.Windows.Forms.ToolStripDropDownButton();
-            this.logoutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userDropDown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.helpItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.lastLoginLabel = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -120,49 +120,46 @@
             this.statusBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userLabel,
-            this.currentDate});
+            this.userDropDown,
+            this.dateLabel});
             this.statusBar.Location = new System.Drawing.Point(3, 3);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(952, 35);
+            this.statusBar.Size = new System.Drawing.Size(952, 34);
             this.statusBar.TabIndex = 2;
-            this.statusBar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusBar_ItemClicked);
             // 
-            // userLabel
+            // userDropDown
             // 
-            this.userLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(28, 30);
-            this.userLabel.Text = "...";
+            this.userDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.userDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpItem,
+            this.logoutItem});
+            this.userDropDown.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.userDropDown.Image = ((System.Drawing.Image)(resources.GetObject("userDropDown.Image")));
+            this.userDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.userDropDown.Name = "userDropDown";
+            this.userDropDown.Size = new System.Drawing.Size(37, 32);
+            this.userDropDown.Text = "...";
+            this.userDropDown.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dropDownItem_Click);
             // 
-            // currentDate
+            // helpItem
             // 
-            this.currentDate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.currentDate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.currentDate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutMenuItem,
-            this.helpMenuItem});
-            this.currentDate.Image = ((System.Drawing.Image)(resources.GetObject("currentDate.Image")));
-            this.currentDate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.currentDate.Margin = new System.Windows.Forms.Padding(650, 2, 0, 0);
-            this.currentDate.Name = "currentDate";
-            this.currentDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.currentDate.Size = new System.Drawing.Size(44, 33);
-            this.currentDate.Text = "Date";
-            this.currentDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.currentDate.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dropDownItem_Click);
+            this.helpItem.Name = "helpItem";
+            this.helpItem.Size = new System.Drawing.Size(147, 32);
+            this.helpItem.Text = "Help";
             // 
-            // logoutMenuItem
+            // logoutItem
             // 
-            this.logoutMenuItem.Name = "logoutMenuItem";
-            this.logoutMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.logoutMenuItem.Text = "Logout";
+            this.logoutItem.Name = "logoutItem";
+            this.logoutItem.Size = new System.Drawing.Size(147, 32);
+            this.logoutItem.Text = "Logout";
             // 
-            // helpMenuItem
+            // dateLabel
             // 
-            this.helpMenuItem.Name = "helpMenuItem";
-            this.helpMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.helpMenuItem.Text = "Help";
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(900, 29);
+            this.dateLabel.Spring = true;
+            this.dateLabel.Text = "dateLabel";
+            this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStrip1
             // 
@@ -292,7 +289,6 @@
             this.consumedBox.Name = "consumedBox";
             this.consumedBox.Size = new System.Drawing.Size(190, 202);
             this.consumedBox.TabIndex = 1;
-            this.consumedBox.SelectedIndexChanged += new System.EventHandler(this.consumedBox_SelectedIndexChanged);
             // 
             // weightFormsPlot
             // 
@@ -546,7 +542,7 @@
             // 
             this.bmrLabel.AutoSize = true;
             this.bmrLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bmrLabel.Location = new System.Drawing.Point(6, 19);
+            this.bmrLabel.Location = new System.Drawing.Point(16, 19);
             this.bmrLabel.Name = "bmrLabel";
             this.bmrLabel.Size = new System.Drawing.Size(48, 28);
             this.bmrLabel.TabIndex = 0;
@@ -596,7 +592,6 @@
             this.goalChangeBox.Name = "goalChangeBox";
             this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
             this.goalChangeBox.TabIndex = 3;
-            this.goalChangeBox.SelectedIndexChanged += new System.EventHandler(this.goalChangeBox_SelectedIndexChanged);
             // 
             // goalChangeLabel
             // 
@@ -629,7 +624,6 @@
             this.BMItextBox.Name = "BMItextBox";
             this.BMItextBox.Size = new System.Drawing.Size(100, 23);
             this.BMItextBox.TabIndex = 6;
-            this.BMItextBox.TextChanged += new System.EventHandler(this.BMItextBox_TextChanged);
             // 
             // textBox6
             // 
@@ -682,7 +676,6 @@
             this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Current Goal:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // healthWelcome
             // 
@@ -694,7 +687,6 @@
             this.healthWelcome.Size = new System.Drawing.Size(952, 35);
             this.healthWelcome.TabIndex = 0;
             this.healthWelcome.Text = "statusStrip1";
-            this.healthWelcome.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // healthUserWelcome
             // 
@@ -875,12 +867,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripStatusLabel userLabel;
-        private System.Windows.Forms.ToolStripDropDownButton currentDate;
-        private System.Windows.Forms.ToolStripMenuItem logoutButton;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem logoutMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
         private System.Windows.Forms.StatusStrip healthWelcome;
         private System.Windows.Forms.ToolStripStatusLabel healthUserWelcome;
         private System.Windows.Forms.GroupBox groupBox8;
@@ -894,5 +880,9 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox BMItextBox;
+        private System.Windows.Forms.ToolStripDropDownButton userDropDown;
+        private System.Windows.Forms.ToolStripStatusLabel dateLabel;
+        private System.Windows.Forms.ToolStripMenuItem helpItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutItem;
     }
 }
