@@ -78,15 +78,17 @@
             this.goalChangeBox = new System.Windows.Forms.ComboBox();
             this.goalChangeLabel = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.BMItextBox = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.HSweightLabel = new System.Windows.Forms.Label();
+            this.HSheightLabel = new System.Windows.Forms.Label();
+            this.bmrHSlabel = new System.Windows.Forms.Label();
+            this.HSbmiLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.healthWelcome = new System.Windows.Forms.StatusStrip();
             this.healthUserWelcome = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.calRemainLabel = new System.Windows.Forms.Label();
+            this.calEatenLabel = new System.Windows.Forms.Label();
+            this.calGoalLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -112,6 +114,7 @@
             this.tabPage4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.healthWelcome.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -576,6 +579,7 @@
             this.tabPage4.Controls.Add(this.goalChangeLabel);
             this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Controls.Add(this.healthWelcome);
+            this.tabPage4.Controls.Add(this.groupBox9);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -588,7 +592,7 @@
             // 
             this.goalChangeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.goalChangeBox.FormattingEnabled = true;
-            this.goalChangeBox.Location = new System.Drawing.Point(547, 95);
+            this.goalChangeBox.Location = new System.Drawing.Point(591, 200);
             this.goalChangeBox.Name = "goalChangeBox";
             this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
             this.goalChangeBox.TabIndex = 3;
@@ -596,7 +600,7 @@
             // goalChangeLabel
             // 
             this.goalChangeLabel.AutoSize = true;
-            this.goalChangeLabel.Location = new System.Drawing.Point(447, 95);
+            this.goalChangeLabel.Location = new System.Drawing.Point(492, 200);
             this.goalChangeLabel.Name = "goalChangeLabel";
             this.goalChangeLabel.Size = new System.Drawing.Size(78, 15);
             this.goalChangeLabel.TabIndex = 2;
@@ -604,69 +608,53 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.BMItextBox);
-            this.groupBox8.Controls.Add(this.textBox6);
-            this.groupBox8.Controls.Add(this.label17);
-            this.groupBox8.Controls.Add(this.label16);
-            this.groupBox8.Controls.Add(this.label15);
-            this.groupBox8.Controls.Add(this.label11);
+            this.groupBox8.Controls.Add(this.HSweightLabel);
+            this.groupBox8.Controls.Add(this.HSheightLabel);
+            this.groupBox8.Controls.Add(this.bmrHSlabel);
+            this.groupBox8.Controls.Add(this.HSbmiLabel);
             this.groupBox8.Controls.Add(this.label2);
-            this.groupBox8.Location = new System.Drawing.Point(41, 76);
+            this.groupBox8.Location = new System.Drawing.Point(30, 181);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(319, 256);
+            this.groupBox8.Size = new System.Drawing.Size(319, 223);
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Your Info";
             // 
-            // BMItextBox
+            // HSweightLabel
             // 
-            this.BMItextBox.Location = new System.Drawing.Point(114, 68);
-            this.BMItextBox.Name = "BMItextBox";
-            this.BMItextBox.Size = new System.Drawing.Size(100, 23);
-            this.BMItextBox.TabIndex = 6;
+            this.HSweightLabel.AutoSize = true;
+            this.HSweightLabel.Location = new System.Drawing.Point(16, 180);
+            this.HSweightLabel.Name = "HSweightLabel";
+            this.HSweightLabel.Size = new System.Drawing.Size(51, 15);
+            this.HSweightLabel.TabIndex = 4;
+            this.HSweightLabel.Text = "Weight: ";
             // 
-            // textBox6
+            // HSheightLabel
             // 
-            this.textBox6.Location = new System.Drawing.Point(114, 38);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 5;
+            this.HSheightLabel.AutoSize = true;
+            this.HSheightLabel.Location = new System.Drawing.Point(16, 144);
+            this.HSheightLabel.Name = "HSheightLabel";
+            this.HSheightLabel.Size = new System.Drawing.Size(49, 15);
+            this.HSheightLabel.TabIndex = 3;
+            this.HSheightLabel.Text = "Height: ";
             // 
-            // label17
+            // bmrHSlabel
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 180);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(51, 15);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Weight: ";
+            this.bmrHSlabel.AutoSize = true;
+            this.bmrHSlabel.Location = new System.Drawing.Point(16, 111);
+            this.bmrHSlabel.Name = "bmrHSlabel";
+            this.bmrHSlabel.Size = new System.Drawing.Size(38, 15);
+            this.bmrHSlabel.TabIndex = 2;
+            this.bmrHSlabel.Text = "BMR: ";
             // 
-            // label16
+            // HSbmiLabel
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 144);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 15);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Height: ";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 111);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 15);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "BMR: ";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 77);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 15);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "BMI:";
+            this.HSbmiLabel.AutoSize = true;
+            this.HSbmiLabel.Location = new System.Drawing.Point(16, 77);
+            this.HSbmiLabel.Name = "HSbmiLabel";
+            this.HSbmiLabel.Size = new System.Drawing.Size(31, 15);
+            this.HSbmiLabel.TabIndex = 1;
+            this.HSbmiLabel.Text = "BMI:";
             // 
             // label2
             // 
@@ -694,6 +682,51 @@
             this.healthUserWelcome.Name = "healthUserWelcome";
             this.healthUserWelcome.Size = new System.Drawing.Size(328, 30);
             this.healthUserWelcome.Text = "\"User\"\'s Personal Health Summary";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox9.Controls.Add(this.calRemainLabel);
+            this.groupBox9.Controls.Add(this.calEatenLabel);
+            this.groupBox9.Controls.Add(this.calGoalLabel);
+            this.groupBox9.Location = new System.Drawing.Point(131, 57);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(673, 89);
+            this.groupBox9.TabIndex = 5;
+            this.groupBox9.TabStop = false;
+            // 
+            // calRemainLabel
+            // 
+            this.calRemainLabel.AutoSize = true;
+            this.calRemainLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.calRemainLabel.Location = new System.Drawing.Point(526, 19);
+            this.calRemainLabel.Name = "calRemainLabel";
+            this.calRemainLabel.Size = new System.Drawing.Size(88, 21);
+            this.calRemainLabel.TabIndex = 6;
+            this.calRemainLabel.Text = "Remaining:";
+            this.calRemainLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // calEatenLabel
+            // 
+            this.calEatenLabel.AutoSize = true;
+            this.calEatenLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.calEatenLabel.Location = new System.Drawing.Point(277, 19);
+            this.calEatenLabel.Name = "calEatenLabel";
+            this.calEatenLabel.Size = new System.Drawing.Size(111, 21);
+            this.calEatenLabel.TabIndex = 5;
+            this.calEatenLabel.Text = "Calories Eaten:";
+            this.calEatenLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // calGoalLabel
+            // 
+            this.calGoalLabel.AutoSize = true;
+            this.calGoalLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.calGoalLabel.Location = new System.Drawing.Point(37, 19);
+            this.calGoalLabel.Name = "calGoalLabel";
+            this.calGoalLabel.Size = new System.Drawing.Size(137, 21);
+            this.calGoalLabel.TabIndex = 4;
+            this.calGoalLabel.Text = "Daily Calorie Goal:";
+            this.calGoalLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBox1
             // 
@@ -811,6 +844,8 @@
             this.groupBox8.PerformLayout();
             this.healthWelcome.ResumeLayout(false);
             this.healthWelcome.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -874,15 +909,17 @@
         private System.Windows.Forms.ComboBox goalChangeBox;
         private System.Windows.Forms.Label goalChangeLabel;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox BMItextBox;
+        private System.Windows.Forms.Label HSheightLabel;
+        private System.Windows.Forms.Label bmrHSlabel;
+        private System.Windows.Forms.Label HSbmiLabel;
+        private System.Windows.Forms.Label HSweightLabel;
         private System.Windows.Forms.ToolStripDropDownButton userDropDown;
         private System.Windows.Forms.ToolStripStatusLabel dateLabel;
         private System.Windows.Forms.ToolStripMenuItem helpItem;
         private System.Windows.Forms.ToolStripMenuItem logoutItem;
+        private System.Windows.Forms.Label calGoalLabel;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label calEatenLabel;
+        private System.Windows.Forms.Label calRemainLabel;
     }
 }

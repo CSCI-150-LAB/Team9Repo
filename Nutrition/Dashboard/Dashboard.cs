@@ -14,6 +14,10 @@ namespace Nutrition
         private DateTime join_date; //FIXME: what is this needed for?
         private DateTime last_login;
         private double userBMR;
+        private double userBMI;
+        private double userWeight;
+        private int heightFeet;
+        private int heightInch;
 
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
@@ -24,6 +28,12 @@ namespace Nutrition
         {
             username = user["username"];
             userData = d.GetUserData(username);
+            userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
+            userBMI = Double.Parse(d.GetUserData(username)["bmi"]);
+            userWeight = Double.Parse(d.GetUserData(username)["weight"]);
+            //heightFeet = (Int32.Parse(d.GetUserData(username)["height_inches"])) / 12;
+            //heightInch = (Int32.Parse(d.GetUserData(username)["height_inches"])) % 12;
+
             DateTime.TryParse(userData["last_login"], out last_login);//parse string to DateTime type
 
             /*   data["username"]
@@ -44,6 +54,15 @@ namespace Nutrition
 
             plotBars();
             plotForms();
+
+            //FIXME, needs to get user's goal calories
+            calGoalLabel.Text = "Daily Calorie Recomendation\n" + userBMR;
+
+            bmrHSlabel.Text = "BMR: " + userBMR;
+            HSbmiLabel.Text = "Starting BMI: " + userBMI;
+            HSweightLabel.Text = "Current Weight: " + d.GetUserData(username)["weight"];
+            HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
+
 
             string[] weightGoals = new string[] { "Maintain", "Loose", "Gain" };
             goalChangeBox.DataSource = weightGoals;
@@ -113,7 +132,6 @@ namespace Nutrition
 
             //macro range calculated from user's BMR
             //ploted as calories recomended for each item
-            userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
 
             //upper part of range
             double recHighCarb = Math.Round(userBMR * 0.6, 2);
@@ -408,6 +426,11 @@ namespace Nutrition
             {
                 //d.DeleteFoodEntry(item, username);
             }
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
