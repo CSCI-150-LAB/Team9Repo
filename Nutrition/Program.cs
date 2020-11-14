@@ -20,7 +20,7 @@ namespace Nutrition
 
             //Start the launcher this way so we can use .close() when we don't need the launcher anymore
             //Doing it this way preserves the application instead of closing the main thread
-            var launch = new Nutrition();
+            var launch = new RecipeTesting();
             launch.Show();
             Application.Run();
         }

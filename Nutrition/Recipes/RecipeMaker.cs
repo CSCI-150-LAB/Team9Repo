@@ -1,25 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Nutrition
 {
     class RecipeMaker
     {
-        public string name;
-        public List<Food> ingredients;
+        //Make an instance of the recipe object
+        private Recipe recipe;
 
-        //Build recipe with only a name and unknown ingredients
+        //Constructor
         public RecipeMaker(string name)
         {
-            this.name = name;
+            //Create a new object of the recipe maker with a given recipe name
+            recipe = new Recipe(name);
         }
-        
-        //Build the complete recipe if ingredients are known
-        public RecipeMaker(string name, List<Food> ingredients)
+
+        //Method 1. Add single items to build recipes
+        public void addIngredient(Food item)
         {
-            this.name = name;
-            this.ingredients = ingredients;
+            recipe.ingredients.Add(item);
+        }
+
+        //Method 2. Add full recipe ingredients in one go
+        public void addIngredient(List<Food> items)
+        {
+            recipe.ingredients = items;
+        }
+
+        //Remove food item from recipe
+        public void deleteIngredient(string name)
+        {
+            //Check if the ingredient exists using a predicate search (search by food name)
+            var del = recipe.ingredients.SingleOrDefault(r => r.name == name);
+            if (del != null) //null check
+                recipe.ingredients.Remove(del); //Remove the ingredient
+        }
+
+        //Return the recipe
+        //Contains the string name and List<Food> ingredient list
+        public Recipe getRecipe()
+        {
+            return recipe;
         }
     }
 }

@@ -13,6 +13,9 @@
     <Compile Update="Launcher\Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Recipes\RecipeTesting.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Registration\Login.cs">
       <SubType>Form</SubType>
     </Compile>
