@@ -1,39 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Windows.Forms;
+using System.Linq;
 
 namespace Nutrition
 {
     class Recipe
     {
-       private List<Food> foodItems;
-        Recipe()
+        //Make an instance of the recipe object
+        private RecipeMaker recipe;
+
+        //Constructor
+        Recipe(string name)
         {
-            foodItems = new List<Food>();
+            //Create a new object of the recipe maker with a given recipe name
+            recipe = new RecipeMaker(name);
         }
 
+        //Method 1. Add single items to build recipes
         void addIngredient(Food item)
         {
-            foodItems.Add(item);
-        }
-        void addRecipe(string name, List<Food> ingredients)
-        {
-            foreach(Food item in ingredients)
-            {
-                foodItems.Add(item);
-            }
+            recipe.ingredients.Add(item);
         }
 
-        void deleteRecipe(string name)
+        //Method 2. Add full recipe ingredients in one go
+        void addIngredient(List<Food> items)
         {
-
+            recipe.ingredients = items;
         }
 
-        List<Food> getRecipe()
+        //Remove food item from recipe
+        void deleteIngredient(string name)
         {
-            return foodItems;
+            //Check if the ingredient exists using a predicate search (search by food name)
+            var del = recipe.ingredients.SingleOrDefault(r => r.name == name);
+            if (del != null) //null check
+                recipe.ingredients.Remove(del); //Remove the ingredient
+        }
+
+        //Return the recipe
+        //Contains the string name and List<Food> ingredient list
+        RecipeMaker getRecipe()
+        {
+            return recipe;
         }
     }
 }
