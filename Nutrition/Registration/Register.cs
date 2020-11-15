@@ -25,7 +25,11 @@ namespace Nutrition
                 invalidLbl.Text = "Invalid username, please try again!";
                 return;
             }
-
+            if (passwordBox.Text.Length < 8 || passwordBox.Text.Length > 64 || passwordBox.Text.Contains(" "))
+            {
+                invalidLbl.Text = "Please enter a valid password";
+                return;
+            }
 
             Hash pass = new Hash(passwordBox.Text);
             Hash confirmP = new Hash(confirmPass.Text);

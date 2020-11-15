@@ -409,5 +409,10 @@ namespace Nutrition
                 //d.DeleteFoodEntry(item, username);
             }
         }
+
+        private void exitButton_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
