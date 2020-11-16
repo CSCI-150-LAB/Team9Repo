@@ -31,8 +31,9 @@ namespace Nutrition
             userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
             userBMI = Double.Parse(d.GetUserData(username)["bmi"]);
             userWeight = Double.Parse(d.GetUserData(username)["weight"]);
-            heightFeet = (Int32.Parse(d.GetUserData(username)["height_inches"])) / 12;
-            heightInch = (Int32.Parse(d.GetUserData(username)["height_inches"])) % 12;
+            int feet = Int32.Parse(d.GetUserData(username)["height_inches"]);
+            heightFeet = feet / 12;
+            heightInch = feet % 12;
 
             DateTime.TryParse(userData["last_login"], out last_login);//parse string to DateTime type
 
