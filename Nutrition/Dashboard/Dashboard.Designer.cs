@@ -41,12 +41,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.consumedBox = new System.Windows.Forms.CheckedListBox();
             this.weightFormsPlot = new ScottPlot.FormsPlot();
             this.barsFormsPlot = new ScottPlot.FormsPlot();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -104,6 +104,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -225,12 +226,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.consumedBox);
             this.groupBox1.Location = new System.Drawing.Point(484, 288);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(468, 288);
@@ -238,6 +239,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Food Quickview";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(272, 259);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(190, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Delete Selected";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.deleteMeal_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.Location = new System.Drawing.Point(272, 37);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(190, 216);
+            this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.Text = "dataGridView1";
             // 
             // label1
             // 
@@ -274,24 +303,6 @@
             this.label12.Size = new System.Drawing.Size(55, 15);
             this.label12.TabIndex = 3;
             this.label12.Text = "Breakfast";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(272, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Delete Selected";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.deleteMeal_Click);
-            // 
-            // consumedBox
-            // 
-            this.consumedBox.FormattingEnabled = true;
-            this.consumedBox.Location = new System.Drawing.Point(272, 40);
-            this.consumedBox.Name = "consumedBox";
-            this.consumedBox.Size = new System.Drawing.Size(190, 202);
-            this.consumedBox.TabIndex = 1;
             // 
             // weightFormsPlot
             // 
@@ -596,6 +607,7 @@
             this.goalChangeBox.Name = "goalChangeBox";
             this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
             this.goalChangeBox.TabIndex = 3;
+            this.goalChangeBox.SelectedIndexChanged += new System.EventHandler(this.goalChangeBox_SelectedIndexChanged);
             // 
             // goalChangeLabel
             // 
@@ -828,6 +840,7 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -896,8 +909,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox proteinBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckedListBox consumedBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -921,5 +932,7 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label calEatenLabel;
         private System.Windows.Forms.Label calRemainLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
     }
 }
