@@ -487,5 +487,31 @@ namespace Nutrition
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var selectedRows = dataGridView1.SelectedRows
+         .OfType<DataGridViewRow>()
+         .Where(row => !row.IsNewRow)
+         .ToArray();
+
+            foreach (var row in selectedRows)
+            {
+                MessageBox.Show("Deleting: " + dataGridView1.SelectedRows[0].Cells["item_name"].Value.ToString());
+                int item = -1;
+                string val = dataGridView1.SelectedRows[0].Cells["id"].Value.ToString();
+                bool parsed = Int32.TryParse(val, out item);
+                if (parsed)
+                {
+                    d.DeleteFoodEntry(item, username);
+                    dataGridView1.Rows.Remove(row);
+                }
+            }
+        }
     }
 }
