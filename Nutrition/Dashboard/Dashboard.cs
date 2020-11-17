@@ -179,21 +179,45 @@ namespace Nutrition
 
         private void plotForms()
         {
+
+            List<Weight> THICCLOGG = d.GetWeightLog(username);
+
+            bool isEmpty = !THICCLOGG.Any();
+            if (isEmpty)
+            {
+                THICCLOGG.Add(new Weight(double.Parse(d.GetUserData(username)["weight"]), DateTime.Now));
+            }
+            Weight[] p = THICCLOGG.ToArray();
+
+            int i2 = 0;
+            foreach (Weight a in p)
+            {
+                i2++;
+            }
+
             //clear previous data
             weightFormsPlot.Reset();
 
             //FIXME, not sure how to structure this, needs to get from database
             //autofill with 0 if data not avalible 
-            double[] days = { 1, 2, 3, 4, 5, 6, 7 };
-
+            double[] days = new double[i2];
+            double[] userWeight = new double[i2];
+            i2 = 0;
+            foreach (Weight a in p)
+            {
+                days[i2] = a.date.ToOADate();
+                userWeight[i2] = a.weight;
+                i2++;
+            }
             //needs to get the user entered data from database
             //autofill with 0 if data not avalible 
-            double[] userWeight = { 130, 130, 128, 127, 129, 127, 126 };
+
             weightFormsPlot.plt.PlotScatter(days, userWeight);
 
             //Label x and y axis
             weightFormsPlot.plt.XLabel("Days");
             weightFormsPlot.plt.YLabel("Pounds");
+            weightFormsPlot.plt.Ticks(dateTimeX: true);
 
             weightFormsPlot.Render();
         }
@@ -515,6 +539,11 @@ namespace Nutrition
                     dataGridView1.Rows.Remove(row);
                 }
             }
+        }
+
+        private void goalChangeBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

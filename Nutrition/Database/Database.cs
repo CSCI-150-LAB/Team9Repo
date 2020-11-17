@@ -150,6 +150,7 @@ namespace Nutrition
                 "[gender] = @gender," +
                 "[height_inches] = @inches," +
                 "[weight] = @weight," +
+                "[activity_level_goal] = 'Maintain'," +
                 "[bmr] = @bmr," +
                 "[bmi] = @bmi WHERE [username] = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
