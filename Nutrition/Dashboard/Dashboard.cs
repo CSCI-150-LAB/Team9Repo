@@ -22,6 +22,7 @@ namespace Nutrition
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
         Food currentFood = null;
+        private List<string> foodData = new List<string>();
         private Timer t;
 
         public Dashboard(IDictionary<string, string> user)
@@ -203,7 +204,7 @@ namespace Nutrition
 
         private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
         {
-           
+
         }
 
         private void formsPlot1_Load(object sender, EventArgs e)
@@ -240,7 +241,7 @@ namespace Nutrition
             {
                 clearAllButton_Click(sender, e); //clear the food entry form
                 prefetch(); //Update the last 10 meal data and user data to reflect the new consumed items
-                
+
                 //refresh the graph visuals
                 plotBars();
                 plotForms();
@@ -333,12 +334,12 @@ namespace Nutrition
         private void Dashboard_Load(object sender, EventArgs e)
         {
             //Set the dashboard tab to be displayed first
-             tabControl1.SelectedIndex = 0;
+            tabControl1.SelectedIndex = 0;
 
             //Prefetch food box items from the database into the form
             //Is there a better way?
-            List<string> foods = d.GetFoodItems();
-            foreach (string name in foods)
+            foodData = d.GetFoodItems();
+            foreach (string name in foodData)
             {
                 foodBox1.Items.Add(name);
             }
@@ -442,6 +443,28 @@ namespace Nutrition
                 {
                     d.DeleteFoodEntry(item, username);
                     dataGridView1.Rows.Remove(row);
+                }
+            }
+        }
+
+        private void allergyCheckBox_Changed(object sender, EventArgs e)
+        {
+            //Show allergy items
+            if (checkBox1.Checked)
+            {
+                List<string> foods = d.GetNoAllergyFoodItems(username);
+                foodBox1.Items.Clear();//Clear box to remove potential allergy conflicts
+                foreach (string name in foods)
+                {
+                    foodBox1.Items.Add(name);
+                }
+            }
+            else //Show all items
+            {
+                foodBox1.Items.Clear();//Clear box to prevent duplicates
+                foreach (string name in foodData)
+                {
+                    foodBox1.Items.Add(name);
                 }
             }
         }

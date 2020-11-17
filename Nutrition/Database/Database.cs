@@ -583,6 +583,35 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             return foodItems;
         }
 
+        public List<string> GetNoAllergyFoodItems(string username)
+        {
+            List<string> foodItems = new List<string>();
+            string sql = "SELECT * from [dbo].[Nutrition] " +
+                        "JOIN Users " +
+                        "ON(Users.gluten_allergy = 0 or Nutrition.contains_gluten = 0) " +
+                        "AND(Users.peanut_allergy = 0 or Nutrition.contains_nuts = 0) " +
+                        "AND(Users.fish_allergy = 0 or Nutrition.contains_fish = 0) " +
+                        "AND(Users.soy_allergy = 0 or Nutrition.contains_soy = 0) " +
+                        "AND(Users.dairy_allergy = 0 or Nutrition.contains_dairy = 0) " +
+                        "where Users.username = @user ";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            foodItems.Add(reader["item_name"].ToString());
+                        }
+                    }
+                }
+            }
+            return foodItems;
+        }
+
         public List<string> GetFoodData(string name)
         {
             List<string> foodItems = new List<string>();
