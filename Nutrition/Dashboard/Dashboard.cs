@@ -181,7 +181,14 @@ namespace Nutrition
         {
 
             List<Weight> THICCLOGG = d.GetWeightLog(username);
+
+            bool isEmpty = !THICCLOGG.Any();
+            if (isEmpty)
+            {
+                THICCLOGG.Add(new Weight(double.Parse(d.GetUserData(username)["weight"]), DateTime.Now));
+            }
             Weight[] p = THICCLOGG.ToArray();
+
             int i2 = 0;
             foreach (Weight a in p)
             {
@@ -532,6 +539,11 @@ namespace Nutrition
                     dataGridView1.Rows.Remove(row);
                 }
             }
+        }
+
+        private void goalChangeBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -683,6 +683,7 @@
             this.goalChangeBox.Name = "goalChangeBox";
             this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
             this.goalChangeBox.TabIndex = 3;
+            this.goalChangeBox.SelectedIndexChanged += new System.EventHandler(this.goalChangeBox_SelectedIndexChanged_1);
             // 
             // goalChangeLabel
             // 
