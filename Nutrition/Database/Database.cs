@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 //TODO https://stackoverflow.com/questions/60919/does-sqlcommand-dispose-close-the-connection
@@ -364,7 +365,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
     ORDER BY UserTracking.date_logged DESC
     OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
             List<string> lastTen = new List<string>();//empty list
-            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.item_name, UserTracking.date_logged " +
+            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
     "FROM UserTracking " +
     "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
     "where Users.username = @user " +
@@ -381,6 +382,29 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                         {
                             lastTen.Add(reader["item_name"].ToString());
                         }
+                    }
+                }
+            }
+            return lastTen;
+        }
+
+        public DataTable getLastTenMeals2(string username)
+        {
+            DataTable lastTen = new DataTable();
+            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
+    "FROM UserTracking " +
+    "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
+    "where Users.username = @user " +
+    "ORDER BY UserTracking.date_logged DESC";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using(SqlDataAdapter sqlData = new SqlDataAdapter(command))
+                    {
+                        sqlData.Fill(lastTen);
                     }
                 }
             }
@@ -515,9 +539,11 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             }
         }
 
-        public void DeleteFoodEntry(string item, string username)
+        public void DeleteFoodEntry(int itemId, string username)
         {
-            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [item_name] = @food" +
+            if (itemId < 0)
+                return;
+            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [id] = @itemId " +
                 "AND [username] = @user " +
                 "AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
@@ -525,13 +551,13 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                 con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
-                    command.Parameters.AddWithValue("@food", item);
+                    command.Parameters.AddWithValue("@itemId", itemId);
                     command.Parameters.AddWithValue("@user", username);
                     var result = command.ExecuteNonQuery();
                     if (result > 0)
-                        MessageBox.Show("Deleted " + result + " " + item + " from the DB");//Debug
+                        MessageBox.Show("Deleted " + result + " " + itemId + " from the DB");//Debug
                     else
-                        MessageBox.Show(item + " not found");//Debug
+                        MessageBox.Show(itemId + " not found");//Debug
                 }
             }
         }
