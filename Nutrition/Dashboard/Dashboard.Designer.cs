@@ -88,7 +88,7 @@
             this.HSheightLabel = new System.Windows.Forms.Label();
             this.bmrHSlabel = new System.Windows.Forms.Label();
             this.HSbmiLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.currGoalLabel = new System.Windows.Forms.Label();
             this.healthWelcome = new System.Windows.Forms.StatusStrip();
             this.healthUserWelcome = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -677,7 +677,6 @@
             // 
             // goalChangeBox
             // 
-            this.goalChangeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.goalChangeBox.FormattingEnabled = true;
             this.goalChangeBox.Location = new System.Drawing.Point(591, 200);
             this.goalChangeBox.Name = "goalChangeBox";
@@ -688,7 +687,7 @@
             // goalChangeLabel
             // 
             this.goalChangeLabel.AutoSize = true;
-            this.goalChangeLabel.Location = new System.Drawing.Point(492, 200);
+            this.goalChangeLabel.Location = new System.Drawing.Point(493, 200);
             this.goalChangeLabel.Name = "goalChangeLabel";
             this.goalChangeLabel.Size = new System.Drawing.Size(78, 15);
             this.goalChangeLabel.TabIndex = 2;
@@ -700,7 +699,7 @@
             this.groupBox8.Controls.Add(this.HSheightLabel);
             this.groupBox8.Controls.Add(this.bmrHSlabel);
             this.groupBox8.Controls.Add(this.HSbmiLabel);
-            this.groupBox8.Controls.Add(this.label2);
+            this.groupBox8.Controls.Add(this.currGoalLabel);
             this.groupBox8.Location = new System.Drawing.Point(30, 181);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(319, 223);
@@ -744,14 +743,14 @@
             this.HSbmiLabel.TabIndex = 1;
             this.HSbmiLabel.Text = "BMI:";
             // 
-            // label2
+            // currGoalLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Current Goal:";
+            this.currGoalLabel.AutoSize = true;
+            this.currGoalLabel.Location = new System.Drawing.Point(16, 41);
+            this.currGoalLabel.Name = "currGoalLabel";
+            this.currGoalLabel.Size = new System.Drawing.Size(77, 15);
+            this.currGoalLabel.TabIndex = 0;
+            this.currGoalLabel.Text = "Current Goal:";
             // 
             // healthWelcome
             // 
@@ -1022,7 +1021,7 @@
         private System.Windows.Forms.StatusStrip healthWelcome;
         private System.Windows.Forms.ToolStripStatusLabel healthUserWelcome;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label currGoalLabel;
         private System.Windows.Forms.ComboBox goalChangeBox;
         private System.Windows.Forms.Label goalChangeLabel;
         private System.Windows.Forms.BindingSource bindingSource1;
