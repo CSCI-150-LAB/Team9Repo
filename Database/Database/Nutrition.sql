@@ -1,15 +1,15 @@
 ﻿CREATE TABLE [dbo].[Nutrition]
 (
-	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [item_name] VARCHAR(50) NOT NULL, 
-    [calories] INT NOT NULL, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY,
+    [item_name] VARCHAR(50) NOT NULL,
+    [calories] INT NOT NULL,
     [fat] DECIMAL(9, 2) NOT NULL,
     [carbohydrate] DECIMAL(9, 2) NOT NULL,
     [protein] DECIMAL(9, 2) NOT NULL,
-    [contains_gluten] INT NOT NULL, 
-    [contains_nuts] INT NOT NULL, 
-    [contains_fish] INT NOT NULL, 
-    [contains_dairy] INT NOT NULL, 
+    [contains_gluten] INT NOT NULL,
+    [contains_nuts] INT NOT NULL,
+    [contains_fish] INT NOT NULL,
+    [contains_dairy] INT NOT NULL,
     [contains_soy] INT NOT NULL
 )--If you want the database to be optimized for searching/selecting you need to add an index on that table. Read about indexes here:
 -- https://www.sqlservertutorial.net/sql-server-indexes/sql-server-create-index/

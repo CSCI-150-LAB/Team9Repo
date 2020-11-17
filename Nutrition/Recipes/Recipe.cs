@@ -1,39 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Windows.Forms;
 
 namespace Nutrition
 {
     class Recipe
     {
-       private List<Food> foodItems;
-        Recipe()
-        {
-            foodItems = new List<Food>();
-        }
+        public string name;
+        public List<Food> ingredients = new List<Food>();
 
-        void addIngredient(Food item)
+        //Build recipe with only a name and unknown ingredients
+        public Recipe(string name)
         {
-            foodItems.Add(item);
+            this.name = name;
         }
-        void addRecipe(string name, List<Food> ingredients)
+        
+        //Build the complete recipe if ingredients are known
+        public Recipe(string name, List<Food> ingredients)
         {
-            foreach(Food item in ingredients)
-            {
-                foodItems.Add(item);
-            }
-        }
-
-        void deleteRecipe(string name)
-        {
-
-        }
-
-        List<Food> getRecipe()
-        {
-            return foodItems;
+            this.name = name;
+            this.ingredients = ingredients;
         }
     }
 }

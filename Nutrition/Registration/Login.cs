@@ -31,18 +31,27 @@ namespace Nutrition
                 //check if the hash matches
                 if (q.verifyPassword(db_hash, passwordBox.Text))
                 {
-                    //Prepare an associative data (key,pair)
-                    IDictionary<string, string> userData = p.GetUserData(usernameBox.Text);
+                    if (!p.FinishedAssessment(usernameBox.Text))
+                    {
+                        UserAssessment begin = new UserAssessment(usernameBox.Text);
+                        begin.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        //Prepare an associative data (key,pair)
+                        IDictionary<string, string> userData = p.GetUserData(usernameBox.Text);
 
-                    //Show the secret area we logged in and pass the user data to it
-                    Dashboard logged_in = new Dashboard(userData);
-                    logged_in.Show();
+                        //Show the secret area we logged in and pass the user data to it
+                        Dashboard logged_in = new Dashboard(userData);
+                        logged_in.Show();
 
-                    //Update the last login to right now.
-                    p.UpdateLastLogin(usernameBox.Text);
+                        //Update the last login to right now.
+                        p.UpdateLastLogin(usernameBox.Text);
 
-                    //Close this login window
-                    this.Close();
+                        //Close this login window
+                        this.Close();
+                    }
                 }
                 else
                     invalidLogin.Text = "Invalid username or password";

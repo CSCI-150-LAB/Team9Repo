@@ -22,6 +22,7 @@ namespace Nutrition
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
         Food currentFood = null;
+        private List<string> foodData = new List<string>();
         private Timer t;
 
         public Dashboard(IDictionary<string, string> user)
@@ -31,8 +32,9 @@ namespace Nutrition
             userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
             userBMI = Double.Parse(d.GetUserData(username)["bmi"]);
             userWeight = Double.Parse(d.GetUserData(username)["weight"]);
-            //heightFeet = (Int32.Parse(d.GetUserData(username)["height_inches"])) / 12;
-            //heightInch = (Int32.Parse(d.GetUserData(username)["height_inches"])) % 12;
+            double feet = Double.Parse(d.GetUserData(username)["height_inches"]);
+            heightFeet = (int)feet / 12;
+            heightInch = (int)feet % 12;
 
             DateTime.TryParse(userData["last_login"], out last_login);//parse string to DateTime type
 
@@ -198,7 +200,7 @@ namespace Nutrition
 
         private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
         {
-           
+
         }
 
         private void formsPlot1_Load(object sender, EventArgs e)
@@ -243,7 +245,7 @@ namespace Nutrition
             {
                 clearAllButton_Click(sender, e); //clear the food entry form
                 prefetch(); //Update the last 10 meal data and user data to reflect the new consumed items
-                
+
                 //refresh the graph visuals
                 plotBars();
                 plotForms();
@@ -336,12 +338,12 @@ namespace Nutrition
         private void Dashboard_Load(object sender, EventArgs e)
         {
             //Set the dashboard tab to be displayed first
-             tabControl1.SelectedIndex = 0;
+            tabControl1.SelectedIndex = 0;
 
             //Prefetch food box items from the database into the form
             //Is there a better way?
-            List<string> foods = d.GetFoodItems();
-            foreach (string name in foods)
+            foodData = d.GetFoodItems();
+            foreach (string name in foodData)
             {
                 foodBox1.Items.Add(name);
             }
@@ -410,12 +412,10 @@ namespace Nutrition
          */
         private void prefetch()
         {
-            List<string> lastTen = d.getLastTenMeals(username);
-            consumedBox.Items.Clear(); //Empty any existing items
-            foreach (string food in lastTen)
-            {
-                consumedBox.Items.Add(food);
-            }
+            dataGridView1.DataSource = d.getLastTenMeals2(username);
+            dataGridView1.Columns["usr"].Visible = false;
+            dataGridView1.Columns["id"].Visible = false;
+            dataGridView1.Columns["date_logged"].Visible = false;
 
             //Prefetch user BMR and the sum of the past 24 hours of macro data
             IDictionary<string, string> user = d.GetUserData(username);
@@ -424,17 +424,56 @@ namespace Nutrition
             bmrLabel.Text = Convert.ToInt32(bmr).ToString();
         }
 
+        private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string goal = goalChangeBox.SelectedItem.ToString();
+            d.SetGoal(username, goal);
+        }
+
         private void deleteMeal_Click(object sender, EventArgs e)
         {
-            foreach(string item in consumedBox.CheckedItems)
+            var selectedRows = dataGridView1.SelectedRows
+           .OfType<DataGridViewRow>()
+           .Where(row => !row.IsNewRow)
+           .ToArray();
+
+            foreach (var row in selectedRows)
             {
-                //d.DeleteFoodEntry(item, username);
+                MessageBox.Show("Deleting: " + dataGridView1.SelectedRows[0].Cells["item_name"].Value.ToString());
+                int item = -1;
+                string val = dataGridView1.SelectedRows[0].Cells["id"].Value.ToString();
+                bool parsed = Int32.TryParse(val, out item);
+                if (parsed)
+                {
+                    d.DeleteFoodEntry(item, username);
+                    dataGridView1.Rows.Remove(row);
+                    plotBars();
+                    plotForms();
+                    refreshCalData();
+                }
             }
         }
 
-        private void label18_Click(object sender, EventArgs e)
+        private void allergyCheckBox_Changed(object sender, EventArgs e)
         {
-
+            //Show allergy items
+            if (checkBox1.Checked)
+            {
+                List<string> foods = d.GetNoAllergyFoodItems(username);
+                foodBox1.Items.Clear();//Clear box to remove potential allergy conflicts
+                foreach (string name in foods)
+                {
+                    foodBox1.Items.Add(name);
+                }
+            }
+            else //Show all items
+            {
+                foodBox1.Items.Clear();//Clear box to prevent duplicates
+                foreach (string name in foodData)
+                {
+                    foodBox1.Items.Add(name);
+                }
+            }
         }
 
         private void calEatenLabel_Click(object sender, EventArgs e)
@@ -450,6 +489,32 @@ namespace Nutrition
         private void label11_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var selectedRows = dataGridView1.SelectedRows
+         .OfType<DataGridViewRow>()
+         .Where(row => !row.IsNewRow)
+         .ToArray();
+
+            foreach (var row in selectedRows)
+            {
+                MessageBox.Show("Deleting: " + dataGridView1.SelectedRows[0].Cells["item_name"].Value.ToString());
+                int item = -1;
+                string val = dataGridView1.SelectedRows[0].Cells["id"].Value.ToString();
+                bool parsed = Int32.TryParse(val, out item);
+                if (parsed)
+                {
+                    d.DeleteFoodEntry(item, username);
+                    dataGridView1.Rows.Remove(row);
+                }
+            }
         }
     }
 }

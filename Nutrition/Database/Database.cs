@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 //TODO https://stackoverflow.com/questions/60919/does-sqlcommand-dispose-close-the-connection
@@ -225,6 +226,69 @@ namespace Nutrition
                 }
             }
         }
+        public void InsertUserWeight(String username, double weight)
+        {
+            String sql = "INSERT INTO [dbo].[UserWeightTracking] (username,weight,date) VALUES (@user,@weight,GETDATE())";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    command.Parameters.AddWithValue("@weight", weight);
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error inserting user weight");
+                }
+            }
+        }
+
+        public void UpdateUserWeight(string username, double weight)
+        {
+            string sql = "UPDATE [dbo].[Users] SET [weight] = @weight where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@weight", weight);
+                    command.Parameters.AddWithValue("@user", username);
+                    var result = command.ExecuteNonQuery();
+                    if (result < 0)
+                        MessageBox.Show("Failed to update weight for " + username);//Debug
+                }
+            }
+        }
+
+        /**
+         * Retrieves the weights the user has logged into the database.
+         * 
+         * This function retrieves all of the values
+         * The first element is the lastest value and the remaining are in Descending order.
+         */
+        public List<Weight> GetWeightLog(string username)
+        {
+            List<Weight> log = new List<Weight>();//empty list
+            string sql = "SELECT * from dbo.UserWeightTracking where username = @user ORDER BY date DESC";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            log.Add(new Weight((double)(decimal)reader["weight"], (DateTime)reader["date"]));
+                        }
+                    }
+                }
+            }
+            return log;
+        }
 
         //TODO:
         //Maker query for reccomended BMR
@@ -301,7 +365,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
     ORDER BY UserTracking.date_logged DESC
     OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
             List<string> lastTen = new List<string>();//empty list
-            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.item_name, UserTracking.date_logged " +
+            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
     "FROM UserTracking " +
     "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
     "where Users.username = @user " +
@@ -322,6 +386,53 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                 }
             }
             return lastTen;
+        }
+
+        public DataTable getLastTenMeals2(string username)
+        {
+            DataTable lastTen = new DataTable();
+            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
+    "FROM UserTracking " +
+    "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
+    "where Users.username = @user " +
+    "ORDER BY UserTracking.date_logged DESC";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using(SqlDataAdapter sqlData = new SqlDataAdapter(command))
+                    {
+                        sqlData.Fill(lastTen);
+                    }
+                }
+            }
+            return lastTen;
+        }
+
+        public bool FinishedAssessment(string username)
+        {
+            bool finishedAssessment = true;
+            string sql = "SELECT * from [dbo].[Users] where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            if (result["weight"] == DBNull.Value || result["gender"] == DBNull.Value)
+                                return false;
+                        }
+                    }
+                }
+            }
+            return finishedAssessment;
         }
 
         public int GetBMR(string username)
@@ -370,9 +481,9 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             return bmi > 0 ? bmi : 0;
         }
 
-        public int GetGoal(string username)
+        public string GetGoal(string username)
         {
-            int goal = -1;
+            string goal = "";
             string sql = "SELECT * from [dbo].[Users] where [username] = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
@@ -385,17 +496,17 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                         if (result.HasRows)//Check if there is a result
                         {
                             result.Read();//Read the row
-                            goal = Int32.Parse(result["goal"].ToString());
+                            goal = result["activity_level_goal"].ToString();
                         }
                     }
                 }
             }
-            return goal > 0 ? goal : 0;
+            return goal;
         }
 
-        public void SetGoal(string username, int goal)
+        public void SetGoal(string username, string goal)
         {
-            string sql = "UPDATE [dbo].[Users] SET [goal] = @goal where [username] = @user";
+            string sql = "UPDATE [dbo].[Users] SET [activity_level_goal] = @goal where [username] = @user";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -428,23 +539,25 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             }
         }
 
-        public void DeleteFoodEntry(string item, string username)
+        public void DeleteFoodEntry(int itemId, string username)
         {
-            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [item_name] = @food," +
-                "[username] = @user " +
+            if (itemId < 0)
+                return;
+            string sql = "DELETE FROM [dbo].[UserTracking] WHERE [id] = @itemId " +
+                "AND [username] = @user " +
                 "AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
-                    command.Parameters.AddWithValue("@food", item);
+                    command.Parameters.AddWithValue("@itemId", itemId);
                     command.Parameters.AddWithValue("@user", username);
                     var result = command.ExecuteNonQuery();
                     if (result > 0)
-                        MessageBox.Show("Deleted " + result + " " + item + " from the DB");//Debug
+                        MessageBox.Show("Deleted " + result + " " + itemId + " from the DB");//Debug
                     else
-                        MessageBox.Show(item + " not found");//Debug
+                        MessageBox.Show(itemId + " not found");//Debug
                 }
             }
         }
@@ -458,6 +571,35 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                 con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            foodItems.Add(reader["item_name"].ToString());
+                        }
+                    }
+                }
+            }
+            return foodItems;
+        }
+
+        public List<string> GetNoAllergyFoodItems(string username)
+        {
+            List<string> foodItems = new List<string>();
+            string sql = "SELECT * from [dbo].[Nutrition] " +
+                        "JOIN Users " +
+                        "ON(Users.gluten_allergy = 0 or Nutrition.contains_gluten = 0) " +
+                        "AND(Users.peanut_allergy = 0 or Nutrition.contains_nuts = 0) " +
+                        "AND(Users.fish_allergy = 0 or Nutrition.contains_fish = 0) " +
+                        "AND(Users.soy_allergy = 0 or Nutrition.contains_soy = 0) " +
+                        "AND(Users.dairy_allergy = 0 or Nutrition.contains_dairy = 0) " +
+                        "where Users.username = @user ";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", username);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

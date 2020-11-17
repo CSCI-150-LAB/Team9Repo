@@ -125,9 +125,24 @@
             // numericUpDownAge
             // 
             this.numericUpDownAge.Location = new System.Drawing.Point(72, 124);
+            this.numericUpDownAge.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.numericUpDownAge.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAge.Name = "numericUpDownAge";
             this.numericUpDownAge.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownAge.TabIndex = 5;
+            this.numericUpDownAge.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             // 
             // numericUpDownFeet
             // 
@@ -137,9 +152,19 @@
             0,
             0,
             0});
+            this.numericUpDownFeet.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownFeet.Name = "numericUpDownFeet";
             this.numericUpDownFeet.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownFeet.TabIndex = 5;
+            this.numericUpDownFeet.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // numericUpDownPounds
             // 
@@ -149,9 +174,19 @@
             0,
             0,
             0});
+            this.numericUpDownPounds.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownPounds.Name = "numericUpDownPounds";
             this.numericUpDownPounds.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownPounds.TabIndex = 5;
+            this.numericUpDownPounds.Value = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
             // 
             // numericUpDownInch
             // 
@@ -243,6 +278,7 @@
             this.radioButtonAct1.TabStop = true;
             this.radioButtonAct1.Text = "Sedentary (little or no exercise)";
             this.radioButtonAct1.UseVisualStyleBackColor = true;
+            this.radioButtonAct1.CheckedChanged += new System.EventHandler(this.radioButtonAct1_CheckedChanged);
             // 
             // labelPounds
             // 

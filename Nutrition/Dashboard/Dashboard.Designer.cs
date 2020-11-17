@@ -41,16 +41,17 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.consumedBox = new System.Windows.Forms.CheckedListBox();
             this.weightFormsPlot = new ScottPlot.FormsPlot();
             this.barsFormsPlot = new ScottPlot.FormsPlot();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.foodBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -106,6 +107,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -227,12 +229,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.consumedBox);
             this.groupBox1.Location = new System.Drawing.Point(484, 288);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(468, 288);
@@ -240,6 +242,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Food Quickview";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.Location = new System.Drawing.Point(272, 47);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.ShowEditingIcon = false;
+            this.dataGridView1.Size = new System.Drawing.Size(190, 196);
+            this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.Text = "dataGridView1";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -287,14 +309,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.deleteMeal_Click);
             // 
-            // consumedBox
-            // 
-            this.consumedBox.FormattingEnabled = true;
-            this.consumedBox.Location = new System.Drawing.Point(272, 40);
-            this.consumedBox.Name = "consumedBox";
-            this.consumedBox.Size = new System.Drawing.Size(190, 202);
-            this.consumedBox.TabIndex = 1;
-            // 
             // weightFormsPlot
             // 
             this.weightFormsPlot.Location = new System.Drawing.Point(481, 42);
@@ -331,13 +345,24 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.checkBox1);
             this.groupBox7.Controls.Add(this.foodBox1);
             this.groupBox7.Location = new System.Drawing.Point(8, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(170, 57);
+            this.groupBox7.Size = new System.Drawing.Size(170, 84);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Find Food";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(41, 59);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(123, 19);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "Hide Allergy Items";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // foodBox1
             // 
@@ -352,7 +377,7 @@
             // 
             this.groupBox6.Controls.Add(this.flowLayoutPanel2);
             this.groupBox6.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox6.Location = new System.Drawing.Point(8, 66);
+            this.groupBox6.Location = new System.Drawing.Point(8, 115);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(170, 201);
             this.groupBox6.TabIndex = 1;
@@ -715,9 +740,9 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(185, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(21, 21);
+            this.label11.Size = new System.Drawing.Size(16, 21);
             this.label11.TabIndex = 7;
-            this.label11.Text = "+";
+            this.label11.Text = "-";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // calRemainLabel
@@ -858,8 +883,10 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
@@ -926,7 +953,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox proteinBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckedListBox consumedBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -953,5 +979,7 @@
         private System.Windows.Forms.Label calRemainLabel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

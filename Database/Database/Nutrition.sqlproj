@@ -67,4 +67,7 @@
   <ItemGroup>
     <RefactorLog Include="Nutrition.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="UserWeightTracking.sql" />
+  </ItemGroup>
 </Project>
