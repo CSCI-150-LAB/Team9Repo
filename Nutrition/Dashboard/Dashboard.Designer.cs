@@ -86,6 +86,8 @@
             this.healthWelcome = new System.Windows.Forms.StatusStrip();
             this.healthUserWelcome = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.calRemainLabel = new System.Windows.Forms.Label();
             this.calEatenLabel = new System.Windows.Forms.Label();
             this.calGoalLabel = new System.Windows.Forms.Label();
@@ -686,6 +688,8 @@
             // groupBox9
             // 
             this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox9.Controls.Add(this.label15);
+            this.groupBox9.Controls.Add(this.label11);
             this.groupBox9.Controls.Add(this.calRemainLabel);
             this.groupBox9.Controls.Add(this.calEatenLabel);
             this.groupBox9.Controls.Add(this.calGoalLabel);
@@ -695,11 +699,33 @@
             this.groupBox9.TabIndex = 5;
             this.groupBox9.TabStop = false;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(438, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(21, 21);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "=";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(185, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(21, 21);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "+";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
             // calRemainLabel
             // 
             this.calRemainLabel.AutoSize = true;
             this.calRemainLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.calRemainLabel.Location = new System.Drawing.Point(526, 19);
+            this.calRemainLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 0);
             this.calRemainLabel.Name = "calRemainLabel";
             this.calRemainLabel.Size = new System.Drawing.Size(88, 21);
             this.calRemainLabel.TabIndex = 6;
@@ -710,23 +736,27 @@
             // 
             this.calEatenLabel.AutoSize = true;
             this.calEatenLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.calEatenLabel.Location = new System.Drawing.Point(277, 19);
+            this.calEatenLabel.Location = new System.Drawing.Point(265, 19);
+            this.calEatenLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 0);
             this.calEatenLabel.Name = "calEatenLabel";
             this.calEatenLabel.Size = new System.Drawing.Size(111, 21);
             this.calEatenLabel.TabIndex = 5;
             this.calEatenLabel.Text = "Calories Eaten:";
             this.calEatenLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.calEatenLabel.Click += new System.EventHandler(this.calEatenLabel_Click);
             // 
             // calGoalLabel
             // 
             this.calGoalLabel.AutoSize = true;
             this.calGoalLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.calGoalLabel.Location = new System.Drawing.Point(37, 19);
+            this.calGoalLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 0);
             this.calGoalLabel.Name = "calGoalLabel";
-            this.calGoalLabel.Size = new System.Drawing.Size(137, 21);
+            this.calGoalLabel.Size = new System.Drawing.Size(98, 21);
             this.calGoalLabel.TabIndex = 4;
-            this.calGoalLabel.Text = "Daily Calorie Goal:";
+            this.calGoalLabel.Text = "Calorie Goal:";
             this.calGoalLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.calGoalLabel.Click += new System.EventHandler(this.calGoalLabel_Click);
             // 
             // textBox1
             // 
@@ -921,5 +951,7 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label calEatenLabel;
         private System.Windows.Forms.Label calRemainLabel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label15;
     }
 }

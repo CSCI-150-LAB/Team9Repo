@@ -54,10 +54,7 @@ namespace Nutrition
 
             plotBars();
             plotForms();
-
-            //FIXME, needs to get user's goal calories
-            calGoalLabel.Text = "Daily Calorie Recomendation\n" + userBMR;
-
+            refreshCalData();
             bmrHSlabel.Text = "BMR: " + userBMR;
             HSbmiLabel.Text = "Starting BMI: " + userBMI;
             HSweightLabel.Text = "Current Weight: " + d.GetUserData(username)["weight"];
@@ -199,7 +196,6 @@ namespace Nutrition
             weightFormsPlot.Render();
         }
 
-
         private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
         {
            
@@ -213,6 +209,14 @@ namespace Nutrition
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void refreshCalData()
+        {
+            //FIXME, needs to get user's goal calories
+            calGoalLabel.Text = "Daily Calories:\n" + userBMR;
+            calEatenLabel.Text = "Calories Eaten:\n" + Math.Round(d.sumMacroData(username)["calories"], 1);
+            calRemainLabel.Text = "Remaining:\n" + Math.Round(userBMR - d.sumMacroData(username)["calories"], 1);
         }
 
         private void saveFoodButton_Click(object sender, EventArgs e)
@@ -243,7 +247,7 @@ namespace Nutrition
                 //refresh the graph visuals
                 plotBars();
                 plotForms();
-
+                refreshCalData();
                 //Optional show how many items were saved
                 MessageBox.Show("Saved " + i + " list items!");
             }
@@ -429,6 +433,21 @@ namespace Nutrition
         }
 
         private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void calEatenLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void calGoalLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
         {
 
         }
