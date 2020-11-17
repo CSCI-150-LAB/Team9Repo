@@ -740,9 +740,9 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(185, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(21, 21);
+            this.label11.Size = new System.Drawing.Size(16, 21);
             this.label11.TabIndex = 7;
-            this.label11.Text = "+";
+            this.label11.Text = "-";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // calRemainLabel

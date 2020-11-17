@@ -447,6 +447,9 @@ namespace Nutrition
                 {
                     d.DeleteFoodEntry(item, username);
                     dataGridView1.Rows.Remove(row);
+                    plotBars();
+                    plotForms();
+                    refreshCalData();
                 }
             }
         }
