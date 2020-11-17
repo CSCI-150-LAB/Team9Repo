@@ -55,13 +55,18 @@
             this.foodBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label16 = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.calorieBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.fatBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.carbBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.fatBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.proteinBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -377,33 +382,48 @@
             // 
             this.groupBox6.Controls.Add(this.flowLayoutPanel2);
             this.groupBox6.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox6.Location = new System.Drawing.Point(8, 115);
+            this.groupBox6.Location = new System.Drawing.Point(156, 99);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(170, 201);
+            this.groupBox6.Size = new System.Drawing.Size(198, 271);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Nutrition Entry";
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Controls.Add(this.label16);
             this.flowLayoutPanel2.Controls.Add(this.nameBox);
+            this.flowLayoutPanel2.Controls.Add(this.label17);
             this.flowLayoutPanel2.Controls.Add(this.calorieBox);
             this.flowLayoutPanel2.Controls.Add(this.label7);
-            this.flowLayoutPanel2.Controls.Add(this.fatBox);
-            this.flowLayoutPanel2.Controls.Add(this.label8);
+            this.flowLayoutPanel2.Controls.Add(this.label18);
             this.flowLayoutPanel2.Controls.Add(this.carbBox);
             this.flowLayoutPanel2.Controls.Add(this.label9);
+            this.flowLayoutPanel2.Controls.Add(this.label19);
+            this.flowLayoutPanel2.Controls.Add(this.fatBox);
+            this.flowLayoutPanel2.Controls.Add(this.label8);
+            this.flowLayoutPanel2.Controls.Add(this.label20);
             this.flowLayoutPanel2.Controls.Add(this.proteinBox);
             this.flowLayoutPanel2.Controls.Add(this.label10);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 22);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(152, 171);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(186, 171);
             this.flowLayoutPanel2.TabIndex = 0;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(5, 9);
+            this.label16.Margin = new System.Windows.Forms.Padding(5, 9, 9, 9);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 15);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Name";
+            // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(5, 5);
+            this.nameBox.Location = new System.Drawing.Point(58, 5);
             this.nameBox.Margin = new System.Windows.Forms.Padding(5);
             this.nameBox.Name = "nameBox";
             this.nameBox.PlaceholderText = "Name";
@@ -411,9 +431,19 @@
             this.nameBox.TabIndex = 0;
             this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 42);
+            this.label17.Margin = new System.Windows.Forms.Padding(3, 9, 0, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(49, 15);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Calories";
+            // 
             // calorieBox
             // 
-            this.calorieBox.Location = new System.Drawing.Point(5, 38);
+            this.calorieBox.Location = new System.Drawing.Point(57, 38);
             this.calorieBox.Margin = new System.Windows.Forms.Padding(5);
             this.calorieBox.Name = "calorieBox";
             this.calorieBox.PlaceholderText = "Calories";
@@ -424,35 +454,26 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(96, 42);
+            this.label7.Location = new System.Drawing.Point(148, 42);
             this.label7.Margin = new System.Windows.Forms.Padding(0, 9, 5, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 15);
             this.label7.TabIndex = 2;
             this.label7.Text = "kcals";
             // 
-            // fatBox
+            // label18
             // 
-            this.fatBox.Location = new System.Drawing.Point(3, 69);
-            this.fatBox.Name = "fatBox";
-            this.fatBox.PlaceholderText = "Fat";
-            this.fatBox.Size = new System.Drawing.Size(88, 23);
-            this.fatBox.TabIndex = 6;
-            this.fatBox.TextChanged += new System.EventHandler(this.fatBox_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(94, 73);
-            this.label8.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 15);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "g";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 73);
+            this.label18.Margin = new System.Windows.Forms.Padding(3, 7, 12, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(37, 15);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "Carbs";
             // 
             // carbBox
             // 
-            this.carbBox.Location = new System.Drawing.Point(3, 98);
+            this.carbBox.Location = new System.Drawing.Point(55, 69);
             this.carbBox.Name = "carbBox";
             this.carbBox.PlaceholderText = "Carbs";
             this.carbBox.Size = new System.Drawing.Size(88, 23);
@@ -462,16 +483,55 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(94, 102);
+            this.label9.Location = new System.Drawing.Point(146, 73);
             this.label9.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 15);
             this.label9.TabIndex = 4;
             this.label9.Text = "g";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 102);
+            this.label19.Margin = new System.Windows.Forms.Padding(3, 7, 25, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(23, 15);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "Fat";
+            // 
+            // fatBox
+            // 
+            this.fatBox.Location = new System.Drawing.Point(54, 98);
+            this.fatBox.Name = "fatBox";
+            this.fatBox.PlaceholderText = "Fat";
+            this.fatBox.Size = new System.Drawing.Size(88, 23);
+            this.fatBox.TabIndex = 6;
+            this.fatBox.TextChanged += new System.EventHandler(this.fatBox_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(145, 102);
+            this.label8.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 15);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "g";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 131);
+            this.label20.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(45, 15);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Protein";
+            // 
             // proteinBox
             // 
-            this.proteinBox.Location = new System.Drawing.Point(3, 127);
+            this.proteinBox.Location = new System.Drawing.Point(54, 127);
             this.proteinBox.Name = "proteinBox";
             this.proteinBox.PlaceholderText = "Protein";
             this.proteinBox.Size = new System.Drawing.Size(88, 23);
@@ -481,7 +541,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(94, 131);
+            this.label10.Location = new System.Drawing.Point(145, 131);
             this.label10.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(14, 15);
@@ -521,7 +581,7 @@
             this.groupBox4.Controls.Add(this.removeButton);
             this.groupBox4.Controls.Add(this.clearAllButton);
             this.groupBox4.Controls.Add(this.foodItems);
-            this.groupBox4.Location = new System.Drawing.Point(184, 66);
+            this.groupBox4.Location = new System.Drawing.Point(360, 99);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(198, 271);
             this.groupBox4.TabIndex = 3;
@@ -582,7 +642,7 @@
             // 
             this.saveFoodButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.saveFoodButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveFoodButton.Location = new System.Drawing.Point(293, 360);
+            this.saveFoodButton.Location = new System.Drawing.Point(471, 389);
             this.saveFoodButton.Name = "saveFoodButton";
             this.saveFoodButton.Size = new System.Drawing.Size(87, 36);
             this.saveFoodButton.TabIndex = 4;
@@ -981,5 +1041,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
     }
 }
