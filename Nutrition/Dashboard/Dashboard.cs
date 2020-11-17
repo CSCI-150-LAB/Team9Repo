@@ -63,10 +63,10 @@ namespace Nutrition
             HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
 
 
-            string[] weightGoals = new string[] { "Maintain", "Loose", "Gain" };
+            string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
             goalChangeBox.DataSource = weightGoals;
 
-            //label1.Text = "Current Goal: " + d.GetGoal(username);
+            fixGoal();
         }
 
         private void StartTimer()
@@ -119,6 +119,11 @@ namespace Nutrition
                 IDictionary<string, double> data = d.sumMacroData(this.username);
                 MessageBox.Show("Protein Sum: " + data["protein"] + "\nFat Sum: " + data["fat"] + "\nCarbs: " + data["carbs"] + "\nCalories: " + data["calories"]);
             }
+        }
+
+        void fixGoal()
+        {
+            currGoalLabel.Text = "Current Goal: " + d.GetGoal(username);
         }
 
         //call these functions whenever the graphs need to update
@@ -543,7 +548,8 @@ namespace Nutrition
 
         private void goalChangeBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            d.SetGoal(username, (goalChangeBox.SelectedItem.ToString()));
+            fixGoal();
         }
     }
 }
