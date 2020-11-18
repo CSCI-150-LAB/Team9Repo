@@ -7,6 +7,12 @@
     <Compile Update="Dashboard\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Dashboard\FoodEntryTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dashboard\RecipeTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FoodEntry\LogFood.cs">
       <SubType>Form</SubType>
     </Compile>

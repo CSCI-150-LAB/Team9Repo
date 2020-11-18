@@ -11,7 +11,7 @@ namespace Nutrition
     {
         private string username;
         private IDictionary<string, string> userData;
-        private DateTime join_date; //FIXME: what is this needed for?
+        private IDictionary<string, double> user_macro_sum;
         private DateTime last_login;
         private double userBMR;
         private double userBMI;
@@ -29,10 +29,10 @@ namespace Nutrition
         {
             username = user["username"];
             userData = d.GetUserData(username);
-            userBMR = Double.Parse(d.GetUserData(username)["bmr"]);
-            userBMI = Double.Parse(d.GetUserData(username)["bmi"]);
-            userWeight = Double.Parse(d.GetUserData(username)["weight"]);
-            double feet = Double.Parse(d.GetUserData(username)["height_inches"]);
+            userBMR = Double.Parse(userData["bmr"]);
+            userBMI = Double.Parse(userData["bmi"]);
+            userWeight = Double.Parse(userData["weight"]);
+            double feet = Double.Parse(userData["height_inches"]);
             heightFeet = (int)feet / 12;
             heightInch = (int)feet % 12;
 
@@ -52,20 +52,19 @@ namespace Nutrition
             userDropDown.Text = "Welcome, " + getUser();
             lastLoginLabel.Text = "You last logged in " + getLastLogin();
             healthUserWelcome.Text = username + "'s Personal Health Summary";
-            StartTimer();
 
+            StartTimer();
             plotBars();
             plotForms();
             refreshCalData();
             bmrHSlabel.Text = "BMR: " + userBMR;
             HSbmiLabel.Text = "Starting BMI: " + userBMI;
-            HSweightLabel.Text = "Current Weight: " + d.GetUserData(username)["weight"];
+            HSweightLabel.Text = "Current Weight: " + userData["weight"];
             HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
 
 
             string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
             goalChangeBox.DataSource = weightGoals;
-
             fixGoal();
         }
 
@@ -106,33 +105,30 @@ namespace Nutrition
             }
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            //  MessageBox.Show(e.ClickedItem.Text);
-            if (e.ClickedItem.Text == "Add Foods")
-            {
-                LogFood f = new LogFood(this.username);
-                f.Show();
-            }
-            else if (e.ClickedItem.Text == "Health Summary")
-            {
-                IDictionary<string, double> data = d.sumMacroData(this.username);
-                MessageBox.Show("Protein Sum: " + data["protein"] + "\nFat Sum: " + data["fat"] + "\nCarbs: " + data["carbs"] + "\nCalories: " + data["calories"]);
-            }
-        }
-
         void fixGoal()
         {
             currGoalLabel.Text = "Current Goal: " + d.GetGoal(username);
         }
 
+        private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string goal = goalChangeBox.SelectedItem.ToString();
+            //MessageBox.Show("Goal changed to " + goal);//This pops up even when the tab isn't in focus and we didn't touch the drop down box
+
+            d.SetGoal(username, goal);
+            fixGoal();
+        }
+
         //call these functions whenever the graphs need to update
         private void plotBars()
         {
+            //Grab the values from the DB
+            user_macro_sum = d.sumMacroData(username);
+
             //double cal = d.sumMacroData(username)["calories"];
-            double carb = d.sumMacroData(username)["carbs"];
-            double fat = d.sumMacroData(username)["fat"];
-            double pro = d.sumMacroData(username)["protein"];
+            double carb = user_macro_sum["carbs"];
+            double fat = user_macro_sum["fat"];
+            double pro = user_macro_sum["protein"];
 
             //macro range calculated from user's BMR
             //ploted as calories recomended for each item
@@ -184,13 +180,12 @@ namespace Nutrition
 
         private void plotForms()
         {
-
             List<Weight> THICCLOGG = d.GetWeightLog(username);
 
             bool isEmpty = !THICCLOGG.Any();
             if (isEmpty)
             {
-                THICCLOGG.Add(new Weight(double.Parse(d.GetUserData(username)["weight"]), DateTime.Now));
+                THICCLOGG.Add(new Weight(double.Parse(userData["weight"]), DateTime.Now));
             }
             Weight[] p = THICCLOGG.ToArray();
 
@@ -227,141 +222,14 @@ namespace Nutrition
             weightFormsPlot.Render();
         }
 
-        private void barsFormsPlot_Load_1(object sender, EventArgs e) //plots user's macros for the day
-        {
-
-        }
-
-        private void formsPlot1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void refreshCalData()
         {
+            user_macro_sum = d.sumMacroData(username);
+
             //FIXME, needs to get user's goal calories
             calGoalLabel.Text = "Daily Calories:\n" + userBMR;
-            calEatenLabel.Text = "Calories Eaten:\n" + Math.Round(d.sumMacroData(username)["calories"], 1);
-            calRemainLabel.Text = "Remaining:\n" + Math.Round(userBMR - d.sumMacroData(username)["calories"], 1);
-        }
-
-        private void saveFoodButton_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-            foreach (string name in foodItems.Items)
-            {
-                Food raw_facts = foodList.searchByName(name);
-                IDictionary<string, string> nutrition = new Dictionary<string, string>
-                {
-                    ["username"] = username,
-                    ["item_name"] = raw_facts.name,
-                    ["cals"] = raw_facts.calories.ToString(),
-                    ["fat"] = raw_facts.fat.ToString(),
-                    ["carbs"] = raw_facts.carbs.ToString(),
-                    ["protein"] = raw_facts.protein.ToString(),
-                    ["meal_type"] = ((int)raw_facts.type).ToString() //Cast with (int) to get the Enum value instead of the enum string value
-                };
-                d.insertUserTracking(nutrition);
-                i++;
-            }
-            //Check if any items were added to the form
-            if (i > 0)
-            {
-                clearAllButton_Click(sender, e); //clear the food entry form
-                prefetch(); //Update the last 10 meal data and user data to reflect the new consumed items
-
-                //refresh the graph visuals
-                plotBars();
-                plotForms();
-                refreshCalData();
-                //Optional show how many items were saved
-                MessageBox.Show("Saved " + i + " list items!");
-            }
-        }
-
-        private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string food = foodBox1.SelectedItem.ToString();
-            currentFood = null;
-            foodItems.Items.Add(food);
-
-            List<string> facts = d.GetFoodData(food);//pre-fill the form with database values
-            nameBox.Text = facts[0];
-            calorieBox.Text = facts[1];
-            fatBox.Text = facts[2];
-            carbBox.Text = facts[3];
-            proteinBox.Text = facts[4];
-
-            int calories = int.Parse(facts[1]);
-            double fat = double.Parse(facts[2]);
-            double carb = double.Parse(facts[3]);
-            double pro = double.Parse(facts[4]);
-            foodList.addNewFood(new Food(nameBox.Text, calories, fat, pro, carb, Food.MealType.Dinner));//TODO Add mealType in form
-
-            if (targetLabel.Text == "N/A")
-                targetLabel.Text = facts[1];
-            else
-            {
-                int sum = int.Parse(targetLabel.Text) + calories;
-                targetLabel.Text = sum.ToString();
-            }
-        }
-
-        private void foodItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = foodItems.SelectedIndex;
-            if (index == -1)
-                return;
-
-            Food fact = foodList.searchByName(foodItems.SelectedItem.ToString());
-
-            //Take note of current food
-            currentFood = fact;
-
-            nameBox.Text = fact.name;
-            calorieBox.Text = fact.calories.ToString();
-            fatBox.Text = fact.fat.ToString();
-            carbBox.Text = fact.carbs.ToString();
-            proteinBox.Text = fact.protein.ToString();
-        }
-
-        private void clearAllButton_Click(object sender, EventArgs e)
-        {
-            currentFood = null;
-            foodItems.Items.Clear();
-            targetLabel.Text = "N/A";
-            nameBox.Text = "";
-            calorieBox.Text = "";
-            fatBox.Text = "";
-            carbBox.Text = "";
-            proteinBox.Text = "";
-        }
-
-        private void removeButton_Click(object sender, EventArgs e)
-        {
-            int index = foodItems.SelectedIndex;
-            if (index > -1)
-            {
-                List<string> facts = d.GetFoodData(foodItems.SelectedItem.ToString());
-
-                foodItems.Items.RemoveAt(index);
-                foodItems.SelectedIndex = index - 1;
-
-                int sum = int.Parse(targetLabel.Text) - int.Parse(facts[1]);
-                if (sum > 0)
-                    targetLabel.Text = sum.ToString();
-                else
-                    targetLabel.Text = "N/A";
-            }
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            calEatenLabel.Text = "Calories Eaten:\n" + Math.Round(user_macro_sum["calories"], 1);
+            calRemainLabel.Text = "Remaining:\n" + Math.Round(userBMR - user_macro_sum["calories"], 1);
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -369,71 +237,11 @@ namespace Nutrition
             //Set the dashboard tab to be displayed first
             tabControl1.SelectedIndex = 0;
 
-            //Prefetch food box items from the database into the form
-            //Is there a better way?
-            foodData = d.GetFoodItems();
-            foreach (string name in foodData)
-            {
-                foodBox1.Items.Add(name);
-            }
+            //Fill the drop down menus with food items
+            FillFoodData();
 
             //Prefetch Data
             prefetch();
-        }
-
-        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void nameBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentFood != null)
-            {
-                Food changed = currentFood;
-                changed.name = nameBox.Text;
-                foodList.updateItem(currentFood, changed);
-            }
-        }
-
-        private void calorieBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentFood != null)
-            {
-                Food changed = currentFood;
-                changed.calories = int.Parse(calorieBox.Text);
-                foodList.updateItem(currentFood, changed);
-            }
-        }
-
-        private void fatBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentFood != null)
-            {
-                Food changed = currentFood;
-                changed.fat = double.Parse(fatBox.Text);
-                foodList.updateItem(currentFood, changed);
-            }
-        }
-
-        private void carbBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentFood != null)
-            {
-                Food changed = currentFood;
-                changed.carbs = double.Parse(carbBox.Text);
-                foodList.updateItem(currentFood, changed);
-            }
-        }
-
-        private void proteinBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentFood != null)
-            {
-                Food changed = currentFood;
-                changed.protein = double.Parse(proteinBox.Text);
-                foodList.updateItem(currentFood, changed);
-            }
         }
 
         /**
@@ -447,16 +255,31 @@ namespace Nutrition
             dataGridView1.Columns["date_logged"].Visible = false;
 
             //Prefetch user BMR and the sum of the past 24 hours of macro data
-            IDictionary<string, string> user = d.GetUserData(username);
-            IDictionary<string, double> user_macro_sum = d.sumMacroData(username);
-            double bmr = double.Parse(user["bmr"]);
+            userData = d.GetUserData(username);
+            user_macro_sum = d.sumMacroData(username);
+            double bmr = double.Parse(userData["bmr"]);
             bmrLabel.Text = Convert.ToInt32(bmr).ToString();
         }
 
-        private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void FillFoodData()
         {
-            string goal = goalChangeBox.SelectedItem.ToString();
-            d.SetGoal(username, goal);
+            //Prefetch food box items from the database
+            foodData = d.GetFoodItems();
+            foreach (string name in foodData)
+            {
+                //Add items to the food box
+                foodBox1.Items.Add(name);
+
+                //Add food items to the recipe tab
+                ingredientsDropDown.Items.Add(name);
+            }
+
+            //Prefetch recipes from the database
+            List<Recipe> recipes = d.GetRecipeList();
+            foreach (Recipe item in recipes)
+            {
+                recipeDropDown.Items.Add(item.name);
+            }
         }
 
         private void deleteMeal_Click(object sender, EventArgs e)
@@ -476,80 +299,12 @@ namespace Nutrition
                 {
                     d.DeleteFoodEntry(item, username);
                     dataGridView1.Rows.Remove(row);
+                    prefetch();
                     plotBars();
                     plotForms();
                     refreshCalData();
                 }
             }
-        }
-
-        private void allergyCheckBox_Changed(object sender, EventArgs e)
-        {
-            //Show allergy items
-            if (checkBox1.Checked)
-            {
-                List<string> foods = d.GetNoAllergyFoodItems(username);
-                foodBox1.Items.Clear();//Clear box to remove potential allergy conflicts
-                foreach (string name in foods)
-                {
-                    foodBox1.Items.Add(name);
-                }
-            }
-            else //Show all items
-            {
-                foodBox1.Items.Clear();//Clear box to prevent duplicates
-                foreach (string name in foodData)
-                {
-                    foodBox1.Items.Add(name);
-                }
-            }
-        }
-
-        private void calEatenLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void calGoalLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var selectedRows = dataGridView1.SelectedRows
-         .OfType<DataGridViewRow>()
-         .Where(row => !row.IsNewRow)
-         .ToArray();
-
-            foreach (var row in selectedRows)
-            {
-                MessageBox.Show("Deleting: " + dataGridView1.SelectedRows[0].Cells["item_name"].Value.ToString());
-                int item = -1;
-                string val = dataGridView1.SelectedRows[0].Cells["id"].Value.ToString();
-                bool parsed = Int32.TryParse(val, out item);
-                if (parsed)
-                {
-                    d.DeleteFoodEntry(item, username);
-                    dataGridView1.Rows.Remove(row);
-                }
-            }
-        }
-
-        private void goalChangeBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            d.SetGoal(username, (goalChangeBox.SelectedItem.ToString()));
-            fixGoal();
         }
 
         //Prevent application from running in the background

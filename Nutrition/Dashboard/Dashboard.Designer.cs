@@ -46,30 +46,29 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deleteMealButton = new System.Windows.Forms.Button();
             this.weightFormsPlot = new ScottPlot.FormsPlot();
             this.barsFormsPlot = new ScottPlot.FormsPlot();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.allergyCheckbox = new System.Windows.Forms.CheckBox();
             this.foodBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label16 = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.calLabel = new System.Windows.Forms.Label();
             this.calorieBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.carbLabel = new System.Windows.Forms.Label();
             this.carbBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.fatLabel = new System.Windows.Forms.Label();
             this.fatBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.proteinLabel = new System.Windows.Forms.Label();
             this.proteinBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.targetLabel = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -80,6 +79,19 @@
             this.bmrLabel = new System.Windows.Forms.Label();
             this.saveFoodButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.saveRecipe = new System.Windows.Forms.Button();
+            this.deleteIngredientBut = new System.Windows.Forms.Button();
+            this.recipeIngredientList = new System.Windows.Forms.ListBox();
+            this.ingredientsDropDown = new System.Windows.Forms.ComboBox();
+            this.recipeNameBox = new System.Windows.Forms.TextBox();
+            this.recipeDescription = new System.Windows.Forms.RichTextBox();
+            this.recipeNameLabel = new System.Windows.Forms.Label();
+            this.recipeDescriptionLabel = new System.Windows.Forms.Label();
+            this.ingredientsLabel = new System.Windows.Forms.Label();
+            this.recipeLabel = new System.Windows.Forms.Label();
+            this.recipeInsBox = new System.Windows.Forms.RichTextBox();
+            this.recipeInsLabel = new System.Windows.Forms.Label();
+            this.recipeDropDown = new System.Windows.Forms.ComboBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.goalChangeBox = new System.Windows.Forms.ComboBox();
             this.goalChangeLabel = new System.Windows.Forms.Label();
@@ -120,6 +132,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.healthWelcome.SuspendLayout();
@@ -201,10 +214,9 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 3;
+            this.tabControl1.SelectedIndex = 4;
             this.tabControl1.Size = new System.Drawing.Size(966, 640);
             this.tabControl1.TabIndex = 8;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -230,7 +242,6 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recipe?";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox1
             // 
@@ -239,14 +250,13 @@
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.deleteMealButton);
             this.groupBox1.Location = new System.Drawing.Point(484, 288);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(468, 288);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Food Quickview";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dataGridView1
             // 
@@ -266,7 +276,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(190, 196);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.Text = "dataGridView1";
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -304,15 +313,15 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Breakfast";
             // 
-            // button1
+            // deleteMealButton
             // 
-            this.button1.Location = new System.Drawing.Point(272, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Delete Selected";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.deleteMeal_Click);
+            this.deleteMealButton.Location = new System.Drawing.Point(272, 259);
+            this.deleteMealButton.Name = "deleteMealButton";
+            this.deleteMealButton.Size = new System.Drawing.Size(190, 23);
+            this.deleteMealButton.TabIndex = 2;
+            this.deleteMealButton.Text = "Delete Selected";
+            this.deleteMealButton.UseVisualStyleBackColor = true;
+            this.deleteMealButton.Click += new System.EventHandler(this.deleteMeal_Click);
             // 
             // weightFormsPlot
             // 
@@ -321,7 +330,6 @@
             this.weightFormsPlot.Name = "weightFormsPlot";
             this.weightFormsPlot.Size = new System.Drawing.Size(472, 232);
             this.weightFormsPlot.TabIndex = 5;
-            this.weightFormsPlot.Load += new System.EventHandler(this.formsPlot1_Load);
             // 
             // barsFormsPlot
             // 
@@ -330,7 +338,6 @@
             this.barsFormsPlot.Name = "barsFormsPlot";
             this.barsFormsPlot.Size = new System.Drawing.Size(472, 232);
             this.barsFormsPlot.TabIndex = 4;
-            this.barsFormsPlot.Load += new System.EventHandler(this.barsFormsPlot_Load_1);
             // 
             // tabPage2
             // 
@@ -350,7 +357,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.checkBox1);
+            this.groupBox7.Controls.Add(this.allergyCheckbox);
             this.groupBox7.Controls.Add(this.foodBox1);
             this.groupBox7.Location = new System.Drawing.Point(8, 3);
             this.groupBox7.Name = "groupBox7";
@@ -359,15 +366,16 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Find Food";
             // 
-            // checkBox1
+            // allergyCheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(41, 59);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(123, 19);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Hide Allergy Items";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.allergyCheckbox.AutoSize = true;
+            this.allergyCheckbox.Location = new System.Drawing.Point(41, 59);
+            this.allergyCheckbox.Name = "allergyCheckbox";
+            this.allergyCheckbox.Size = new System.Drawing.Size(123, 19);
+            this.allergyCheckbox.TabIndex = 1;
+            this.allergyCheckbox.Text = "Hide Allergy Items";
+            this.allergyCheckbox.UseVisualStyleBackColor = true;
+            this.allergyCheckbox.CheckedChanged += new System.EventHandler(this.allergyCheckbox_CheckedChanged);
             // 
             // foodBox1
             // 
@@ -381,8 +389,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox6.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox6.Location = new System.Drawing.Point(156, 99);
+            this.groupBox6.Location = new System.Drawing.Point(156, 135);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(198, 271);
             this.groupBox6.TabIndex = 1;
@@ -391,35 +398,34 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.label16);
+            this.flowLayoutPanel2.Controls.Add(this.nameLabel);
             this.flowLayoutPanel2.Controls.Add(this.nameBox);
-            this.flowLayoutPanel2.Controls.Add(this.label17);
+            this.flowLayoutPanel2.Controls.Add(this.calLabel);
             this.flowLayoutPanel2.Controls.Add(this.calorieBox);
             this.flowLayoutPanel2.Controls.Add(this.label7);
-            this.flowLayoutPanel2.Controls.Add(this.label18);
+            this.flowLayoutPanel2.Controls.Add(this.carbLabel);
             this.flowLayoutPanel2.Controls.Add(this.carbBox);
             this.flowLayoutPanel2.Controls.Add(this.label9);
-            this.flowLayoutPanel2.Controls.Add(this.label19);
+            this.flowLayoutPanel2.Controls.Add(this.fatLabel);
             this.flowLayoutPanel2.Controls.Add(this.fatBox);
             this.flowLayoutPanel2.Controls.Add(this.label8);
-            this.flowLayoutPanel2.Controls.Add(this.label20);
+            this.flowLayoutPanel2.Controls.Add(this.proteinLabel);
             this.flowLayoutPanel2.Controls.Add(this.proteinBox);
             this.flowLayoutPanel2.Controls.Add(this.label10);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 22);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(186, 171);
             this.flowLayoutPanel2.TabIndex = 0;
-            this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
-            // label16
+            // nameLabel
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(5, 9);
-            this.label16.Margin = new System.Windows.Forms.Padding(5, 9, 9, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(39, 15);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "Name";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(5, 9);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(5, 9, 9, 9);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(39, 15);
+            this.nameLabel.TabIndex = 9;
+            this.nameLabel.Text = "Name";
             // 
             // nameBox
             // 
@@ -431,15 +437,15 @@
             this.nameBox.TabIndex = 0;
             this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
-            // label17
+            // calLabel
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 42);
-            this.label17.Margin = new System.Windows.Forms.Padding(3, 9, 0, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 15);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "Calories";
+            this.calLabel.AutoSize = true;
+            this.calLabel.Location = new System.Drawing.Point(3, 42);
+            this.calLabel.Margin = new System.Windows.Forms.Padding(3, 9, 0, 0);
+            this.calLabel.Name = "calLabel";
+            this.calLabel.Size = new System.Drawing.Size(49, 15);
+            this.calLabel.TabIndex = 10;
+            this.calLabel.Text = "Calories";
             // 
             // calorieBox
             // 
@@ -461,15 +467,15 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "kcals";
             // 
-            // label18
+            // carbLabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 73);
-            this.label18.Margin = new System.Windows.Forms.Padding(3, 7, 12, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(37, 15);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "Carbs";
+            this.carbLabel.AutoSize = true;
+            this.carbLabel.Location = new System.Drawing.Point(3, 73);
+            this.carbLabel.Margin = new System.Windows.Forms.Padding(3, 7, 12, 0);
+            this.carbLabel.Name = "carbLabel";
+            this.carbLabel.Size = new System.Drawing.Size(37, 15);
+            this.carbLabel.TabIndex = 11;
+            this.carbLabel.Text = "Carbs";
             // 
             // carbBox
             // 
@@ -490,15 +496,15 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "g";
             // 
-            // label19
+            // fatLabel
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 102);
-            this.label19.Margin = new System.Windows.Forms.Padding(3, 7, 25, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(23, 15);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "Fat";
+            this.fatLabel.AutoSize = true;
+            this.fatLabel.Location = new System.Drawing.Point(3, 102);
+            this.fatLabel.Margin = new System.Windows.Forms.Padding(3, 7, 25, 0);
+            this.fatLabel.Name = "fatLabel";
+            this.fatLabel.Size = new System.Drawing.Size(23, 15);
+            this.fatLabel.TabIndex = 12;
+            this.fatLabel.Text = "Fat";
             // 
             // fatBox
             // 
@@ -519,15 +525,15 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "g";
             // 
-            // label20
+            // proteinLabel
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 131);
-            this.label20.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 15);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Protein";
+            this.proteinLabel.AutoSize = true;
+            this.proteinLabel.Location = new System.Drawing.Point(3, 131);
+            this.proteinLabel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            this.proteinLabel.Name = "proteinLabel";
+            this.proteinLabel.Size = new System.Drawing.Size(45, 15);
+            this.proteinLabel.TabIndex = 13;
+            this.proteinLabel.Text = "Protein";
             // 
             // proteinBox
             // 
@@ -547,13 +553,6 @@
             this.label10.Size = new System.Drawing.Size(14, 15);
             this.label10.TabIndex = 5;
             this.label10.Text = "g";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 22);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(152, 171);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // groupBox5
             // 
@@ -652,6 +651,19 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.saveRecipe);
+            this.tabPage3.Controls.Add(this.deleteIngredientBut);
+            this.tabPage3.Controls.Add(this.recipeIngredientList);
+            this.tabPage3.Controls.Add(this.ingredientsDropDown);
+            this.tabPage3.Controls.Add(this.recipeNameBox);
+            this.tabPage3.Controls.Add(this.recipeDescription);
+            this.tabPage3.Controls.Add(this.recipeNameLabel);
+            this.tabPage3.Controls.Add(this.recipeDescriptionLabel);
+            this.tabPage3.Controls.Add(this.ingredientsLabel);
+            this.tabPage3.Controls.Add(this.recipeLabel);
+            this.tabPage3.Controls.Add(this.recipeInsBox);
+            this.tabPage3.Controls.Add(this.recipeInsLabel);
+            this.tabPage3.Controls.Add(this.recipeDropDown);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -659,6 +671,122 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Recipe Search";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // saveRecipe
+            // 
+            this.saveRecipe.Location = new System.Drawing.Point(288, 434);
+            this.saveRecipe.Name = "saveRecipe";
+            this.saveRecipe.Size = new System.Drawing.Size(101, 23);
+            this.saveRecipe.TabIndex = 13;
+            this.saveRecipe.Text = "Save Recipe";
+            this.saveRecipe.UseVisualStyleBackColor = true;
+            this.saveRecipe.Click += new System.EventHandler(this.saveRecipe_Click);
+            // 
+            // deleteIngredientBut
+            // 
+            this.deleteIngredientBut.Location = new System.Drawing.Point(118, 434);
+            this.deleteIngredientBut.Name = "deleteIngredientBut";
+            this.deleteIngredientBut.Size = new System.Drawing.Size(114, 23);
+            this.deleteIngredientBut.TabIndex = 0;
+            this.deleteIngredientBut.Text = "Delete Ingredient";
+            this.deleteIngredientBut.UseVisualStyleBackColor = true;
+            this.deleteIngredientBut.Click += new System.EventHandler(this.deleteIngredientBut_Click);
+            // 
+            // recipeIngredientList
+            // 
+            this.recipeIngredientList.FormattingEnabled = true;
+            this.recipeIngredientList.ItemHeight = 15;
+            this.recipeIngredientList.Location = new System.Drawing.Point(118, 289);
+            this.recipeIngredientList.Name = "recipeIngredientList";
+            this.recipeIngredientList.Size = new System.Drawing.Size(272, 139);
+            this.recipeIngredientList.TabIndex = 1;
+            // 
+            // ingredientsDropDown
+            // 
+            this.ingredientsDropDown.FormattingEnabled = true;
+            this.ingredientsDropDown.Location = new System.Drawing.Point(141, 241);
+            this.ingredientsDropDown.Name = "ingredientsDropDown";
+            this.ingredientsDropDown.Size = new System.Drawing.Size(177, 23);
+            this.ingredientsDropDown.TabIndex = 2;
+            this.ingredientsDropDown.SelectedIndexChanged += new System.EventHandler(this.ingredientsDropDown_SelectedIndexChanged);
+            // 
+            // recipeNameBox
+            // 
+            this.recipeNameBox.Location = new System.Drawing.Point(118, 31);
+            this.recipeNameBox.Name = "recipeNameBox";
+            this.recipeNameBox.PlaceholderText = "Recipe Name";
+            this.recipeNameBox.Size = new System.Drawing.Size(177, 23);
+            this.recipeNameBox.TabIndex = 4;
+            // 
+            // recipeDescription
+            // 
+            this.recipeDescription.Location = new System.Drawing.Point(118, 60);
+            this.recipeDescription.Name = "recipeDescription";
+            this.recipeDescription.Size = new System.Drawing.Size(352, 46);
+            this.recipeDescription.TabIndex = 5;
+            this.recipeDescription.Text = "";
+            // 
+            // recipeNameLabel
+            // 
+            this.recipeNameLabel.AutoSize = true;
+            this.recipeNameLabel.Location = new System.Drawing.Point(35, 34);
+            this.recipeNameLabel.Name = "recipeNameLabel";
+            this.recipeNameLabel.Size = new System.Drawing.Size(77, 15);
+            this.recipeNameLabel.TabIndex = 6;
+            this.recipeNameLabel.Text = "Recipe Name";
+            // 
+            // recipeDescriptionLabel
+            // 
+            this.recipeDescriptionLabel.AutoSize = true;
+            this.recipeDescriptionLabel.Location = new System.Drawing.Point(35, 63);
+            this.recipeDescriptionLabel.Name = "recipeDescriptionLabel";
+            this.recipeDescriptionLabel.Size = new System.Drawing.Size(67, 15);
+            this.recipeDescriptionLabel.TabIndex = 7;
+            this.recipeDescriptionLabel.Text = "Description";
+            // 
+            // ingredientsLabel
+            // 
+            this.ingredientsLabel.AutoSize = true;
+            this.ingredientsLabel.Location = new System.Drawing.Point(35, 244);
+            this.ingredientsLabel.Name = "ingredientsLabel";
+            this.ingredientsLabel.Size = new System.Drawing.Size(100, 15);
+            this.ingredientsLabel.TabIndex = 8;
+            this.ingredientsLabel.Text = "Select Ingredients";
+            // 
+            // recipeLabel
+            // 
+            this.recipeLabel.AutoSize = true;
+            this.recipeLabel.Location = new System.Drawing.Point(35, 289);
+            this.recipeLabel.Name = "recipeLabel";
+            this.recipeLabel.Size = new System.Drawing.Size(42, 15);
+            this.recipeLabel.TabIndex = 9;
+            this.recipeLabel.Text = "Recipe";
+            // 
+            // recipeInsBox
+            // 
+            this.recipeInsBox.Location = new System.Drawing.Point(118, 112);
+            this.recipeInsBox.Name = "recipeInsBox";
+            this.recipeInsBox.Size = new System.Drawing.Size(352, 108);
+            this.recipeInsBox.TabIndex = 10;
+            this.recipeInsBox.Text = "";
+            // 
+            // recipeInsLabel
+            // 
+            this.recipeInsLabel.AutoSize = true;
+            this.recipeInsLabel.Location = new System.Drawing.Point(35, 115);
+            this.recipeInsLabel.Name = "recipeInsLabel";
+            this.recipeInsLabel.Size = new System.Drawing.Size(69, 15);
+            this.recipeInsLabel.TabIndex = 11;
+            this.recipeInsLabel.Text = "Instructions";
+            // 
+            // recipeDropDown
+            // 
+            this.recipeDropDown.FormattingEnabled = true;
+            this.recipeDropDown.Location = new System.Drawing.Point(301, 31);
+            this.recipeDropDown.Name = "recipeDropDown";
+            this.recipeDropDown.Size = new System.Drawing.Size(169, 23);
+            this.recipeDropDown.TabIndex = 12;
+            this.recipeDropDown.SelectedIndexChanged += new System.EventHandler(this.recipeList_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -682,7 +810,7 @@
             this.goalChangeBox.Name = "goalChangeBox";
             this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
             this.goalChangeBox.TabIndex = 3;
-            this.goalChangeBox.SelectedIndexChanged += new System.EventHandler(this.goalChangeBox_SelectedIndexChanged_1);
+            this.goalChangeBox.SelectedIndexChanged += new System.EventHandler(this.goalChangeBox_SelectedIndexChanged);
             // 
             // goalChangeLabel
             // 
@@ -803,7 +931,6 @@
             this.label11.Size = new System.Drawing.Size(16, 21);
             this.label11.TabIndex = 7;
             this.label11.Text = "-";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // calRemainLabel
             // 
@@ -828,7 +955,6 @@
             this.calEatenLabel.TabIndex = 5;
             this.calEatenLabel.Text = "Calories Eaten:";
             this.calEatenLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.calEatenLabel.Click += new System.EventHandler(this.calEatenLabel_Click);
             // 
             // calGoalLabel
             // 
@@ -841,7 +967,6 @@
             this.calGoalLabel.TabIndex = 4;
             this.calGoalLabel.Text = "Calorie Goal:";
             this.calGoalLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.calGoalLabel.Click += new System.EventHandler(this.calGoalLabel_Click);
             // 
             // textBox1
             // 
@@ -956,6 +1081,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -985,7 +1112,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox foodBox1;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label targetLabel;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1014,7 +1140,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox proteinBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteMealButton;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -1041,11 +1167,25 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox allergyCheckbox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label calLabel;
+        private System.Windows.Forms.Label carbLabel;
+        private System.Windows.Forms.Label fatLabel;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button deleteIngredientBut;
+        private System.Windows.Forms.ListBox recipeIngredientList;
+        private System.Windows.Forms.ComboBox ingredientsDropDown;
+        private System.Windows.Forms.TextBox recipeNameBox;
+        private System.Windows.Forms.RichTextBox recipeDescription;
+        private System.Windows.Forms.Label recipeNameLabel;
+        private System.Windows.Forms.Label recipeDescriptionLabel;
+        private System.Windows.Forms.Label ingredientsLabel;
+        private System.Windows.Forms.Label recipeLabel;
+        private System.Windows.Forms.RichTextBox recipeInsBox;
+        private System.Windows.Forms.Label recipeInsLabel;
+        private System.Windows.Forms.ComboBox recipeDropDown;
+        private System.Windows.Forms.Button saveRecipe;
+        private System.Windows.Forms.Label proteinLabel;
     }
 }
