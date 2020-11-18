@@ -551,5 +551,11 @@ namespace Nutrition
             d.SetGoal(username, (goalChangeBox.SelectedItem.ToString()));
             fixGoal();
         }
+
+        //Prevent application from running in the background
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
