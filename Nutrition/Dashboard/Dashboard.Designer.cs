@@ -933,6 +933,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Dashboard";
             this.Text = "Nutrition Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();

@@ -69,5 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="UserWeightTracking.sql" />
+    <Build Include="Recipes.sql" />
+    <Build Include="RecipeData.sql" />
   </ItemGroup>
 </Project>

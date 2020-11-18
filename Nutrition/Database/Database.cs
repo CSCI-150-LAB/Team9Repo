@@ -81,7 +81,7 @@ namespace Nutrition
 
         public void RegisterUser(IDictionary<string, string> data)
         {
-            String sql = "INSERT INTO [dbo].[Users] (username,password,admin_powers,gluten_allergy,peanut_allergy,fish_allergy,soy_allergy,dairy_allergy,join_date,last_login) VALUES (@username,@password,@admin,@gluten,@peanut,@fish,@soy,@dairy,@join_date,@last_login)";
+            string sql = "INSERT INTO [dbo].[Users] (username,password,admin_powers,gluten_allergy,peanut_allergy,fish_allergy,soy_allergy,dairy_allergy,join_date,last_login) VALUES (@username,@password,@admin,@gluten,@peanut,@fish,@soy,@dairy,@join_date,@last_login)";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -174,7 +174,7 @@ namespace Nutrition
 
         public void InsertFood(IDictionary<string, string> item)
         {
-            String sql = "INSERT INTO [dbo].[Nutrition] (item_name,calories,fat,carbohydrate,protein,contains_gluten,contains_nuts,contains_fish,contains_dairy,contains_soy) VALUES (@item,@calories,@fat,@carbs,@protein,@gluten,@nuts,@fish,@dairy,@soy)";
+            string sql = "INSERT INTO [dbo].[Nutrition] (item_name,calories,fat,carbohydrate,protein,contains_gluten,contains_nuts,contains_fish,contains_dairy,contains_soy) VALUES (@item,@calories,@fat,@carbs,@protein,@gluten,@nuts,@fish,@dairy,@soy)";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -203,7 +203,7 @@ namespace Nutrition
 
         public void insertUserTracking(IDictionary<string, string> item)
         {
-            String sql = "INSERT INTO [dbo].[UserTracking] (username,item_name,calories,fat,carbohydrate,protein,meal_type,date_logged) VALUES (@user,@item,@cal,@fat,@carb,@pro,@meal_type,@date)";
+            string sql = "INSERT INTO [dbo].[UserTracking] (username,item_name,calories,fat,carbohydrate,protein,meal_type,date_logged) VALUES (@user,@item,@cal,@fat,@carb,@pro,@meal_type,@date)";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -229,7 +229,7 @@ namespace Nutrition
         }
         public void InsertUserWeight(String username, double weight)
         {
-            String sql = "INSERT INTO [dbo].[UserWeightTracking] (username,weight,date) VALUES (@user,@weight,GETDATE())";
+            string sql = "INSERT INTO [dbo].[UserWeightTracking] (username,weight,date) VALUES (@user,@weight,GETDATE())";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -291,16 +291,7 @@ namespace Nutrition
             return log;
         }
 
-        //TODO:
-        //Maker query for reccomended BMR
-        //Make query to compare progress against BMR
-
-        //Reccomend calorie intake for losing/gaining/maintenance weight
-        //Projectings losses/gains for weight
-        //based on BMR
-        //400 calories 1 lbs /week
-
-        //Get the past 24 hours of macro data (protein, carbohydrates, and fats
+        //Get the past 24 hours of each macro data sum(protein, carbohydrates, and fats)
         public IDictionary<string, double> sumMacroData(string user)
         {
             //Prepare an associative data (key,pair)
@@ -313,10 +304,18 @@ namespace Nutrition
             data["protein"] = 0;
 
             //Query DB for data
-            string sql = "SELECT sum(UserTracking.calories) as 'calories', sum(UserTracking.fat) as 'fat', sum(UserTracking.carbohydrate) as 'carbs', sum(UserTracking.protein) as 'protein' " +
+
+            //Old query used a join statement which was not needed since the username is already indexed and logged in the tracking table
+            //No data was used from the User table except the username so joining is not necessary. Save this query as an example on how to join the table if needed in the future.
+            /*string sql = "SELECT sum(UserTracking.calories) as 'calories', sum(UserTracking.fat) as 'fat', sum(UserTracking.carbohydrate) as 'carbs', sum(UserTracking.protein) as 'protein' " +
                "FROM UserTracking " +
                "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
-               "where Users.username = @user";
+               "where Users.username = @user";*/
+
+            //No join necessary to get the right results
+            string sql = "SELECT sum(UserTracking.calories) as 'calories', sum(UserTracking.fat) as 'fat', sum(UserTracking.carbohydrate) as 'carbs', sum(UserTracking.protein) as 'protein' " +
+               "FROM UserTracking " +
+               "where username = @user AND DATEDIFF(hour, date_logged, GETDATE()) <= 24";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
@@ -348,23 +347,8 @@ namespace Nutrition
             }
         }
 
-        public void selectWeeklyData()
-        {
-            /* Using dateDiff for "last 7 days"
-             SELECT Users.username, UserTracking.id, UserTracking.item_name, UserTracking.calories, UserTracking.meal_type, UserTracking.date_logged
-FROM UserTracking
-INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserTracking.date_logged, Users.last_login) < 7; --Bigger date on the right
-             */
-        }
-
         public List<string> getLastTenMeals(string username)
         {
-            /*SELECT Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.protein as 'summed', UserTracking.date_logged
-    FROM UserTracking
-    INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(hour, UserTracking.date_logged, DateTime.Now) <= 24
-    where Users.username = '<username>'
-    ORDER BY UserTracking.date_logged DESC
-    OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY*/
             List<string> lastTen = new List<string>();//empty list
             string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
     "FROM UserTracking " +
@@ -389,6 +373,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             return lastTen;
         }
 
+        //Fill a DataTable with SQL results to use with the ViewFormGrid as a DataSource
         public DataTable getLastTenMeals2(string username)
         {
             DataTable lastTen = new DataTable();
@@ -403,7 +388,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
                     command.Parameters.AddWithValue("@user", username);
-                    using(SqlDataAdapter sqlData = new SqlDataAdapter(command))
+                    using (SqlDataAdapter sqlData = new SqlDataAdapter(command))
                     {
                         sqlData.Fill(lastTen);
                     }
@@ -412,6 +397,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             return lastTen;
         }
 
+        //Check if a user finished the Assessment from after registering
         public bool FinishedAssessment(string username)
         {
             bool finishedAssessment = true;
@@ -427,7 +413,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                         if (result.HasRows)//Check if there is a result
                         {
                             result.Read();//Read the row
-                            if (result["weight"] == DBNull.Value || result["gender"] == DBNull.Value)
+                            if (result["weight"] == DBNull.Value || result["gender"] == DBNull.Value)//Redundant to check two row values since both are empty
                                 return false;
                         }
                     }
@@ -542,7 +528,7 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
 
         public void DeleteFoodEntry(int itemId, string username)
         {
-            if (itemId < 0)
+            if (itemId < 0) //item id's are always > 0
                 return;
             string sql = "DELETE FROM [dbo].[UserTracking] WHERE [id] = @itemId " +
                 "AND [username] = @user " +
@@ -583,6 +569,27 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
             }
             return foodItems;
         }
+
+        /*public List<Food> GetFoodItems2()
+            {
+                List<Food> foodItems = new List<Food>();
+                string sql = "SELECT * from [dbo].[Nutrition]";
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    con.Open();
+                    using (SqlCommand command = new SqlCommand(sql, con))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                foodItems.Add(new Food())
+                            }
+                        }
+                    }
+                }
+                return foodItems;
+            }*/
 
         public List<string> GetNoAllergyFoodItems(string username)
         {
@@ -642,6 +649,175 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                 }
             }
             return foodItems;
+        }
+
+        //Get recipes from the database
+        public List<Recipe> GetRecipeList()
+        {
+            List<Recipe> recipes = new List<Recipe>();
+            string sql = "SELECT * from [dbo].[Recipes]";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            //Fill in the recipe information
+                            string name = reader["name"].ToString();
+                            string description = reader["description"].ToString();
+                            string instructions = reader["instructions"].ToString();
+                            string recipeID = reader["recipeid"].ToString();
+
+                            //Get the recipe ingredients
+                            List<Food> ingredients = GetRecipeIngredients(recipeID);
+
+                            //Construct the recipe object
+                            Recipe d = new Recipe(name, description, instructions, ingredients);
+
+                            //Add the recipe to the list
+                            recipes.Add(d);
+                        }
+                    }
+                }
+            }
+            return recipes;
+        }
+
+        //Recipe helper to grab the ingredients for a given recipe
+        private List<Food> GetRecipeIngredients(string recipeID)
+        {
+            List<Food> ingredients = new List<Food>();
+            string sql = "SELECT Nutrition.item_name as 'name', Nutrition.calories, Nutrition.fat, Nutrition.carbohydrate as 'carbs', Nutrition.protein from [dbo].[RecipeData] " +
+                         "JOIN Nutrition ON RecipeData.item_name = Nutrition.item_name " +
+                         "where recipeid = @id";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@id", recipeID);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["name"] != DBNull.Value)
+                            { //Check for a null database value
+                                string name = reader["name"].ToString();
+                                int calories = (int)reader["calories"];
+                                double fat = (double)(decimal)reader["fat"];
+                                double carbs = (double)(decimal)reader["carbs"];
+                                double protein = (double)(decimal)reader["protein"];
+                                Food d = new Food(name, calories, fat, protein, carbs, Food.MealType.Dinner);//Default to dinner--this value is not used
+                                ingredients.Add(d);
+                            }
+                        }
+                    }
+                }
+            }
+            return ingredients;
+        }
+
+        //Insert recipes to the database
+        public void InsertRecipe(string username, string recipeName, string description, string instructions, List<Food> ingredients)
+        {
+            string recipeID = generateRecipeID(); //Generate a recipe ID
+            string sql = "INSERT INTO [dbo].[Recipes] (name,description,instructions,createdBy,recipeid,date) VALUES (@name,@des,@inst,@by,@id,GETDATE())";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@name", recipeName);
+                    command.Parameters.AddWithValue("@des", description);
+                    command.Parameters.AddWithValue("@inst", instructions);
+                    command.Parameters.AddWithValue("@by", username);
+                    command.Parameters.AddWithValue("@id", recipeID); //Call generate recipe ID function to build a recipe ID
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error inserting user weight");
+                    else
+                        InsertRecipeHelper(recipeID, ingredients); //Insert the ingredients list under the given the recipe ID
+
+                }
+            }
+        }
+
+        /**
+         * Insert Recipe Helper function to insert the ingredients list to the recipe's ingredients table (RecipeData)
+         */
+        private void InsertRecipeHelper(string recipeID, List<Food> ingredients)
+        {
+            List<Food> foodItems = ingredients;
+            string sql = "INSERT INTO [dbo].[RecipeData] (recipeid,item_name) VALUES (@id,@name)";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    //Explicitly define the parameters
+                    command.Parameters.Add("@id", SqlDbType.VarChar);
+                    command.Parameters.Add("@name", SqlDbType.VarChar);
+
+                    //Loop through all of the food items
+                    foreach (Food f in foodItems)
+                    {
+                        command.Parameters["@id"].Value = recipeID;
+                        command.Parameters["@name"].Value = f.name;
+
+                        int result = command.ExecuteNonQuery();
+                        // Check Error
+                        if (result < 0)
+                            MessageBox.Show("Error inserting user weight");
+                    }
+                }
+            }
+        }
+
+        //Delete REcipe
+        public void DeleteRecipe(string recipeID, string username)
+        {
+            string sql = "DELETE FROM [dbo].[Recipes] WHERE [recipeid] = @ID " +
+                "AND [createdBy] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@ID", recipeID);
+                    command.Parameters.AddWithValue("@user", username);
+                    var result = command.ExecuteNonQuery();
+                    if (result > 0)
+                    {
+                        DeleteRecipeHelper(recipeID); //Clean up objects in the database by deleting fragmented recipe ingredients
+                        MessageBox.Show("Deleted recipe: " + recipeID + " from the DB");//Debug
+                    }
+                    else
+                        MessageBox.Show(recipeID + " not found");//Debug
+                }
+            }
+        }
+
+        //Delete Recipe helper to delete objects in the recipe ingredient table (RecipeData)
+        //Prevents fragments of recipe data that is no longer going to be used again
+        private void DeleteRecipeHelper(string recipeID)
+        {
+            string sql = "DELETE FROM [dbo].[RecipeData] WHERE [recipeid] = @ID";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@ID", recipeID);
+                    var result = command.ExecuteNonQuery();
+                    if (result < 0)
+                        MessageBox.Show(recipeID + " not found");//Debug
+                }
+            }
         }
 
         public void UpdateLastLogin(string user)
@@ -721,6 +897,23 @@ INNER JOIN Users ON UserTracking.username=Users.username AND DATEDIFF(day, UserT
                     }
                 }
             }
+        }
+
+        /**
+         * Generate a random 12-char string as the recipe id
+         * This recipe id is later used to join a recipe to it's recipe ingredients table
+         */
+        private string generateRecipeID()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[12];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            return new String(stringChars);
         }
 
         private string GetConnectionString()

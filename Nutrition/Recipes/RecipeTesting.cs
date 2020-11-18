@@ -20,6 +20,12 @@ namespace Nutrition
             {
                 comboBox1.Items.Add(item);
             }
+
+            List<Recipe> recipes = d.GetRecipeList();
+            foreach (Recipe item in recipes)
+            {
+                comboBox2.Items.Add(item.name);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,19 +52,23 @@ namespace Nutrition
         private void button2_Click(object sender, EventArgs e)
         {
 
-            RecipeMaker p = new RecipeMaker(textBox1.Text);
+            RecipeMaker p = new RecipeMaker(textBox1.Text, descriptionBox.Text,instructionBox.Text);
             foreach (string food in listBox1.Items)
             {
                 List<string> foodInfo = d.GetFoodData(food);
                 p.addIngredient(new Food(foodInfo[0], Int32.Parse(foodInfo[1]), Double.Parse(foodInfo[2]), Double.Parse(foodInfo[4]), Double.Parse(foodInfo[3]), Food.MealType.Dinner));
             }
-            richTextBox1.AppendText(p.getRecipe().name);
-            richTextBox1.AppendText("\n");
-            foreach(Food f in p.getRecipe().ingredients)
-            {
-                richTextBox1.AppendText("["+f.name +"] Protein: " +f.protein);
-                richTextBox1.AppendText("\n");
-            }
+            d.InsertRecipe("Kyle", p.getRecipe().name,p.getRecipe().description,p.getRecipe().instructions, p.getRecipe().ingredients);
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Recipe> recipes = d.GetRecipeList();
+            textBox1.Text = recipes[2].name;
+            descriptionBox.AppendText(recipes[2].description);
+            instructionBox.AppendText(recipes[2].instructions);
+            foreach (Food item in recipes[2].ingredients)
+                listBox1.Items.Add(item.name);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
