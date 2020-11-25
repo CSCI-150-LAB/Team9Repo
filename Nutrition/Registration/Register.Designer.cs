@@ -55,13 +55,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(22, 26);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox1.Size = new System.Drawing.Size(869, 474);
+            this.groupBox1.Size = new System.Drawing.Size(468, 222);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registration";
@@ -73,11 +73,9 @@
             this.groupBox3.Controls.Add(this.soyBox);
             this.groupBox3.Controls.Add(this.dairyBox);
             this.groupBox3.Controls.Add(this.glutenBox);
-            this.groupBox3.Location = new System.Drawing.Point(598, 94);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Location = new System.Drawing.Point(322, 44);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox3.Size = new System.Drawing.Size(247, 279);
+            this.groupBox3.Size = new System.Drawing.Size(133, 131);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Allergies";
@@ -85,10 +83,10 @@
             // fishBox
             // 
             this.fishBox.AutoSize = true;
-            this.fishBox.Location = new System.Drawing.Point(22, 90);
-            this.fishBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.fishBox.Location = new System.Drawing.Point(12, 42);
+            this.fishBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.fishBox.Name = "fishBox";
-            this.fishBox.Size = new System.Drawing.Size(88, 36);
+            this.fishBox.Size = new System.Drawing.Size(47, 19);
             this.fishBox.TabIndex = 4;
             this.fishBox.Text = "Fish";
             this.fishBox.UseVisualStyleBackColor = true;
@@ -96,10 +94,10 @@
             // peanutBox
             // 
             this.peanutBox.AutoSize = true;
-            this.peanutBox.Location = new System.Drawing.Point(22, 173);
-            this.peanutBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.peanutBox.Location = new System.Drawing.Point(12, 81);
+            this.peanutBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.peanutBox.Name = "peanutBox";
-            this.peanutBox.Size = new System.Drawing.Size(119, 36);
+            this.peanutBox.Size = new System.Drawing.Size(63, 19);
             this.peanutBox.TabIndex = 3;
             this.peanutBox.Text = "Peanut";
             this.peanutBox.UseVisualStyleBackColor = true;
@@ -107,10 +105,10 @@
             // soyBox
             // 
             this.soyBox.AutoSize = true;
-            this.soyBox.Location = new System.Drawing.Point(22, 215);
-            this.soyBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.soyBox.Location = new System.Drawing.Point(12, 101);
+            this.soyBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.soyBox.Name = "soyBox";
-            this.soyBox.Size = new System.Drawing.Size(85, 36);
+            this.soyBox.Size = new System.Drawing.Size(45, 19);
             this.soyBox.TabIndex = 2;
             this.soyBox.Text = "Soy";
             this.soyBox.UseVisualStyleBackColor = true;
@@ -118,10 +116,10 @@
             // dairyBox
             // 
             this.dairyBox.AutoSize = true;
-            this.dairyBox.Location = new System.Drawing.Point(22, 47);
-            this.dairyBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.dairyBox.Location = new System.Drawing.Point(12, 22);
+            this.dairyBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dairyBox.Name = "dairyBox";
-            this.dairyBox.Size = new System.Drawing.Size(101, 36);
+            this.dairyBox.Size = new System.Drawing.Size(53, 19);
             this.dairyBox.TabIndex = 1;
             this.dairyBox.Text = "Dairy";
             this.dairyBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -130,10 +128,10 @@
             // glutenBox
             // 
             this.glutenBox.AutoSize = true;
-            this.glutenBox.Location = new System.Drawing.Point(22, 130);
-            this.glutenBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.glutenBox.Location = new System.Drawing.Point(12, 61);
+            this.glutenBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.glutenBox.Name = "glutenBox";
-            this.glutenBox.Size = new System.Drawing.Size(117, 36);
+            this.glutenBox.Size = new System.Drawing.Size(61, 19);
             this.glutenBox.TabIndex = 0;
             this.glutenBox.Text = "Gluten";
             this.glutenBox.UseVisualStyleBackColor = true;
@@ -143,11 +141,9 @@
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Location = new System.Drawing.Point(32, 47);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Location = new System.Drawing.Point(17, 22);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox2.Size = new System.Drawing.Size(540, 414);
+            this.groupBox2.Size = new System.Drawing.Size(291, 194);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Account Info";
@@ -155,100 +151,97 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.confirmPass);
-            this.groupBox7.Location = new System.Drawing.Point(28, 286);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.groupBox7.Location = new System.Drawing.Point(15, 134);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.groupBox7.Size = new System.Drawing.Size(410, 96);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.groupBox7.Size = new System.Drawing.Size(221, 45);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Confirm Password";
             // 
             // confirmPass
             // 
-            this.confirmPass.Location = new System.Drawing.Point(13, 30);
-            this.confirmPass.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.confirmPass.BackColor = System.Drawing.SystemColors.Info;
+            this.confirmPass.Location = new System.Drawing.Point(7, 14);
+            this.confirmPass.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.confirmPass.Name = "confirmPass";
             this.confirmPass.PasswordChar = 'x';
-            this.confirmPass.Size = new System.Drawing.Size(372, 39);
+            this.confirmPass.Size = new System.Drawing.Size(202, 23);
             this.confirmPass.TabIndex = 0;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.passwordBox);
-            this.groupBox5.Location = new System.Drawing.Point(28, 171);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox5.Location = new System.Drawing.Point(15, 80);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox5.Size = new System.Drawing.Size(410, 107);
+            this.groupBox5.Size = new System.Drawing.Size(221, 50);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Password";
             // 
             // passwordBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(13, 36);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.passwordBox.BackColor = System.Drawing.SystemColors.Info;
+            this.passwordBox.Location = new System.Drawing.Point(7, 17);
             this.passwordBox.MaxLength = 100;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = 'x';
-            this.passwordBox.Size = new System.Drawing.Size(372, 39);
+            this.passwordBox.Size = new System.Drawing.Size(202, 23);
             this.passwordBox.TabIndex = 0;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.usernameBox);
-            this.groupBox4.Location = new System.Drawing.Point(28, 47);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox4.Location = new System.Drawing.Point(15, 22);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox4.Size = new System.Drawing.Size(410, 111);
+            this.groupBox4.Size = new System.Drawing.Size(221, 52);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Username";
             // 
             // usernameBox
             // 
-            this.usernameBox.Location = new System.Drawing.Point(11, 32);
-            this.usernameBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.usernameBox.BackColor = System.Drawing.SystemColors.Info;
+            this.usernameBox.Location = new System.Drawing.Point(6, 15);
             this.usernameBox.MaxLength = 50;
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(372, 39);
+            this.usernameBox.Size = new System.Drawing.Size(202, 23);
             this.usernameBox.TabIndex = 0;
             // 
             // registerBtn
             // 
-            this.registerBtn.Location = new System.Drawing.Point(353, 512);
-            this.registerBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.registerBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.registerBtn.Location = new System.Drawing.Point(190, 240);
             this.registerBtn.Name = "registerBtn";
-            this.registerBtn.Size = new System.Drawing.Size(178, 94);
+            this.registerBtn.Size = new System.Drawing.Size(96, 44);
             this.registerBtn.TabIndex = 1;
             this.registerBtn.Text = "Register";
-            this.registerBtn.UseVisualStyleBackColor = true;
+            this.registerBtn.UseVisualStyleBackColor = false;
             this.registerBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // invalidLbl
             // 
             this.invalidLbl.AutoSize = true;
             this.invalidLbl.ForeColor = System.Drawing.Color.Crimson;
-            this.invalidLbl.Location = new System.Drawing.Point(269, 610);
-            this.invalidLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.invalidLbl.Location = new System.Drawing.Point(145, 286);
+            this.invalidLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.invalidLbl.Name = "invalidLbl";
-            this.invalidLbl.Size = new System.Drawing.Size(0, 32);
+            this.invalidLbl.Size = new System.Drawing.Size(0, 15);
             this.invalidLbl.TabIndex = 2;
             // 
             // Register
             // 
             this.AccessibleName = "allergyBox";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(945, 655);
+            this.ClientSize = new System.Drawing.Size(509, 307);
             this.Controls.Add(this.invalidLbl);
             this.Controls.Add(this.registerBtn);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Register";
             this.Text = "Register";
             this.groupBox1.ResumeLayout(false);

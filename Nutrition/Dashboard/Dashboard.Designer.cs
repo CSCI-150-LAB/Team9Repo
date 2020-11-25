@@ -85,6 +85,7 @@
             this.bmrLabel = new System.Windows.Forms.Label();
             this.saveFoodButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.saveToFoodEntry = new System.Windows.Forms.Button();
             this.saveRecipe = new System.Windows.Forms.Button();
             this.deleteIngredientBut = new System.Windows.Forms.Button();
             this.recipeIngredientList = new System.Windows.Forms.ListBox();
@@ -125,7 +126,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.saveToFoodEntry = new System.Windows.Forms.Button();
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -747,6 +747,16 @@
             this.tabPage3.Text = "Recipe Search";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // saveToFoodEntry
+            // 
+            this.saveToFoodEntry.Location = new System.Drawing.Point(363, 434);
+            this.saveToFoodEntry.Name = "saveToFoodEntry";
+            this.saveToFoodEntry.Size = new System.Drawing.Size(107, 23);
+            this.saveToFoodEntry.TabIndex = 14;
+            this.saveToFoodEntry.Text = "Save as Entry";
+            this.saveToFoodEntry.UseVisualStyleBackColor = true;
+            this.saveToFoodEntry.Click += new System.EventHandler(this.button2_Click);
+            // 
             // saveRecipe
             // 
             this.saveRecipe.Location = new System.Drawing.Point(238, 434);
@@ -1129,22 +1139,14 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
-            // saveToFoodEntry
-            // 
-            this.saveToFoodEntry.Location = new System.Drawing.Point(363, 434);
-            this.saveToFoodEntry.Name = "saveToFoodEntry";
-            this.saveToFoodEntry.Size = new System.Drawing.Size(107, 23);
-            this.saveToFoodEntry.TabIndex = 14;
-            this.saveToFoodEntry.Text = "Save as Entry";
-            this.saveToFoodEntry.UseVisualStyleBackColor = true;
-            this.saveToFoodEntry.Click += new System.EventHandler(this.button2_Click);
-            //
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 640);
             this.Controls.Add(this.tabControl1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.Text = "Nutrition Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);

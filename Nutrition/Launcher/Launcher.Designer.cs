@@ -35,22 +35,24 @@
             // 
             // LoginButton
             // 
+            this.LoginButton.BackColor = System.Drawing.Color.Wheat;
             this.LoginButton.Location = new System.Drawing.Point(25, 191);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(320, 35);
             this.LoginButton.TabIndex = 0;
             this.LoginButton.Text = "Login";
-            this.LoginButton.UseVisualStyleBackColor = true;
+            this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // RegisterButton
             // 
+            this.RegisterButton.BackColor = System.Drawing.Color.Wheat;
             this.RegisterButton.Location = new System.Drawing.Point(25, 256);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(320, 35);
             this.RegisterButton.TabIndex = 1;
             this.RegisterButton.Text = "Register";
-            this.RegisterButton.UseVisualStyleBackColor = true;
+            this.RegisterButton.UseVisualStyleBackColor = false;
             this.RegisterButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // Nutrition
@@ -62,6 +64,7 @@
             this.ClientSize = new System.Drawing.Size(646, 403);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.RegisterButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Nutrition";
             this.Text = "Nutrition Launcher";
