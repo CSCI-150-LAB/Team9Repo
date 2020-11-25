@@ -9,12 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//set height x
-//set weight x
-//set age x
-//set gender x
-//set activity level x
-
 namespace Nutrition
 {
     public partial class UserAssessment : Form
