@@ -686,6 +686,27 @@ namespace Nutrition
             return recipes;
         }
 
+        public DataTable getRecipeList()
+        {
+            DataTable recipes = new DataTable();
+            string sql = "SELECT * from [dbo].[Recipes]";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    using (SqlDataAdapter sqlData = new SqlDataAdapter(command))
+                    {
+                        sqlData.Fill(recipes);
+                    }
+                }
+            }
+          //  recipes.Columns.Add("Recipe", typeof(string));
+           // recipes.Columns.Add("Value", typeof(int));
+
+            return recipes;
+        }
+
         //Recipe helper to grab the ingredients for a given recipe
         private List<Food> GetRecipeIngredients(string recipeID)
         {

@@ -24,6 +24,7 @@ namespace Nutrition
         FoodEntry foodList = new FoodEntry();
         Food currentFood = null;
         private List<string> foodData = new List<string>();
+        private List<Recipe> recipes = new List<Recipe>();
         private Timer t;
 
         public Dashboard(IDictionary<string, string> user)
@@ -292,11 +293,10 @@ namespace Nutrition
             }
 
             //Prefetch recipes from the database
-            List<Recipe> recipes = d.GetRecipeList();
-            foreach (Recipe item in recipes)
-            {
-                recipeDropDown.Items.Add(item.name);
-            }
+            recipes = d.GetRecipeList();
+            recipeDropDown.DataSource = d.getRecipeList();
+            recipeDropDown.DisplayMember = "name";
+            recipeDropDown.ValueMember = "recipeid";
         }
 
         private void deleteMeal_Click(object sender, EventArgs e)

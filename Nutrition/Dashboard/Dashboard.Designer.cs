@@ -125,6 +125,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.saveToFoodEntry = new System.Windows.Forms.Button();
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -724,6 +725,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.saveToFoodEntry);
             this.tabPage3.Controls.Add(this.saveRecipe);
             this.tabPage3.Controls.Add(this.deleteIngredientBut);
             this.tabPage3.Controls.Add(this.recipeIngredientList);
@@ -747,11 +749,11 @@
             // 
             // saveRecipe
             // 
-            this.saveRecipe.Location = new System.Drawing.Point(288, 434);
+            this.saveRecipe.Location = new System.Drawing.Point(238, 434);
             this.saveRecipe.Name = "saveRecipe";
-            this.saveRecipe.Size = new System.Drawing.Size(101, 23);
+            this.saveRecipe.Size = new System.Drawing.Size(119, 23);
             this.saveRecipe.TabIndex = 13;
-            this.saveRecipe.Text = "Save Recipe";
+            this.saveRecipe.Text = "Save New Recipe";
             this.saveRecipe.UseVisualStyleBackColor = true;
             this.saveRecipe.Click += new System.EventHandler(this.saveRecipe_Click);
             // 
@@ -771,7 +773,7 @@
             this.recipeIngredientList.ItemHeight = 15;
             this.recipeIngredientList.Location = new System.Drawing.Point(118, 289);
             this.recipeIngredientList.Name = "recipeIngredientList";
-            this.recipeIngredientList.Size = new System.Drawing.Size(272, 139);
+            this.recipeIngredientList.Size = new System.Drawing.Size(352, 139);
             this.recipeIngredientList.TabIndex = 1;
             // 
             // ingredientsDropDown
@@ -1127,6 +1129,16 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
+            // saveToFoodEntry
+            // 
+            this.saveToFoodEntry.Location = new System.Drawing.Point(363, 434);
+            this.saveToFoodEntry.Name = "saveToFoodEntry";
+            this.saveToFoodEntry.Size = new System.Drawing.Size(107, 23);
+            this.saveToFoodEntry.TabIndex = 14;
+            this.saveToFoodEntry.Text = "Save as Entry";
+            this.saveToFoodEntry.UseVisualStyleBackColor = true;
+            this.saveToFoodEntry.Click += new System.EventHandler(this.button2_Click);
+            //
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1270,5 +1282,6 @@
         private System.Windows.Forms.CheckBox glutenBox;
         private System.Windows.Forms.CheckBox fishBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveToFoodEntry;
     }
 }
