@@ -18,6 +18,7 @@ namespace Nutrition
         private double userWeight;
         private int heightFeet;
         private int heightInch;
+        private double calorieGoal;
 
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
@@ -62,9 +63,8 @@ namespace Nutrition
             HSweightLabel.Text = "Current Weight: " + userData["weight"];
             HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
 
-
-            string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
-            goalChangeBox.DataSource = weightGoals;
+           /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
+            goalChangeBox.DataSource = weightGoals;*/
             fixGoal();
         }
 
@@ -107,7 +107,24 @@ namespace Nutrition
 
         void fixGoal()
         {
-            currGoalLabel.Text = "Current Goal: " + d.GetGoal(username);
+            string flag = d.GetGoal(username);
+
+            if (flag == "Maintain")
+            {
+                calorieGoal = userBMR;
+                currGoalLabel.Text = "Current Goal: Maintain Weight";
+            }
+            else if (flag == "Lose")
+            {
+                calorieGoal = Math.Round(userBMR - 250, 2); //lose .5 lbs a week
+                currGoalLabel.Text = "Current Goal: Lose 0.5lbs a week";
+            }
+            else
+            {
+                calorieGoal = Math.Round(userBMR + 250, 2); //gain .5 lbs a week
+                currGoalLabel.Text = "Current Goal: Gain 0.5lbs a week";
+            }
+            calGoalLabel.Text = "Calorie Goal:\n" + calorieGoal;
         }
 
         private void goalChangeBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -227,7 +244,7 @@ namespace Nutrition
             user_macro_sum = d.sumMacroData(username);
 
             //FIXME, needs to get user's goal calories
-            calGoalLabel.Text = "Daily Calories:\n" + userBMR;
+            calGoalLabel.Text = "Daily Calories:\n" + calorieGoal;
             calEatenLabel.Text = "Calories Eaten:\n" + Math.Round(user_macro_sum["calories"], 1);
             calRemainLabel.Text = "Remaining:\n" + Math.Round(userBMR - user_macro_sum["calories"], 1);
         }

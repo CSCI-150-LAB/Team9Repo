@@ -54,6 +54,13 @@
             this.allergyCheckbox = new System.Windows.Forms.CheckBox();
             this.foodBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.soyBox = new System.Windows.Forms.CheckBox();
+            this.nutBox = new System.Windows.Forms.CheckBox();
+            this.dairyBox = new System.Windows.Forms.CheckBox();
+            this.glutenBox = new System.Windows.Forms.CheckBox();
+            this.fishBox = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.proteinBox = new System.Windows.Forms.TextBox();
             this.proteinLabel = new System.Windows.Forms.Label();
@@ -118,13 +125,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.glutenBox = new System.Windows.Forms.CheckBox();
-            this.nutBox = new System.Windows.Forms.CheckBox();
-            this.fishBox = new System.Windows.Forms.CheckBox();
-            this.dairyBox = new System.Windows.Forms.CheckBox();
-            this.soyBox = new System.Windows.Forms.CheckBox();
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -134,6 +134,7 @@
             this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -143,7 +144,6 @@
             this.healthWelcome.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusBar
@@ -416,6 +416,79 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Nutrition Entry";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.soyBox);
+            this.groupBox10.Controls.Add(this.nutBox);
+            this.groupBox10.Controls.Add(this.dairyBox);
+            this.groupBox10.Controls.Add(this.glutenBox);
+            this.groupBox10.Controls.Add(this.fishBox);
+            this.groupBox10.Location = new System.Drawing.Point(6, 211);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(186, 86);
+            this.groupBox10.TabIndex = 6;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Allergies";
+            // 
+            // soyBox
+            // 
+            this.soyBox.AutoSize = true;
+            this.soyBox.Location = new System.Drawing.Point(132, 22);
+            this.soyBox.Name = "soyBox";
+            this.soyBox.Size = new System.Drawing.Size(45, 19);
+            this.soyBox.TabIndex = 9;
+            this.soyBox.Text = "Soy";
+            this.soyBox.UseVisualStyleBackColor = true;
+            // 
+            // nutBox
+            // 
+            this.nutBox.AutoSize = true;
+            this.nutBox.Location = new System.Drawing.Point(6, 47);
+            this.nutBox.Name = "nutBox";
+            this.nutBox.Size = new System.Drawing.Size(51, 19);
+            this.nutBox.TabIndex = 1;
+            this.nutBox.Text = "Nuts";
+            this.nutBox.UseVisualStyleBackColor = true;
+            // 
+            // dairyBox
+            // 
+            this.dairyBox.AutoSize = true;
+            this.dairyBox.Location = new System.Drawing.Point(73, 22);
+            this.dairyBox.Name = "dairyBox";
+            this.dairyBox.Size = new System.Drawing.Size(53, 19);
+            this.dairyBox.TabIndex = 8;
+            this.dairyBox.Text = "Dairy";
+            this.dairyBox.UseVisualStyleBackColor = true;
+            // 
+            // glutenBox
+            // 
+            this.glutenBox.AutoSize = true;
+            this.glutenBox.Location = new System.Drawing.Point(6, 22);
+            this.glutenBox.Name = "glutenBox";
+            this.glutenBox.Size = new System.Drawing.Size(61, 19);
+            this.glutenBox.TabIndex = 0;
+            this.glutenBox.Text = "Gluten";
+            this.glutenBox.UseVisualStyleBackColor = true;
+            // 
+            // fishBox
+            // 
+            this.fishBox.AutoSize = true;
+            this.fishBox.Location = new System.Drawing.Point(73, 47);
+            this.fishBox.Name = "fishBox";
+            this.fishBox.Size = new System.Drawing.Size(47, 19);
+            this.fishBox.TabIndex = 7;
+            this.fishBox.Text = "Fish";
+            this.fishBox.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(117, 313);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Save Food";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -806,6 +879,10 @@
             // goalChangeBox
             // 
             this.goalChangeBox.FormattingEnabled = true;
+            this.goalChangeBox.Items.AddRange(new object[] {
+            "Maintain",
+            "Lose",
+            "Gain"});
             this.goalChangeBox.Location = new System.Drawing.Point(591, 200);
             this.goalChangeBox.Name = "goalChangeBox";
             this.goalChangeBox.Size = new System.Drawing.Size(121, 23);
@@ -1050,79 +1127,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(117, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Save Food";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.soyBox);
-            this.groupBox10.Controls.Add(this.nutBox);
-            this.groupBox10.Controls.Add(this.dairyBox);
-            this.groupBox10.Controls.Add(this.glutenBox);
-            this.groupBox10.Controls.Add(this.fishBox);
-            this.groupBox10.Location = new System.Drawing.Point(6, 211);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(186, 86);
-            this.groupBox10.TabIndex = 6;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Allergies";
-            // 
-            // glutenBox
-            // 
-            this.glutenBox.AutoSize = true;
-            this.glutenBox.Location = new System.Drawing.Point(6, 22);
-            this.glutenBox.Name = "glutenBox";
-            this.glutenBox.Size = new System.Drawing.Size(61, 19);
-            this.glutenBox.TabIndex = 0;
-            this.glutenBox.Text = "Gluten";
-            this.glutenBox.UseVisualStyleBackColor = true;
-            // 
-            // nutBox
-            // 
-            this.nutBox.AutoSize = true;
-            this.nutBox.Location = new System.Drawing.Point(6, 47);
-            this.nutBox.Name = "nutBox";
-            this.nutBox.Size = new System.Drawing.Size(51, 19);
-            this.nutBox.TabIndex = 1;
-            this.nutBox.Text = "Nuts";
-            this.nutBox.UseVisualStyleBackColor = true;
-            // 
-            // fishBox
-            // 
-            this.fishBox.AutoSize = true;
-            this.fishBox.Location = new System.Drawing.Point(73, 47);
-            this.fishBox.Name = "fishBox";
-            this.fishBox.Size = new System.Drawing.Size(47, 19);
-            this.fishBox.TabIndex = 7;
-            this.fishBox.Text = "Fish";
-            this.fishBox.UseVisualStyleBackColor = true;
-            // 
-            // dairyBox
-            // 
-            this.dairyBox.AutoSize = true;
-            this.dairyBox.Location = new System.Drawing.Point(73, 22);
-            this.dairyBox.Name = "dairyBox";
-            this.dairyBox.Size = new System.Drawing.Size(53, 19);
-            this.dairyBox.TabIndex = 8;
-            this.dairyBox.Text = "Dairy";
-            this.dairyBox.UseVisualStyleBackColor = true;
-            // 
-            // soyBox
-            // 
-            this.soyBox.AutoSize = true;
-            this.soyBox.Location = new System.Drawing.Point(132, 22);
-            this.soyBox.Name = "soyBox";
-            this.soyBox.Size = new System.Drawing.Size(45, 19);
-            this.soyBox.TabIndex = 9;
-            this.soyBox.Text = "Soy";
-            this.soyBox.UseVisualStyleBackColor = true;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1148,6 +1152,8 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1164,8 +1170,6 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
