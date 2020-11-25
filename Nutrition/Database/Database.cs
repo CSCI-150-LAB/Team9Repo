@@ -690,7 +690,7 @@ namespace Nutrition
         private List<Food> GetRecipeIngredients(string recipeID)
         {
             List<Food> ingredients = new List<Food>();
-            string sql = "SELECT Nutrition.item_name as 'name', Nutrition.calories, Nutrition.fat, Nutrition.carbohydrate as 'carbs', Nutrition.protein from [dbo].[RecipeData] " +
+            string sql = "SELECT Nutrition.item_name as 'name', Nutrition.calories, Nutrition.fat, Nutrition.carbohydrate as 'carbs', Nutrition.protein, Nutrition.contains_gluten, Nutrition.contains_nuts, Nutrition.contains_fish, Nutrition.contains_dairy, Nutrition.contains_soy from [dbo].[RecipeData] " +
                          "JOIN Nutrition ON RecipeData.item_name = Nutrition.item_name " +
                          "where recipeid = @id";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
@@ -710,7 +710,9 @@ namespace Nutrition
                                 double fat = (double)(decimal)reader["fat"];
                                 double carbs = (double)(decimal)reader["carbs"];
                                 double protein = (double)(decimal)reader["protein"];
-                                Food d = new Food(name, calories, fat, protein, carbs, Food.MealType.Dinner);//Default to dinner--this value is not used
+                                int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
+                                int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+                                Food d = new Food(name, calories, fat, protein, carbs, allergies, Food.MealType.Dinner);//Default to dinner--this value is not used
                                 ingredients.Add(d);
                             }
                         }

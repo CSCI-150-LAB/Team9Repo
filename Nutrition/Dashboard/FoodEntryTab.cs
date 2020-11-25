@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace Nutrition
 {
-    partial class Dashboard : Form
-    {
+    partial class Dashboard
+    {//TODO: https://stackoverflow.com/questions/17365965/how-do-i-add-an-image-in-my-datagridviewimagecolumn
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string food = foodBox1.SelectedItem.ToString();
@@ -24,7 +24,9 @@ namespace Nutrition
             double fat = double.Parse(facts[2]);
             double carb = double.Parse(facts[3]);
             double pro = double.Parse(facts[4]);
-            foodList.addNewFood(new Food(nameBox.Text, calories, fat, pro, carb, Food.MealType.Dinner));//TODO Add mealType in form
+            int[] allergies = getAllergies(facts);
+            checkAllergies(allergies);//fill in allergies
+            foodList.addNewFood(new Food(nameBox.Text, calories, fat, pro, carb, allergies, Food.MealType.Dinner));//TODO Add mealType in form
 
             if (targetLabel.Text == "N/A")
                 targetLabel.Text = facts[1];
@@ -51,6 +53,7 @@ namespace Nutrition
             fatBox.Text = fact.fat.ToString();
             carbBox.Text = fact.carbs.ToString();
             proteinBox.Text = fact.protein.ToString();
+            checkAllergies(fact.allergies);
         }
 
         private void clearAllButton_Click(object sender, EventArgs e)
@@ -185,6 +188,39 @@ namespace Nutrition
                     foodBox1.Items.Add(name);
                 }
             }
+        }
+
+        //Put the allergies from the food data into an array for the food class
+        private int[] getAllergies(List<string> foodData)
+        {
+            List<string> facts = foodData;
+            string gluten, nuts, fish, dairy, soy;
+            gluten = facts[5];
+            nuts = facts[6];
+            fish = facts[7];
+            dairy = facts[8];
+            soy = facts[9];
+            int[] allergies = new int[] { int.Parse(gluten), int.Parse(nuts), int.Parse(fish), int.Parse(dairy), int.Parse(soy) };
+            return allergies;
+        }
+
+        private void checkAllergies(int[] allergies)
+        {
+            glutenBox.Checked = false;
+            nutBox.Checked = false;
+            fishBox.Checked = false;
+            dairyBox.Checked = false;
+            soyBox.Checked = false;
+            if (allergies[0] == 1)
+                glutenBox.Checked = true;
+            if (allergies[1] == 1)
+                nutBox.Checked = true;
+            if (allergies[2] == 1)
+                fishBox.Checked = true;
+            if (allergies[3] == 1)
+                dairyBox.Checked = true;
+            if (allergies[4] == 1)
+                soyBox.Checked = true;
         }
     }
 }

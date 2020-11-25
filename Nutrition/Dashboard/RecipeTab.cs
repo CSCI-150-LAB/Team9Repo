@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace Nutrition
 {
-    public partial class Dashboard : Form
-    {
+    public partial class Dashboard
+    {//TODO: https://stackoverflow.com/questions/14105265/dropdownlist-datasource
         private void recipeList_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Recipe> recipes = d.GetRecipeList();
@@ -33,7 +33,8 @@ namespace Nutrition
                 foreach (string food in recipeIngredientList.Items)
                 {
                     List<string> foodInfo = d.GetFoodData(food);
-                    p.addIngredient(new Food(foodInfo[0], Int32.Parse(foodInfo[1]), Double.Parse(foodInfo[2]), Double.Parse(foodInfo[4]), Double.Parse(foodInfo[3]), Food.MealType.Dinner));
+                    int[] allergies = getAllergies(foodInfo);
+                    p.addIngredient(new Food(foodInfo[0], Int32.Parse(foodInfo[1]), Double.Parse(foodInfo[2]), Double.Parse(foodInfo[4]), Double.Parse(foodInfo[3]), allergies, Food.MealType.Dinner));
                 }
                 d.InsertRecipe(username, p.getRecipe().name, p.getRecipe().description, p.getRecipe().instructions, p.getRecipe().ingredients);
                 recipeNameBox.Clear();

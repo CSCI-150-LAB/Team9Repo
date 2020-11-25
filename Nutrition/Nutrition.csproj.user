@@ -13,13 +13,7 @@
     <Compile Update="Dashboard\RecipeTab.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FoodEntry\LogFood.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Launcher\Launcher.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Recipes\RecipeTesting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Registration\Login.cs">
