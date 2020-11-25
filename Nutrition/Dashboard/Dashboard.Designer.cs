@@ -125,10 +125,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-<<<<<<< Updated upstream
-=======
             this.saveToFoodEntry = new System.Windows.Forms.Button();
->>>>>>> Stashed changes
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1132,8 +1129,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
-<<<<<<< Updated upstream
-=======
             // saveToFoodEntry
             // 
             this.saveToFoodEntry.Location = new System.Drawing.Point(363, 434);
@@ -1143,8 +1138,7 @@
             this.saveToFoodEntry.Text = "Save as Entry";
             this.saveToFoodEntry.UseVisualStyleBackColor = true;
             this.saveToFoodEntry.Click += new System.EventHandler(this.button2_Click);
-            // 
->>>>>>> Stashed changes
+            //
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
