@@ -234,23 +234,38 @@ namespace Nutrition
 
         private void saveNewFoodButton_Click(object sender, EventArgs e)
         {
-            int gluten = 0, nuts = 0, fish = 0, dairy = 0, soy = 0;
-            if (newFoodGlut.Checked)
-                gluten = 1;
-            if (newFoodNut.Checked)
-                nuts = 1;
-            if (newFoodFish.Checked)
-                fish = 1;
-            if (newFoodDair.Checked)
-                dairy = 1;
-            if (newFoodSoy.Checked)
-                soy = 1;
+            //Check if the form has been filled out
+            if (newFoodName.Text.Length == 0)
+                MessageBox.Show("Error: Food has no name");
+            else if (newFoodCal.Text.Length == 0)
+                MessageBox.Show("Error: Missing calorie information");
+            else if (newFoodCarb.Text.Length == 0)
+                MessageBox.Show("Error: Missing carbohydrate data");
+            else if (newFoodFat.Text.Length == 0)
+                MessageBox.Show("Error: Missing fat data");
+            else if (newFoodPro.Text.Length == 0)
+                MessageBox.Show("Error: Missing protein data");
+            else //Form is filled out process the data
+            {
 
-            int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+                int gluten = 0, nuts = 0, fish = 0, dairy = 0, soy = 0;
+                if (newFoodGlut.Checked)
+                    gluten = 1;
+                if (newFoodNut.Checked)
+                    nuts = 1;
+                if (newFoodFish.Checked)
+                    fish = 1;
+                if (newFoodDair.Checked)
+                    dairy = 1;
+                if (newFoodSoy.Checked)
+                    soy = 1;
 
-            Food newItem = new Food(newFoodName.Text, int.Parse(newFoodCal.Text), double.Parse(newFoodFat.Text), double.Parse(newFoodPro.Text), double.Parse(newFoodCarb.Text), allergies);
-            d.InsertFood(newItem);
-            FillFoodData();//update combobox
+                int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+
+                Food newItem = new Food(newFoodName.Text, int.Parse(newFoodCal.Text), double.Parse(newFoodFat.Text), double.Parse(newFoodPro.Text), double.Parse(newFoodCarb.Text), allergies);
+                d.InsertFood(newItem);
+                FillFoodData();//update combobox
+            }
         }
 
         //Put the allergies from the food data into an array for the food class
