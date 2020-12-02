@@ -8,6 +8,8 @@ namespace Nutrition
 {
     static class Program
     {
+        //Enable or disable debug windows
+        public static bool debugMode = true;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

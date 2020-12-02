@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
@@ -9,27 +10,32 @@ namespace Nutrition
     {//TODO: https://stackoverflow.com/questions/17365965/how-do-i-add-an-image-in-my-datagridviewimagecolumn
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string food = foodBox1.SelectedItem.ToString();
+            //Access DataTable members
+            DataRowView drv = (DataRowView)foodBox1.SelectedItem;
+            string food = drv["item_name"].ToString();
+            string id = drv["id"].ToString();
+
+            //string food = ((DataRowView)foodBox1.SelectedItem)["item_name"].ToString();
             currentFood = null;
             foodItems.Items.Add(food);
 
-            List<string> facts = d.GetFoodData(food);//pre-fill the food item with database values
-            nameBox.Text = facts[0];
-            calorieBox.Text = facts[1];
-            fatBox.Text = facts[2];
-            carbBox.Text = facts[3];
-            proteinBox.Text = facts[4];
+            Food facts = d.GetFoodData(int.Parse(id), food);//pre-fill the food item with database values
+            nameBox.Text = facts.name;
+            calorieBox.Text = facts.calories.ToString();
+            fatBox.Text = facts.fat.ToString();
+            carbBox.Text = facts.carbs.ToString();
+            proteinBox.Text = facts.protein.ToString();
 
-            int calories = int.Parse(facts[1]);
-            double fat = double.Parse(facts[2]);
-            double carb = double.Parse(facts[3]);
-            double pro = double.Parse(facts[4]);
-            int[] allergies = getAllergies(facts);
+            int calories = facts.calories;
+            double fat = facts.fat;
+            double carb = facts.carbs;
+            double pro = facts.protein;
+            int[] allergies = facts.allergies;
             checkAllergies(allergies);//fill in allergies
             foodList.addNewFood(new Food(nameBox.Text, calories, fat, pro, carb, allergies, Food.MealType.Dinner));//TODO Add mealType in form
 
             if (targetLabel.Text == "N/A")
-                targetLabel.Text = facts[1];
+                targetLabel.Text = facts.calories.ToString();
             else
             {
                 int sum = int.Parse(targetLabel.Text) + calories;
@@ -98,7 +104,8 @@ namespace Nutrition
                 plotForms();
                 refreshCalData();
                 //Optional show how many items were saved
-                MessageBox.Show("Saved " + i + " list items!");
+                if (Program.debugMode)
+                    MessageBox.Show("Saved " + i + " list items!");
             }
         }
 
@@ -188,6 +195,62 @@ namespace Nutrition
                     foodBox1.Items.Add(name);
                 }
             }
+        }
+
+
+        private void logMeal_Click(object sender, EventArgs e)
+        {
+            if (foodTabControl.Visible && foodTabControl.TabPages.Contains(addMealTab))
+            {
+                foodTabControl.Visible = false;
+                foodTabControl.TabPages.Remove(addMealTab);
+            }
+            else
+            {
+                foodTabControl.Visible = true;
+                if (!foodTabControl.TabPages.Contains(addMealTab))
+                    foodTabControl.TabPages.Insert(0, addMealTab);
+                if (foodTabControl.TabPages.Contains(addNewFoodTab))
+                    foodTabControl.TabPages.Remove(addNewFoodTab);
+            }
+        }
+
+        private void newFoodItem_Click(object sender, EventArgs e)
+        {
+            if (foodTabControl.Visible && foodTabControl.TabPages.Contains(addNewFoodTab))
+            {
+                foodTabControl.Visible = false;
+                foodTabControl.TabPages.Remove(addNewFoodTab);
+            }
+            else
+            {
+                foodTabControl.Visible = true;
+                if (!foodTabControl.TabPages.Contains(addNewFoodTab))
+                    foodTabControl.TabPages.Insert(0, addNewFoodTab);
+                if (foodTabControl.TabPages.Contains(addMealTab))
+                    foodTabControl.TabPages.Remove(addMealTab);
+            }
+        }
+
+        private void saveNewFoodButton_Click(object sender, EventArgs e)
+        {
+            int gluten = 0, nuts = 0, fish = 0, dairy = 0, soy = 0;
+            if (newFoodGlut.Checked)
+                gluten = 1;
+            if (newFoodNut.Checked)
+                nuts = 1;
+            if (newFoodFish.Checked)
+                fish = 1;
+            if (newFoodDair.Checked)
+                dairy = 1;
+            if (newFoodSoy.Checked)
+                soy = 1;
+
+            int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+
+            Food newItem = new Food(newFoodName.Text, int.Parse(newFoodCal.Text), double.Parse(newFoodFat.Text), double.Parse(newFoodPro.Text), double.Parse(newFoodCarb.Text), allergies);
+            d.InsertFood(newItem);
+            FillFoodData();//update combobox
         }
 
         //Put the allergies from the food data into an array for the food class

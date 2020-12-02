@@ -25,7 +25,8 @@ namespace Nutrition
             }
             catch (SqlException err)
             {
-                MessageBox.Show("Database Error: " + err.Message);
+                if (Program.debugMode)
+                    MessageBox.Show("Database Error: " + err.Message);
             }
         }
 
@@ -103,7 +104,10 @@ namespace Nutrition
                     if (result < 0)
                         MessageBox.Show("Error inserting data into Database!");
                     else
-                        MessageBox.Show("Inserted user " + data["username"]);
+                    {
+                        if (Program.debugMode)
+                            MessageBox.Show("Inserted user " + data["username"]);
+                    }
                 }
             }
         }
@@ -118,12 +122,55 @@ namespace Nutrition
                 {
                     command.Parameters.AddWithValue("@user", user);
                     var result = command.ExecuteNonQuery();
-                    if (result > 0)
-                        MessageBox.Show("Updated " + user + " to be an administrator");
-                    else
+                    if (result > 0 && Program.debugMode)
+                        MessageBox.Show("Changed " + user + " to be an administrator");
+                    else if (Program.debugMode)
                         MessageBox.Show("Failed to make " + user + " an administrator");
                 }
             }
+        }
+
+        public void RemoveAdmin(string user)
+        {
+            string sql = "UPDATE [dbo].[Users] SET [admin_powers] = '0' where [username] = @user";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", user);
+                    var result = command.ExecuteNonQuery();
+                    if (result > 0 && Program.debugMode)
+                        MessageBox.Show("Removed " + user + " from the administrators");
+                    else if (Program.debugMode)
+                        MessageBox.Show("Failed to remove " + user + " from administrators");
+                }
+            }
+        }
+
+        public bool isAdmin(string user)
+        {
+            string sql = "SELECT * from [dbo].[Users] where [username] = @user";
+            bool admin = false;
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@user", user);
+                    using (SqlDataReader result = command.ExecuteReader())
+                    {
+                        if (result.HasRows)//Check if there is a result
+                        {
+                            result.Read();//Read the row
+                            int value = int.Parse(result["admin_powers"].ToString());
+                            if (value == 1)
+                                admin = true;
+                        }
+                    }
+                }
+            }
+            return admin;
         }
 
         public void UpdateRow(string user, string data, string row)
@@ -137,7 +184,7 @@ namespace Nutrition
                     command.Parameters.AddWithValue("@data", data);
                     command.Parameters.AddWithValue("@user", user);
                     var result = command.ExecuteNonQuery();
-                    if (result == 0)
+                    if (result < 0)
                         MessageBox.Show("Failed to update " + user + "'s [" + row + "] with " + data);
                 }
             }
@@ -166,7 +213,7 @@ namespace Nutrition
                     command.Parameters.AddWithValue("@bmi", bmi);
                     command.Parameters.AddWithValue("@user", user);
                     var result = command.ExecuteNonQuery();
-                    if (result == 0)
+                    if (result < 0)
                         MessageBox.Show("Failed to update " + user);
                 }
             }
@@ -195,8 +242,37 @@ namespace Nutrition
                     // Check Error
                     if (result < 0)
                         MessageBox.Show("Error inserting data into Database!");
-                    else
+                    else if (Program.debugMode)
                         MessageBox.Show("Inserted " + item["name"] + " successfully");
+                }
+            }
+        }
+
+        public void InsertFood(Food item)
+        {
+            string sql = "INSERT INTO [dbo].[Nutrition] (item_name,calories,fat,carbohydrate,protein,contains_gluten,contains_nuts,contains_fish,contains_dairy,contains_soy) VALUES (@item,@calories,@fat,@carbs,@protein,@gluten,@nuts,@fish,@dairy,@soy)";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {//@item,@calories,@fat,@carbs,@protein,@gluten,@nuts,@fish,@dairy,@soy
+                    command.Parameters.AddWithValue("@item", item.name);
+                    command.Parameters.AddWithValue("@calories", item.calories);
+                    command.Parameters.AddWithValue("@fat", item.fat);
+                    command.Parameters.AddWithValue("@carbs", item.carbs);
+                    command.Parameters.AddWithValue("@protein", item.protein);
+                    command.Parameters.AddWithValue("@gluten", item.allergies[0]);
+                    command.Parameters.AddWithValue("@nuts", item.allergies[1]);
+                    command.Parameters.AddWithValue("@fish", item.allergies[2]);
+                    command.Parameters.AddWithValue("@dairy", item.allergies[3]);
+                    command.Parameters.AddWithValue("@soy", item.allergies[4]);
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error inserting data into Database!");
+                    else if (Program.debugMode)
+                        MessageBox.Show("Inserted " + item.name + " successfully");
                 }
             }
         }
@@ -508,19 +584,20 @@ namespace Nutrition
             }
         }
 
-        public void DeleteFood(string item)
+        public void DeleteFood(int id, string item)
         {
-            string sql = "DELETE FROM [dbo].[Nutrition] WHERE [item_name] = @food";
+            string sql = "DELETE FROM [dbo].[Nutrition] WHERE [id] = @id AND [item_name] = @food";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
                 con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
+                    command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@food", item);
                     var result = command.ExecuteNonQuery();
-                    if (result > 0)
+                    if (result > 0 && Program.debugMode)
                         MessageBox.Show("Deleted " + result + " " + item + " from the DB");//Debug
-                    else
+                    else if (Program.debugMode)
                         MessageBox.Show(item + " not found");//Debug
                 }
             }
@@ -541,12 +618,33 @@ namespace Nutrition
                     command.Parameters.AddWithValue("@itemId", itemId);
                     command.Parameters.AddWithValue("@user", username);
                     var result = command.ExecuteNonQuery();
-                    if (result > 0)
+                    if (result > 0 && Program.debugMode)
                         MessageBox.Show("Deleted " + result + " " + itemId + " from the DB");//Debug
-                    else
+                    else if (Program.debugMode)
                         MessageBox.Show(itemId + " not found");//Debug
                 }
             }
+        }
+
+        public DataTable GetFoodItems2()
+        {
+            DataTable foodItems = new DataTable();
+            string sql = "SELECT * from [dbo].[Nutrition]";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    using (SqlDataAdapter sqlData = new SqlDataAdapter(command))
+                    {
+                        sqlData.Fill(foodItems);
+                    }
+                }
+            }
+            //  recipes.Columns.Add("Recipe", typeof(string));
+            // recipes.Columns.Add("Value", typeof(int));
+
+            return foodItems;
         }
 
         public List<string> GetFoodItems()
@@ -620,6 +718,39 @@ namespace Nutrition
             return foodItems;
         }
 
+        public Food GetFoodData(int id, string item_name)
+        {
+            Food foodItem = null;
+            string sql = "SELECT * from [dbo].[Nutrition] where [id] = @id AND [item_name] = @name";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@name", item_name);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader["item_name"] != DBNull.Value)
+                            { //Check for a null database value
+                                string name = reader["item_name"].ToString();
+                                int calories = (int)reader["calories"];
+                                double fat = (double)(decimal)reader["fat"];
+                                double carbs = (double)(decimal)reader["carbohydrate"];
+                                double protein = (double)(decimal)reader["protein"];
+                                int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
+                                int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+                                foodItem = new Food(name, calories, fat, protein, carbs, allergies);
+                            }
+                        }
+                    }
+                }
+            }
+            return foodItem;
+        }
+
         public List<string> GetFoodData(string name)
         {
             List<string> foodItems = new List<string>();
@@ -634,6 +765,7 @@ namespace Nutrition
                     {
                         if (reader.Read())
                         {
+                            // foodItems.Add(reader["id"].ToString());
                             foodItems.Add(reader["item_name"].ToString());
                             foodItems.Add(reader["calories"].ToString());
                             foodItems.Add(reader["fat"].ToString());
@@ -701,8 +833,8 @@ namespace Nutrition
                     }
                 }
             }
-          //  recipes.Columns.Add("Recipe", typeof(string));
-           // recipes.Columns.Add("Value", typeof(int));
+            //  recipes.Columns.Add("Recipe", typeof(string));
+            // recipes.Columns.Add("Value", typeof(int));
 
             return recipes;
         }
@@ -817,7 +949,8 @@ namespace Nutrition
                     if (result > 0)
                     {
                         DeleteRecipeHelper(recipeID); //Clean up objects in the database by deleting fragmented recipe ingredients
-                        MessageBox.Show("Deleted recipe: " + recipeID + " from the DB");//Debug
+                        if (Program.debugMode)
+                            MessageBox.Show("Deleted recipe: " + recipeID + " from the DB");//Debug
                     }
                     else
                         MessageBox.Show(recipeID + " not found");//Debug
@@ -871,7 +1004,7 @@ namespace Nutrition
                     command.Parameters.AddWithValue("@pass", pass);
                     command.Parameters.AddWithValue("@user", user);
                     var result = command.ExecuteNonQuery();
-                    if (result > 0)
+                    if (result > 0 && Program.debugMode)
                         MessageBox.Show("Updated " + user + " password");//Debug
                     else
                         MessageBox.Show("Failed to update " + user + " password");//Debug

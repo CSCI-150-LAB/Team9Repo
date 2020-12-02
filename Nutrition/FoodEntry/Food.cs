@@ -23,5 +23,15 @@ namespace Nutrition
             this.allergies = allergies;
             this.type = type;
         }
+
+        public Food(string name, int calories, double fat, double protein, double carbs, int[] allergies)
+        {
+            this.name = name;
+            this.calories = calories;
+            this.fat = fat;
+            this.protein = protein;
+            this.carbs = carbs;
+            this.allergies = allergies;
+        }
     }
 }

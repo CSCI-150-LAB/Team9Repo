@@ -27,39 +27,11 @@ namespace Nutrition
                 recipeIngredientList.Items.Add(item.name);
         }
 
-        private void saveRecipe_Click(object sender, EventArgs e)
-        {
-            if (recipeNameBox.Text.Length == 0)
-                MessageBox.Show("Error: Recipe needs a name");
-            else if (recipeDescription.Text.Length == 0)
-                MessageBox.Show("Error: Recipe needs a description");
-            else if (recipeInsBox.Text.Length == 0)
-                MessageBox.Show("Error: Recipe needs instructions");
-            else if (recipeIngredientList.Items.Count == 0)
-                MessageBox.Show("Error: Recipe needs ingredients");
-            else
-            {
-                RecipeMaker p = new RecipeMaker(recipeNameBox.Text, recipeDescription.Text, recipeInsBox.Text);
-                foreach (string food in recipeIngredientList.Items)
-                {
-                    List<string> foodInfo = d.GetFoodData(food);
-                    int[] allergies = getAllergies(foodInfo);
-                    p.addIngredient(new Food(foodInfo[0], Int32.Parse(foodInfo[1]), Double.Parse(foodInfo[2]), Double.Parse(foodInfo[4]), Double.Parse(foodInfo[3]), allergies, Food.MealType.Dinner));
-                }
-                d.InsertRecipe(username, p.getRecipe().name, p.getRecipe().description, p.getRecipe().instructions, p.getRecipe().ingredients);
-                recipeNameBox.Clear();
-                recipeDescription.Clear();
-                recipeInsBox.Clear();
-                recipeIngredientList.Items.Clear();
-                recipes = d.GetRecipeList();
-                recipeDropDown.DataSource = d.getRecipeList();
-                MessageBox.Show("Saved " + p.getRecipe().name + " to the database");
-            }
-        }
-
         private void ingredientsDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string food = ingredientsDropDown.SelectedItem.ToString();
+            DataRowView drv = (DataRowView)ingredientsDropDown.SelectedItem;
+            string food = drv["item_name"].ToString();
+            string id = drv["id"].ToString();
             recipeIngredientList.Items.Add(food);
         }
 
@@ -72,7 +44,7 @@ namespace Nutrition
                 recipeIngredientList.SelectedIndex = index - 1;
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void useRecipeButton_Click(object sender, EventArgs e)
         {
             foreach (string food in recipeIngredientList.Items)
             {
@@ -101,8 +73,103 @@ namespace Nutrition
                     targetLabel.Text = sum.ToString();
                 }
             }
+
+            //After clicking use this recipe swap to the food entry tab
             tabControl1.SelectedTab = tabPage2;
 
+            //If the tab control is not visible or the wrong tab is being displayed--fix it
+            if (!foodTabControl.Visible || !foodTabControl.TabPages.Contains(addMealTab))
+            {
+                //Show the control
+                foodTabControl.Visible = true;
+                //Remove the unused tab
+                foodTabControl.TabPages.Remove(addNewFoodTab);
+                //If we are on the wrong tab and the one we want is missing--add it back
+                if (!foodTabControl.TabPages.Contains(addMealTab))
+                    foodTabControl.TabPages.Insert(0, addMealTab);
+            }
+        }
+        private void findRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (recipeControl.Visible && recipeControl.TabPages.Contains(findRecipeTab))
+            {
+                recipeControl.Visible = false;
+                recipeControl.TabPages.Remove(findRecipeTab);
+            }
+            else
+            {
+                recipeControl.Visible = true;
+                if (!recipeControl.TabPages.Contains(findRecipeTab))
+                    recipeControl.TabPages.Insert(0, findRecipeTab);
+                if (recipeControl.TabPages.Contains(addRecipeTab))
+                    recipeControl.TabPages.Remove(addRecipeTab);
+            }
+        }
+
+        private void addRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (recipeControl.Visible && recipeControl.TabPages.Contains(addRecipeTab))
+            {
+                recipeControl.Visible = false;
+                recipeControl.TabPages.Remove(addRecipeTab);
+            }
+            else
+            {
+                recipeControl.Visible = true;
+                if (!recipeControl.TabPages.Contains(addRecipeTab))
+                    recipeControl.TabPages.Insert(0, addRecipeTab);
+                if (recipeControl.TabPages.Contains(findRecipeTab))
+                    recipeControl.TabPages.Remove(findRecipeTab);
+            }
+        }
+
+        private void newRecipeIngr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRowView drv = (DataRowView)newRecipeIngr.SelectedItem;
+            string food = drv["item_name"].ToString();
+            string id = drv["id"].ToString();
+            newRecipeList.Items.Add(food);
+        }
+
+        private void newRecipeDeleteIng_Click(object sender, EventArgs e)
+        {
+            int index = newRecipeList.SelectedIndex;
+            if (index > -1)
+            {
+                newRecipeList.Items.RemoveAt(index);
+                newRecipeList.SelectedIndex = index - 1;
+            }
+        }
+
+        private void saveNewRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (newRecipeName.Text.Length == 0)
+                MessageBox.Show("Error: Recipe needs a name");
+            else if (newRecipeDesc.Text.Length == 0)
+                MessageBox.Show("Error: Recipe needs a description");
+            else if (newRecipeIns.Text.Length == 0)
+                MessageBox.Show("Error: Recipe needs instructions");
+            else if (newRecipeList.Items.Count == 0)
+                MessageBox.Show("Error: Recipe needs ingredients");
+            else
+            {
+                RecipeMaker p = new RecipeMaker(newRecipeName.Text, newRecipeDesc.Text, newRecipeIns.Text);
+                foreach (string food in newRecipeList.Items)
+                {
+                    List<string> foodInfo = d.GetFoodData(food);
+                    int[] allergies = getAllergies(foodInfo);
+                    p.addIngredient(new Food(foodInfo[0], Int32.Parse(foodInfo[1]), Double.Parse(foodInfo[2]), Double.Parse(foodInfo[4]), Double.Parse(foodInfo[3]), allergies, Food.MealType.Dinner));
+                }
+                d.InsertRecipe(username, p.getRecipe().name, p.getRecipe().description, p.getRecipe().instructions, p.getRecipe().ingredients);
+                newRecipeName.Clear();
+                newRecipeDesc.Clear();
+                newRecipeIns.Clear();
+                newRecipeList.Items.Clear();
+                recipes = d.GetRecipeList();
+                recipeDropDown.DataSource = d.getRecipeList();
+                if (Program.debugMode)
+                    MessageBox.Show("Saved " + p.getRecipe().name + " to the database");
+            }
         }
     }
 }

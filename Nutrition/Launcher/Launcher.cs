@@ -22,14 +22,14 @@ namespace Nutrition
         {
             Login x = new Login();
             x.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
             Register y = new Register();
             y.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

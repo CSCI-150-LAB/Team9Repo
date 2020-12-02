@@ -278,7 +278,6 @@
             this.radioButtonAct1.TabStop = true;
             this.radioButtonAct1.Text = "Sedentary (little or no exercise)";
             this.radioButtonAct1.UseVisualStyleBackColor = true;
-            this.radioButtonAct1.CheckedChanged += new System.EventHandler(this.radioButtonAct1_CheckedChanged);
             // 
             // labelPounds
             // 

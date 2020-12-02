@@ -54,17 +54,19 @@
             this.weightFormsPlot = new ScottPlot.FormsPlot();
             this.barsFormsPlot = new ScottPlot.FormsPlot();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.allergyCheckbox = new System.Windows.Forms.CheckBox();
-            this.foodBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.newFoodButton = new System.Windows.Forms.Button();
+            this.logMealButton = new System.Windows.Forms.Button();
+            this.foodTabControl = new System.Windows.Forms.TabControl();
+            this.addMealTab = new System.Windows.Forms.TabPage();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.mealTypeBox = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.soyBox = new System.Windows.Forms.CheckBox();
             this.nutBox = new System.Windows.Forms.CheckBox();
             this.dairyBox = new System.Windows.Forms.CheckBox();
             this.glutenBox = new System.Windows.Forms.CheckBox();
             this.fishBox = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.proteinBox = new System.Windows.Forms.TextBox();
             this.proteinLabel = new System.Windows.Forms.Label();
@@ -79,15 +81,41 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.carbLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.saveFoodButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bmrLabel = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.targetLabel = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.allergyCheckbox = new System.Windows.Forms.CheckBox();
+            this.foodBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.removeButton = new System.Windows.Forms.Button();
             this.clearAllButton = new System.Windows.Forms.Button();
             this.foodItems = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.bmrLabel = new System.Windows.Forms.Label();
-            this.saveFoodButton = new System.Windows.Forms.Button();
+            this.addNewFoodTab = new System.Windows.Forms.TabPage();
+            this.saveNewFoodButton = new System.Windows.Forms.Button();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.newFoodSoy = new System.Windows.Forms.CheckBox();
+            this.newFoodNut = new System.Windows.Forms.CheckBox();
+            this.newFoodDair = new System.Windows.Forms.CheckBox();
+            this.newFoodGlut = new System.Windows.Forms.CheckBox();
+            this.newFoodFish = new System.Windows.Forms.CheckBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.newFoodPro = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.newFoodFat = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.newFoodCarb = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.newFoodCal = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.newFoodName = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -107,16 +135,16 @@
             this.recipeDescriptionLabel = new System.Windows.Forms.Label();
             this.recipeNameLabel = new System.Windows.Forms.Label();
             this.addRecipeTab = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.newRecipeDesc = new System.Windows.Forms.RichTextBox();
+            this.saveNewRecipeButton = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.newRecipeDeleteIng = new System.Windows.Forms.Button();
+            this.newRecipeIns = new System.Windows.Forms.RichTextBox();
+            this.newRecipeList = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.newRecipeIngr = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.newRecipeName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -154,12 +182,18 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.foodTabControl.SuspendLayout();
+            this.addMealTab.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.addNewFoodTab.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.recipeControl.SuspendLayout();
             this.findRecipeTab.SuspendLayout();
@@ -289,7 +323,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(10, 119);
+            this.button2.Location = new System.Drawing.Point(219, 75);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 21);
             this.button2.TabIndex = 3;
@@ -298,7 +332,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(6, 37);
+            this.button3.Location = new System.Drawing.Point(6, 73);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 24);
             this.button3.TabIndex = 2;
@@ -412,12 +446,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox7);
-            this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.saveFoodButton);
+            this.tabPage2.Controls.Add(this.newFoodButton);
+            this.tabPage2.Controls.Add(this.logMealButton);
+            this.tabPage2.Controls.Add(this.foodTabControl);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -426,41 +457,144 @@
             this.tabPage2.Text = "Add Food";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
+            // newFoodButton
             // 
-            this.groupBox7.Controls.Add(this.allergyCheckbox);
-            this.groupBox7.Controls.Add(this.foodBox1);
-            this.groupBox7.Location = new System.Drawing.Point(8, 3);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(170, 84);
-            this.groupBox7.TabIndex = 0;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Find Food";
+            this.newFoodButton.Location = new System.Drawing.Point(103, 11);
+            this.newFoodButton.Name = "newFoodButton";
+            this.newFoodButton.Size = new System.Drawing.Size(148, 43);
+            this.newFoodButton.TabIndex = 8;
+            this.newFoodButton.Text = "Create New Food Item";
+            this.newFoodButton.UseVisualStyleBackColor = true;
+            this.newFoodButton.Click += new System.EventHandler(this.newFoodItem_Click);
             // 
-            // allergyCheckbox
+            // logMealButton
             // 
-            this.allergyCheckbox.AutoSize = true;
-            this.allergyCheckbox.Location = new System.Drawing.Point(41, 59);
-            this.allergyCheckbox.Name = "allergyCheckbox";
-            this.allergyCheckbox.Size = new System.Drawing.Size(123, 19);
-            this.allergyCheckbox.TabIndex = 1;
-            this.allergyCheckbox.Text = "Hide Allergy Items";
-            this.allergyCheckbox.UseVisualStyleBackColor = true;
-            this.allergyCheckbox.CheckedChanged += new System.EventHandler(this.allergyCheckbox_CheckedChanged);
+            this.logMealButton.BackColor = System.Drawing.Color.LightGreen;
+            this.logMealButton.Location = new System.Drawing.Point(13, 11);
+            this.logMealButton.Name = "logMealButton";
+            this.logMealButton.Size = new System.Drawing.Size(75, 43);
+            this.logMealButton.TabIndex = 7;
+            this.logMealButton.Text = "Log Meal";
+            this.logMealButton.UseVisualStyleBackColor = false;
+            this.logMealButton.Click += new System.EventHandler(this.logMeal_Click);
             // 
-            // foodBox1
+            // foodTabControl
             // 
-            this.foodBox1.FormattingEnabled = true;
-            this.foodBox1.Location = new System.Drawing.Point(6, 22);
-            this.foodBox1.Name = "foodBox1";
-            this.foodBox1.Size = new System.Drawing.Size(158, 23);
-            this.foodBox1.TabIndex = 0;
-            this.foodBox1.SelectedIndexChanged += new System.EventHandler(this.foodBox1_SelectedIndexChanged);
+            this.foodTabControl.Controls.Add(this.addMealTab);
+            this.foodTabControl.Controls.Add(this.addNewFoodTab);
+            this.foodTabControl.Location = new System.Drawing.Point(8, 65);
+            this.foodTabControl.Name = "foodTabControl";
+            this.foodTabControl.SelectedIndex = 0;
+            this.foodTabControl.Size = new System.Drawing.Size(942, 530);
+            this.foodTabControl.TabIndex = 6;
+            this.foodTabControl.Visible = false;
+            // 
+            // addMealTab
+            // 
+            this.addMealTab.Controls.Add(this.groupBox13);
+            this.addMealTab.Controls.Add(this.groupBox10);
+            this.addMealTab.Controls.Add(this.groupBox6);
+            this.addMealTab.Controls.Add(this.saveFoodButton);
+            this.addMealTab.Controls.Add(this.groupBox3);
+            this.addMealTab.Controls.Add(this.groupBox5);
+            this.addMealTab.Controls.Add(this.groupBox7);
+            this.addMealTab.Controls.Add(this.groupBox4);
+            this.addMealTab.Location = new System.Drawing.Point(4, 24);
+            this.addMealTab.Name = "addMealTab";
+            this.addMealTab.Padding = new System.Windows.Forms.Padding(3);
+            this.addMealTab.Size = new System.Drawing.Size(934, 502);
+            this.addMealTab.TabIndex = 0;
+            this.addMealTab.Text = "Add Meal";
+            this.addMealTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.mealTypeBox);
+            this.groupBox13.Location = new System.Drawing.Point(21, 110);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(170, 57);
+            this.groupBox13.TabIndex = 7;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Meal Type";
+            // 
+            // mealTypeBox
+            // 
+            this.mealTypeBox.FormattingEnabled = true;
+            this.mealTypeBox.Items.AddRange(new object[] {
+            "Breakfast",
+            "Lunch",
+            "Dinner"});
+            this.mealTypeBox.Location = new System.Drawing.Point(6, 26);
+            this.mealTypeBox.Name = "mealTypeBox";
+            this.mealTypeBox.Size = new System.Drawing.Size(158, 23);
+            this.mealTypeBox.TabIndex = 0;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.soyBox);
+            this.groupBox10.Controls.Add(this.nutBox);
+            this.groupBox10.Controls.Add(this.dairyBox);
+            this.groupBox10.Controls.Add(this.glutenBox);
+            this.groupBox10.Controls.Add(this.fishBox);
+            this.groupBox10.Location = new System.Drawing.Point(429, 127);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(134, 197);
+            this.groupBox10.TabIndex = 6;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Allergy Information";
+            // 
+            // soyBox
+            // 
+            this.soyBox.AutoSize = true;
+            this.soyBox.Location = new System.Drawing.Point(29, 137);
+            this.soyBox.Name = "soyBox";
+            this.soyBox.Size = new System.Drawing.Size(45, 19);
+            this.soyBox.TabIndex = 9;
+            this.soyBox.Text = "Soy";
+            this.soyBox.UseVisualStyleBackColor = true;
+            // 
+            // nutBox
+            // 
+            this.nutBox.AutoSize = true;
+            this.nutBox.Location = new System.Drawing.Point(29, 62);
+            this.nutBox.Name = "nutBox";
+            this.nutBox.Size = new System.Drawing.Size(51, 19);
+            this.nutBox.TabIndex = 1;
+            this.nutBox.Text = "Nuts";
+            this.nutBox.UseVisualStyleBackColor = true;
+            // 
+            // dairyBox
+            // 
+            this.dairyBox.AutoSize = true;
+            this.dairyBox.Location = new System.Drawing.Point(29, 87);
+            this.dairyBox.Name = "dairyBox";
+            this.dairyBox.Size = new System.Drawing.Size(53, 19);
+            this.dairyBox.TabIndex = 8;
+            this.dairyBox.Text = "Dairy";
+            this.dairyBox.UseVisualStyleBackColor = true;
+            // 
+            // glutenBox
+            // 
+            this.glutenBox.AutoSize = true;
+            this.glutenBox.Location = new System.Drawing.Point(29, 37);
+            this.glutenBox.Name = "glutenBox";
+            this.glutenBox.Size = new System.Drawing.Size(61, 19);
+            this.glutenBox.TabIndex = 0;
+            this.glutenBox.Text = "Gluten";
+            this.glutenBox.UseVisualStyleBackColor = true;
+            // 
+            // fishBox
+            // 
+            this.fishBox.AutoSize = true;
+            this.fishBox.Location = new System.Drawing.Point(29, 112);
+            this.fishBox.Name = "fishBox";
+            this.fishBox.Size = new System.Drawing.Size(47, 19);
+            this.fishBox.TabIndex = 7;
+            this.fishBox.Text = "Fish";
+            this.fishBox.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.groupBox10);
-            this.groupBox6.Controls.Add(this.button1);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.proteinBox);
             this.groupBox6.Controls.Add(this.proteinLabel);
@@ -475,85 +609,12 @@
             this.groupBox6.Controls.Add(this.nameBox);
             this.groupBox6.Controls.Add(this.carbLabel);
             this.groupBox6.Controls.Add(this.nameLabel);
-            this.groupBox6.Location = new System.Drawing.Point(8, 99);
+            this.groupBox6.Location = new System.Drawing.Point(225, 127);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(198, 354);
+            this.groupBox6.Size = new System.Drawing.Size(198, 197);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Nutrition Entry";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.soyBox);
-            this.groupBox10.Controls.Add(this.nutBox);
-            this.groupBox10.Controls.Add(this.dairyBox);
-            this.groupBox10.Controls.Add(this.glutenBox);
-            this.groupBox10.Controls.Add(this.fishBox);
-            this.groupBox10.Location = new System.Drawing.Point(6, 211);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(186, 86);
-            this.groupBox10.TabIndex = 6;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Allergies";
-            // 
-            // soyBox
-            // 
-            this.soyBox.AutoSize = true;
-            this.soyBox.Location = new System.Drawing.Point(132, 22);
-            this.soyBox.Name = "soyBox";
-            this.soyBox.Size = new System.Drawing.Size(45, 19);
-            this.soyBox.TabIndex = 9;
-            this.soyBox.Text = "Soy";
-            this.soyBox.UseVisualStyleBackColor = true;
-            // 
-            // nutBox
-            // 
-            this.nutBox.AutoSize = true;
-            this.nutBox.Location = new System.Drawing.Point(6, 47);
-            this.nutBox.Name = "nutBox";
-            this.nutBox.Size = new System.Drawing.Size(51, 19);
-            this.nutBox.TabIndex = 1;
-            this.nutBox.Text = "Nuts";
-            this.nutBox.UseVisualStyleBackColor = true;
-            // 
-            // dairyBox
-            // 
-            this.dairyBox.AutoSize = true;
-            this.dairyBox.Location = new System.Drawing.Point(73, 22);
-            this.dairyBox.Name = "dairyBox";
-            this.dairyBox.Size = new System.Drawing.Size(53, 19);
-            this.dairyBox.TabIndex = 8;
-            this.dairyBox.Text = "Dairy";
-            this.dairyBox.UseVisualStyleBackColor = true;
-            // 
-            // glutenBox
-            // 
-            this.glutenBox.AutoSize = true;
-            this.glutenBox.Location = new System.Drawing.Point(6, 22);
-            this.glutenBox.Name = "glutenBox";
-            this.glutenBox.Size = new System.Drawing.Size(61, 19);
-            this.glutenBox.TabIndex = 0;
-            this.glutenBox.Text = "Gluten";
-            this.glutenBox.UseVisualStyleBackColor = true;
-            // 
-            // fishBox
-            // 
-            this.fishBox.AutoSize = true;
-            this.fishBox.Location = new System.Drawing.Point(73, 47);
-            this.fishBox.Name = "fishBox";
-            this.fishBox.Size = new System.Drawing.Size(47, 19);
-            this.fishBox.TabIndex = 7;
-            this.fishBox.Text = "Fish";
-            this.fishBox.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(117, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Save Food";
-            this.button1.UseVisualStyleBackColor = true;
+            this.groupBox6.Text = "Nutritional Facts";
             // 
             // label10
             // 
@@ -571,7 +632,7 @@
             this.proteinBox.Name = "proteinBox";
             this.proteinBox.PlaceholderText = "Protein";
             this.proteinBox.Size = new System.Drawing.Size(88, 23);
-            this.proteinBox.TabIndex = 8;
+            this.proteinBox.TabIndex = 4;
             this.proteinBox.TextChanged += new System.EventHandler(this.proteinBox_TextChanged);
             // 
             // proteinLabel
@@ -600,7 +661,7 @@
             this.fatBox.Name = "fatBox";
             this.fatBox.PlaceholderText = "Fat";
             this.fatBox.Size = new System.Drawing.Size(88, 23);
-            this.fatBox.TabIndex = 6;
+            this.fatBox.TabIndex = 3;
             this.fatBox.TextChanged += new System.EventHandler(this.fatBox_TextChanged);
             // 
             // fatLabel
@@ -629,7 +690,7 @@
             this.carbBox.Name = "carbBox";
             this.carbBox.PlaceholderText = "Carbs";
             this.carbBox.Size = new System.Drawing.Size(88, 23);
-            this.carbBox.TabIndex = 7;
+            this.carbBox.TabIndex = 2;
             this.carbBox.TextChanged += new System.EventHandler(this.carbBox_TextChanged);
             // 
             // label7
@@ -692,10 +753,42 @@
             this.nameLabel.TabIndex = 9;
             this.nameLabel.Text = "Name";
             // 
+            // saveFoodButton
+            // 
+            this.saveFoodButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.saveFoodButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.saveFoodButton.Location = new System.Drawing.Point(130, 450);
+            this.saveFoodButton.Name = "saveFoodButton";
+            this.saveFoodButton.Size = new System.Drawing.Size(87, 36);
+            this.saveFoodButton.TabIndex = 4;
+            this.saveFoodButton.Text = "Save List";
+            this.saveFoodButton.UseVisualStyleBackColor = false;
+            this.saveFoodButton.Click += new System.EventHandler(this.saveFoodButton_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.bmrLabel);
+            this.groupBox3.Location = new System.Drawing.Point(225, 20);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(87, 57);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "BMR";
+            // 
+            // bmrLabel
+            // 
+            this.bmrLabel.AutoSize = true;
+            this.bmrLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bmrLabel.Location = new System.Drawing.Point(16, 19);
+            this.bmrLabel.Name = "bmrLabel";
+            this.bmrLabel.Size = new System.Drawing.Size(48, 28);
+            this.bmrLabel.TabIndex = 0;
+            this.bmrLabel.Text = "N/A";
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.targetLabel);
-            this.groupBox5.Location = new System.Drawing.Point(184, 3);
+            this.groupBox5.Location = new System.Drawing.Point(318, 20);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(101, 57);
             this.groupBox5.TabIndex = 2;
@@ -713,17 +806,48 @@
             this.targetLabel.Text = "N/A";
             this.targetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.allergyCheckbox);
+            this.groupBox7.Controls.Add(this.foodBox1);
+            this.groupBox7.Location = new System.Drawing.Point(21, 20);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(170, 84);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Find Food";
+            // 
+            // allergyCheckbox
+            // 
+            this.allergyCheckbox.AutoSize = true;
+            this.allergyCheckbox.Location = new System.Drawing.Point(41, 59);
+            this.allergyCheckbox.Name = "allergyCheckbox";
+            this.allergyCheckbox.Size = new System.Drawing.Size(124, 19);
+            this.allergyCheckbox.TabIndex = 1;
+            this.allergyCheckbox.Text = "Hide Allergic Food";
+            this.allergyCheckbox.UseVisualStyleBackColor = true;
+            this.allergyCheckbox.CheckedChanged += new System.EventHandler(this.allergyCheckbox_CheckedChanged);
+            // 
+            // foodBox1
+            // 
+            this.foodBox1.FormattingEnabled = true;
+            this.foodBox1.Location = new System.Drawing.Point(6, 22);
+            this.foodBox1.Name = "foodBox1";
+            this.foodBox1.Size = new System.Drawing.Size(158, 23);
+            this.foodBox1.TabIndex = 0;
+            this.foodBox1.SelectedIndexChanged += new System.EventHandler(this.foodBox1_SelectedIndexChanged);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.removeButton);
             this.groupBox4.Controls.Add(this.clearAllButton);
             this.groupBox4.Controls.Add(this.foodItems);
-            this.groupBox4.Location = new System.Drawing.Point(212, 99);
+            this.groupBox4.Location = new System.Drawing.Point(21, 173);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(198, 271);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Items";
+            this.groupBox4.Text = "Food List";
             // 
             // removeButton
             // 
@@ -755,37 +879,247 @@
             this.foodItems.TabIndex = 0;
             this.foodItems.SelectedIndexChanged += new System.EventHandler(this.foodItems_SelectedIndexChanged);
             // 
-            // groupBox3
+            // addNewFoodTab
             // 
-            this.groupBox3.Controls.Add(this.bmrLabel);
-            this.groupBox3.Location = new System.Drawing.Point(295, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(87, 57);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "BMR";
+            this.addNewFoodTab.Controls.Add(this.saveNewFoodButton);
+            this.addNewFoodTab.Controls.Add(this.groupBox12);
+            this.addNewFoodTab.Controls.Add(this.groupBox11);
+            this.addNewFoodTab.Location = new System.Drawing.Point(4, 24);
+            this.addNewFoodTab.Name = "addNewFoodTab";
+            this.addNewFoodTab.Padding = new System.Windows.Forms.Padding(3);
+            this.addNewFoodTab.Size = new System.Drawing.Size(934, 502);
+            this.addNewFoodTab.TabIndex = 1;
+            this.addNewFoodTab.Text = "New Food Entry";
+            this.addNewFoodTab.UseVisualStyleBackColor = true;
             // 
-            // bmrLabel
+            // saveNewFoodButton
             // 
-            this.bmrLabel.AutoSize = true;
-            this.bmrLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bmrLabel.Location = new System.Drawing.Point(16, 19);
-            this.bmrLabel.Name = "bmrLabel";
-            this.bmrLabel.Size = new System.Drawing.Size(48, 28);
-            this.bmrLabel.TabIndex = 0;
-            this.bmrLabel.Text = "N/A";
+            this.saveNewFoodButton.Location = new System.Drawing.Point(123, 228);
+            this.saveNewFoodButton.Name = "saveNewFoodButton";
+            this.saveNewFoodButton.Size = new System.Drawing.Size(96, 37);
+            this.saveNewFoodButton.TabIndex = 7;
+            this.saveNewFoodButton.Text = "Save";
+            this.saveNewFoodButton.UseVisualStyleBackColor = true;
+            this.saveNewFoodButton.Click += new System.EventHandler(this.saveNewFoodButton_Click);
             // 
-            // saveFoodButton
+            // groupBox12
             // 
-            this.saveFoodButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.saveFoodButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveFoodButton.Location = new System.Drawing.Point(323, 386);
-            this.saveFoodButton.Name = "saveFoodButton";
-            this.saveFoodButton.Size = new System.Drawing.Size(87, 36);
-            this.saveFoodButton.TabIndex = 4;
-            this.saveFoodButton.Text = "Save List";
-            this.saveFoodButton.UseVisualStyleBackColor = false;
-            this.saveFoodButton.Click += new System.EventHandler(this.saveFoodButton_Click);
+            this.groupBox12.Controls.Add(this.newFoodSoy);
+            this.groupBox12.Controls.Add(this.newFoodNut);
+            this.groupBox12.Controls.Add(this.newFoodDair);
+            this.groupBox12.Controls.Add(this.newFoodGlut);
+            this.groupBox12.Controls.Add(this.newFoodFish);
+            this.groupBox12.Location = new System.Drawing.Point(239, 20);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(111, 202);
+            this.groupBox12.TabIndex = 6;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Food Allergies";
+            // 
+            // newFoodSoy
+            // 
+            this.newFoodSoy.AutoSize = true;
+            this.newFoodSoy.Location = new System.Drawing.Point(21, 137);
+            this.newFoodSoy.Name = "newFoodSoy";
+            this.newFoodSoy.Size = new System.Drawing.Size(45, 19);
+            this.newFoodSoy.TabIndex = 9;
+            this.newFoodSoy.Text = "Soy";
+            this.newFoodSoy.UseVisualStyleBackColor = true;
+            // 
+            // newFoodNut
+            // 
+            this.newFoodNut.AutoSize = true;
+            this.newFoodNut.Location = new System.Drawing.Point(21, 62);
+            this.newFoodNut.Name = "newFoodNut";
+            this.newFoodNut.Size = new System.Drawing.Size(51, 19);
+            this.newFoodNut.TabIndex = 1;
+            this.newFoodNut.Text = "Nuts";
+            this.newFoodNut.UseVisualStyleBackColor = true;
+            // 
+            // newFoodDair
+            // 
+            this.newFoodDair.AutoSize = true;
+            this.newFoodDair.Location = new System.Drawing.Point(21, 87);
+            this.newFoodDair.Name = "newFoodDair";
+            this.newFoodDair.Size = new System.Drawing.Size(53, 19);
+            this.newFoodDair.TabIndex = 8;
+            this.newFoodDair.Text = "Dairy";
+            this.newFoodDair.UseVisualStyleBackColor = true;
+            // 
+            // newFoodGlut
+            // 
+            this.newFoodGlut.AutoSize = true;
+            this.newFoodGlut.Location = new System.Drawing.Point(21, 37);
+            this.newFoodGlut.Name = "newFoodGlut";
+            this.newFoodGlut.Size = new System.Drawing.Size(61, 19);
+            this.newFoodGlut.TabIndex = 0;
+            this.newFoodGlut.Text = "Gluten";
+            this.newFoodGlut.UseVisualStyleBackColor = true;
+            // 
+            // newFoodFish
+            // 
+            this.newFoodFish.AutoSize = true;
+            this.newFoodFish.Location = new System.Drawing.Point(21, 112);
+            this.newFoodFish.Name = "newFoodFish";
+            this.newFoodFish.Size = new System.Drawing.Size(47, 19);
+            this.newFoodFish.TabIndex = 7;
+            this.newFoodFish.Text = "Fish";
+            this.newFoodFish.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label21);
+            this.groupBox11.Controls.Add(this.newFoodPro);
+            this.groupBox11.Controls.Add(this.label22);
+            this.groupBox11.Controls.Add(this.label23);
+            this.groupBox11.Controls.Add(this.newFoodFat);
+            this.groupBox11.Controls.Add(this.label24);
+            this.groupBox11.Controls.Add(this.label25);
+            this.groupBox11.Controls.Add(this.newFoodCarb);
+            this.groupBox11.Controls.Add(this.label26);
+            this.groupBox11.Controls.Add(this.newFoodCal);
+            this.groupBox11.Controls.Add(this.label27);
+            this.groupBox11.Controls.Add(this.newFoodName);
+            this.groupBox11.Controls.Add(this.label28);
+            this.groupBox11.Controls.Add(this.label29);
+            this.groupBox11.Location = new System.Drawing.Point(21, 20);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(198, 202);
+            this.groupBox11.TabIndex = 2;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Nutritional Facts";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(151, 159);
+            this.label21.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(14, 15);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "g";
+            // 
+            // newFoodPro
+            // 
+            this.newFoodPro.Location = new System.Drawing.Point(60, 156);
+            this.newFoodPro.Name = "newFoodPro";
+            this.newFoodPro.PlaceholderText = "Protein";
+            this.newFoodPro.Size = new System.Drawing.Size(88, 23);
+            this.newFoodPro.TabIndex = 4;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(8, 159);
+            this.label22.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(45, 15);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "Protein";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(151, 126);
+            this.label23.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(14, 15);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "g";
+            // 
+            // newFoodFat
+            // 
+            this.newFoodFat.Location = new System.Drawing.Point(60, 123);
+            this.newFoodFat.Name = "newFoodFat";
+            this.newFoodFat.PlaceholderText = "Fat";
+            this.newFoodFat.Size = new System.Drawing.Size(88, 23);
+            this.newFoodFat.TabIndex = 3;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(8, 126);
+            this.label24.Margin = new System.Windows.Forms.Padding(3, 7, 25, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(23, 15);
+            this.label24.TabIndex = 12;
+            this.label24.Text = "Fat";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(151, 91);
+            this.label25.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(14, 15);
+            this.label25.TabIndex = 4;
+            this.label25.Text = "g";
+            // 
+            // newFoodCarb
+            // 
+            this.newFoodCarb.Location = new System.Drawing.Point(60, 88);
+            this.newFoodCarb.Name = "newFoodCarb";
+            this.newFoodCarb.PlaceholderText = "Carbs";
+            this.newFoodCarb.Size = new System.Drawing.Size(88, 23);
+            this.newFoodCarb.TabIndex = 2;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(151, 61);
+            this.label26.Margin = new System.Windows.Forms.Padding(0, 9, 5, 5);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(33, 15);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "kcals";
+            // 
+            // newFoodCal
+            // 
+            this.newFoodCal.Location = new System.Drawing.Point(60, 57);
+            this.newFoodCal.Margin = new System.Windows.Forms.Padding(5);
+            this.newFoodCal.Name = "newFoodCal";
+            this.newFoodCal.PlaceholderText = "Calories";
+            this.newFoodCal.Size = new System.Drawing.Size(88, 23);
+            this.newFoodCal.TabIndex = 1;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 60);
+            this.label27.Margin = new System.Windows.Forms.Padding(3, 9, 0, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 15);
+            this.label27.TabIndex = 10;
+            this.label27.Text = "Calories";
+            // 
+            // newFoodName
+            // 
+            this.newFoodName.Location = new System.Drawing.Point(60, 24);
+            this.newFoodName.Margin = new System.Windows.Forms.Padding(5);
+            this.newFoodName.Name = "newFoodName";
+            this.newFoodName.PlaceholderText = "Name";
+            this.newFoodName.Size = new System.Drawing.Size(88, 23);
+            this.newFoodName.TabIndex = 0;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(8, 91);
+            this.label28.Margin = new System.Windows.Forms.Padding(3, 7, 12, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(37, 15);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "Carbs";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(8, 28);
+            this.label29.Margin = new System.Windows.Forms.Padding(5, 9, 9, 9);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(39, 15);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "Name";
             // 
             // tabPage3
             // 
@@ -870,7 +1204,7 @@
             this.saveToFoodEntry.TabIndex = 14;
             this.saveToFoodEntry.Text = "Use this Recipe";
             this.saveToFoodEntry.UseVisualStyleBackColor = true;
-            this.saveToFoodEntry.Click += new System.EventHandler(this.button2_Click);
+            this.saveToFoodEntry.Click += new System.EventHandler(this.useRecipeButton_Click);
             // 
             // recipeDropDown
             // 
@@ -972,16 +1306,16 @@
             // 
             // addRecipeTab
             // 
-            this.addRecipeTab.Controls.Add(this.richTextBox1);
-            this.addRecipeTab.Controls.Add(this.button5);
+            this.addRecipeTab.Controls.Add(this.newRecipeDesc);
+            this.addRecipeTab.Controls.Add(this.saveNewRecipeButton);
             this.addRecipeTab.Controls.Add(this.label16);
-            this.addRecipeTab.Controls.Add(this.button6);
-            this.addRecipeTab.Controls.Add(this.richTextBox2);
-            this.addRecipeTab.Controls.Add(this.listBox1);
+            this.addRecipeTab.Controls.Add(this.newRecipeDeleteIng);
+            this.addRecipeTab.Controls.Add(this.newRecipeIns);
+            this.addRecipeTab.Controls.Add(this.newRecipeList);
             this.addRecipeTab.Controls.Add(this.label17);
-            this.addRecipeTab.Controls.Add(this.comboBox2);
+            this.addRecipeTab.Controls.Add(this.newRecipeIngr);
             this.addRecipeTab.Controls.Add(this.label18);
-            this.addRecipeTab.Controls.Add(this.textBox6);
+            this.addRecipeTab.Controls.Add(this.newRecipeName);
             this.addRecipeTab.Controls.Add(this.label19);
             this.addRecipeTab.Controls.Add(this.label20);
             this.addRecipeTab.Location = new System.Drawing.Point(4, 24);
@@ -992,22 +1326,23 @@
             this.addRecipeTab.Text = "Add Recipe";
             this.addRecipeTab.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // newRecipeDesc
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(97, 45);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(352, 46);
-            this.richTextBox1.TabIndex = 19;
-            this.richTextBox1.Text = "Describe the recipe";
+            this.newRecipeDesc.Location = new System.Drawing.Point(97, 45);
+            this.newRecipeDesc.Name = "newRecipeDesc";
+            this.newRecipeDesc.Size = new System.Drawing.Size(352, 46);
+            this.newRecipeDesc.TabIndex = 1;
+            this.newRecipeDesc.Text = "Describe the recipe";
             // 
-            // button5
+            // saveNewRecipeButton
             // 
-            this.button5.Location = new System.Drawing.Point(330, 419);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(119, 23);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "Save Recipe";
-            this.button5.UseVisualStyleBackColor = true;
+            this.saveNewRecipeButton.Location = new System.Drawing.Point(330, 419);
+            this.saveNewRecipeButton.Name = "saveNewRecipeButton";
+            this.saveNewRecipeButton.Size = new System.Drawing.Size(119, 23);
+            this.saveNewRecipeButton.TabIndex = 3;
+            this.saveNewRecipeButton.Text = "Save Recipe";
+            this.saveNewRecipeButton.UseVisualStyleBackColor = true;
+            this.saveNewRecipeButton.Click += new System.EventHandler(this.saveNewRecipeButton_Click);
             // 
             // label16
             // 
@@ -1018,31 +1353,32 @@
             this.label16.TabIndex = 25;
             this.label16.Text = "Instructions";
             // 
-            // button6
+            // newRecipeDeleteIng
             // 
-            this.button6.Location = new System.Drawing.Point(97, 419);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(114, 23);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Delete Ingredient";
-            this.button6.UseVisualStyleBackColor = true;
+            this.newRecipeDeleteIng.Location = new System.Drawing.Point(97, 419);
+            this.newRecipeDeleteIng.Name = "newRecipeDeleteIng";
+            this.newRecipeDeleteIng.Size = new System.Drawing.Size(114, 23);
+            this.newRecipeDeleteIng.TabIndex = 6;
+            this.newRecipeDeleteIng.Text = "Delete Ingredient";
+            this.newRecipeDeleteIng.UseVisualStyleBackColor = true;
+            this.newRecipeDeleteIng.Click += new System.EventHandler(this.newRecipeDeleteIng_Click);
             // 
-            // richTextBox2
+            // newRecipeIns
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(97, 97);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(352, 108);
-            this.richTextBox2.TabIndex = 24;
-            this.richTextBox2.Text = "Step 1: Preheat oven\nStep 2: \nStep 3:\n";
+            this.newRecipeIns.Location = new System.Drawing.Point(97, 97);
+            this.newRecipeIns.Name = "newRecipeIns";
+            this.newRecipeIns.Size = new System.Drawing.Size(352, 108);
+            this.newRecipeIns.TabIndex = 2;
+            this.newRecipeIns.Text = "Step 1: Preheat oven\nStep 2: \nStep 3:\n";
             // 
-            // listBox1
+            // newRecipeList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(97, 274);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(352, 139);
-            this.listBox1.TabIndex = 16;
+            this.newRecipeList.FormattingEnabled = true;
+            this.newRecipeList.ItemHeight = 15;
+            this.newRecipeList.Location = new System.Drawing.Point(97, 274);
+            this.newRecipeList.Name = "newRecipeList";
+            this.newRecipeList.Size = new System.Drawing.Size(352, 139);
+            this.newRecipeList.TabIndex = 5;
             // 
             // label17
             // 
@@ -1053,13 +1389,14 @@
             this.label17.TabIndex = 23;
             this.label17.Text = "Recipe";
             // 
-            // comboBox2
+            // newRecipeIngr
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(120, 226);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(177, 23);
-            this.comboBox2.TabIndex = 17;
+            this.newRecipeIngr.FormattingEnabled = true;
+            this.newRecipeIngr.Location = new System.Drawing.Point(120, 226);
+            this.newRecipeIngr.Name = "newRecipeIngr";
+            this.newRecipeIngr.Size = new System.Drawing.Size(177, 23);
+            this.newRecipeIngr.TabIndex = 4;
+            this.newRecipeIngr.SelectedIndexChanged += new System.EventHandler(this.newRecipeIngr_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -1070,13 +1407,13 @@
             this.label18.TabIndex = 22;
             this.label18.Text = "Select Ingredients";
             // 
-            // textBox6
+            // newRecipeName
             // 
-            this.textBox6.Location = new System.Drawing.Point(97, 16);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PlaceholderText = "Recipe Name";
-            this.textBox6.Size = new System.Drawing.Size(352, 23);
-            this.textBox6.TabIndex = 18;
+            this.newRecipeName.Location = new System.Drawing.Point(97, 16);
+            this.newRecipeName.Name = "newRecipeName";
+            this.newRecipeName.PlaceholderText = "Recipe Name";
+            this.newRecipeName.Size = new System.Drawing.Size(352, 23);
+            this.newRecipeName.TabIndex = 0;
             // 
             // label19
             // 
@@ -1387,17 +1724,25 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.foodTabControl.ResumeLayout(false);
+            this.addMealTab.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.addNewFoodTab.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.recipeControl.ResumeLayout(false);
             this.findRecipeTab.ResumeLayout(false);
@@ -1511,7 +1856,6 @@
         private System.Windows.Forms.CheckBox dairyBox;
         private System.Windows.Forms.CheckBox glutenBox;
         private System.Windows.Forms.CheckBox fishBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button saveToFoodEntry;
         private System.Windows.Forms.Label recipeTitleLb;
         private System.Windows.Forms.Button button2;
@@ -1520,20 +1864,48 @@
         private System.Windows.Forms.TabControl recipeControl;
         private System.Windows.Forms.TabPage findRecipeTab;
         private System.Windows.Forms.TabPage addRecipeTab;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.RichTextBox newRecipeDesc;
+        private System.Windows.Forms.Button saveNewRecipeButton;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button newRecipeDeleteIng;
+        private System.Windows.Forms.RichTextBox newRecipeIns;
+        private System.Windows.Forms.ListBox newRecipeList;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox newRecipeIngr;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox newRecipeName;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TabControl foodTabControl;
+        private System.Windows.Forms.TabPage addMealTab;
+        private System.Windows.Forms.TabPage addNewFoodTab;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.CheckBox newFoodSoy;
+        private System.Windows.Forms.CheckBox newFoodNut;
+        private System.Windows.Forms.CheckBox newFoodDair;
+        private System.Windows.Forms.CheckBox newFoodGlut;
+        private System.Windows.Forms.CheckBox newFoodFish;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox newFoodPro;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox newFoodFat;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox newFoodCarb;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox newFoodCal;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox newFoodName;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button newFoodButton;
+        private System.Windows.Forms.Button logMealButton;
+        private System.Windows.Forms.Button saveNewFoodButton;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.ComboBox mealTypeBox;
     }
 }
