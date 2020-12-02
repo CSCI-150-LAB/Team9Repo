@@ -164,6 +164,12 @@
             this.calRemainLabel = new System.Windows.Forms.Label();
             this.calEatenLabel = new System.Windows.Forms.Label();
             this.calGoalLabel = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.WeightChangeUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -202,6 +208,8 @@
             this.groupBox8.SuspendLayout();
             this.healthWelcome.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WeightChangeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1440,6 +1448,7 @@
             this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Controls.Add(this.healthWelcome);
             this.tabPage4.Controls.Add(this.groupBox9);
+            this.tabPage4.Controls.Add(this.groupBox14);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1617,6 +1626,79 @@
             this.calGoalLabel.Text = "Calorie Goal:";
             this.calGoalLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.label32);
+            this.groupBox14.Controls.Add(this.button1);
+            this.groupBox14.Controls.Add(this.WeightChangeUpDown);
+            this.groupBox14.Controls.Add(this.label31);
+            this.groupBox14.Controls.Add(this.label30);
+            this.groupBox14.Location = new System.Drawing.Point(493, 258);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(279, 183);
+            this.groupBox14.TabIndex = 10;
+            this.groupBox14.TabStop = false;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(212, 103);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(22, 15);
+            this.label32.TabIndex = 10;
+            this.label32.Text = "lbs";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(95, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Update Weight";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // WeightChangeUpDown
+            // 
+            this.WeightChangeUpDown.DecimalPlaces = 2;
+            this.WeightChangeUpDown.Location = new System.Drawing.Point(88, 95);
+            this.WeightChangeUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.WeightChangeUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.WeightChangeUpDown.Name = "WeightChangeUpDown";
+            this.WeightChangeUpDown.Size = new System.Drawing.Size(120, 23);
+            this.WeightChangeUpDown.TabIndex = 8;
+            this.WeightChangeUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(32, 44);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(202, 15);
+            this.label31.TabIndex = 9;
+            this.label31.Text = "(weight will be saved for current day)";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(56, 19);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(152, 15);
+            this.label30.TabIndex = 7;
+            this.label30.Text = "Update your current weight";
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(5, 5);
@@ -1757,6 +1839,9 @@
             this.healthWelcome.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WeightChangeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1907,5 +1992,11 @@
         private System.Windows.Forms.Button saveNewFoodButton;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.ComboBox mealTypeBox;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown WeightChangeUpDown;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
     }
 }

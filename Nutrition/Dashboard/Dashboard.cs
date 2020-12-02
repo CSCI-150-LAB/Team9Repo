@@ -34,7 +34,7 @@ namespace Nutrition
             userData = d.GetUserData(username);
             userBMR = Double.Parse(userData["bmr"]);
             userBMI = Double.Parse(userData["bmi"]);
-            userWeight = Double.Parse(userData["weight"]);
+            userWeight = Math.Round(Double.Parse(userData["weight"]), 2);
             double feet = Double.Parse(userData["height_inches"]);
             heightFeet = (int)feet / 12;
             heightInch = (int)feet % 12;
@@ -62,7 +62,7 @@ namespace Nutrition
             refreshCalData();
             bmrHSlabel.Text = "BMR: " + userBMR;
             HSbmiLabel.Text = "Starting BMI: " + userBMI;
-            HSweightLabel.Text = "Current Weight: " + userData["weight"];
+            HSweightLabel.Text = "Current Weight: " + userWeight;
             HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
 
             /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
@@ -279,6 +279,7 @@ namespace Nutrition
             user_macro_sum = d.sumMacroData(username);
             double bmr = double.Parse(userData["bmr"]);
             bmrLabel.Text = Convert.ToInt32(bmr).ToString();
+            WeightChangeUpDown.Value = Convert.ToDecimal(d.GetUserData(username)["weight"]);
         }
 
         private void FillFoodData()
@@ -352,6 +353,15 @@ namespace Nutrition
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            d.InsertUserWeight(username, Math.Round(Convert.ToDouble(WeightChangeUpDown.Value), 2));
+            d.UpdateUserWeight(username, Math.Round(Convert.ToDouble(WeightChangeUpDown.Value), 2));
+            HSweightLabel.Text = "Current Weight: " + d.GetUserData(username)["weight"];
+            plotForms();
+            MessageBox.Show("Success!");
         }
     }
 }
