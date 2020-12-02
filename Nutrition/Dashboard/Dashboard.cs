@@ -1,6 +1,7 @@
 ﻿using ScottPlot;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
@@ -33,7 +34,7 @@ namespace Nutrition
             userData = d.GetUserData(username);
             userBMR = Double.Parse(userData["bmr"]);
             userBMI = Double.Parse(userData["bmi"]);
-            userWeight = Double.Parse(userData["weight"]);
+            userWeight = Math.Round(Double.Parse(userData["weight"]), 2);
             double feet = Double.Parse(userData["height_inches"]);
             heightFeet = (int)feet / 12;
             heightInch = (int)feet % 12;
@@ -61,11 +62,11 @@ namespace Nutrition
             refreshCalData();
             bmrHSlabel.Text = "BMR: " + userBMR;
             HSbmiLabel.Text = "Starting BMI: " + userBMI;
-            HSweightLabel.Text = "Current Weight: " + userData["weight"];
+            HSweightLabel.Text = "Current Weight: " + userWeight;
             HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
 
-           /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
-            goalChangeBox.DataSource = weightGoals;*/
+            /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
+             goalChangeBox.DataSource = weightGoals;*/
             fixGoal();
         }
 
@@ -271,26 +272,49 @@ namespace Nutrition
             dataGridView1.Columns["usr"].Visible = false;
             dataGridView1.Columns["id"].Visible = false;
             dataGridView1.Columns["date_logged"].Visible = false;
+            dataGridView1.Columns["meal_type"].Visible = false;
 
             //Prefetch user BMR and the sum of the past 24 hours of macro data
             userData = d.GetUserData(username);
             user_macro_sum = d.sumMacroData(username);
             double bmr = double.Parse(userData["bmr"]);
             bmrLabel.Text = Convert.ToInt32(bmr).ToString();
+            WeightChangeUpDown.Value = Convert.ToDecimal(d.GetUserData(username)["weight"]);
         }
 
         private void FillFoodData()
         {
             //Prefetch food box items from the database
-            foodData = d.GetFoodItems();
-            foreach (string name in foodData)
-            {
-                //Add items to the food box
-                foodBox1.Items.Add(name);
+            /*  foodData = d.GetFoodItems();
+              foreach (string name in foodData)
+              {
+                  //Add items to the food box
+                  foodBox1.Items.Add(name);
 
-                //Add food items to the recipe tab
-                ingredientsDropDown.Items.Add(name);
-            }
+                  //Add food items to the recipe tab
+                  ingredientsDropDown.Items.Add(name);
+              }*/
+            //  foodData = d.GetFoodItems2();
+
+            DataTable foodList = d.GetFoodItems2();
+
+            //Fill Food Entry box
+            foodBox1.DataSource = foodList;
+            foodBox1.DisplayMember = "item_name";
+            foodBox1.ValueMember = "id";
+            foodItems.Items.Clear();//Empty the first item added from the datasource event triggering
+
+            //Fill Recipe drop down box
+            ingredientsDropDown.DataSource = foodList;
+            ingredientsDropDown.DisplayMember = "item_name";
+            ingredientsDropDown.ValueMember = "id";
+            recipeIngredientList.Items.Clear();//Empty the first item added from the datasource event triggering
+
+            //Fill in new Recipe dropdown box
+            newRecipeIngr.DataSource = foodList;
+            newRecipeIngr.DisplayMember = "item_name";
+            newRecipeIngr.ValueMember = "id";
+            newRecipeList.Items.Clear();//Empty the first item added from the datasource event triggering
 
             //Prefetch recipes from the database
             recipes = d.GetRecipeList();
@@ -308,7 +332,8 @@ namespace Nutrition
 
             foreach (var row in selectedRows)
             {
-                MessageBox.Show("Deleting: " + dataGridView1.SelectedRows[0].Cells["item_name"].Value.ToString());
+                if (Program.debugMode)
+                    MessageBox.Show("Deleting: " + dataGridView1.SelectedRows[0].Cells["item_name"].Value.ToString());
                 int item = -1;
                 string val = dataGridView1.SelectedRows[0].Cells["id"].Value.ToString();
                 bool parsed = Int32.TryParse(val, out item);
@@ -316,18 +341,27 @@ namespace Nutrition
                 {
                     d.DeleteFoodEntry(item, username);
                     dataGridView1.Rows.Remove(row);
-                    prefetch();
-                    plotBars();
-                    plotForms();
-                    refreshCalData();
                 }
             }
+            prefetch();
+            plotBars();
+            plotForms();
+            refreshCalData();
         }
 
         //Prevent application from running in the background
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            d.InsertUserWeight(username, Math.Round(Convert.ToDouble(WeightChangeUpDown.Value), 2));
+            d.UpdateUserWeight(username, Math.Round(Convert.ToDouble(WeightChangeUpDown.Value), 2));
+            HSweightLabel.Text = "Current Weight: " + d.GetUserData(username)["weight"];
+            plotForms();
+            MessageBox.Show("Success!");
         }
     }
 }

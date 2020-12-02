@@ -41,11 +41,11 @@ namespace Nutrition
         private void InputGender()
         {
             //set the gender variable in BMR class
-            if(radioButtonMale.Checked)
+            if (radioButtonMale.Checked)
             {
                 bmrCalculator.SetGender("male");
             }
-            else if(radioButtonFemale.Checked)
+            else if (radioButtonFemale.Checked)
             {
                 bmrCalculator.SetGender("female");
             }
@@ -97,7 +97,8 @@ namespace Nutrition
             bmrCalculator.CalculateBMR();
 
             //debug
-            MessageBox.Show("Username: " + username + "\nHeight: " + bmrCalculator.GetHeight() + "\n" +
+            if (Program.debugMode)
+                MessageBox.Show("Username: " + username + "\nHeight: " + bmrCalculator.GetHeight() + "\n" +
                 "Age: " + numericUpDownAge.Value + "\n" +
                 "Weight: " + bmrCalculator.GetWeight() + "\n" +
                 "Activity level val: " + bmrCalculator.GetBMR());
@@ -118,11 +119,6 @@ namespace Nutrition
 
             //Close this login window
             this.Close();
-        }
-
-        private void radioButtonAct1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
