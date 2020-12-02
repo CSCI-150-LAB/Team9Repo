@@ -48,25 +48,25 @@ namespace Nutrition
         {
             foreach (string food in recipeIngredientList.Items)
             {
-                List<string> facts = d.GetFoodData(food);
-                nameBox.Text = facts[0];
-                calorieBox.Text = facts[1];
-                fatBox.Text = facts[2];
-                carbBox.Text = facts[3];
-                proteinBox.Text = facts[4];
+                Food facts = searchLocalDB(food);
+                nameBox.Text = facts.name;
+                calorieBox.Text = facts.calories.ToString();
+                fatBox.Text = facts.fat.ToString();
+                carbBox.Text = facts.carbs.ToString();
+                proteinBox.Text = facts.protein.ToString();
 
-                int calories = int.Parse(facts[1]);
-                double fat = double.Parse(facts[2]);
-                double carb = double.Parse(facts[3]);
-                double pro = double.Parse(facts[4]);
-                int[] allergies = getAllergies(facts);
+                int calories = facts.calories;
+                double fat = facts.fat;
+                double carb = facts.carbs;
+                double pro = facts.protein;
+                int[] allergies = facts.allergies;
                 checkAllergies(allergies);//fill in allergies
-                Food item = new Food(facts[0], calories, fat, pro, carb, allergies, Food.MealType.Dinner);
+                Food item = new Food(facts.id, facts.name, calories, fat, pro, carb, allergies, Food.MealType.Dinner);
                 foodItems.Items.Add(item.name);//TODO Add mealType in form
                 foodList.addNewFood(item);//TODO Add mealType in form
 
                 if (targetLabel.Text == "N/A")
-                    targetLabel.Text = facts[1];
+                    targetLabel.Text = facts.calories.ToString();
                 else
                 {
                     int sum = int.Parse(targetLabel.Text) + calories;
@@ -156,9 +156,8 @@ namespace Nutrition
                 RecipeMaker p = new RecipeMaker(newRecipeName.Text, newRecipeDesc.Text, newRecipeIns.Text);
                 foreach (string food in newRecipeList.Items)
                 {
-                    List<string> foodInfo = d.GetFoodData(food);
-                    int[] allergies = getAllergies(foodInfo);
-                    p.addIngredient(new Food(foodInfo[0], Int32.Parse(foodInfo[1]), Double.Parse(foodInfo[2]), Double.Parse(foodInfo[4]), Double.Parse(foodInfo[3]), allergies, Food.MealType.Dinner));
+                    Food foodInfo = searchLocalDB(food);
+                    p.addIngredient(foodInfo);
                 }
                 d.InsertRecipe(username, p.getRecipe().name, p.getRecipe().description, p.getRecipe().instructions, p.getRecipe().ingredients);
                 newRecipeName.Clear();

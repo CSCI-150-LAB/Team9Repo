@@ -647,9 +647,9 @@ namespace Nutrition
             return foodItems;
         }
 
-        public List<string> GetFoodItems()
+        public List<Food> GetFoodItems()
         {
-            List<string> foodItems = new List<string>();
+            List<Food> foodItems = new List<Food>();
             string sql = "SELECT * from [dbo].[Nutrition]";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
@@ -660,7 +660,18 @@ namespace Nutrition
                     {
                         while (reader.Read())
                         {
-                            foodItems.Add(reader["item_name"].ToString());
+                            if (reader["item_name"] != DBNull.Value)
+                            { //Check for a null database value
+                                int id = (int)reader["id"];
+                                string name = reader["item_name"].ToString();
+                                int calories = (int)reader["calories"];
+                                double fat = (double)(decimal)reader["fat"];
+                                double carbs = (double)(decimal)reader["carbohydrate"];
+                                double protein = (double)(decimal)reader["protein"];
+                                int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
+                                int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+                                foodItems.Add(new Food(id, name, calories, fat, protein, carbs, allergies));
+                            }
                         }
                     }
                 }
@@ -668,30 +679,9 @@ namespace Nutrition
             return foodItems;
         }
 
-        /*public List<Food> GetFoodItems2()
-            {
-                List<Food> foodItems = new List<Food>();
-                string sql = "SELECT * from [dbo].[Nutrition]";
-                using (SqlConnection con = new SqlConnection(GetConnectionString()))
-                {
-                    con.Open();
-                    using (SqlCommand command = new SqlCommand(sql, con))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                foodItems.Add(new Food())
-                            }
-                        }
-                    }
-                }
-                return foodItems;
-            }*/
-
-        public List<string> GetNoAllergyFoodItems(string username)
+        public List<Food> GetNoAllergyFoodItems(string username)
         {
-            List<string> foodItems = new List<string>();
+            List<Food> foodItems = new List<Food>();
             string sql = "SELECT * from [dbo].[Nutrition] " +
                         "JOIN Users " +
                         "ON(Users.gluten_allergy = 0 or Nutrition.contains_gluten = 0) " +
@@ -710,7 +700,18 @@ namespace Nutrition
                     {
                         while (reader.Read())
                         {
-                            foodItems.Add(reader["item_name"].ToString());
+                            if (reader["item_name"] != DBNull.Value)
+                            { //Check for a null database value
+                                int id = (int)reader["id"];
+                                string name = reader["item_name"].ToString();
+                                int calories = (int)reader["calories"];
+                                double fat = (double)(decimal)reader["fat"];
+                                double carbs = (double)(decimal)reader["carbohydrate"];
+                                double protein = (double)(decimal)reader["protein"];
+                                int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
+                                int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+                                foodItems.Add(new Food(id, name, calories, fat, protein, carbs, allergies));
+                            }
                         }
                     }
                 }
@@ -735,6 +736,7 @@ namespace Nutrition
                         {
                             if (reader["item_name"] != DBNull.Value)
                             { //Check for a null database value
+                                int row_id = (int)reader["id"];
                                 string name = reader["item_name"].ToString();
                                 int calories = (int)reader["calories"];
                                 double fat = (double)(decimal)reader["fat"];
@@ -742,7 +744,7 @@ namespace Nutrition
                                 double protein = (double)(decimal)reader["protein"];
                                 int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
                                 int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
-                                foodItem = new Food(name, calories, fat, protein, carbs, allergies);
+                                foodItem = new Food(row_id, name, calories, fat, protein, carbs, allergies);
                             }
                         }
                     }
@@ -751,9 +753,9 @@ namespace Nutrition
             return foodItem;
         }
 
-        public List<string> GetFoodData(string name)
+        public Food GetFoodData(string name)
         {
-            List<string> foodItems = new List<string>();
+            Food foodItems = null;
             string sql = "SELECT * from [dbo].[Nutrition] where [item_name] = @name";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
             {
@@ -765,17 +767,15 @@ namespace Nutrition
                     {
                         if (reader.Read())
                         {
-                            // foodItems.Add(reader["id"].ToString());
-                            foodItems.Add(reader["item_name"].ToString());
-                            foodItems.Add(reader["calories"].ToString());
-                            foodItems.Add(reader["fat"].ToString());
-                            foodItems.Add(reader["carbohydrate"].ToString());
-                            foodItems.Add(reader["protein"].ToString());
-                            foodItems.Add(reader["contains_gluten"].ToString());
-                            foodItems.Add(reader["contains_nuts"].ToString());
-                            foodItems.Add(reader["contains_fish"].ToString());
-                            foodItems.Add(reader["contains_dairy"].ToString());
-                            foodItems.Add(reader["contains_soy"].ToString());
+                            int id = (int)reader["id"];
+                            string n = reader["item_name"].ToString();
+                            int calories = (int)reader["calories"];
+                            double fat = (double)(decimal)reader["fat"];
+                            double carbs = (double)(decimal)reader["carbohydrate"];
+                            double protein = (double)(decimal)reader["protein"];
+                            int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
+                            int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
+                            foodItems = new Food(id, n, calories, fat, protein, carbs, allergies);
                         }
                     }
                 }
@@ -843,7 +843,7 @@ namespace Nutrition
         private List<Food> GetRecipeIngredients(string recipeID)
         {
             List<Food> ingredients = new List<Food>();
-            string sql = "SELECT Nutrition.item_name as 'name', Nutrition.calories, Nutrition.fat, Nutrition.carbohydrate as 'carbs', Nutrition.protein, Nutrition.contains_gluten, Nutrition.contains_nuts, Nutrition.contains_fish, Nutrition.contains_dairy, Nutrition.contains_soy from [dbo].[RecipeData] " +
+            string sql = "SELECT Nutrition.id, Nutrition.item_name as 'name', Nutrition.calories, Nutrition.fat, Nutrition.carbohydrate as 'carbs', Nutrition.protein, Nutrition.contains_gluten, Nutrition.contains_nuts, Nutrition.contains_fish, Nutrition.contains_dairy, Nutrition.contains_soy from [dbo].[RecipeData] " +
                          "JOIN Nutrition ON RecipeData.item_name = Nutrition.item_name " +
                          "where recipeid = @id";
             using (SqlConnection con = new SqlConnection(GetConnectionString()))
@@ -858,6 +858,7 @@ namespace Nutrition
                         {
                             if (reader["name"] != DBNull.Value)
                             { //Check for a null database value
+                                int id = (int)reader["id"];
                                 string name = reader["name"].ToString();
                                 int calories = (int)reader["calories"];
                                 double fat = (double)(decimal)reader["fat"];
@@ -865,7 +866,7 @@ namespace Nutrition
                                 double protein = (double)(decimal)reader["protein"];
                                 int gluten = (int)reader["contains_gluten"], nuts = (int)reader["contains_nuts"], fish = (int)reader["contains_fish"], dairy = (int)reader["contains_dairy"], soy = (int)reader["contains_soy"];
                                 int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
-                                Food d = new Food(name, calories, fat, protein, carbs, allergies, Food.MealType.Dinner);//Default to dinner--this value is not used
+                                Food d = new Food(id, name, calories, fat, protein, carbs, allergies, Food.MealType.Dinner);//Default to dinner--this value is not used
                                 ingredients.Add(d);
                             }
                         }

@@ -24,7 +24,7 @@ namespace Nutrition
         Database d = new Database();
         FoodEntry foodList = new FoodEntry();
         Food currentFood = null;
-        private List<string> foodData = new List<string>();
+        private List<Food> foodData = new List<Food>();
         private List<Recipe> recipes = new List<Recipe>();
         private Timer t;
 
@@ -297,12 +297,14 @@ namespace Nutrition
             //  foodData = d.GetFoodItems2();
 
             DataTable foodList = d.GetFoodItems2();
+            foodData = d.GetFoodItems();
 
             //Fill Food Entry box
             foodBox1.DataSource = foodList;
             foodBox1.DisplayMember = "item_name";
             foodBox1.ValueMember = "id";
             foodItems.Items.Clear();//Empty the first item added from the datasource event triggering
+            targetLabel.Text = "N/A";
 
             //Fill Recipe drop down box
             ingredientsDropDown.DataSource = foodList;
