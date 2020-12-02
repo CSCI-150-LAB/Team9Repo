@@ -40,6 +40,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.recipeTitleLb = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,20 +89,36 @@
             this.bmrLabel = new System.Windows.Forms.Label();
             this.saveFoodButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.saveToFoodEntry = new System.Windows.Forms.Button();
-            this.saveRecipe = new System.Windows.Forms.Button();
-            this.deleteIngredientBut = new System.Windows.Forms.Button();
-            this.recipeIngredientList = new System.Windows.Forms.ListBox();
-            this.ingredientsDropDown = new System.Windows.Forms.ComboBox();
-            this.recipeNameBox = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.recipeControl = new System.Windows.Forms.TabControl();
+            this.findRecipeTab = new System.Windows.Forms.TabPage();
             this.recipeDescription = new System.Windows.Forms.RichTextBox();
-            this.recipeNameLabel = new System.Windows.Forms.Label();
-            this.recipeDescriptionLabel = new System.Windows.Forms.Label();
-            this.ingredientsLabel = new System.Windows.Forms.Label();
-            this.recipeLabel = new System.Windows.Forms.Label();
-            this.recipeInsBox = new System.Windows.Forms.RichTextBox();
-            this.recipeInsLabel = new System.Windows.Forms.Label();
+            this.saveToFoodEntry = new System.Windows.Forms.Button();
             this.recipeDropDown = new System.Windows.Forms.ComboBox();
+            this.recipeInsLabel = new System.Windows.Forms.Label();
+            this.deleteIngredientBut = new System.Windows.Forms.Button();
+            this.recipeInsBox = new System.Windows.Forms.RichTextBox();
+            this.recipeIngredientList = new System.Windows.Forms.ListBox();
+            this.recipeLabel = new System.Windows.Forms.Label();
+            this.ingredientsDropDown = new System.Windows.Forms.ComboBox();
+            this.ingredientsLabel = new System.Windows.Forms.Label();
+            this.recipeNameBox = new System.Windows.Forms.TextBox();
+            this.recipeDescriptionLabel = new System.Windows.Forms.Label();
+            this.recipeNameLabel = new System.Windows.Forms.Label();
+            this.addRecipeTab = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.goalChangeBox = new System.Windows.Forms.ComboBox();
             this.goalChangeLabel = new System.Windows.Forms.Label();
@@ -130,6 +150,7 @@
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -140,6 +161,9 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.recipeControl.SuspendLayout();
+            this.findRecipeTab.SuspendLayout();
+            this.addRecipeTab.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.healthWelcome.SuspendLayout();
@@ -243,12 +267,52 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.recipeTitleLb);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(8, 288);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(468, 288);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Recipe?";
+            this.groupBox2.Text = "Food Options";
+            // 
+            // recipeTitleLb
+            // 
+            this.recipeTitleLb.AutoSize = true;
+            this.recipeTitleLb.Location = new System.Drawing.Point(106, 19);
+            this.recipeTitleLb.Name = "recipeTitleLb";
+            this.recipeTitleLb.Size = new System.Drawing.Size(62, 15);
+            this.recipeTitleLb.TabIndex = 4;
+            this.recipeTitleLb.Text = "recipeTitle";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(10, 119);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 21);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Save Meals";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 37);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(90, 24);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Go to Recipe";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Featured Recipe:";
             // 
             // groupBox1
             // 
@@ -274,13 +338,13 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.Location = new System.Drawing.Point(272, 47);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(190, 196);
+            this.dataGridView1.Size = new System.Drawing.Size(456, 196);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.Text = "dataGridView1";
             // 
@@ -725,20 +789,9 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.saveToFoodEntry);
-            this.tabPage3.Controls.Add(this.saveRecipe);
-            this.tabPage3.Controls.Add(this.deleteIngredientBut);
-            this.tabPage3.Controls.Add(this.recipeIngredientList);
-            this.tabPage3.Controls.Add(this.ingredientsDropDown);
-            this.tabPage3.Controls.Add(this.recipeNameBox);
-            this.tabPage3.Controls.Add(this.recipeDescription);
-            this.tabPage3.Controls.Add(this.recipeNameLabel);
-            this.tabPage3.Controls.Add(this.recipeDescriptionLabel);
-            this.tabPage3.Controls.Add(this.ingredientsLabel);
-            this.tabPage3.Controls.Add(this.recipeLabel);
-            this.tabPage3.Controls.Add(this.recipeInsBox);
-            this.tabPage3.Controls.Add(this.recipeInsLabel);
-            this.tabPage3.Controls.Add(this.recipeDropDown);
+            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Controls.Add(this.recipeControl);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -747,29 +800,99 @@
             this.tabPage3.Text = "Recipe Search";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(132, 19);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(132, 39);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "Add a Recipe";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.addRecipeButton_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(12, 19);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(91, 39);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "Use a Recipe";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.findRecipeButton_Click);
+            // 
+            // recipeControl
+            // 
+            this.recipeControl.Controls.Add(this.findRecipeTab);
+            this.recipeControl.Controls.Add(this.addRecipeTab);
+            this.recipeControl.Location = new System.Drawing.Point(12, 74);
+            this.recipeControl.Name = "recipeControl";
+            this.recipeControl.SelectedIndex = 0;
+            this.recipeControl.Size = new System.Drawing.Size(471, 487);
+            this.recipeControl.TabIndex = 15;
+            this.recipeControl.Visible = false;
+            // 
+            // findRecipeTab
+            // 
+            this.findRecipeTab.Controls.Add(this.recipeDescription);
+            this.findRecipeTab.Controls.Add(this.saveToFoodEntry);
+            this.findRecipeTab.Controls.Add(this.recipeDropDown);
+            this.findRecipeTab.Controls.Add(this.recipeInsLabel);
+            this.findRecipeTab.Controls.Add(this.deleteIngredientBut);
+            this.findRecipeTab.Controls.Add(this.recipeInsBox);
+            this.findRecipeTab.Controls.Add(this.recipeIngredientList);
+            this.findRecipeTab.Controls.Add(this.recipeLabel);
+            this.findRecipeTab.Controls.Add(this.ingredientsDropDown);
+            this.findRecipeTab.Controls.Add(this.ingredientsLabel);
+            this.findRecipeTab.Controls.Add(this.recipeNameBox);
+            this.findRecipeTab.Controls.Add(this.recipeDescriptionLabel);
+            this.findRecipeTab.Controls.Add(this.recipeNameLabel);
+            this.findRecipeTab.Location = new System.Drawing.Point(4, 24);
+            this.findRecipeTab.Name = "findRecipeTab";
+            this.findRecipeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.findRecipeTab.Size = new System.Drawing.Size(463, 459);
+            this.findRecipeTab.TabIndex = 0;
+            this.findRecipeTab.Text = "Find Recipe";
+            this.findRecipeTab.UseVisualStyleBackColor = true;
+            // 
+            // recipeDescription
+            // 
+            this.recipeDescription.Location = new System.Drawing.Point(97, 45);
+            this.recipeDescription.Name = "recipeDescription";
+            this.recipeDescription.Size = new System.Drawing.Size(352, 46);
+            this.recipeDescription.TabIndex = 5;
+            this.recipeDescription.Text = "";
+            // 
             // saveToFoodEntry
             // 
-            this.saveToFoodEntry.Location = new System.Drawing.Point(363, 434);
+            this.saveToFoodEntry.Location = new System.Drawing.Point(342, 419);
             this.saveToFoodEntry.Name = "saveToFoodEntry";
             this.saveToFoodEntry.Size = new System.Drawing.Size(107, 23);
             this.saveToFoodEntry.TabIndex = 14;
-            this.saveToFoodEntry.Text = "Save as Entry";
+            this.saveToFoodEntry.Text = "Use this Recipe";
             this.saveToFoodEntry.UseVisualStyleBackColor = true;
             this.saveToFoodEntry.Click += new System.EventHandler(this.button2_Click);
             // 
-            // saveRecipe
+            // recipeDropDown
             // 
-            this.saveRecipe.Location = new System.Drawing.Point(238, 434);
-            this.saveRecipe.Name = "saveRecipe";
-            this.saveRecipe.Size = new System.Drawing.Size(119, 23);
-            this.saveRecipe.TabIndex = 13;
-            this.saveRecipe.Text = "Save New Recipe";
-            this.saveRecipe.UseVisualStyleBackColor = true;
-            this.saveRecipe.Click += new System.EventHandler(this.saveRecipe_Click);
+            this.recipeDropDown.FormattingEnabled = true;
+            this.recipeDropDown.Location = new System.Drawing.Point(280, 16);
+            this.recipeDropDown.Name = "recipeDropDown";
+            this.recipeDropDown.Size = new System.Drawing.Size(169, 23);
+            this.recipeDropDown.TabIndex = 12;
+            this.recipeDropDown.SelectedIndexChanged += new System.EventHandler(this.recipeList_SelectedIndexChanged);
+            // 
+            // recipeInsLabel
+            // 
+            this.recipeInsLabel.AutoSize = true;
+            this.recipeInsLabel.Location = new System.Drawing.Point(14, 100);
+            this.recipeInsLabel.Name = "recipeInsLabel";
+            this.recipeInsLabel.Size = new System.Drawing.Size(69, 15);
+            this.recipeInsLabel.TabIndex = 11;
+            this.recipeInsLabel.Text = "Instructions";
             // 
             // deleteIngredientBut
             // 
-            this.deleteIngredientBut.Location = new System.Drawing.Point(118, 434);
+            this.deleteIngredientBut.Location = new System.Drawing.Point(97, 419);
             this.deleteIngredientBut.Name = "deleteIngredientBut";
             this.deleteIngredientBut.Size = new System.Drawing.Size(114, 23);
             this.deleteIngredientBut.TabIndex = 0;
@@ -777,101 +900,201 @@
             this.deleteIngredientBut.UseVisualStyleBackColor = true;
             this.deleteIngredientBut.Click += new System.EventHandler(this.deleteIngredientBut_Click);
             // 
-            // recipeIngredientList
-            // 
-            this.recipeIngredientList.FormattingEnabled = true;
-            this.recipeIngredientList.ItemHeight = 15;
-            this.recipeIngredientList.Location = new System.Drawing.Point(118, 289);
-            this.recipeIngredientList.Name = "recipeIngredientList";
-            this.recipeIngredientList.Size = new System.Drawing.Size(352, 139);
-            this.recipeIngredientList.TabIndex = 1;
-            // 
-            // ingredientsDropDown
-            // 
-            this.ingredientsDropDown.FormattingEnabled = true;
-            this.ingredientsDropDown.Location = new System.Drawing.Point(141, 241);
-            this.ingredientsDropDown.Name = "ingredientsDropDown";
-            this.ingredientsDropDown.Size = new System.Drawing.Size(177, 23);
-            this.ingredientsDropDown.TabIndex = 2;
-            this.ingredientsDropDown.SelectedIndexChanged += new System.EventHandler(this.ingredientsDropDown_SelectedIndexChanged);
-            // 
-            // recipeNameBox
-            // 
-            this.recipeNameBox.Location = new System.Drawing.Point(118, 31);
-            this.recipeNameBox.Name = "recipeNameBox";
-            this.recipeNameBox.PlaceholderText = "Recipe Name";
-            this.recipeNameBox.Size = new System.Drawing.Size(177, 23);
-            this.recipeNameBox.TabIndex = 4;
-            // 
-            // recipeDescription
-            // 
-            this.recipeDescription.Location = new System.Drawing.Point(118, 60);
-            this.recipeDescription.Name = "recipeDescription";
-            this.recipeDescription.Size = new System.Drawing.Size(352, 46);
-            this.recipeDescription.TabIndex = 5;
-            this.recipeDescription.Text = "";
-            // 
-            // recipeNameLabel
-            // 
-            this.recipeNameLabel.AutoSize = true;
-            this.recipeNameLabel.Location = new System.Drawing.Point(35, 34);
-            this.recipeNameLabel.Name = "recipeNameLabel";
-            this.recipeNameLabel.Size = new System.Drawing.Size(77, 15);
-            this.recipeNameLabel.TabIndex = 6;
-            this.recipeNameLabel.Text = "Recipe Name";
-            // 
-            // recipeDescriptionLabel
-            // 
-            this.recipeDescriptionLabel.AutoSize = true;
-            this.recipeDescriptionLabel.Location = new System.Drawing.Point(35, 63);
-            this.recipeDescriptionLabel.Name = "recipeDescriptionLabel";
-            this.recipeDescriptionLabel.Size = new System.Drawing.Size(67, 15);
-            this.recipeDescriptionLabel.TabIndex = 7;
-            this.recipeDescriptionLabel.Text = "Description";
-            // 
-            // ingredientsLabel
-            // 
-            this.ingredientsLabel.AutoSize = true;
-            this.ingredientsLabel.Location = new System.Drawing.Point(35, 244);
-            this.ingredientsLabel.Name = "ingredientsLabel";
-            this.ingredientsLabel.Size = new System.Drawing.Size(100, 15);
-            this.ingredientsLabel.TabIndex = 8;
-            this.ingredientsLabel.Text = "Select Ingredients";
-            // 
-            // recipeLabel
-            // 
-            this.recipeLabel.AutoSize = true;
-            this.recipeLabel.Location = new System.Drawing.Point(35, 289);
-            this.recipeLabel.Name = "recipeLabel";
-            this.recipeLabel.Size = new System.Drawing.Size(42, 15);
-            this.recipeLabel.TabIndex = 9;
-            this.recipeLabel.Text = "Recipe";
-            // 
             // recipeInsBox
             // 
-            this.recipeInsBox.Location = new System.Drawing.Point(118, 112);
+            this.recipeInsBox.Location = new System.Drawing.Point(97, 97);
             this.recipeInsBox.Name = "recipeInsBox";
             this.recipeInsBox.Size = new System.Drawing.Size(352, 108);
             this.recipeInsBox.TabIndex = 10;
             this.recipeInsBox.Text = "";
             // 
-            // recipeInsLabel
+            // recipeIngredientList
             // 
-            this.recipeInsLabel.AutoSize = true;
-            this.recipeInsLabel.Location = new System.Drawing.Point(35, 115);
-            this.recipeInsLabel.Name = "recipeInsLabel";
-            this.recipeInsLabel.Size = new System.Drawing.Size(69, 15);
-            this.recipeInsLabel.TabIndex = 11;
-            this.recipeInsLabel.Text = "Instructions";
+            this.recipeIngredientList.FormattingEnabled = true;
+            this.recipeIngredientList.ItemHeight = 15;
+            this.recipeIngredientList.Location = new System.Drawing.Point(97, 274);
+            this.recipeIngredientList.Name = "recipeIngredientList";
+            this.recipeIngredientList.Size = new System.Drawing.Size(352, 139);
+            this.recipeIngredientList.TabIndex = 1;
             // 
-            // recipeDropDown
+            // recipeLabel
             // 
-            this.recipeDropDown.FormattingEnabled = true;
-            this.recipeDropDown.Location = new System.Drawing.Point(301, 31);
-            this.recipeDropDown.Name = "recipeDropDown";
-            this.recipeDropDown.Size = new System.Drawing.Size(169, 23);
-            this.recipeDropDown.TabIndex = 12;
-            this.recipeDropDown.SelectedIndexChanged += new System.EventHandler(this.recipeList_SelectedIndexChanged);
+            this.recipeLabel.AutoSize = true;
+            this.recipeLabel.Location = new System.Drawing.Point(14, 274);
+            this.recipeLabel.Name = "recipeLabel";
+            this.recipeLabel.Size = new System.Drawing.Size(42, 15);
+            this.recipeLabel.TabIndex = 9;
+            this.recipeLabel.Text = "Recipe";
+            // 
+            // ingredientsDropDown
+            // 
+            this.ingredientsDropDown.FormattingEnabled = true;
+            this.ingredientsDropDown.Location = new System.Drawing.Point(120, 226);
+            this.ingredientsDropDown.Name = "ingredientsDropDown";
+            this.ingredientsDropDown.Size = new System.Drawing.Size(177, 23);
+            this.ingredientsDropDown.TabIndex = 2;
+            this.ingredientsDropDown.SelectedIndexChanged += new System.EventHandler(this.ingredientsDropDown_SelectedIndexChanged);
+            // 
+            // ingredientsLabel
+            // 
+            this.ingredientsLabel.AutoSize = true;
+            this.ingredientsLabel.Location = new System.Drawing.Point(14, 229);
+            this.ingredientsLabel.Name = "ingredientsLabel";
+            this.ingredientsLabel.Size = new System.Drawing.Size(100, 15);
+            this.ingredientsLabel.TabIndex = 8;
+            this.ingredientsLabel.Text = "Select Ingredients";
+            // 
+            // recipeNameBox
+            // 
+            this.recipeNameBox.Location = new System.Drawing.Point(97, 16);
+            this.recipeNameBox.Name = "recipeNameBox";
+            this.recipeNameBox.PlaceholderText = "Recipe Name";
+            this.recipeNameBox.Size = new System.Drawing.Size(177, 23);
+            this.recipeNameBox.TabIndex = 4;
+            // 
+            // recipeDescriptionLabel
+            // 
+            this.recipeDescriptionLabel.AutoSize = true;
+            this.recipeDescriptionLabel.Location = new System.Drawing.Point(14, 48);
+            this.recipeDescriptionLabel.Name = "recipeDescriptionLabel";
+            this.recipeDescriptionLabel.Size = new System.Drawing.Size(67, 15);
+            this.recipeDescriptionLabel.TabIndex = 7;
+            this.recipeDescriptionLabel.Text = "Description";
+            // 
+            // recipeNameLabel
+            // 
+            this.recipeNameLabel.AutoSize = true;
+            this.recipeNameLabel.Location = new System.Drawing.Point(14, 19);
+            this.recipeNameLabel.Name = "recipeNameLabel";
+            this.recipeNameLabel.Size = new System.Drawing.Size(77, 15);
+            this.recipeNameLabel.TabIndex = 6;
+            this.recipeNameLabel.Text = "Recipe Name";
+            // 
+            // addRecipeTab
+            // 
+            this.addRecipeTab.Controls.Add(this.richTextBox1);
+            this.addRecipeTab.Controls.Add(this.button5);
+            this.addRecipeTab.Controls.Add(this.label16);
+            this.addRecipeTab.Controls.Add(this.button6);
+            this.addRecipeTab.Controls.Add(this.richTextBox2);
+            this.addRecipeTab.Controls.Add(this.listBox1);
+            this.addRecipeTab.Controls.Add(this.label17);
+            this.addRecipeTab.Controls.Add(this.comboBox2);
+            this.addRecipeTab.Controls.Add(this.label18);
+            this.addRecipeTab.Controls.Add(this.textBox6);
+            this.addRecipeTab.Controls.Add(this.label19);
+            this.addRecipeTab.Controls.Add(this.label20);
+            this.addRecipeTab.Location = new System.Drawing.Point(4, 24);
+            this.addRecipeTab.Name = "addRecipeTab";
+            this.addRecipeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.addRecipeTab.Size = new System.Drawing.Size(463, 459);
+            this.addRecipeTab.TabIndex = 1;
+            this.addRecipeTab.Text = "Add Recipe";
+            this.addRecipeTab.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(97, 45);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(352, 46);
+            this.richTextBox1.TabIndex = 19;
+            this.richTextBox1.Text = "Describe the recipe";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(330, 419);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(119, 23);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "Save Recipe";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 100);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 15);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Instructions";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(97, 419);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(114, 23);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "Delete Ingredient";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(97, 97);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(352, 108);
+            this.richTextBox2.TabIndex = 24;
+            this.richTextBox2.Text = "Step 1: Preheat oven\nStep 2: \nStep 3:\n";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(97, 274);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(352, 139);
+            this.listBox1.TabIndex = 16;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 274);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 15);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Recipe";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(120, 226);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(177, 23);
+            this.comboBox2.TabIndex = 17;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(14, 229);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 15);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Select Ingredients";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(97, 16);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.PlaceholderText = "Recipe Name";
+            this.textBox6.Size = new System.Drawing.Size(352, 23);
+            this.textBox6.TabIndex = 18;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(14, 48);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(67, 15);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "Description";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(14, 19);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(77, 15);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Recipe Name";
             // 
             // tabPage4
             // 
@@ -1158,6 +1381,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1174,7 +1399,11 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.recipeControl.ResumeLayout(false);
+            this.findRecipeTab.ResumeLayout(false);
+            this.findRecipeTab.PerformLayout();
+            this.addRecipeTab.ResumeLayout(false);
+            this.addRecipeTab.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -1275,7 +1504,6 @@
         private System.Windows.Forms.RichTextBox recipeInsBox;
         private System.Windows.Forms.Label recipeInsLabel;
         private System.Windows.Forms.ComboBox recipeDropDown;
-        private System.Windows.Forms.Button saveRecipe;
         private System.Windows.Forms.Label proteinLabel;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.CheckBox soyBox;
@@ -1285,5 +1513,27 @@
         private System.Windows.Forms.CheckBox fishBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button saveToFoodEntry;
+        private System.Windows.Forms.Label recipeTitleLb;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabControl recipeControl;
+        private System.Windows.Forms.TabPage findRecipeTab;
+        private System.Windows.Forms.TabPage addRecipeTab;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }

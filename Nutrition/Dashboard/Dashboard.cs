@@ -64,8 +64,8 @@ namespace Nutrition
             HSweightLabel.Text = "Current Weight: " + userData["weight"];
             HSheightLabel.Text = "Height: " + heightFeet + "ft " + heightInch + "in";
 
-           /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
-            goalChangeBox.DataSource = weightGoals;*/
+            /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
+             goalChangeBox.DataSource = weightGoals;*/
             fixGoal();
         }
 
@@ -328,6 +328,40 @@ namespace Nutrition
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void findRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (recipeControl.Visible && recipeControl.TabPages.Contains(findRecipeTab))
+            {
+                recipeControl.Visible = false;
+                recipeControl.TabPages.Remove(findRecipeTab);
+            }
+            else
+            {
+                recipeControl.Visible = true;
+                if (!recipeControl.TabPages.Contains(findRecipeTab))
+                    recipeControl.TabPages.Insert(0, findRecipeTab);
+                if (recipeControl.TabPages.Contains(addRecipeTab))
+                    recipeControl.TabPages.Remove(addRecipeTab);
+            }
+        }
+
+        private void addRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (recipeControl.Visible && recipeControl.TabPages.Contains(addRecipeTab))
+            {
+                recipeControl.Visible = false;
+                recipeControl.TabPages.Remove(addRecipeTab);
+            }
+            else
+            {
+                recipeControl.Visible = true;
+                if (!recipeControl.TabPages.Contains(addRecipeTab))
+                    recipeControl.TabPages.Insert(0, addRecipeTab);
+                if (recipeControl.TabPages.Contains(findRecipeTab))
+                    recipeControl.TabPages.Remove(findRecipeTab);
+            }
         }
     }
 }

@@ -377,7 +377,7 @@ namespace Nutrition
         public DataTable getLastTenMeals2(string username)
         {
             DataTable lastTen = new DataTable();
-            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
+            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged, UserTracking.meal_type " +
     "FROM UserTracking " +
     "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
     "where Users.username = @user " +
