@@ -40,8 +40,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.recipeTitleLb = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -58,6 +58,7 @@
             this.logMealButton = new System.Windows.Forms.Button();
             this.foodTabControl = new System.Windows.Forms.TabControl();
             this.addMealTab = new System.Windows.Forms.TabPage();
+            this.label33 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.mealTypeBox = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -170,6 +171,62 @@
             this.WeightChangeUpDown = new System.Windows.Forms.NumericUpDown();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.adminTab = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.adminTabFood = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.adminFoodBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.adminSoy1 = new System.Windows.Forms.CheckBox();
+            this.adminNut1 = new System.Windows.Forms.CheckBox();
+            this.adminDairy1 = new System.Windows.Forms.CheckBox();
+            this.adminGluten1 = new System.Windows.Forms.CheckBox();
+            this.adminFish1 = new System.Windows.Forms.CheckBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.adminFoodID = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.adminFoodPro = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.adminFoodFat = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.adminFoodCarb = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.adminFoodCals = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.adminFoodName = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.adminTabRecipe = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.adminRecipeDesc = new System.Windows.Forms.RichTextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.adminRecipeBox1 = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.adminRecipeIns = new System.Windows.Forms.RichTextBox();
+            this.adminRecipeItems = new System.Windows.Forms.ListBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.adminRecipeIng = new System.Windows.Forms.ComboBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.adminRecipeName = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.adminTabUsers = new System.Windows.Forms.TabPage();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.adminRecipeCreated = new System.Windows.Forms.ListBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.adminUserBox1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -210,6 +267,17 @@
             this.groupBox9.SuspendLayout();
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WeightChangeUpDown)).BeginInit();
+            this.adminTab.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.adminTabFood.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.adminTabRecipe.SuspendLayout();
+            this.adminTabUsers.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -285,6 +353,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.adminTab);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 4;
@@ -309,8 +378,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Controls.Add(this.recipeTitleLb);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(8, 288);
@@ -319,6 +388,16 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Food Options";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(6, 37);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(365, 55);
+            this.richTextBox1.TabIndex = 5;
+            this.richTextBox1.Text = "THis is a good recipe!!!\nTHis is a good recipe!!!\nTHis is a good recipe!!!\nTHis i" +
+    "s a good recipe!!!\nTHis is a good recipe!!!";
             // 
             // recipeTitleLb
             // 
@@ -329,18 +408,9 @@
             this.recipeTitleLb.TabIndex = 4;
             this.recipeTitleLb.Text = "recipeTitle";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(219, 75);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 21);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Save Meals";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(6, 73);
+            this.button3.Location = new System.Drawing.Point(6, 258);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 24);
             this.button3.TabIndex = 2;
@@ -395,9 +465,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(272, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 15);
+            this.label1.Size = new System.Drawing.Size(112, 15);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Last 10 Meals";
+            this.label1.Text = "Last 24 hour activity";
             // 
             // label14
             // 
@@ -499,6 +569,8 @@
             // 
             // addMealTab
             // 
+            this.addMealTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addMealTab.Controls.Add(this.label33);
             this.addMealTab.Controls.Add(this.groupBox13);
             this.addMealTab.Controls.Add(this.groupBox10);
             this.addMealTab.Controls.Add(this.groupBox6);
@@ -514,6 +586,18 @@
             this.addMealTab.TabIndex = 0;
             this.addMealTab.Text = "Add Meal";
             this.addMealTab.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label33.Image = ((System.Drawing.Image)(resources.GetObject("label33.Image")));
+            this.label33.Location = new System.Drawing.Point(623, 283);
+            this.label33.MaximumSize = new System.Drawing.Size(512, 512);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(308, 89);
+            this.label33.TabIndex = 10;
+            this.label33.Text = "               ";
             // 
             // groupBox13
             // 
@@ -1443,6 +1527,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabPage4.Controls.Add(this.goalChangeBox);
             this.tabPage4.Controls.Add(this.goalChangeLabel);
             this.tabPage4.Controls.Add(this.groupBox8);
@@ -1564,7 +1649,7 @@
             this.groupBox9.Controls.Add(this.calRemainLabel);
             this.groupBox9.Controls.Add(this.calEatenLabel);
             this.groupBox9.Controls.Add(this.calGoalLabel);
-            this.groupBox9.Location = new System.Drawing.Point(131, 57);
+            this.groupBox9.Location = new System.Drawing.Point(132, 57);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(673, 89);
             this.groupBox9.TabIndex = 5;
@@ -1699,6 +1784,583 @@
             this.label30.TabIndex = 7;
             this.label30.Text = "Update your current weight";
             // 
+            // adminTab
+            // 
+            this.adminTab.Controls.Add(this.groupBox15);
+            this.adminTab.Location = new System.Drawing.Point(4, 24);
+            this.adminTab.Name = "adminTab";
+            this.adminTab.Padding = new System.Windows.Forms.Padding(3);
+            this.adminTab.Size = new System.Drawing.Size(958, 612);
+            this.adminTab.TabIndex = 4;
+            this.adminTab.Text = "Admin";
+            this.adminTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.tabControl2);
+            this.groupBox15.Location = new System.Drawing.Point(27, 23);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(509, 492);
+            this.groupBox15.TabIndex = 0;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Administrator Tasks";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.adminTabFood);
+            this.tabControl2.Controls.Add(this.adminTabRecipe);
+            this.tabControl2.Controls.Add(this.adminTabUsers);
+            this.tabControl2.Location = new System.Drawing.Point(6, 22);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(539, 526);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // adminTabFood
+            // 
+            this.adminTabFood.Controls.Add(this.button5);
+            this.adminTabFood.Controls.Add(this.button4);
+            this.adminTabFood.Controls.Add(this.groupBox18);
+            this.adminTabFood.Controls.Add(this.button2);
+            this.adminTabFood.Controls.Add(this.groupBox16);
+            this.adminTabFood.Controls.Add(this.groupBox17);
+            this.adminTabFood.Location = new System.Drawing.Point(4, 24);
+            this.adminTabFood.Name = "adminTabFood";
+            this.adminTabFood.Padding = new System.Windows.Forms.Padding(3);
+            this.adminTabFood.Size = new System.Drawing.Size(531, 498);
+            this.adminTabFood.TabIndex = 0;
+            this.adminTabFood.Text = "Manage Nutrition";
+            this.adminTabFood.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(18, 319);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 37);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "New Item";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.adminNewFood_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(194, 34);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Delete Item";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.adminDeleteFood_Click);
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.adminFoodBox1);
+            this.groupBox18.Location = new System.Drawing.Point(18, 13);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(170, 59);
+            this.groupBox18.TabIndex = 11;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Find Food";
+            // 
+            // adminFoodBox1
+            // 
+            this.adminFoodBox1.FormattingEnabled = true;
+            this.adminFoodBox1.Location = new System.Drawing.Point(6, 22);
+            this.adminFoodBox1.Name = "adminFoodBox1";
+            this.adminFoodBox1.Size = new System.Drawing.Size(158, 23);
+            this.adminFoodBox1.TabIndex = 0;
+            this.adminFoodBox1.SelectedIndexChanged += new System.EventHandler(this.adminFoodBox1_SelectedIndexChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(106, 319);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 37);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Update Item";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.adminUpdateFood_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.adminSoy1);
+            this.groupBox16.Controls.Add(this.adminNut1);
+            this.groupBox16.Controls.Add(this.adminDairy1);
+            this.groupBox16.Controls.Add(this.adminGluten1);
+            this.groupBox16.Controls.Add(this.adminFish1);
+            this.groupBox16.Location = new System.Drawing.Point(236, 78);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(111, 202);
+            this.groupBox16.TabIndex = 9;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Food Allergies";
+            // 
+            // adminSoy1
+            // 
+            this.adminSoy1.AutoSize = true;
+            this.adminSoy1.Location = new System.Drawing.Point(21, 137);
+            this.adminSoy1.Name = "adminSoy1";
+            this.adminSoy1.Size = new System.Drawing.Size(45, 19);
+            this.adminSoy1.TabIndex = 9;
+            this.adminSoy1.Text = "Soy";
+            this.adminSoy1.UseVisualStyleBackColor = true;
+            // 
+            // adminNut1
+            // 
+            this.adminNut1.AutoSize = true;
+            this.adminNut1.Location = new System.Drawing.Point(21, 62);
+            this.adminNut1.Name = "adminNut1";
+            this.adminNut1.Size = new System.Drawing.Size(51, 19);
+            this.adminNut1.TabIndex = 1;
+            this.adminNut1.Text = "Nuts";
+            this.adminNut1.UseVisualStyleBackColor = true;
+            // 
+            // adminDairy1
+            // 
+            this.adminDairy1.AutoSize = true;
+            this.adminDairy1.Location = new System.Drawing.Point(21, 87);
+            this.adminDairy1.Name = "adminDairy1";
+            this.adminDairy1.Size = new System.Drawing.Size(53, 19);
+            this.adminDairy1.TabIndex = 8;
+            this.adminDairy1.Text = "Dairy";
+            this.adminDairy1.UseVisualStyleBackColor = true;
+            // 
+            // adminGluten1
+            // 
+            this.adminGluten1.AutoSize = true;
+            this.adminGluten1.Location = new System.Drawing.Point(21, 37);
+            this.adminGluten1.Name = "adminGluten1";
+            this.adminGluten1.Size = new System.Drawing.Size(61, 19);
+            this.adminGluten1.TabIndex = 0;
+            this.adminGluten1.Text = "Gluten";
+            this.adminGluten1.UseVisualStyleBackColor = true;
+            // 
+            // adminFish1
+            // 
+            this.adminFish1.AutoSize = true;
+            this.adminFish1.Location = new System.Drawing.Point(21, 112);
+            this.adminFish1.Name = "adminFish1";
+            this.adminFish1.Size = new System.Drawing.Size(47, 19);
+            this.adminFish1.TabIndex = 7;
+            this.adminFish1.Text = "Fish";
+            this.adminFish1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.adminFoodID);
+            this.groupBox17.Controls.Add(this.label43);
+            this.groupBox17.Controls.Add(this.label34);
+            this.groupBox17.Controls.Add(this.adminFoodPro);
+            this.groupBox17.Controls.Add(this.label35);
+            this.groupBox17.Controls.Add(this.label36);
+            this.groupBox17.Controls.Add(this.adminFoodFat);
+            this.groupBox17.Controls.Add(this.label37);
+            this.groupBox17.Controls.Add(this.label38);
+            this.groupBox17.Controls.Add(this.adminFoodCarb);
+            this.groupBox17.Controls.Add(this.label39);
+            this.groupBox17.Controls.Add(this.adminFoodCals);
+            this.groupBox17.Controls.Add(this.label40);
+            this.groupBox17.Controls.Add(this.adminFoodName);
+            this.groupBox17.Controls.Add(this.label41);
+            this.groupBox17.Controls.Add(this.label42);
+            this.groupBox17.Location = new System.Drawing.Point(18, 78);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(198, 235);
+            this.groupBox17.TabIndex = 8;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Nutritional Facts";
+            // 
+            // adminFoodID
+            // 
+            this.adminFoodID.AutoSize = true;
+            this.adminFoodID.Location = new System.Drawing.Point(60, 187);
+            this.adminFoodID.Name = "adminFoodID";
+            this.adminFoodID.Size = new System.Drawing.Size(17, 15);
+            this.adminFoodID.TabIndex = 15;
+            this.adminFoodID.Text = "--";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(8, 187);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(45, 15);
+            this.label43.TabIndex = 14;
+            this.label43.Text = "Item ID";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(151, 159);
+            this.label34.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(14, 15);
+            this.label34.TabIndex = 5;
+            this.label34.Text = "g";
+            // 
+            // adminFoodPro
+            // 
+            this.adminFoodPro.Location = new System.Drawing.Point(60, 156);
+            this.adminFoodPro.Name = "adminFoodPro";
+            this.adminFoodPro.PlaceholderText = "Protein";
+            this.adminFoodPro.Size = new System.Drawing.Size(88, 23);
+            this.adminFoodPro.TabIndex = 4;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(8, 159);
+            this.label35.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(45, 15);
+            this.label35.TabIndex = 13;
+            this.label35.Text = "Protein";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(151, 126);
+            this.label36.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(14, 15);
+            this.label36.TabIndex = 3;
+            this.label36.Text = "g";
+            // 
+            // adminFoodFat
+            // 
+            this.adminFoodFat.Location = new System.Drawing.Point(60, 123);
+            this.adminFoodFat.Name = "adminFoodFat";
+            this.adminFoodFat.PlaceholderText = "Fat";
+            this.adminFoodFat.Size = new System.Drawing.Size(88, 23);
+            this.adminFoodFat.TabIndex = 3;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(8, 126);
+            this.label37.Margin = new System.Windows.Forms.Padding(3, 7, 25, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(23, 15);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Fat";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(151, 91);
+            this.label38.Margin = new System.Windows.Forms.Padding(0, 7, 5, 5);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(14, 15);
+            this.label38.TabIndex = 4;
+            this.label38.Text = "g";
+            // 
+            // adminFoodCarb
+            // 
+            this.adminFoodCarb.Location = new System.Drawing.Point(60, 88);
+            this.adminFoodCarb.Name = "adminFoodCarb";
+            this.adminFoodCarb.PlaceholderText = "Carbs";
+            this.adminFoodCarb.Size = new System.Drawing.Size(88, 23);
+            this.adminFoodCarb.TabIndex = 2;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(151, 61);
+            this.label39.Margin = new System.Windows.Forms.Padding(0, 9, 5, 5);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(33, 15);
+            this.label39.TabIndex = 2;
+            this.label39.Text = "kcals";
+            // 
+            // adminFoodCals
+            // 
+            this.adminFoodCals.Location = new System.Drawing.Point(60, 57);
+            this.adminFoodCals.Margin = new System.Windows.Forms.Padding(5);
+            this.adminFoodCals.Name = "adminFoodCals";
+            this.adminFoodCals.PlaceholderText = "Calories";
+            this.adminFoodCals.Size = new System.Drawing.Size(88, 23);
+            this.adminFoodCals.TabIndex = 1;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(6, 60);
+            this.label40.Margin = new System.Windows.Forms.Padding(3, 9, 0, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(49, 15);
+            this.label40.TabIndex = 10;
+            this.label40.Text = "Calories";
+            // 
+            // adminFoodName
+            // 
+            this.adminFoodName.Location = new System.Drawing.Point(60, 24);
+            this.adminFoodName.Margin = new System.Windows.Forms.Padding(5);
+            this.adminFoodName.Name = "adminFoodName";
+            this.adminFoodName.PlaceholderText = "Name";
+            this.adminFoodName.Size = new System.Drawing.Size(88, 23);
+            this.adminFoodName.TabIndex = 0;
+            this.adminFoodName.Click += new System.EventHandler(this.adminFoodName_Click);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(8, 91);
+            this.label41.Margin = new System.Windows.Forms.Padding(3, 7, 12, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(37, 15);
+            this.label41.TabIndex = 11;
+            this.label41.Text = "Carbs";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(8, 28);
+            this.label42.Margin = new System.Windows.Forms.Padding(5, 9, 9, 9);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(39, 15);
+            this.label42.TabIndex = 9;
+            this.label42.Text = "Name";
+            // 
+            // adminTabRecipe
+            // 
+            this.adminTabRecipe.Controls.Add(this.button15);
+            this.adminTabRecipe.Controls.Add(this.button10);
+            this.adminTabRecipe.Controls.Add(this.adminRecipeDesc);
+            this.adminTabRecipe.Controls.Add(this.button6);
+            this.adminTabRecipe.Controls.Add(this.adminRecipeBox1);
+            this.adminTabRecipe.Controls.Add(this.label45);
+            this.adminTabRecipe.Controls.Add(this.button9);
+            this.adminTabRecipe.Controls.Add(this.adminRecipeIns);
+            this.adminTabRecipe.Controls.Add(this.adminRecipeItems);
+            this.adminTabRecipe.Controls.Add(this.label46);
+            this.adminTabRecipe.Controls.Add(this.adminRecipeIng);
+            this.adminTabRecipe.Controls.Add(this.label47);
+            this.adminTabRecipe.Controls.Add(this.adminRecipeName);
+            this.adminTabRecipe.Controls.Add(this.label48);
+            this.adminTabRecipe.Controls.Add(this.label49);
+            this.adminTabRecipe.Location = new System.Drawing.Point(4, 24);
+            this.adminTabRecipe.Name = "adminTabRecipe";
+            this.adminTabRecipe.Padding = new System.Windows.Forms.Padding(3);
+            this.adminTabRecipe.Size = new System.Drawing.Size(531, 498);
+            this.adminTabRecipe.TabIndex = 1;
+            this.adminTabRecipe.Text = "Manage Recipes";
+            this.adminTabRecipe.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(350, 221);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(107, 26);
+            this.button15.TabIndex = 1;
+            this.button15.Text = "Delete Recipe";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.adminDeleteRecipe_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(338, 414);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(119, 23);
+            this.button10.TabIndex = 28;
+            this.button10.Text = "Promote Recipe";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.adminPromoteRecipe_Click);
+            // 
+            // adminRecipeDesc
+            // 
+            this.adminRecipeDesc.Location = new System.Drawing.Point(105, 40);
+            this.adminRecipeDesc.Name = "adminRecipeDesc";
+            this.adminRecipeDesc.Size = new System.Drawing.Size(352, 46);
+            this.adminRecipeDesc.TabIndex = 19;
+            this.adminRecipeDesc.Text = "";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(225, 414);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(107, 23);
+            this.button6.TabIndex = 27;
+            this.button6.Text = "Update Recipe";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.adminUpdateRecipe_Click);
+            // 
+            // adminRecipeBox1
+            // 
+            this.adminRecipeBox1.FormattingEnabled = true;
+            this.adminRecipeBox1.Location = new System.Drawing.Point(288, 11);
+            this.adminRecipeBox1.Name = "adminRecipeBox1";
+            this.adminRecipeBox1.Size = new System.Drawing.Size(169, 23);
+            this.adminRecipeBox1.TabIndex = 26;
+            this.adminRecipeBox1.SelectedIndexChanged += new System.EventHandler(this.adminRecipeBox1_SelectedIndexChanged);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(22, 95);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(69, 15);
+            this.label45.TabIndex = 25;
+            this.label45.Text = "Instructions";
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(105, 414);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(114, 23);
+            this.button9.TabIndex = 15;
+            this.button9.Text = "Delete Ingredient";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.adminDeleteRecipeIngredient_Click);
+            // 
+            // adminRecipeIns
+            // 
+            this.adminRecipeIns.Location = new System.Drawing.Point(105, 92);
+            this.adminRecipeIns.Name = "adminRecipeIns";
+            this.adminRecipeIns.Size = new System.Drawing.Size(352, 108);
+            this.adminRecipeIns.TabIndex = 24;
+            this.adminRecipeIns.Text = "";
+            // 
+            // adminRecipeItems
+            // 
+            this.adminRecipeItems.FormattingEnabled = true;
+            this.adminRecipeItems.ItemHeight = 15;
+            this.adminRecipeItems.Location = new System.Drawing.Point(105, 269);
+            this.adminRecipeItems.Name = "adminRecipeItems";
+            this.adminRecipeItems.Size = new System.Drawing.Size(352, 139);
+            this.adminRecipeItems.TabIndex = 16;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(22, 269);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(42, 15);
+            this.label46.TabIndex = 23;
+            this.label46.Text = "Recipe";
+            // 
+            // adminRecipeIng
+            // 
+            this.adminRecipeIng.FormattingEnabled = true;
+            this.adminRecipeIng.Location = new System.Drawing.Point(128, 221);
+            this.adminRecipeIng.Name = "adminRecipeIng";
+            this.adminRecipeIng.Size = new System.Drawing.Size(177, 23);
+            this.adminRecipeIng.TabIndex = 17;
+            this.adminRecipeIng.SelectedIndexChanged += new System.EventHandler(this.adminRecipeIng_SelectedIndexChanged);
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(22, 224);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(100, 15);
+            this.label47.TabIndex = 22;
+            this.label47.Text = "Select Ingredients";
+            // 
+            // adminRecipeName
+            // 
+            this.adminRecipeName.Location = new System.Drawing.Point(105, 11);
+            this.adminRecipeName.Name = "adminRecipeName";
+            this.adminRecipeName.PlaceholderText = "Recipe Name";
+            this.adminRecipeName.Size = new System.Drawing.Size(177, 23);
+            this.adminRecipeName.TabIndex = 18;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(22, 43);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(67, 15);
+            this.label48.TabIndex = 21;
+            this.label48.Text = "Description";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(22, 14);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(77, 15);
+            this.label49.TabIndex = 20;
+            this.label49.Text = "Recipe Name";
+            // 
+            // adminTabUsers
+            // 
+            this.adminTabUsers.Controls.Add(this.groupBox20);
+            this.adminTabUsers.Controls.Add(this.groupBox19);
+            this.adminTabUsers.Location = new System.Drawing.Point(4, 24);
+            this.adminTabUsers.Name = "adminTabUsers";
+            this.adminTabUsers.Size = new System.Drawing.Size(531, 498);
+            this.adminTabUsers.TabIndex = 2;
+            this.adminTabUsers.Text = "Manage Users(delete dis)";
+            this.adminTabUsers.UseVisualStyleBackColor = true;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.button13);
+            this.groupBox20.Controls.Add(this.button14);
+            this.groupBox20.Controls.Add(this.adminRecipeCreated);
+            this.groupBox20.Location = new System.Drawing.Point(227, 12);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(204, 271);
+            this.groupBox20.TabIndex = 5;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Created Recipes";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(101, 242);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(93, 23);
+            this.button13.TabIndex = 2;
+            this.button13.Text = "Delete One";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(6, 242);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(89, 23);
+            this.button14.TabIndex = 1;
+            this.button14.Text = "Delete All";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // adminRecipeCreated
+            // 
+            this.adminRecipeCreated.FormattingEnabled = true;
+            this.adminRecipeCreated.ItemHeight = 15;
+            this.adminRecipeCreated.Location = new System.Drawing.Point(6, 22);
+            this.adminRecipeCreated.Name = "adminRecipeCreated";
+            this.adminRecipeCreated.Size = new System.Drawing.Size(188, 214);
+            this.adminRecipeCreated.TabIndex = 0;
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.button11);
+            this.groupBox19.Controls.Add(this.adminUserBox1);
+            this.groupBox19.Location = new System.Drawing.Point(17, 12);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(204, 271);
+            this.groupBox19.TabIndex = 4;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "User List";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(6, 242);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(83, 23);
+            this.button11.TabIndex = 2;
+            this.button11.Text = "Make Admin";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // adminUserBox1
+            // 
+            this.adminUserBox1.FormattingEnabled = true;
+            this.adminUserBox1.ItemHeight = 15;
+            this.adminUserBox1.Location = new System.Drawing.Point(6, 22);
+            this.adminUserBox1.Name = "adminUserBox1";
+            this.adminUserBox1.Size = new System.Drawing.Size(188, 214);
+            this.adminUserBox1.TabIndex = 0;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(5, 5);
@@ -1808,6 +2470,7 @@
             this.tabPage2.ResumeLayout(false);
             this.foodTabControl.ResumeLayout(false);
             this.addMealTab.ResumeLayout(false);
+            this.addMealTab.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -1842,6 +2505,20 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WeightChangeUpDown)).EndInit();
+            this.adminTab.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.adminTabFood.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.adminTabRecipe.ResumeLayout(false);
+            this.adminTabRecipe.PerformLayout();
+            this.adminTabUsers.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1943,7 +2620,6 @@
         private System.Windows.Forms.CheckBox fishBox;
         private System.Windows.Forms.Button saveToFoodEntry;
         private System.Windows.Forms.Label recipeTitleLb;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl recipeControl;
@@ -1998,5 +2674,63 @@
         private System.Windows.Forms.NumericUpDown WeightChangeUpDown;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TabPage adminTab;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage adminTabFood;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.ComboBox adminFoodBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.CheckBox adminSoy1;
+        private System.Windows.Forms.CheckBox adminNut1;
+        private System.Windows.Forms.CheckBox adminDairy1;
+        private System.Windows.Forms.CheckBox adminGluten1;
+        private System.Windows.Forms.CheckBox adminFish1;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Label adminFoodID;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox adminFoodPro;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox adminFoodFat;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox adminFoodCarb;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox adminFoodCals;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox adminFoodName;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TabPage adminTabRecipe;
+        private System.Windows.Forms.TabPage adminTabUsers;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.RichTextBox adminRecipeDesc;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ComboBox adminRecipeBox1;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.RichTextBox adminRecipeIns;
+        private System.Windows.Forms.ListBox adminRecipeItems;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.ComboBox adminRecipeIng;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox adminRecipeName;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.ListBox adminRecipeCreated;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.ListBox adminUserBox1;
+        private System.Windows.Forms.Button button15;
     }
 }

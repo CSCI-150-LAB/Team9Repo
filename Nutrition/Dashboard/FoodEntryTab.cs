@@ -19,7 +19,9 @@ namespace Nutrition
             currentFood = null;
             foodItems.Items.Add(food);
 
-            Food facts = d.GetFoodData(int.Parse(id), food);//pre-fill the food item with database values
+            Food facts = searchLocalDB(int.Parse(id), food);//pre-fill the food item with database values
+           // Food facts = searchLocalDB(food);
+
             nameBox.Text = facts.name;
             calorieBox.Text = facts.calories.ToString();
             fatBox.Text = facts.fat.ToString();
@@ -32,7 +34,7 @@ namespace Nutrition
             double pro = facts.protein;
             int[] allergies = facts.allergies;
             checkAllergies(allergies);//fill in allergies
-            foodList.addNewFood(new Food(nameBox.Text, calories, fat, pro, carb, allergies, Food.MealType.Dinner));//TODO Add mealType in form
+            foodList.addNewFood(new Food(int.Parse(id), nameBox.Text, calories, fat, pro, carb, allergies, Food.MealType.Dinner));//TODO Add mealType in form
 
             if (targetLabel.Text == "N/A")
                 targetLabel.Text = facts.calories.ToString();
@@ -114,12 +116,17 @@ namespace Nutrition
             int index = foodItems.SelectedIndex;
             if (index > -1)
             {
-                List<string> facts = d.GetFoodData(foodItems.SelectedItem.ToString());
+                //   List<Food> facts = d.GetFoodData(foodItems.SelectedItem.ToString());
+                Food facts = searchLocalDB(foodItems.SelectedItem.ToString());
 
                 foodItems.Items.RemoveAt(index);
                 foodItems.SelectedIndex = index - 1;
 
-                int sum = int.Parse(targetLabel.Text) - int.Parse(facts[1]);
+                int sum = 0;
+                int label;
+                if (!facts.calories.Equals(null) && int.TryParse(targetLabel.Text, out label))
+                    sum = label - facts.calories;
+                
                 if (sum > 0)
                     targetLabel.Text = sum.ToString();
                 else
@@ -180,19 +187,19 @@ namespace Nutrition
             //Show allergy items
             if (allergyCheckbox.Checked)
             {
-                List<string> foods = d.GetNoAllergyFoodItems(username);
+                List<Food> foods = d.GetNoAllergyFoodItems(username);
                 foodBox1.Items.Clear();//Clear box to remove potential allergy conflicts
-                foreach (string name in foods)
+                foreach (Food name in foods)
                 {
-                    foodBox1.Items.Add(name);
+                    foodBox1.Items.Add(name.name);
                 }
             }
             else //Show all items
             {
                 foodBox1.Items.Clear();//Clear box to prevent duplicates
-                foreach (string name in foodData)
+                foreach (Food name in foodData)
                 {
-                    foodBox1.Items.Add(name);
+                    foodBox1.Items.Add(name.name);
                 }
             }
         }
@@ -261,8 +268,8 @@ namespace Nutrition
                     soy = 1;
 
                 int[] allergies = new int[] { gluten, nuts, fish, dairy, soy };
-
-                Food newItem = new Food(newFoodName.Text, int.Parse(newFoodCal.Text), double.Parse(newFoodFat.Text), double.Parse(newFoodPro.Text), double.Parse(newFoodCarb.Text), allergies);
+                //-1 for empty id since it's not in the database yet
+                Food newItem = new Food(-1, newFoodName.Text, int.Parse(newFoodCal.Text), double.Parse(newFoodFat.Text), double.Parse(newFoodPro.Text), double.Parse(newFoodCarb.Text), allergies);
                 d.InsertFood(newItem);
                 FillFoodData();//update combobox
             }
@@ -299,6 +306,33 @@ namespace Nutrition
                 dairyBox.Checked = true;
             if (allergies[4] == 1)
                 soyBox.Checked = true;
+        }
+
+        private Food searchLocalDB(int id, string item)
+        {
+            Food found = null;
+            foreach (Food s in foodData)
+            {
+                if (s.name.Equals(item) && s.id.Equals(id))
+                {
+                    found = s;
+                    break;
+                }
+            }
+            return found;
+        }
+        private Food searchLocalDB(string item)
+        {
+            Food found = null;
+            foreach (Food s in foodData)
+            {
+                if (s.name.Equals(item))
+                {
+                    found = s;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
