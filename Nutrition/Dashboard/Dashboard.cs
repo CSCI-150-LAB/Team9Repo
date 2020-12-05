@@ -17,6 +17,7 @@ namespace Nutrition
         private double userBMR;
         private double userBMI;
         private double userWeight;
+        private bool isAdministrator = false;
         private int heightFeet;
         private int heightInch;
         private double calorieGoal;
@@ -32,6 +33,11 @@ namespace Nutrition
         {
             username = user["username"];
             userData = d.GetUserData(username);
+
+            //Set admin powers
+            if (d.isAdmin(username))
+                isAdministrator = true;
+
             userBMR = Double.Parse(userData["bmr"]);
             userBMI = Double.Parse(userData["bmi"]);
             userWeight = Math.Round(Double.Parse(userData["weight"]), 2);
@@ -57,8 +63,11 @@ namespace Nutrition
             healthUserWelcome.Text = username + "'s Personal Health Summary";
 
             StartTimer();
-            plotBars();
-            plotForms();
+            if (!isAdministrator) //Only show graphs to users--disabled for admins
+            {
+                plotBars();
+                plotForms();
+            }
             refreshCalData();
             bmrHSlabel.Text = "BMR: " + userBMR;
             HSbmiLabel.Text = "Starting BMI: " + userBMI;
@@ -255,6 +264,12 @@ namespace Nutrition
         {
             //Set the dashboard tab to be displayed first
             tabControl1.SelectedIndex = 0;
+            //Hide the admin tab as default view
+            if (tabControl1.TabPages.Contains(adminTab))
+                tabControl1.TabPages.Remove(adminTab);
+            //If the user is an admin put it back
+            if (isAdministrator)
+                tabControl1.TabPages.Insert(4, adminTab);
 
             //Fill the drop down menus with food items
             FillFoodData();
@@ -268,7 +283,7 @@ namespace Nutrition
          */
         private void prefetch()
         {
-            dataGridView1.DataSource = d.getLastTenMeals2(username);
+            dataGridView1.DataSource = d.getLastTenMeals(username);
             dataGridView1.Columns["usr"].Visible = false;
             dataGridView1.Columns["id"].Visible = false;
             dataGridView1.Columns["date_logged"].Visible = false;
@@ -323,6 +338,31 @@ namespace Nutrition
             recipeDropDown.DataSource = d.getRecipeList();
             recipeDropDown.DisplayMember = "name";
             recipeDropDown.ValueMember = "recipeid";
+
+            //Fill in Admin tabs with food data
+            if (isAdministrator)
+            {
+                //Edit food items
+                adminFoodBox1.DataSource = foodList;
+                adminFoodBox1.DisplayMember = "item_name";
+                adminFoodBox1.ValueMember = "id";
+
+                //Edit recipes
+                adminRecipeBox1.DataSource = d.getRecipeList();
+                adminRecipeBox1.DisplayMember = "name";
+                adminRecipeBox1.ValueMember = "recipeid";
+
+                adminRecipeIng.DataSource = foodList;
+                adminRecipeIng.DisplayMember = "item_name";
+                adminRecipeIng.ValueMember = "id";
+
+                adminRecipeItems.Items.Clear();
+
+                //DELETE
+                List<string> users = d.GetUserList();
+                foreach (string name in users)
+                    adminUserBox1.Items.Add(name);
+            }
         }
 
         private void deleteMeal_Click(object sender, EventArgs e)

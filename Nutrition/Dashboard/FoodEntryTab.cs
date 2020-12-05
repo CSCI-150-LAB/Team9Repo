@@ -307,6 +307,7 @@ namespace Nutrition
             if (allergies[4] == 1)
                 soyBox.Checked = true;
         }
+
         private Food searchLocalDB(int id, string item)
         {
             Food found = null;

@@ -277,6 +277,46 @@ namespace Nutrition
             }
         }
 
+        public void UpdateFood(Food item)
+        {
+            string sql = "UPDATE [dbo].[Nutrition] SET " +
+                "item_name = @item," +
+                "calories = @calories," +
+                "fat = @fat," +
+                "carbohydrate = @carbs," +
+                "protein = @protein," +
+                "contains_gluten = @gluten," +
+                "contains_nuts = @nuts," +
+                "contains_fish = @fish," +
+                "contains_dairy = @dairy," +
+                "contains_soy = @soy WHERE id = @id";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {//@item,@calories,@fat,@carbs,@protein,@gluten,@nuts,@fish,@dairy,@soy
+                    command.Parameters.AddWithValue("@item", item.name);
+                    command.Parameters.AddWithValue("@calories", item.calories);
+                    command.Parameters.AddWithValue("@fat", item.fat);
+                    command.Parameters.AddWithValue("@carbs", item.carbs);
+                    command.Parameters.AddWithValue("@protein", item.protein);
+                    command.Parameters.AddWithValue("@gluten", item.allergies[0]);
+                    command.Parameters.AddWithValue("@nuts", item.allergies[1]);
+                    command.Parameters.AddWithValue("@fish", item.allergies[2]);
+                    command.Parameters.AddWithValue("@dairy", item.allergies[3]);
+                    command.Parameters.AddWithValue("@soy", item.allergies[4]);
+                    command.Parameters.AddWithValue("@id", item.id);
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error updating data in Database!");
+                    else if (Program.debugMode)
+                        MessageBox.Show("Updated " + item.name + " successfully");
+                }
+            }
+        }
+
         public void insertUserTracking(IDictionary<string, string> item)
         {
             string sql = "INSERT INTO [dbo].[UserTracking] (username,item_name,calories,fat,carbohydrate,protein,meal_type,date_logged) VALUES (@user,@item,@cal,@fat,@carb,@pro,@meal_type,@date)";
@@ -423,37 +463,11 @@ namespace Nutrition
             }
         }
 
-        public List<string> getLastTenMeals(string username)
-        {
-            List<string> lastTen = new List<string>();//empty list
-            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged " +
-    "FROM UserTracking " +
-    "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
-    "where Users.username = @user " +
-    "ORDER BY UserTracking.date_logged DESC";
-            using (SqlConnection con = new SqlConnection(GetConnectionString()))
-            {
-                con.Open();
-                using (SqlCommand command = new SqlCommand(sql, con))
-                {
-                    command.Parameters.AddWithValue("@user", username);
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            lastTen.Add(reader["item_name"].ToString());
-                        }
-                    }
-                }
-            }
-            return lastTen;
-        }
-
         //Fill a DataTable with SQL results to use with the ViewFormGrid as a DataSource
-        public DataTable getLastTenMeals2(string username)
-        {
+        public DataTable getLastTenMeals(string username)
+        {//SELECT TOP 10 ...
             DataTable lastTen = new DataTable();
-            string sql = "SELECT TOP 10 Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged, UserTracking.meal_type " +
+            string sql = "SELECT Users.username as 'usr', UserTracking.id, UserTracking.item_name, UserTracking.date_logged, UserTracking.meal_type " +
     "FROM UserTracking " +
     "INNER JOIN Users ON UserTracking.username = Users.username AND DATEDIFF(hour, UserTracking.date_logged, GETDATE()) <= 24 " +
     "where Users.username = @user " +
@@ -471,6 +485,28 @@ namespace Nutrition
                 }
             }
             return lastTen;
+        }
+
+        public List<string> GetUserList()
+        {
+            List<string> log = new List<string>();//empty list
+            string sql = "SELECT * from dbo.Users ORDER BY join_date DESC";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["username"] != DBNull.Value)
+                                log.Add(reader["username"].ToString());
+                        }
+                    }
+                }
+            }
+            return log;
         }
 
         //Check if a user finished the Assessment from after registering
@@ -928,10 +964,66 @@ namespace Nutrition
                         int result = command.ExecuteNonQuery();
                         // Check Error
                         if (result < 0)
-                            MessageBox.Show("Error inserting user weight");
+                            MessageBox.Show("Error inserting item " + f.name + " into the recipe data");
                     }
                 }
             }
+        }
+
+        public void UpdateRecipe(Recipe item, string recipeID)
+        {//"INSERT INTO [dbo].[Recipes] (name,description,instructions,createdBy,recipeid,date) VALUES (@name,@des,@inst,@by,@id,GETDATE())";
+            DeleteRecipeHelper(recipeID);//Get rid of old ingredients
+
+            string sql = "UPDATE [dbo].[Recipes] SET " +
+                "name = @name," +
+                "description = @des," +
+                "instructions = @ins " +
+                "WHERE recipeid = @id";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {//@item,@calories,@fat,@carbs,@protein,@gluten,@nuts,@fish,@dairy,@soy
+                    command.Parameters.AddWithValue("@name", item.name);
+                    command.Parameters.AddWithValue("@des", item.description);
+                    command.Parameters.AddWithValue("@ins", item.instructions);
+                    command.Parameters.AddWithValue("@id", recipeID);
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error updating data in Database!");
+                    else
+                    {
+                        InsertRecipeHelper(recipeID, item.ingredients);  //Insert the ingredients list under the given the recipe ID
+                        if (Program.debugMode)
+                            MessageBox.Show("Updated recipe " + item.name + " successfully");
+                    }
+                }
+            }
+        }
+
+        public string GetRecipeMaker(string recipeID)
+        {
+            string maker = "";
+            string sql = "SELECT [createdBy] FROM [dbo].[Recipes] WHERE recipeid = @id";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@id", recipeID);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader["createdBy"] != DBNull.Value)
+                                maker = reader["createdBy"].ToString();
+                        }
+                    }
+                }
+            }
+            return maker;
         }
 
         //Delete REcipe
