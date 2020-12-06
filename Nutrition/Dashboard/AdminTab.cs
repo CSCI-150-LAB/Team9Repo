@@ -230,7 +230,33 @@ namespace Nutrition
 
         private void adminPromoteRecipe_Click(object sender, EventArgs e)
         {
-            //Update promotions table with recipe info
+            DataRowView drv = (DataRowView)adminRecipeBox1.SelectedItem;
+
+            string id = drv["recipeid"].ToString();
+            int index = adminRecipeBox1.SelectedIndex;
+            if (index > -1 && adminRecipeName.Text.Length > 0)
+            {
+                if (adminRecipeName.Text.Length == 0)
+                    MessageBox.Show("Error: Recipe needs a name");
+                else if (adminRecipeDesc.Text.Length == 0)
+                    MessageBox.Show("Error: Recipe needs a description");
+                else if (adminRecipeIns.Text.Length == 0)
+                    MessageBox.Show("Error: Recipe needs instructions");
+                else if (adminRecipeItems.Items.Count == 0)
+                    MessageBox.Show("Error: Recipe needs ingredients");
+                else
+                {
+                    d.PromoteRecipe(id);
+                    Recipe promoted = d.GetPromotedRecipe();
+                    dashboardProRecipeID.Text = id;
+                    recipeTitleLb.Text = promoted.name;
+                    recipeDashDesc.Text = promoted.description;
+                    recipeDashIns.Text = promoted.instructions;
+                    recipeDashItems.Items.Clear();//Empty all the old ingredients
+                    foreach (Food item in promoted.ingredients)
+                        recipeDashItems.Items.Add(item.name);//Populate promoted recipe ingredients
+                }
+            }
         }
 
         private void adminRecipeIng_SelectedIndexChanged(object sender, EventArgs e)

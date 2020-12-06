@@ -843,7 +843,7 @@ namespace Nutrition
                             List<Food> ingredients = GetRecipeIngredients(recipeID);
 
                             //Construct the recipe object
-                            Recipe d = new Recipe(name, description, instructions, ingredients);
+                            Recipe d = new Recipe(recipeID, name, description, instructions, ingredients);
 
                             //Add the recipe to the list
                             recipes.Add(d);
@@ -873,6 +873,96 @@ namespace Nutrition
             // recipes.Columns.Add("Value", typeof(int));
 
             return recipes;
+        }
+
+        public Recipe GetPromotedRecipe()
+        {
+            Recipe r = new Recipe(null, null, null, null);
+            string sql = "SELECT [recipeid] FROM [dbo].[Promotions]";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader["recipeid"] != DBNull.Value)
+                            {
+                                string recipeID = reader["recipeid"].ToString();
+                                Recipe obj = GetRecipe(recipeID);
+                                if (obj != null)//Check if it exists
+                                    //Get Recipe values
+                                    r = new Recipe(obj.recipeid, obj.name, obj.description, obj.instructions, GetRecipeIngredients(recipeID));
+                            }
+                        }
+                    }
+                }
+            }
+            return r;
+        }
+
+        public void PromoteRecipe(string recipeid)
+        {
+            string sql = "UPDATE [dbo].[Promotions] SET " +
+                "recipeid = @id " +
+                "WHERE id = 1"; //Only update the first recipeid since that's our promotions table
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@id", recipeid);
+
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                        MessageBox.Show("Error updating data in Database!");
+                    else
+                    {
+                        if (Program.debugMode)
+                            MessageBox.Show("Promoted recipe " + recipeid);
+                    }
+                }
+            }
+        }
+
+
+        //Private since we only need this as a helper function for the promoted recipes
+        //Build the promtoed recipe by [recipeid]
+        private Recipe GetRecipe(string recipeid)
+        {
+            Recipe r = new Recipe(null, null, null, null);
+            string sql = "SELECT * FROM [dbo].[Recipes] WHERE recipeid = @id";
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                con.Open();
+                using (SqlCommand command = new SqlCommand(sql, con))
+                {
+                    command.Parameters.AddWithValue("@id", recipeid);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (reader["recipeid"] != DBNull.Value)
+                            {
+                                string name = reader["name"].ToString();
+                                string description = reader["description"].ToString();
+                                string instructions = reader["instructions"].ToString();
+                                string recipeID = reader["recipeid"].ToString();
+
+                                //Get the recipe ingredients
+                                List<Food> ingredients = GetRecipeIngredients(recipeID);
+
+                                //Construct the recipe object
+                                r = new Recipe(recipeID, name, description, instructions, ingredients);
+                            }
+                        }
+                    }
+                }
+            }
+            return r;
         }
 
         //Recipe helper to grab the ingredients for a given recipe
