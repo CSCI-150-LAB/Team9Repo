@@ -285,6 +285,10 @@ namespace Nutrition
 
             //Prefetch Data
             prefetch();
+
+            //Set default view on Food entry and meal tabs
+            logMeal_Click(sender, e); //Simulate a click to make it visible
+            findRecipeButton_Click(sender, e); //Simulate a click to make it visible
         }
 
         /**
@@ -309,26 +313,21 @@ namespace Nutrition
         private void FillFoodData()
         {
             //Prefetch food box items from the database
-            /*  foodData = d.GetFoodItems();
-              foreach (string name in foodData)
-              {
-                  //Add items to the food box
-                  foodBox1.Items.Add(name);
-
-                  //Add food items to the recipe tab
-                  ingredientsDropDown.Items.Add(name);
-              }*/
-            //  foodData = d.GetFoodItems2();
+            foodData = d.GetFoodItems();
+            foreach (Food i in foodData)
+            {
+                //Add items to the food box
+                foodBox1.Items.Add(i.name);
+            }
 
             DataTable foodList = d.GetFoodItems2();
-            foodData = d.GetFoodItems();
 
             //Fill Food Entry box
-            foodBox1.DataSource = foodList;
-            foodBox1.DisplayMember = "item_name";
-            foodBox1.ValueMember = "id";
-            foodItems.Items.Clear();//Empty the first item added from the datasource event triggering
-            targetLabel.Text = "N/A";
+            //  foodBox1.DataSource = foodList;
+            //  foodBox1.DisplayMember = "item_name";
+            //  foodBox1.ValueMember = "id";
+            //   foodItems.Items.Clear();//Empty the first item added from the datasource event triggering
+            //  targetLabel.Text = "N/A";
 
             //Fill Recipe drop down box
             ingredientsDropDown.DataSource = foodList;
@@ -366,11 +365,6 @@ namespace Nutrition
                 adminRecipeIng.ValueMember = "id";
 
                 adminRecipeItems.Items.Clear();
-
-                //DELETE
-                List<string> users = d.GetUserList();
-                foreach (string name in users)
-                    adminUserBox1.Items.Add(name);
             }
         }
 

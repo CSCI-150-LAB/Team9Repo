@@ -11,16 +11,19 @@ namespace Nutrition
         private void foodBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Access DataTable members
-            DataRowView drv = (DataRowView)foodBox1.SelectedItem;
-            string food = drv["item_name"].ToString();
-            string id = drv["id"].ToString();
+            // DataRowView drv = (DataRowView)foodBox1.SelectedItem;
+            //string food = drv["item_name"].ToString();
+            //string id = drv["id"].ToString();
+
+            int index = foodBox1.SelectedIndex;
+            Food selectedItem = foodData[index];
 
             //string food = ((DataRowView)foodBox1.SelectedItem)["item_name"].ToString();
             currentFood = null;
-            foodItems.Items.Add(food);
+            foodItems.Items.Add(selectedItem.name);
 
-            Food facts = searchLocalDB(int.Parse(id), food);//pre-fill the food item with database values
-           // Food facts = searchLocalDB(food);
+            Food facts = searchLocalDB(selectedItem.id, selectedItem.name);//pre-fill the food item with database values
+                                                                           // Food facts = searchLocalDB(food);
 
             nameBox.Text = facts.name;
             calorieBox.Text = facts.calories.ToString();
@@ -34,7 +37,7 @@ namespace Nutrition
             double pro = facts.protein;
             int[] allergies = facts.allergies;
             checkAllergies(allergies);//fill in allergies
-            foodList.addNewFood(new Food(int.Parse(id), nameBox.Text, calories, fat, pro, carb, allergies, Food.MealType.Dinner));//TODO Add mealType in form
+            foodList.addNewFood(new Food(selectedItem.id, nameBox.Text, calories, fat, pro, carb, allergies, Food.MealType.Dinner));//TODO Add mealType in form
 
             if (targetLabel.Text == "N/A")
                 targetLabel.Text = facts.calories.ToString();
@@ -126,7 +129,7 @@ namespace Nutrition
                 int label;
                 if (!facts.calories.Equals(null) && int.TryParse(targetLabel.Text, out label))
                     sum = label - facts.calories;
-                
+
                 if (sum > 0)
                     targetLabel.Text = sum.ToString();
                 else
@@ -193,10 +196,12 @@ namespace Nutrition
                 {
                     foodBox1.Items.Add(name.name);
                 }
+                foodData = foods;//
             }
             else //Show all items
             {
                 foodBox1.Items.Clear();//Clear box to prevent duplicates
+                foodData = d.GetFoodItems(); //Overwrite allergy items
                 foreach (Food name in foodData)
                 {
                     foodBox1.Items.Add(name.name);
