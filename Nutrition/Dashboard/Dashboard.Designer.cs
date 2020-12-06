@@ -60,7 +60,6 @@
             this.logMealButton = new System.Windows.Forms.Button();
             this.foodTabControl = new System.Windows.Forms.TabControl();
             this.addMealTab = new System.Windows.Forms.TabPage();
-            this.label33 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.mealTypeBox = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -553,9 +552,9 @@
             // 
             // newFoodButton
             // 
-            this.newFoodButton.Location = new System.Drawing.Point(103, 11);
+            this.newFoodButton.Location = new System.Drawing.Point(132, 19);
             this.newFoodButton.Name = "newFoodButton";
-            this.newFoodButton.Size = new System.Drawing.Size(148, 43);
+            this.newFoodButton.Size = new System.Drawing.Size(148, 39);
             this.newFoodButton.TabIndex = 8;
             this.newFoodButton.Text = "Create New Food Item";
             this.newFoodButton.UseVisualStyleBackColor = true;
@@ -563,10 +562,10 @@
             // 
             // logMealButton
             // 
-            this.logMealButton.BackColor = System.Drawing.Color.LightGreen;
-            this.logMealButton.Location = new System.Drawing.Point(13, 11);
+            this.logMealButton.BackColor = System.Drawing.Color.Transparent;
+            this.logMealButton.Location = new System.Drawing.Point(12, 19);
             this.logMealButton.Name = "logMealButton";
-            this.logMealButton.Size = new System.Drawing.Size(75, 43);
+            this.logMealButton.Size = new System.Drawing.Size(75, 39);
             this.logMealButton.TabIndex = 7;
             this.logMealButton.Text = "Log Meal";
             this.logMealButton.UseVisualStyleBackColor = false;
@@ -576,7 +575,7 @@
             // 
             this.foodTabControl.Controls.Add(this.addMealTab);
             this.foodTabControl.Controls.Add(this.addNewFoodTab);
-            this.foodTabControl.Location = new System.Drawing.Point(8, 65);
+            this.foodTabControl.Location = new System.Drawing.Point(12, 74);
             this.foodTabControl.Name = "foodTabControl";
             this.foodTabControl.SelectedIndex = 0;
             this.foodTabControl.Size = new System.Drawing.Size(942, 530);
@@ -586,7 +585,6 @@
             // addMealTab
             // 
             this.addMealTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addMealTab.Controls.Add(this.label33);
             this.addMealTab.Controls.Add(this.groupBox13);
             this.addMealTab.Controls.Add(this.groupBox10);
             this.addMealTab.Controls.Add(this.groupBox6);
@@ -602,18 +600,6 @@
             this.addMealTab.TabIndex = 0;
             this.addMealTab.Text = "Add Meal";
             this.addMealTab.UseVisualStyleBackColor = true;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label33.Image = ((System.Drawing.Image)(resources.GetObject("label33.Image")));
-            this.label33.Location = new System.Drawing.Point(623, 283);
-            this.label33.MaximumSize = new System.Drawing.Size(512, 512);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(308, 89);
-            this.label33.TabIndex = 10;
-            this.label33.Text = "               ";
             // 
             // groupBox13
             // 
@@ -2406,7 +2392,6 @@
             this.tabPage2.ResumeLayout(false);
             this.foodTabControl.ResumeLayout(false);
             this.addMealTab.ResumeLayout(false);
-            this.addMealTab.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -2607,7 +2592,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.RichTextBox recipeDashDesc;
-        private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TabPage adminTab;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.TabControl tabControl2;
