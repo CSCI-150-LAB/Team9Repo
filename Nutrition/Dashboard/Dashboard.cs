@@ -274,7 +274,10 @@ namespace Nutrition
                 tabControl1.TabPages.Remove(adminTab);
             //If the user is an admin put it back
             if (isAdministrator)
+            {
                 tabControl1.TabPages.Insert(4, adminTab);
+                tabControl1.SelectedIndex = 4;
+            }
 
             //Fill the drop down menus with food items
             FillFoodData();
