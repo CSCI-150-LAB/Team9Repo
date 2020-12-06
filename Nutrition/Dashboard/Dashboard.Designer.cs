@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.userDropDown = new System.Windows.Forms.ToolStripDropDownButton();
-            this.helpItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -289,7 +288,6 @@
             // 
             this.userDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.userDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpItem,
             this.logoutItem});
             this.userDropDown.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.userDropDown.Image = ((System.Drawing.Image)(resources.GetObject("userDropDown.Image")));
@@ -298,12 +296,6 @@
             this.userDropDown.Size = new System.Drawing.Size(37, 32);
             this.userDropDown.Text = "...";
             this.userDropDown.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dropDownItem_Click);
-            // 
-            // helpItem
-            // 
-            this.helpItem.Name = "helpItem";
-            this.helpItem.Size = new System.Drawing.Size(147, 32);
-            this.helpItem.Text = "Help";
             // 
             // logoutItem
             // 
@@ -2526,7 +2518,6 @@
         private System.Windows.Forms.Label HSweightLabel;
         private System.Windows.Forms.ToolStripDropDownButton userDropDown;
         private System.Windows.Forms.ToolStripStatusLabel dateLabel;
-        private System.Windows.Forms.ToolStripMenuItem helpItem;
         private System.Windows.Forms.ToolStripMenuItem logoutItem;
         private System.Windows.Forms.Label calGoalLabel;
         private System.Windows.Forms.GroupBox groupBox9;

@@ -115,11 +115,7 @@ namespace Nutrition
         private void dropDownItem_Click(object sender, ToolStripItemClickedEventArgs e)
         {
             //MessageBox.Show(e.ClickedItem.Text);
-            if (e.ClickedItem.Text == "Help")
-            {
-                MessageBox.Show("Ask again later");
-            }
-            else if (e.ClickedItem.Text == "Logout")
+            if (e.ClickedItem.Text == "Logout")
             {
                 Environment.Exit(0);
             }
