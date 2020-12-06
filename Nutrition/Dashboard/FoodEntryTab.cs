@@ -127,8 +127,23 @@ namespace Nutrition
 
                 int sum = 0;
                 int label;
-                if (!facts.calories.Equals(null) && int.TryParse(targetLabel.Text, out label))
+                if (facts != null && int.TryParse(targetLabel.Text, out label))
                     sum = label - facts.calories;
+
+                //Recalculate sum because the deleted item is gone
+                if (facts == null)
+                {
+                    int tmpSum = 0;
+                    foreach (string item in foodItems.Items)
+                    {
+                        Food fact = searchLocalDB(item);
+                        if (fact == null)
+                            continue;
+                        tmpSum += fact.calories;
+
+                    }
+                    sum = tmpSum;
+                }
 
                 if (sum > 0)
                     targetLabel.Text = sum.ToString();

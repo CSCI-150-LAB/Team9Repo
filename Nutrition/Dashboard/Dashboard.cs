@@ -310,6 +310,7 @@ namespace Nutrition
         {
             //Prefetch food box items from the database
             foodData = d.GetFoodItems();
+            foodBox1.Items.Clear();//Reset the list
             foreach (Food i in foodData)
             {
                 //Add items to the food box
