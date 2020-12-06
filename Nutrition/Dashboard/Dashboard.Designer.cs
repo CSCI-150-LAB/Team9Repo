@@ -40,6 +40,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dashboardProRecipeID = new System.Windows.Forms.Label();
             this.recipeDashItems = new System.Windows.Forms.ListBox();
             this.recipeDashIns = new System.Windows.Forms.RichTextBox();
             this.recipeDashDesc = new System.Windows.Forms.RichTextBox();
@@ -221,14 +222,6 @@
             this.adminRecipeName = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.adminTabUsers = new System.Windows.Forms.TabPage();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.adminRecipeCreated = new System.Windows.Forms.ListBox();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.adminUserBox1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -239,7 +232,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dashboardProRecipeID = new System.Windows.Forms.Label();
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -278,9 +270,6 @@
             this.groupBox16.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.adminTabRecipe.SuspendLayout();
-            this.adminTabUsers.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -394,6 +383,16 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Food Options";
+            // 
+            // dashboardProRecipeID
+            // 
+            this.dashboardProRecipeID.AutoSize = true;
+            this.dashboardProRecipeID.Location = new System.Drawing.Point(273, 258);
+            this.dashboardProRecipeID.Name = "dashboardProRecipeID";
+            this.dashboardProRecipeID.Size = new System.Drawing.Size(98, 15);
+            this.dashboardProRecipeID.TabIndex = 8;
+            this.dashboardProRecipeID.Text = "Hidden Recipe ID";
+            this.dashboardProRecipeID.Visible = false;
             // 
             // recipeDashItems
             // 
@@ -1834,7 +1833,6 @@
             // 
             this.tabControl2.Controls.Add(this.adminTabFood);
             this.tabControl2.Controls.Add(this.adminTabRecipe);
-            this.tabControl2.Controls.Add(this.adminTabUsers);
             this.tabControl2.Location = new System.Drawing.Point(6, 22);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -2307,85 +2305,6 @@
             this.label49.TabIndex = 20;
             this.label49.Text = "Recipe Name";
             // 
-            // adminTabUsers
-            // 
-            this.adminTabUsers.Controls.Add(this.groupBox20);
-            this.adminTabUsers.Controls.Add(this.groupBox19);
-            this.adminTabUsers.Location = new System.Drawing.Point(4, 24);
-            this.adminTabUsers.Name = "adminTabUsers";
-            this.adminTabUsers.Size = new System.Drawing.Size(531, 498);
-            this.adminTabUsers.TabIndex = 2;
-            this.adminTabUsers.Text = "Manage Users(delete dis)";
-            this.adminTabUsers.UseVisualStyleBackColor = true;
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.Controls.Add(this.button13);
-            this.groupBox20.Controls.Add(this.button14);
-            this.groupBox20.Controls.Add(this.adminRecipeCreated);
-            this.groupBox20.Location = new System.Drawing.Point(227, 12);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(204, 271);
-            this.groupBox20.TabIndex = 5;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Created Recipes";
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(101, 242);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(93, 23);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "Delete One";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(6, 242);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(89, 23);
-            this.button14.TabIndex = 1;
-            this.button14.Text = "Delete All";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // adminRecipeCreated
-            // 
-            this.adminRecipeCreated.FormattingEnabled = true;
-            this.adminRecipeCreated.ItemHeight = 15;
-            this.adminRecipeCreated.Location = new System.Drawing.Point(6, 22);
-            this.adminRecipeCreated.Name = "adminRecipeCreated";
-            this.adminRecipeCreated.Size = new System.Drawing.Size(188, 214);
-            this.adminRecipeCreated.TabIndex = 0;
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.Controls.Add(this.button11);
-            this.groupBox19.Controls.Add(this.adminUserBox1);
-            this.groupBox19.Location = new System.Drawing.Point(17, 12);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(204, 271);
-            this.groupBox19.TabIndex = 4;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "User List";
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(6, 242);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(83, 23);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "Make Admin";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // adminUserBox1
-            // 
-            this.adminUserBox1.FormattingEnabled = true;
-            this.adminUserBox1.ItemHeight = 15;
-            this.adminUserBox1.Location = new System.Drawing.Point(6, 22);
-            this.adminUserBox1.Name = "adminUserBox1";
-            this.adminUserBox1.Size = new System.Drawing.Size(188, 214);
-            this.adminUserBox1.TabIndex = 0;
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(5, 5);
@@ -2468,16 +2387,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
-            // dashboardProRecipeID
-            // 
-            this.dashboardProRecipeID.AutoSize = true;
-            this.dashboardProRecipeID.Location = new System.Drawing.Point(273, 258);
-            this.dashboardProRecipeID.Name = "dashboardProRecipeID";
-            this.dashboardProRecipeID.Size = new System.Drawing.Size(98, 15);
-            this.dashboardProRecipeID.TabIndex = 8;
-            this.dashboardProRecipeID.Text = "Hidden Recipe ID";
-            this.dashboardProRecipeID.Visible = false;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2551,9 +2460,6 @@
             this.groupBox17.PerformLayout();
             this.adminTabRecipe.ResumeLayout(false);
             this.adminTabRecipe.PerformLayout();
-            this.adminTabUsers.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -2742,7 +2648,6 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TabPage adminTabRecipe;
-        private System.Windows.Forms.TabPage adminTabUsers;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button10;
@@ -2759,13 +2664,6 @@
         private System.Windows.Forms.TextBox adminRecipeName;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.ListBox adminRecipeCreated;
-        private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ListBox adminUserBox1;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.RichTextBox recipeDashIns;
         private System.Windows.Forms.ListBox recipeDashItems;
