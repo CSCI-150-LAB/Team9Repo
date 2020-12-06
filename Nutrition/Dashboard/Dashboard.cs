@@ -77,6 +77,15 @@ namespace Nutrition
             /* string[] weightGoals = new string[] { "Maintain", "Lose", "Gain" };
              goalChangeBox.DataSource = weightGoals;*/
             fixGoal();
+
+            //Get the promoted recipe from the db
+            Recipe promoted = d.GetPromotedRecipe();
+            recipeTitleLb.Text = promoted.name;
+            recipeDashDesc.Text = promoted.description;
+            recipeDashIns.Text = promoted.instructions;
+            dashboardProRecipeID.Text = promoted.recipeid;
+            foreach (Food item in promoted.ingredients)
+                recipeDashItems.Items.Add(item.name);
         }
 
         private void StartTimer()
@@ -404,6 +413,29 @@ namespace Nutrition
             HSweightLabel.Text = "Current Weight: " + d.GetUserData(username)["weight"];
             plotForms();
             MessageBox.Show("Success!");
+        }
+
+        private void usePromotedRecipe_Click(object sender, EventArgs e)
+        {
+            string recipeid = dashboardProRecipeID.Text;
+            findRecipeButton_Click(sender, e);//Simulate click on find recipe
+
+            //Clear old values
+            recipeNameBox.Clear();
+            recipeDescription.Clear();
+            recipeInsBox.Clear();
+            recipeIngredientList.Items.Clear();
+
+            //Populate with promoted recipe
+            Recipe promoted = d.GetPromotedRecipe();
+            recipeNameBox.Text = promoted.name;
+            recipeDescription.Text = promoted.description;
+            recipeInsBox.Text = promoted.instructions;
+            foreach (Food i in promoted.ingredients)
+                recipeIngredientList.Items.Add(i.name);
+
+            //Switch to recipe tab
+            tabControl1.SelectedIndex = 2;
         }
     }
 }

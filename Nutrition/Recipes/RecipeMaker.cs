@@ -13,7 +13,7 @@ namespace Nutrition
         public RecipeMaker(string name, string description, string instructions)
         {
             //Create a new object of the recipe maker with a given recipe name
-            recipe = new Recipe(name, description,instructions);
+            recipe = new Recipe("null", name, description, instructions);
         }
 
         //Method 1. Add single items to build recipes

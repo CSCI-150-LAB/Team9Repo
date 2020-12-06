@@ -40,7 +40,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.recipeDashItems = new System.Windows.Forms.ListBox();
+            this.recipeDashIns = new System.Windows.Forms.RichTextBox();
+            this.recipeDashDesc = new System.Windows.Forms.RichTextBox();
             this.recipeTitleLb = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -237,6 +239,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dashboardProRecipeID = new System.Windows.Forms.Label();
             this.statusBar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -378,7 +381,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.richTextBox1);
+            this.groupBox2.Controls.Add(this.dashboardProRecipeID);
+            this.groupBox2.Controls.Add(this.recipeDashItems);
+            this.groupBox2.Controls.Add(this.recipeDashIns);
+            this.groupBox2.Controls.Add(this.recipeDashDesc);
             this.groupBox2.Controls.Add(this.recipeTitleLb);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.label2);
@@ -389,15 +395,33 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Food Options";
             // 
-            // richTextBox1
+            // recipeDashItems
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 37);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(365, 55);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "THis is a good recipe!!!\nTHis is a good recipe!!!\nTHis is a good recipe!!!\nTHis i" +
-    "s a good recipe!!!\nTHis is a good recipe!!!";
+            this.recipeDashItems.FormattingEnabled = true;
+            this.recipeDashItems.ItemHeight = 15;
+            this.recipeDashItems.Location = new System.Drawing.Point(6, 186);
+            this.recipeDashItems.MultiColumn = true;
+            this.recipeDashItems.Name = "recipeDashItems";
+            this.recipeDashItems.Size = new System.Drawing.Size(365, 64);
+            this.recipeDashItems.TabIndex = 7;
+            // 
+            // recipeDashIns
+            // 
+            this.recipeDashIns.Location = new System.Drawing.Point(6, 98);
+            this.recipeDashIns.Name = "recipeDashIns";
+            this.recipeDashIns.ReadOnly = true;
+            this.recipeDashIns.Size = new System.Drawing.Size(365, 84);
+            this.recipeDashIns.TabIndex = 6;
+            this.recipeDashIns.Text = "";
+            // 
+            // recipeDashDesc
+            // 
+            this.recipeDashDesc.Location = new System.Drawing.Point(6, 37);
+            this.recipeDashDesc.Name = "recipeDashDesc";
+            this.recipeDashDesc.ReadOnly = true;
+            this.recipeDashDesc.Size = new System.Drawing.Size(365, 55);
+            this.recipeDashDesc.TabIndex = 5;
+            this.recipeDashDesc.Text = "\n";
             // 
             // recipeTitleLb
             // 
@@ -416,6 +440,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Go to Recipe";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.usePromotedRecipe_Click);
             // 
             // label2
             // 
@@ -2443,6 +2468,16 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "g";
             // 
+            // dashboardProRecipeID
+            // 
+            this.dashboardProRecipeID.AutoSize = true;
+            this.dashboardProRecipeID.Location = new System.Drawing.Point(273, 258);
+            this.dashboardProRecipeID.Name = "dashboardProRecipeID";
+            this.dashboardProRecipeID.Size = new System.Drawing.Size(98, 15);
+            this.dashboardProRecipeID.TabIndex = 8;
+            this.dashboardProRecipeID.Text = "Hidden Recipe ID";
+            this.dashboardProRecipeID.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2674,7 +2709,7 @@
         private System.Windows.Forms.NumericUpDown WeightChangeUpDown;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox recipeDashDesc;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TabPage adminTab;
         private System.Windows.Forms.GroupBox groupBox15;
@@ -2732,5 +2767,8 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ListBox adminUserBox1;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.RichTextBox recipeDashIns;
+        private System.Windows.Forms.ListBox recipeDashItems;
+        private System.Windows.Forms.Label dashboardProRecipeID;
     }
 }
